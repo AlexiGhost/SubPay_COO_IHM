@@ -1,19 +1,21 @@
 package coo;
 
-import coo.frame.Frame;
 import coo.product.Management;
 
 public class Main {
 
 	public static void main(String[] args) {
+<<<<<<< HEAD
 		Frame frame = new Frame("SubPay");
 		Management.Importer("export.xml");
+=======
+		
+		System.out.println("pouet");
+		Management.importer("export.xml");
+>>>>>>> f9f16006d8be9d49afe8722fc404ad2f9cfd2ac5
 		//testExport();
 	}
 	//Ces actions sont effectués par le manager (indirectement via bouton)
-	// c'est pas très beau de faire comme ça
-	// Ah Bon ?
-	// C'est toujours bon ? 
 	public static void testExport(){ 
 		Management.addBread("Avoine", "C:\\...");
 		Management.addBread("Mie", "C:\\...");
@@ -30,7 +32,7 @@ public class Main {
 		Management.addGarnish("cheddar", "titi");
 		Management.addDrink("cola cola", "toto");
 		Management.addDessert("brownie", "truc marron");
-		Management.Export("export.xml");
-		Management.Importer("export.xml");
+		Management.export("export.xml");
+		Management.importer("export.xml");
 	}
 }
