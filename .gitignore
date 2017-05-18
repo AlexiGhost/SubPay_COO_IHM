@@ -22,3 +22,10 @@
 hs_err_pid*
 .classpath
 .project
+lib/lib/jaxen-1.1.6.LICENSE.txt
+lib/lib/xalan/xalan-2.7.2.LICENSE
+lib/lib/xalan/xalan-2.7.2.NOTICE
+lib/lib/xerces.2.11.NOTICE
+lib/lib/xerces.2.11.LICENSE
+lib/LICENSE.txt
+lib/README.txt
