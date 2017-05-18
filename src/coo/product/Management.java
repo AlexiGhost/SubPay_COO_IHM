@@ -1,13 +1,23 @@
 package coo.product;
 
-import java.io.*;
-import java.util.*;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
-import org.jdom2.*;
+import org.jdom2.Document;
+import org.jdom2.Element;
+import org.jdom2.JDOMException;
 import org.jdom2.input.SAXBuilder;
-import org.jdom2.output.*;
+import org.jdom2.output.Format;
+import org.jdom2.output.XMLOutputter;
 
-import coo.product.composants.*;
+import coo.product.composants.Bread;
+import coo.product.composants.Garnish;
+import coo.product.composants.Promotion;
+import coo.product.composants.Recipe;
+import coo.product.composants.Sauce;
 /**Contain the list of components and methods for ADD/DEL/EDIT/IMPORT/EXPORT them*/
 public class Management {
 	private static List<Bread> breads = new ArrayList<Bread>();
@@ -214,7 +224,7 @@ public class Management {
 // ---------- IMPORT / EXPORT ----------
 	
 	/**Export components to a XML file*/
-	public static void Export(String xmlFile) {
+	public static void export(String xmlFile) {
 		Element racine = new Element("Composants");
 		Document composants = new Document(racine);
 		String name;
@@ -481,7 +491,7 @@ public class Management {
 	
 
 	/**Import components from a XML file*/
-	public static void Importer(String xmlFile){
+	public static void importer(String xmlFile){
 		breads.clear();
 		garnishs.clear();
 		sauces.clear();
