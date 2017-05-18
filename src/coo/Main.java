@@ -13,6 +13,7 @@ public class Main {
 	}
 	//Ces actions sont effectués par le manager (indirectement via bouton)
 	// c'est pas très beau de faire comme ça
+	// Ah Bon ?
 	public static void testExport(){ 
 		Management.addBread("Avoine", "C:\\...");
 		Management.addBread("Mie", "C:\\...");
