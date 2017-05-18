@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Composants>
+  <bread classe="Bread">
+    <name>Avoine</name>
+    <photo>C:\...</photo>
+    <allergens />
+    <available>true</available>
+  </bread>
+  <bread classe="Bread">
+    <name>Mie</name>
+    <photo>C:\...</photo>
+    <allergens>
+      <allergen>Levure</allergen>
+    </allergens>
+    <available>true</available>
+  </bread>
+  <bread classe="Bread">
+    <name>Olive</name>
+    <photo>C:\...</photo>
+    <allergens />
+    <available>true</available>
+  </bread>
+  <garnish classe="Garnish">
+    <name>tomate</name>
+    <photo>titi</photo>
+    <allergens />
+    <available>true</available>
+  </garnish>
+  <garnish classe="Garnish">
+    <name>basilic</name>
+    <photo>titi</photo>
+    <allergens />
+    <available>true</available>
+  </garnish>
+  <garnish classe="Garnish">
+    <name>cheddar</name>
+    <photo>titi</photo>
+    <allergens />
+    <available>true</available>
+  </garnish>
+  <sauce classe="Sauce">
+    <name>Andalouse</name>
+    <photo>C:\...</photo>
+    <allergens />
+    <available>true</available>
+  </sauce>
+  <recipe classe="Recipe">
+    <name>poulet</name>
+    <photo>C:\...</photo>
+    <allergens />
+    <price>214.0</price>
+    <category>mouais</category>
+    <available>true</available>
+  </recipe>
+  <drink classe="Drink">
+    <name>cola cola</name>
+    <photo>toto</photo>
+    <allergens />
+    <available>true</available>
+  </drink>
+  <dessert classe="Dessert">
+    <name>brownie</name>
+    <photo>truc marron</photo>
+    <allergens />
+    <available>true</available>
+  </dessert>
+  <promo classe="Promotion">
+    <name>mercredi</name>
+    <recipes>
+      <recipe>poulet</recipe>
+      <recipe>kebab</recipe>
+    </recipes>
+    <authCustomerOnly>false</authCustomerOnly>
+    <percentage>5.5</percentage>
+  </promo>
+  <promo classe="Promotion">
+    <name>auth</name>
+    <recipes />
+    <authCustomerOnly>true</authCustomerOnly>
+    <percentage>10.0</percentage>
+  </promo>
+</Composants>
