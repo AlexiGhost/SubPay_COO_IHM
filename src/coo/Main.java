@@ -6,7 +6,6 @@ import coo.product.Management;
 public class Main {
 
 	public static void main(String[] args) {
-		@SuppressWarnings("unused") //Temporaire (j'aime pas les warnings!)
 		Frame frame = new Frame("SubPay");
 		Management.Importer("export.xml");
 		//testExport();
