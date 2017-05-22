@@ -77,6 +77,6 @@
     <name>auth</name>
     <recipes />
     <authCustomerOnly>true</authCustomerOnly>
-    <percentage>10.0</percentage>
+    <percentage>1.0</percentage>
   </promo>
 </Composants>

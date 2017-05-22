@@ -12,7 +12,7 @@ import org.jdom2.output.*;
 
 import model.product.composants.*;
 /**Contain the list of components and methods for ADD/DEL/EDIT/IMPORT/EXPORT them*/
-public class Management {
+public class ComponentManagement {
 	private static List<Bread> breads = new ArrayList<Bread>();
 	private static List<Garnish> garnishs = new ArrayList<Garnish>();
 	private static List<Sauce> sauces = new ArrayList<Sauce>();
@@ -28,7 +28,7 @@ public class Management {
 		Bread bread = new Bread(name, photo);
 		breads.add(bread);
 	}
-	/**Delete a specific bread to the component list*/
+	/**Delete a specific bread from the component list*/
 	public static void delBread(String name){
 		for (Bread bread : breads) {
 			if(bread.getName() == name){
@@ -43,7 +43,7 @@ public class Management {
 		Garnish garnish = new Garnish(name, photo);
 		garnishs.add(garnish);
 	}
-	/**Delete a specific garnish to the component list*/
+	/**Delete a specific garnish from the component list*/
 	public static void delGarnish(String name){
 		for (Garnish garnish : garnishs) {
 			if(garnish.getName() == name){
@@ -58,7 +58,7 @@ public class Management {
 		Sauce sauce = new Sauce(name, photo);
 		sauces.add(sauce);
 	}
-	/**Delete a specific sauce to the component list*/
+	/**Delete a specific sauce from the component list*/
 	public static void delSauce(String name){
 		for (Sauce sauce : sauces) {
 			if(sauce.getName() == name){
@@ -73,7 +73,7 @@ public class Management {
 		Recipe recipe = new Recipe(name, photo, price, category);
 		recipes.add(recipe);
 	}
-	/**Delete a specific recipe to the component list*/
+	/**Delete a specific recipe from the component list*/
 	public static void delRecipe(String name){
 		for (Recipe recipe : recipes) {
 			if(recipe.getName() == name){
@@ -88,7 +88,7 @@ public class Management {
 		Promotion promo = new Promotion(name, percentage, auth);
 		promotions.add(promo);
 	}
-	/**Delete a specific promotion to the component list*/
+	/**Delete a specific promotion from the component list*/
 	public static void delPromotion(String name){
 		for (Promotion promo : promotions) {
 			if(promo.getName() == name){
@@ -103,7 +103,7 @@ public class Management {
 		Drink drink = new Drink(name, photo);
 		drinks.add(drink);
 	}
-	/**Delete a specific drink to the component list*/
+	/**Delete a specific drink from the component list*/
 	public static void delDrink(String name){
 		for (Drink drink : drinks) {
 			if(drink.getName() == name){
@@ -118,7 +118,7 @@ public class Management {
 		Dessert dessert = new Dessert(name, photo);
 		desserts.add(dessert);
 	}
-	/**Delete a specific dessert to the component list*/
+	/**Delete a specific dessert from the component list*/
 	public static void delDessert(String name){
 		for (Dessert dessert : desserts) {
 			if(dessert.getName() == name){
@@ -130,9 +130,11 @@ public class Management {
 	
 // ---------- GETTERS / SETTERS ----------
 	//bread
+	/**Return the list of breads*/
 	public static List<Bread> getBreads(){
 		return breads;
 	}
+	/**Return a bread from the list*/
 	public static Bread getBread(String name){
 		for(Bread bread : breads){
 			if(bread.getName() == name){
@@ -142,9 +144,11 @@ public class Management {
 		return null;
 	}
 	//sauce
+	/**Return the list of sauces*/
 	public static List<Sauce> getSauces(){
 		return sauces;
 	}
+	/**Return a sauce from the list*/
 	public static Sauce getSauce(String name){
 		for(Sauce sauce : sauces){
 			if(sauce.getName() == name){
@@ -154,9 +158,11 @@ public class Management {
 		return null;
 	}
 	//garnish
+	/**Return the list of garnishs*/
 	public static List<Garnish> getGarnishs() {
 		return garnishs;
 	}
+	/**Return a garnish from the list*/
 	public static Garnish getGarnish(String name){
 		for(Garnish garnish : garnishs){
 			if(garnish.getName() == name){
@@ -166,9 +172,11 @@ public class Management {
 		return null;
 	}
 	//recipe
+	/**Return the list of recipes*/
 	public static List<Recipe> getRecipes() {
 		return recipes;
 	}
+	/**Return a recipe from the list*/
 	public static Recipe getRecipe(String name){
 		for(Recipe recipe : recipes){
 			if(recipe.getName() == name){
@@ -178,9 +186,11 @@ public class Management {
 		return null;
 	}
 	//promotion
+	/**Return the list of promotions*/
 	public static List<Promotion> getPromotions() {
 		return promotions;
 	}
+	/**Return a promotion from the list*/
 	public static Promotion getPromotion(String name){
 		for(Promotion promotion : promotions){
 			if(promotion.getName() == name){
@@ -190,9 +200,11 @@ public class Management {
 		return null;
 	}
 	//drink
+	/**Return the list of drinks*/
 	public static List<Drink> getDrinks() {
 		return drinks;
 	}
+	/**Return a drink from the list*/
 	public static Drink getDrink(String name){
 		for(Drink drink : drinks){
 			if(drink.getName() == name){
@@ -202,9 +214,11 @@ public class Management {
 		return null;
 	}
 	//dessert
+	/**Return the list of desserts*/
 	public static List<Dessert> getDesserts() {
 		return desserts;
 	}
+	/**Return a dessert from the list*/
 	public static Dessert getDessert(String name){
 		for(Dessert dessert : desserts){
 			if(dessert.getName() == name){
@@ -217,7 +231,7 @@ public class Management {
 // ---------- IMPORT / EXPORT ----------
 	
 	/**Export components to a XML file*/
-	public static void export(String xmlFile) {
+	public static void exportComponent(String xmlFile) {
 		Element racine = new Element("Composants");
 		Document composants = new Document(racine);
 		String name;
@@ -484,7 +498,7 @@ public class Management {
 	
 
 	/**Import components from a XML file*/
-	public static void importer(String xmlFile){
+	public static void importComponent(String xmlFile){
 		breads.clear();
 		garnishs.clear();
 		sauces.clear();

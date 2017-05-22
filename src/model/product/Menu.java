@@ -1,24 +1,42 @@
 package model.product;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Menu {
-    private String name;
+    private Product product;
+    private Drink drink;
+    private Dessert dessert;
 
-    public List<Product> product = new ArrayList<Product> ();
-
-    public List<Drink> drink = new ArrayList<Drink> ();
-
-    public List<Dessert> dessert = new ArrayList<Dessert> ();
-
+    /**Create a menu*/
+    public Menu(Product product, Drink drink, Dessert dessert) {
+    	this.dessert = dessert;
+    	this.drink = drink;
+    	this.product = product;
+	}
 //GETTERS / SETTERS
-    //name
-    public String getName() {
-		return name;
+    //product
+    /**Return the product of the menu*/
+    public Product getProduct() {
+		return product;
 	}
-	public void setName(String name) {
-		this.name = name;
+    /**Set the product of the menu*/
+	public void setProduct(Product product) {
+		this.product = product;
 	}
-
+	//drink
+    /**Return the drink of the menu*/
+    public Drink getDrink() {
+		return drink;
+	}
+    /**Set the drink of the menu*/
+	public void setDrink(Drink drink) {
+		this.drink = drink;
+	}
+	//dessert
+    /**Return the dessert of the menu*/
+    public Dessert getDessert() {
+		return dessert;
+	}
+    /**Set the dessert of the menu*/
+	public void setDessert(Dessert dessert) {
+		this.dessert = dessert;
+	}
 }
