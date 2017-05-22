@@ -1,18 +1,13 @@
 package coo;
 
 import coo.product.Management;
+import visual.Controller;
 
 public class Main {
 
 	public static void main(String[] args) {
-<<<<<<< HEAD
-		Frame frame = new Frame("SubPay");
-		Management.Importer("export.xml");
-=======
-		
-		System.out.println("pouet");
 		Management.importer("export.xml");
->>>>>>> f9f16006d8be9d49afe8722fc404ad2f9cfd2ac5
+		Controller.initialize(args);
 		//testExport();
 	}
 	//Ces actions sont effectués par le manager (indirectement via bouton)

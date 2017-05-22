@@ -1,23 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Line endX="1180.0" layoutX="250.0" layoutY="112.0" startX="-100.0" AnchorPane.leftAnchor="0.0" />
-      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="541.0" pickOnBounds="true" preserveRatio="true" AnchorPane.topAnchor="0.0">
-         <image>
-            <Image url="Logo.png" />
-         </image>
-      </ImageView>
       <Circle fill="#0ec314" radius="150.0" stroke="BLACK" strokeType="INSIDE" AnchorPane.leftAnchor="-150.0" AnchorPane.topAnchor="-150.0" />
       <Text layoutX="434.0" layoutY="169.0" strokeType="OUTSIDE" strokeWidth="0.0" text="BONJOUR " textAlignment="CENTER" wrappingWidth="412.06787109375">
          <font>

@@ -25,7 +25,7 @@ public class Controller extends Application {
 	public void start(Stage stage) throws IOException {
     	FXMLLoader loader = new FXMLLoader();
     	
-    	Parent acteur = (Parent) loader.load(getClass().getResource("Page1.fxml"));
+    	Parent acteur = (Parent) loader.load(getClass().getResource("customer/Page1.fxml"));
     	
     	Scene scene = new Scene(acteur, 1280.0, 720.0);
     	
@@ -34,7 +34,7 @@ public class Controller extends Application {
         stage.show();
     }
 	
-    public static void main(String[] args) {
-        launch(args);
+    public static void initialize(String[] args) {
+    	launch(args);
     }
 }
