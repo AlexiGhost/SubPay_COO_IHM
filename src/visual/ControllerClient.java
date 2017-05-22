@@ -23,7 +23,7 @@ public class ControllerClient extends Application {
 	}
     
 	public void start(Stage stage) throws IOException {
-    	FXMLLoader loader = new FXMLLoader();
+		FXMLLoader loader = new FXMLLoader();
     	
     	Parent acteur = (Parent) loader.load(getClass().getResource("customer/Page1.fxml"));
     	

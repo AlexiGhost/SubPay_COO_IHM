@@ -1,4 +1,4 @@
-package coo.product.composants;
+package model.product.composants;
 
 public class Garnish extends Composant {
 	public Garnish(String name, String photo) {

@@ -1,13 +1,13 @@
-package coo;
 
-import coo.product.Management;
+
+import model.product.Management;
 import visual.*;
 
 public class Main {
 
 	public static void main(String[] args) {
 		Management.importer("export.xml");
-		//ControllerClient.initialize(args);
+		ControllerClient.initialize(args);
 		//ControllerManager.initialize(args);
 		//testExport();
 	}
@@ -29,6 +29,5 @@ public class Main {
 		Management.addDrink("cola cola", "toto");
 		Management.addDessert("brownie", "truc marron");
 		Management.export("export.xml");
-		Management.importer("export.xml");
 	}
 }

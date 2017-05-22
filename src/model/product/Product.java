@@ -1,9 +1,9 @@
-package coo.product;
+package model.product;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import coo.product.composants.*;
+import model.product.composants.*;
 
 public class Product {
 	

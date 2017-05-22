@@ -1,6 +1,6 @@
-package coo.product;
+package model.product;
 
-import coo.product.composants.Composant;
+import model.product.composants.Composant;
 
 public class Dessert extends Composant{
 

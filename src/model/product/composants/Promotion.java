@@ -1,4 +1,4 @@
-package coo.product.composants;
+package model.product.composants;
 
 import java.util.*;
 

@@ -1,4 +1,4 @@
-package coo.product.composants;
+package model.product.composants;
 
 public class Sauce extends Composant {
 	public Sauce(String name, String photo) {

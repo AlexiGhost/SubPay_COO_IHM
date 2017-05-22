@@ -1,10 +1,10 @@
-package coo;
+package model;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import coo.product.*;
-import coo.product.composants.*;
+import model.product.*;
+import model.product.composants.*;
 
 public class AuthentifcatedCustomer {
 

@@ -1,4 +1,4 @@
-package coo.product;
+package model.product;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -6,18 +6,11 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.jdom2.Document;
-import org.jdom2.Element;
-import org.jdom2.JDOMException;
+import org.jdom2.*;
 import org.jdom2.input.SAXBuilder;
-import org.jdom2.output.Format;
-import org.jdom2.output.XMLOutputter;
+import org.jdom2.output.*;
 
-import coo.product.composants.Bread;
-import coo.product.composants.Garnish;
-import coo.product.composants.Promotion;
-import coo.product.composants.Recipe;
-import coo.product.composants.Sauce;
+import model.product.composants.*;
 /**Contain the list of components and methods for ADD/DEL/EDIT/IMPORT/EXPORT them*/
 public class Management {
 	private static List<Bread> breads = new ArrayList<Bread>();
