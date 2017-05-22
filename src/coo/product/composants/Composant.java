@@ -32,27 +32,34 @@ public class Composant {
 
 //GETTERS / SETTERS
 	//name
+	/**Return the name of the component*/
 	public String getName() {
 		return name;
 	}
+	/**Set the name of the component*/
 	public void setName(String name) {
 		this.name = name;
 	}
 	//photo
+	/**Return the photo path of the component*/
 	public String getPhoto(){
 	return photo;
 	}
+	/**Set the photo path of the component*/
 	public void setPhoto(String photo){
 	this.photo = photo;
 	}
 	//available
+	/**Return the availability of the component*/
 	public boolean getAvailability(){
 		return available;
 	}
+	/**Set the availability of the component*/
 	public void setAvailability(boolean available){
 		this.available = available;
 	}
 	//allergen
+	/**Return a list wich contains the allergens of the component*/
 	public List<String> getAllergens(){
 		return allergens;
 	}

@@ -33,9 +33,7 @@ public class ControllerClient extends Application {
         stage.setScene(scene);
         stage.show();
     }
-	/**
-	 * Launch the client interface
-	 */
+	/**Launch the client interface*/
     public static void initialize(String[] args) {
     	launch(args);
     }

@@ -33,9 +33,7 @@ public class ControllerManager extends Application {
         stage.setScene(scene);
         stage.show();
     }
-	/**
-	 * Launch the manager interface
-	 */
+	/**Launch the manager interface*/
     public static void initialize(String[] args) {
     	launch(args);
     }
