@@ -1,13 +1,14 @@
 package coo;
 
 import coo.product.Management;
-import visual.Controller;
+import visual.*;
 
 public class Main {
 
 	public static void main(String[] args) {
 		Management.importer("export.xml");
-		Controller.initialize(args);
+		//ControllerClient.initialize(args);
+		ControllerManager.initialize(args);
 		//testExport();
 	}
 	//Ces actions sont effectués par le manager (indirectement via bouton)

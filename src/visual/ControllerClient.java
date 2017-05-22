@@ -8,7 +8,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-public class Controller extends Application {
+public class ControllerClient extends Application {
 	
 	public void SwitchScene(Stage stage, String s) throws IOException {
     	FXMLLoader loader = new FXMLLoader();
@@ -33,7 +33,9 @@ public class Controller extends Application {
         stage.setScene(scene);
         stage.show();
     }
-	
+	/**
+	 * Launch the client interface
+	 */
     public static void initialize(String[] args) {
     	launch(args);
     }
