@@ -18,6 +18,18 @@ public class AuthentificatedCustomer {
     private List<Order> order = new ArrayList<Order> ();
     private List<String> allergens = new ArrayList<String> ();
 
+    public AuthentificatedCustomer(String login, String password, int iceCubNb, Bread fBread, Sauce fSauce, Garnish fGarnish, Recipe fRecipe, List<String> allergens) {
+    	this.login = login;
+    	this.password = password;
+    	this.iceCubeNb = iceCubNb;
+    	this.favoriteBread = fBread;
+    	this.favoriteSauce = fSauce;
+    	this.favoriteGarnish = fGarnish;
+    	this.favoriteRecipe = fRecipe;
+    	this.order = order;
+    	this.allergens = allergens;
+	}
+    
    //GETTERS/SETTERS
     /**Return the login of the customer*/
     public String getLogin() {

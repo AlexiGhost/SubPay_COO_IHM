@@ -33,14 +33,20 @@ public class CustomerManagement {
 		}
 	}
 	
+//GETTERS/SETTERS
+	/**Return the customers list*/
+	public static List<AuthentificatedCustomer> getCustomers() {
+		return customers;
+	}
+	
 //IMPORT/EXPORT
-	/**Export components to a XML file*/
+	/**Export customers to a XML file*/
 	public static void exportCustomer(String xmlFile) {
 		Element racine = new Element("Customers");
 		Document Dcustomers = new Document(racine);
 		String login;
 		String password;
-		int iceCubeNb;
+		Integer iceCubeNb;
 		Bread favoriteBread;
 		Sauce favoriteSauce;
 		Recipe favoriteRecipe;
@@ -73,6 +79,10 @@ public class CustomerManagement {
 				Element ePassword = new Element("password");
 				ePassword.setText(password);
 				eCustomer.addContent(ePassword);
+				//ajout iceCubeNb
+				Element eIceCube = new Element("iceCubeNb");
+				eIceCube.setText(iceCubeNb.toString());
+				eCustomer.addContent(eIceCube);
 				//ajout fBread
 				Element eFBread = new Element("fBread");
 				eFBread.setText(favoriteBread.getName());
@@ -96,6 +106,8 @@ public class CustomerManagement {
 					eAllergen.setText(allergen);
 					eAllergens.addContent(eAllergen);
 				}
+				eCustomer.addContent(eAllergens);
+
 				
 			}
 			XMLOutputter sortie = new XMLOutputter(Format.getPrettyFormat());
@@ -104,15 +116,9 @@ public class CustomerManagement {
 		catch (IOException e) {}
 	}
 
-	/**Import components from a XML file*/
-	/*public static void importComponent(String xmlFile){
-		breads.clear();
-		garnishs.clear();
-		sauces.clear();
-		recipes.clear();
-		drinks.clear();
-		desserts.clear();
-		promotions.clear();
+	/**Import customers from a XML file*/
+	public static void importCustomer(String xmlFile){
+		customers.clear();
 		SAXBuilder sxb = new SAXBuilder();
 		Document document;
 		Element racine = null;
@@ -120,147 +126,56 @@ public class CustomerManagement {
 			document = sxb.build(new File(xmlFile));
 			racine = document.getRootElement();
 		} catch (JDOMException | IOException e) {}
-		String name;
-		String photo;
-		Boolean available;
-		Double price;
-		String category;
-		Double percentage;
-		Boolean authCustomer;
-		//BREAD
-		List<Element> listImport = racine.getChildren("bread");
-		for (Element component : listImport) {
-			name = component.getChildText("name");
-			photo = component.getChildText("photo");
-			available = Boolean.valueOf(component.getChildText("available"));
+		String login;
+		String password;
+		Integer iceCubeNb;
+		Bread favoriteBread = null;
+		Sauce favoriteSauce = null;
+		Recipe favoriteRecipe = null;
+		Garnish favoriteGarnish = null;
+		List<String> allergenList = new ArrayList<>();
+		
+		List<Element> customers = racine.getChildren("customer");
+		for (Element customer : customers) {
+			login = customer.getChildText("login");
+			password = customer.getChildText("password");
+			iceCubeNb = Integer.valueOf(customer.getChildText("iceCubeNb"));
 			//creation pain
-			breads.add(new Bread(name, photo));
-			int index = breads.size()-1;
-			//ajout disponibilité
-			breads.get(index).setAvailability(available);
-			//ajout allergenes
-			Element allergens = component.getChild("allergens");
-			List<Element> listAllergenes = allergens.getChildren();
-			for (Element allergen : listAllergenes) {
-				breads.get(index).addAllergen(allergen.getText());
+			for (Bread bread : ComponentManagement.getBreads()) {
+				if(bread.getName() == customer.getChildText("fBread")){
+					favoriteBread = bread;
+				}
 			}
-		}
-		//GARNISH
-		listImport = racine.getChildren("garnish");
-		for (Element component : listImport) {
-			name = component.getChildText("name");
-			photo = component.getChildText("photo");
-			available = Boolean.valueOf(component.getChildText("available"));
-			//creation garniture
-			garnishs.add(new Garnish(name, photo));
-			int index = garnishs.size()-1;
-			//ajout disponibilité
-			garnishs.get(index).setAvailability(available);
-			//ajout allergenes
-			Element allergens = component.getChild("allergens");
-			List<Element> listAllergenes = allergens.getChildren();
-			for (Element allergen : listAllergenes) {
-				garnishs.get(index).addAllergen(allergen.getText());
-			}
-		}
-		//SAUCE
-		listImport = racine.getChildren("sauce");
-		for (Element component : listImport) {
-			name = component.getChildText("name");
-			photo = component.getChildText("photo");
-			available = Boolean.valueOf(component.getChildText("available"));
 			//creation sauce
-			sauces.add(new Sauce(name, photo));
-			int index = sauces.size()-1;
-			//ajout disponibilité
-			sauces.get(index).setAvailability(available);
-			//ajout allergenes
-			Element allergens = component.getChild("allergens");
-			List<Element> listAllergenes = allergens.getChildren();
-			for (Element allergen : listAllergenes) {
-				sauces.get(index).addAllergen(allergen.getText());
+			for (Sauce sauce : ComponentManagement.getSauces()) {
+				if(sauce.getName() == customer.getChildText("fSauce")){
+					favoriteSauce = sauce;
+				} else {
+					System.out.println(customer.getChildText("fSauce"));
+					System.out.println(sauce.getName());
+				}
 			}
-		}
-		//RECIPE
-		listImport = racine.getChildren("recipe");
-		for (Element component : listImport) {
-			name = component.getChildText("name");
-			photo = component.getChildText("photo");
-			price = Double.valueOf(component.getChildText("price"));
-			category = component.getChildText("category");
-			available = Boolean.valueOf(component.getChildText("available"));
+			//creation garniture
+			for (Garnish garnish : ComponentManagement.getGarnishs()) {
+				if(garnish.getName() == customer.getChildText("fGarnish")){
+					favoriteGarnish = garnish;
+				}
+			}
 			//creation recette
-			recipes.add(new Recipe(name, photo, price, category));
-			int index = recipes.size()-1;
-			//ajout disponibilité
-			recipes.get(index).setAvailability(available);
+			for (Recipe recipe : ComponentManagement.getRecipes()) {
+				if(recipe.getName() == customer.getChildText("fRecipe")){
+					favoriteRecipe = recipe;
+				}
+			}
 			//ajout allergenes
-			Element allergens = component.getChild("allergens");
+			Element allergens = customer.getChild("allergens");
 			List<Element> listAllergenes = allergens.getChildren();
 			for (Element allergen : listAllergenes) {
-				recipes.get(index).addAllergen(allergen.getText());
+				allergenList.add(allergen.getText());
 			}
-			//ajout prix
-			recipes.get(index).setPrice(price);
-			//ajout categorie
-			recipes.get(index).setCategory(category);			
+			//creation customer
+			AuthentificatedCustomer tCustomer = new AuthentificatedCustomer(login, password, iceCubeNb, favoriteBread, favoriteSauce, favoriteGarnish, favoriteRecipe, allergenList);
+			addCustomer(tCustomer);
 		}
-		//DRINK
-		listImport = racine.getChildren("drink");
-		for (Element component : listImport) {
-			name = component.getChildText("name");
-			photo = component.getChildText("photo");
-			available = Boolean.valueOf(component.getChildText("available"));
-			//creation boisson
-			drinks.add(new Drink(name, photo));
-			int index = drinks.size()-1;
-			//ajout disponibilité
-			drinks.get(index).setAvailability(available);
-			//ajout allergenes
-			Element allergens = component.getChild("allergens");
-			List<Element> listAllergenes = allergens.getChildren();
-			for (Element allergen : listAllergenes) {
-				drinks.get(index).addAllergen(allergen.getText());
-			}
-		}
-		//DESSERT
-		listImport = racine.getChildren("dessert");
-		for (Element component : listImport) {
-			name = component.getChildText("name");
-			photo = component.getChildText("photo");
-			available = Boolean.valueOf(component.getChildText("available"));
-			//creation dessert
-			desserts.add(new Dessert(name, photo));
-			int index = desserts.size()-1;
-			//ajout disponibilité
-			desserts.get(index).setAvailability(available);
-			//ajout allergenes
-			Element allergens = component.getChild("allergens");
-			List<Element> listAllergenes = allergens.getChildren();
-			for (Element allergen : listAllergenes) {
-				desserts.get(index).addAllergen(allergen.getText());
-			}
-		}
-		//PROMOTION
-		listImport = racine.getChildren("promo");
-		for (Element component : listImport) {
-			name = component.getChildText("name");
-			photo = component.getChildText("photo");
-			percentage = Double.valueOf(component.getChildText("percentage"));
-			authCustomer = Boolean.valueOf(component.getChildText("authCustomerOnly"));
-			//creation promotion
-			promotions.add(new Promotion(name, percentage, authCustomer));
-			int index = promotions.size()-1;
-			//ajout authCustomer
-			promotions.get(index).setAuthCustomer(authCustomer);
-			//ajout listRecipes
-			Element recipes = component.getChild("recipes");
-			List<Element> listRecipe = recipes.getChildren();
-			for (Element recipe : listRecipe) {
-				promotions.get(index).addRecipe(recipe.getText()); 					
-			}
-			//ajout %age
-			promotions.get(index).setPercentage(percentage);
-		}
-	}*/
+	}
 }
