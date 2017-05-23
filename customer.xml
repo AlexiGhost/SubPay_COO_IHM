@@ -10,6 +10,32 @@
     <fRecipe>poulet</fRecipe>
     <allergens>
       <allergen>aaa</allergen>
+      <allergen>aaa</allergen>
+    </allergens>
+  </customer>
+  <customer classe="AuthentificatedCustomer">
+    <login>0619355180</login>
+    <password>lol</password>
+    <iceCubeNb>1</iceCubeNb>
+    <fBread>mie</fBread>
+    <fSauce>andalouse</fSauce>
+    <fGarnish>tomate</fGarnish>
+    <fRecipe>poulet</fRecipe>
+    <allergens>
+      <allergen>aaa</allergen>
+      <allergen>aaa</allergen>
+    </allergens>
+  </customer>
+  <customer classe="AuthentificatedCustomer">
+    <login>0619355180</login>
+    <password>lol</password>
+    <iceCubeNb>1</iceCubeNb>
+    <fBread>mie</fBread>
+    <fSauce>andalouse</fSauce>
+    <fGarnish>tomate</fGarnish>
+    <fRecipe>poulet</fRecipe>
+    <allergens>
+      <allergen>aaa</allergen>
     </allergens>
   </customer>
 </Customers>
