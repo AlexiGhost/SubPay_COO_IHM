@@ -10,10 +10,13 @@ import visual.*;
 public class Main {
 
 	public static void main(String[] args) {
-		//Management.importComponent("component.xml");
-		GUIThread guiThread = new GUIThread();
-		guiThread.start();
-		//ControllerManager.initialize(args);
+		ComponentManagement.importComponent("component.xml");
+		CustomerManagement.importCustomer("customer.xml");
+		
+		/*USE ONLY ONE OF THESE GUIThread (comment the other)*/
+		GUIThread guiThread = new GUIThread("client");
+		//GUIThread guiThread = new GUIThread("manager");
+		
 		testExportComponent();
 		testExportCustomer();
 	}
