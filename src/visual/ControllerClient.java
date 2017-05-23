@@ -34,7 +34,7 @@ public class ControllerClient extends Application {
         stage.show();
     }
 	/**Launch the client interface*/
-    public static void initialize(String[] args) {
-    	launch(args);
+    public static void initialize() {
+    	launch();
     }
 }

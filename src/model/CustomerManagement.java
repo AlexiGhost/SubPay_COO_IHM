@@ -142,28 +142,25 @@ public class CustomerManagement {
 			iceCubeNb = Integer.valueOf(customer.getChildText("iceCubeNb"));
 			//creation pain
 			for (Bread bread : ComponentManagement.getBreads()) {
-				if(bread.getName() == customer.getChildText("fBread")){
+				if(bread.getName().equals(customer.getChildText("fBread"))){
 					favoriteBread = bread;
 				}
 			}
 			//creation sauce
 			for (Sauce sauce : ComponentManagement.getSauces()) {
-				if(sauce.getName() == customer.getChildText("fSauce")){
+				if(sauce.getName().equals(customer.getChildText("fSauce"))){
 					favoriteSauce = sauce;
-				} else {
-					System.out.println(customer.getChildText("fSauce"));
-					System.out.println(sauce.getName());
 				}
 			}
 			//creation garniture
 			for (Garnish garnish : ComponentManagement.getGarnishs()) {
-				if(garnish.getName() == customer.getChildText("fGarnish")){
+				if(garnish.getName().equals(customer.getChildText("fGarnish"))){
 					favoriteGarnish = garnish;
 				}
 			}
 			//creation recette
 			for (Recipe recipe : ComponentManagement.getRecipes()) {
-				if(recipe.getName() == customer.getChildText("fRecipe")){
+				if(recipe.getName().equals(customer.getChildText("fRecipe"))){
 					favoriteRecipe = recipe;
 				}
 			}

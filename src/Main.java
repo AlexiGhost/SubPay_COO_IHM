@@ -3,24 +3,22 @@
 import java.util.ArrayList;
 import java.util.List;
 
-import com.sun.xml.internal.ws.api.config.management.policy.ManagementAssertion;
-
-import model.AuthentificatedCustomer;
-import model.CustomerManagement;
-import model.product.ComponentManagement;
+import model.*;
+import model.product.*;
 import visual.*;
 
 public class Main {
 
 	public static void main(String[] args) {
 		//Management.importComponent("component.xml");
-		ControllerClient.initialize(args);
+		GUIThread guiThread = new GUIThread();
+		guiThread.start();
 		//ControllerManager.initialize(args);
-		testExport();
+		testExportComponent();
 		testExportCustomer();
 	}
 	//Ces actions sont effectués par le manager (indirectement via bouton)
-	public static void testExport(){ 
+	public static void testExportComponent(){ 
 		ComponentManagement.addBread("avoine", "C:\\...");
 		ComponentManagement.addBread("mie", "C:\\...");
 		ComponentManagement.getBread("mie").addAllergen("levure");
@@ -44,30 +42,6 @@ public class Main {
 		AuthentificatedCustomer customer1 = new AuthentificatedCustomer("0619355180", "lol", 1, ComponentManagement.getBread("mie"), ComponentManagement.getSauce("andalouse"), ComponentManagement.getGarnish("tomate"), ComponentManagement.getRecipe("poulet"), aList);
 		CustomerManagement.addCustomer(customer1);
 		CustomerManagement.exportCustomer("customer.xml");
-		for (AuthentificatedCustomer customer : CustomerManagement.getCustomers()) {
-			System.out.println(customer.getLogin());
-			System.out.println(customer.getPassword());
-			System.out.println(customer.getIceCubeNb());
-			System.out.println(customer.getFavoriteBread());
-			System.out.println(customer.getFavoriteGarnish());
-			System.out.println(customer.getFavoriteRecipe());
-			System.out.println(customer.getFavoriteSauce());
-			for (String a : customer.getAllergens()) {
-				System.out.println(a);
-			}
-		}
-		CustomerManagement.importCustomer("customer.xml");
-		for (AuthentificatedCustomer customer : CustomerManagement.getCustomers()) {
-			System.out.println(customer.getLogin());
-			System.out.println(customer.getPassword());
-			System.out.println(customer.getIceCubeNb());
-			System.out.println(customer.getFavoriteBread());
-			System.out.println(customer.getFavoriteGarnish());
-			System.out.println(customer.getFavoriteRecipe());
-			System.out.println(customer.getFavoriteSauce());
-			for (String a : customer.getAllergens()) {
-				System.out.println(a);
-			}
-		}
+		
 	}
 }
