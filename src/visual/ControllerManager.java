@@ -25,7 +25,7 @@ public class ControllerManager extends Application {
 	public void start(Stage stage) throws IOException {
     	FXMLLoader loader = new FXMLLoader();
     	
-    	Parent acteur = (Parent) loader.load(getClass().getResource("manager/Page1.fxml"));
+    	Parent acteur = (Parent) loader.load(getClass().getResource("manager/Authentification.fxml"));
     	
     	Scene scene = new Scene(acteur, 1280.0, 720.0);
     	
