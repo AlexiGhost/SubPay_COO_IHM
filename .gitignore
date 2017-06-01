@@ -28,3 +28,8 @@ lib/lib/xerces.2.11.NOTICE
 lib/lib/xerces.2.11.LICENSE
 lib/LICENSE.txt
 lib/README.txt
+
+bin/*
+bin/
+.settings/*
+.settings
