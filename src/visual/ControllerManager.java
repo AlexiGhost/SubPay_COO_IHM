@@ -37,4 +37,8 @@ public class ControllerManager extends Application {
     public static void initialize() {
     	launch();
     }
+    
+    public static void deconnexion(){
+    	
+    }
 }
