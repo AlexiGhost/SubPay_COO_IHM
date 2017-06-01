@@ -70,6 +70,20 @@
                                                       </ContextMenu>
                                                    </contextMenu>
                                                 </ListView>
+                                                <TableView layoutX="14.0" layoutY="14.0" prefHeight="453.0" prefWidth="1246.0">
+                                                  <columns>
+                                                    <TableColumn prefWidth="75.0" text="Nom" />
+                                                    <TableColumn prefWidth="75.0" text="Categorie" />
+                                                  </columns>
+                                                   <contextMenu>
+                                                      <ContextMenu>
+                                                        <items>
+                                                          <MenuItem mnemonicParsing="false" text="Modifier" />
+                                                            <MenuItem mnemonicParsing="false" text="Supprimer" />
+                                                        </items>
+                                                      </ContextMenu>
+                                                   </contextMenu>
+                                                </TableView>
                                              </children>
                                           </AnchorPane>
                                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
