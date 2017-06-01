@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="ASCII"?>
 <anttasks:AntTask xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:anttasks="http://org.eclipse.fx.ide.jdt/1.0" buildDirectory="${project}/build">
   <deploy>
+<<<<<<< HEAD
+    <application name="SubPay"/>
+=======
     <application name="SubPay_COO_IHM"/>
+>>>>>>> 498def80c0d7657fa7c7cce64cb9854e22c23ec2
     <info/>
   </deploy>
   <signjar/>
