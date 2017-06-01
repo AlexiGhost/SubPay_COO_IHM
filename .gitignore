@@ -28,6 +28,14 @@ lib/lib/xerces.2.11.NOTICE
 lib/lib/xerces.2.11.LICENSE
 lib/LICENSE.txt
 lib/README.txt
+<<<<<<< HEAD
 /bin/
 .settings/org.eclipse.jdt.core.prefs
 binTEMP/
+=======
+
+bin/*
+bin/
+.settings/*
+.settings
+>>>>>>> 498def80c0d7657fa7c7cce64cb9854e22c23ec2
