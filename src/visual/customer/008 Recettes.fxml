@@ -11,11 +11,11 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1" fx:controller="visual.customer.ControllerRecettes">
    <children>
       <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="540.0" pickOnBounds="true" preserveRatio="true" AnchorPane.topAnchor="0.0">
          <image>
-            <Image url="@../images/Logo.png" />
+            <Image url="@Logo%20(1).png" />
          </image>
       </ImageView>
       <Line endX="1180.0" layoutX="99.0" layoutY="111.0" startX="-100.0" AnchorPane.leftAnchor="0.0" />
@@ -25,34 +25,34 @@
       <Circle fill="#0ec314" layoutX="1017.0" layoutY="100.0" radius="150.0" stroke="BLACK" strokeType="INSIDE" AnchorPane.rightAnchor="-150.0" AnchorPane.topAnchor="-150.0" />
       <ScrollPane layoutX="191.0" layoutY="124.0" prefHeight="150.0" prefWidth="900.0">
          <content>
-            <Pane prefHeight="145.0" prefWidth="200.0">
+            <Pane fx:id="MouaisPane" prefHeight="145.0" prefWidth="200.0">
                <children>
-                  <ImageView fitHeight="139.0" fitWidth="200.0" layoutY="-2.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fx:id="imageMouais" fitHeight="139.0" fitWidth="200.0" layoutY="-2.0" pickOnBounds="true" preserveRatio="true" />
                </children>
             </Pane>
          </content></ScrollPane>
       <ScrollPane layoutX="191.0" layoutY="285.0" prefHeight="150.0" prefWidth="900.0">
          <content>
-            <Pane prefHeight="145.0" prefWidth="200.0">
+            <Pane fx:id="BofPane" prefHeight="145.0" prefWidth="200.0">
                <children>
-                  <ImageView fitHeight="139.0" fitWidth="200.0" layoutY="-2.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fx:id="imageBof" fitHeight="139.0" fitWidth="200.0" layoutY="-2.0" pickOnBounds="true" preserveRatio="true" />
                </children>
             </Pane>
          </content></ScrollPane>
       <ScrollPane layoutX="190.0" layoutY="448.0" prefHeight="150.0" prefWidth="900.0">
          <content>
-            <Pane prefHeight="145.0" prefWidth="200.0">
+            <Pane fx:id="CaPassePane" prefHeight="145.0" prefWidth="200.0">
                <children>
-                  <ImageView fitHeight="139.0" fitWidth="200.0" layoutY="-2.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fx:id="imageCaPasse" fitHeight="139.0" fitWidth="200.0" layoutY="-2.0" pickOnBounds="true" preserveRatio="true" />
                </children>
             </Pane>
          </content></ScrollPane>
-      <Button fx:id="suivant" layoutX="871.0" layoutY="618.0" mnemonicParsing="false" text="Suivant">
+      <Button fx:id="suivant" layoutX="871.0" layoutY="618.0" mnemonicParsing="false" onAction="#goToGarnitures" text="Suivant">
          <font>
             <Font size="36.0" />
          </font>
       </Button>
-      <Button fx:id="retour" layoutX="259.0" layoutY="618.0" mnemonicParsing="false" text="Retour">
+      <Button fx:id="retour" layoutX="259.0" layoutY="618.0" mnemonicParsing="false" onAction="#goToPain" text="Retour">
          <font>
             <Font size="36.0" />
          </font>

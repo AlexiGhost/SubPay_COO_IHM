@@ -13,11 +13,11 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1" fx:controller="visual.customer.ControllerPayer">
    <children>
       <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="540.0" pickOnBounds="true" preserveRatio="true" AnchorPane.topAnchor="0.0">
          <image>
-            <Image url="@../images/Logo.png" />
+            <Image url="@Logo%20(1).png" />
          </image>
       </ImageView>
       <Line endX="1180.0" layoutX="99.0" layoutY="111.0" startX="-100.0" AnchorPane.leftAnchor="0.0" />
@@ -27,37 +27,37 @@
       <Circle fill="#0ec314" layoutX="1017.0" layoutY="100.0" radius="150.0" stroke="BLACK" strokeType="INSIDE" AnchorPane.rightAnchor="-150.0" AnchorPane.topAnchor="-150.0" />
       <ScrollPane layoutX="191.0" layoutY="124.0" prefHeight="374.0" prefWidth="900.0">
          <content>
-            <ScrollPane prefHeight="150.0" prefWidth="898.0">
+            <ScrollPane fx:id="MenuScrollPane" prefHeight="150.0" prefWidth="898.0">
                <content>
-                  <Pane prefHeight="145.0" prefWidth="200.0">
+                  <Pane fx:id="produitPane" prefHeight="145.0" prefWidth="200.0">
                      <children>
-                        <ImageView fitHeight="112.0" fitWidth="200.0" layoutY="-2.0" pickOnBounds="true" preserveRatio="true" />
-                        <Text layoutX="14.0" layoutY="126.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+                        <ImageView fx:id="imageProduit" fitHeight="112.0" fitWidth="200.0" layoutY="-2.0" pickOnBounds="true" preserveRatio="true" />
+                        <Text fx:id="nomProduit" layoutX="14.0" layoutY="126.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
                      </children>
                   </Pane>
                </content></ScrollPane>
          </content></ScrollPane>
-      <Button layoutX="896.0" layoutY="618.0" mnemonicParsing="false" text="Payer">
+      <Button layoutX="896.0" layoutY="618.0" mnemonicParsing="false" onAction="#prout" text="Payer">
          <font>
             <Font size="36.0" />
          </font>
       </Button>
-      <Button layoutX="259.0" layoutY="618.0" mnemonicParsing="false" text="Retour">
+      <Button layoutX="259.0" layoutY="618.0" mnemonicParsing="false" onAction="#goToAcceuil" text="Retour">
          <font>
             <Font size="36.0" />
          </font>
       </Button>
-      <Text layoutX="801.0" layoutY="583.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Total : ">
+      <Text fx:id="total" layoutX="801.0" layoutY="583.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Total : ">
          <font>
             <Font size="36.0" />
          </font>
       </Text>
-      <RadioButton layoutX="191.0" layoutY="544.0" mnemonicParsing="false" text="Sur place">
+      <RadioButton fx:id="radioSurPlace" layoutX="191.0" layoutY="544.0" mnemonicParsing="false" text="Sur place">
          <font>
             <Font size="36.0" />
          </font>
       </RadioButton>
-      <RadioButton layoutX="486.0" layoutY="544.0" mnemonicParsing="false" text="Emporter">
+      <RadioButton fx:id="radioEmporter" layoutX="486.0" layoutY="544.0" mnemonicParsing="false" text="Emporter">
          <font>
             <Font size="36.0" />
          </font>

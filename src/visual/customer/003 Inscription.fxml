@@ -10,11 +10,11 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1" fx:controller="visual.customer.ControllerInscription">
    <children>
       <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="540.0" pickOnBounds="true" preserveRatio="true" AnchorPane.topAnchor="0.0">
          <image>
-            <Image url="@../images/Logo.png" />
+            <Image url="@Logo%20(1).png" />
          </image>
       </ImageView>
       <Line endX="1180.0" layoutX="99.0" layoutY="111.0" startX="-100.0" AnchorPane.leftAnchor="0.0" />
@@ -67,12 +67,12 @@
          <font>
             <Font size="18.0" />
          </font></Text>
-      <Button fx:id="valider" layoutX="672.0" layoutY="593.0" mnemonicParsing="false" text="Valider">
+      <Button fx:id="valider" layoutX="672.0" layoutY="593.0" mnemonicParsing="false" onAction="#validerInscription" text="Valider">
          <font>
             <Font size="48.0" />
          </font>
       </Button>
-      <Button fx:id="accueil" layoutX="265.0" layoutY="593.0" mnemonicParsing="false" text="Accueil">
+      <Button fx:id="accueil" layoutX="265.0" layoutY="593.0" mnemonicParsing="false" onAction="#goToAcceuilNotAuth" text="Accueil">
          <font>
             <Font size="48.0" />
          </font>

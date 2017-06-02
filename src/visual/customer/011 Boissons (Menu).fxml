@@ -8,16 +8,17 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" scaleShape="false" xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1" fx:controller="visual.customer.ControllerBoissons">
    <children>
       <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="540.0" pickOnBounds="true" preserveRatio="true" AnchorPane.topAnchor="0.0">
          <image>
-            <Image url="@../images/Logo.png" />
+            <Image url="@Logo%20(1).png" />
          </image>
       </ImageView>
       <Line endX="1180.0" layoutX="99.0" layoutY="111.0" startX="-100.0" AnchorPane.leftAnchor="0.0" />
@@ -27,44 +28,48 @@
       <Circle fill="#0ec314" layoutX="1017.0" layoutY="100.0" radius="150.0" stroke="BLACK" strokeType="INSIDE" AnchorPane.rightAnchor="-150.0" AnchorPane.topAnchor="-150.0" />
       <ScrollPane layoutX="191.0" layoutY="124.0" prefHeight="395.0" prefWidth="900.0">
          <content>
-            <Pane prefHeight="145.0" prefWidth="200.0">
+            <Pane fx:id="boissonsPane" prefHeight="145.0" prefWidth="200.0">
                <children>
-                  <ImageView fitHeight="112.0" fitWidth="165.0" layoutX="35.0" layoutY="-2.0" pickOnBounds="true" preserveRatio="true" />
-                  <Text layoutX="14.0" layoutY="125.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
-                  <RadioButton layoutY="44.0" mnemonicParsing="false" />
+                  <ImageView fx:id="imageBoissons" fitHeight="112.0" fitWidth="165.0" layoutX="35.0" layoutY="-2.0" pickOnBounds="true" preserveRatio="true" />
+                  <Text fx:id="NomBoissons" layoutX="14.0" layoutY="125.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+                  <RadioButton fx:id="radioBoissons" layoutY="44.0" mnemonicParsing="false" />
                </children>
             </Pane>
          </content></ScrollPane>
-      <Button fx:id="suivant" layoutX="871.0" layoutY="618.0" mnemonicParsing="false" text="Suivant">
+      <Button fx:id="suivant" layoutX="871.0" layoutY="618.0" mnemonicParsing="false" onAction="#goToAcceuil" text="Suivant">
          <font>
             <Font size="36.0" />
          </font>
       </Button>
-      <Button fx:id="retour" layoutX="259.0" layoutY="618.0" mnemonicParsing="false" text="Retour">
+      <Button fx:id="retour" layoutX="259.0" layoutY="618.0" mnemonicParsing="false" onAction="#goToSauces" text="Retour">
          <font>
             <Font size="36.0" />
          </font>
       </Button>
-      <Button fx:id="glaçon" layoutX="562.0" layoutY="532.0" mnemonicParsing="false" text="Glaçon">
-         <font>
-            <Font size="36.0" />
-         </font>
-      </Button>
-      <Button fx:id="glaçonNon" layoutX="516.0" layoutY="618.0" mnemonicParsing="false" text="Non">
+      <Text layoutX="598.0" layoutY="579.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Glaçcon">
          <font>
             <Font size="24.0" />
          </font>
-      </Button>
-      <Button fx:id="glaçonPeu" layoutX="605.0" layoutY="618.0" mnemonicParsing="false" text="Peu">
-         <font>
-            <Font size="24.0" />
-         </font>
-      </Button>
-      <Button fx:id="glaçonOui" layoutX="685.0" layoutY="618.0" mnemonicParsing="false" text="Oui">
-         <font>
-            <Font size="24.0" />
-         </font>
-      </Button>
+      </Text>
+      <VBox layoutX="590.0" layoutY="596.0" prefHeight="122.0" prefWidth="100.0">
+         <children>
+            <RadioButton fx:id="radioGlaconOui" mnemonicParsing="false" text="Oui">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </RadioButton>
+            <RadioButton fx:id="radioGlaconPeu" mnemonicParsing="false" text="Peu">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </RadioButton>
+            <RadioButton fx:id="radioGlaconNon" mnemonicParsing="false" text="Non">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </RadioButton>
+         </children>
+      </VBox>
    </children>
    <opaqueInsets>
       <Insets />
