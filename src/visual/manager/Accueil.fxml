@@ -112,7 +112,7 @@
                                                       <ContextMenu>
                                                          <items>
                                                             <MenuItem fx:id="BTN_EditGarnish" mnemonicParsing="false" onAction="#editGarnish" text="Modifier" />
-                                                            <MenuItem fx:id="BTN_DelGarnish" mnemonicParsing="false" onAction="#delRecipe" text="Supprimer" />
+                                                            <MenuItem fx:id="BTN_DelGarnish" mnemonicParsing="false" onAction="#delGarnish" text="Supprimer" />
                                                          </items>
                                                       </ContextMenu>
                                                    </contextMenu>
