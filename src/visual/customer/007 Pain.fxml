@@ -13,7 +13,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1" fx:controller="visual.customer.ControllerPain">
    <children>
       <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="540.0" pickOnBounds="true" preserveRatio="true" AnchorPane.topAnchor="0.0">
          <image>
@@ -25,14 +25,14 @@
       <Circle fill="#0ec314" layoutX="123.0" layoutY="549.0" radius="150.0" stroke="BLACK" strokeType="INSIDE" AnchorPane.bottomAnchor="-150.0" AnchorPane.leftAnchor="-150.0" />
       <Circle fill="#0ec314" layoutX="1039.0" layoutY="514.0" radius="150.0" stroke="BLACK" strokeType="INSIDE" AnchorPane.bottomAnchor="-150.0" AnchorPane.rightAnchor="-150.0" />
       <Circle fill="#0ec314" layoutX="1017.0" layoutY="100.0" radius="150.0" stroke="BLACK" strokeType="INSIDE" AnchorPane.rightAnchor="-150.0" AnchorPane.topAnchor="-150.0" />
-      <Pane layoutX="191.0" layoutY="124.0" prefHeight="150.0" prefWidth="900.0">
+      <Pane layoutX="191.0" layoutY="112.0" prefHeight="150.0" prefWidth="900.0">
          <children>
-            <RadioButton layoutX="533.0" layoutY="67.0" mnemonicParsing="false" text="30 cm">
+            <RadioButton fx:id="Taille30" layoutX="533.0" layoutY="67.0" mnemonicParsing="false" text="30 cm">
                <font>
                   <Font size="24.0" />
                </font>
             </RadioButton>
-            <RadioButton layoutX="261.0" layoutY="67.0" mnemonicParsing="false" text="15 cm">
+            <RadioButton fx:id="Taille15" layoutX="261.0" layoutY="67.0" mnemonicParsing="false" text="15 cm">
                <font>
                   <Font size="24.0" />
                </font>
@@ -46,32 +46,32 @@
       </Pane>
       <ScrollPane layoutX="190.0" layoutY="448.0" prefHeight="150.0" prefWidth="900.0">
          <content>
-            <Pane prefHeight="141.0" prefWidth="200.0">
+            <Pane fx:id="PainPane" prefHeight="141.0" prefWidth="200.0">
                <children>
-                  <RadioButton layoutX="1.0" layoutY="4.0" mnemonicParsing="false" />
+                  <RadioButton fx:id="PainSelection" layoutX="1.0" layoutY="4.0" mnemonicParsing="false" />
                   <ImageView fitHeight="120.0" fitWidth="171.0" layoutX="30.0" pickOnBounds="true" preserveRatio="true" />
-                  <Text layoutX="2.0" layoutY="136.0" strokeType="OUTSIDE" strokeWidth="0.0" text="lipoutou" />
+                  <Text fx:id="NomPain" layoutX="2.0" layoutY="136.0" strokeType="OUTSIDE" strokeWidth="0.0" text="lipoutou" />
                </children>
             </Pane>
          </content></ScrollPane>
-      <Button fx:id="suivant" layoutX="871.0" layoutY="618.0" mnemonicParsing="false" text="Suivant">
+      <Button fx:id="suivant" layoutX="871.0" layoutY="618.0" mnemonicParsing="false" onAction="#goToRecettes" text="Suivant">
          <font>
             <Font size="36.0" />
          </font>
       </Button>
-      <Button fx:id="retour" layoutX="259.0" layoutY="618.0" mnemonicParsing="false" text="Retour">
+      <Button fx:id="retour" layoutX="259.0" layoutY="618.0" mnemonicParsing="false" onAction="#goToAllergies" text="Retour">
          <font>
             <Font size="36.0" />
          </font>
       </Button>
       <Pane layoutX="191.0" layoutY="285.0" prefHeight="150.0" prefWidth="900.0">
          <children>
-            <RadioButton layoutX="503.0" layoutY="67.0" mnemonicParsing="false" text="Assiette">
+            <RadioButton fx:id="Assiette" layoutX="503.0" layoutY="67.0" mnemonicParsing="false" text="Assiette">
                <font>
                   <Font size="24.0" />
                </font>
             </RadioButton>
-            <RadioButton layoutX="257.0" layoutY="67.0" mnemonicParsing="false" text="Sandwich">
+            <RadioButton fx:id="Sandwich" layoutX="257.0" layoutY="67.0" mnemonicParsing="false" text="Sandwich">
                <font>
                   <Font size="24.0" />
                </font>
