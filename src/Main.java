@@ -16,10 +16,10 @@ public class Main {
 		
 		/*USE ONLY ONE OF THESE GUIThread (comment the other)*/
 		//GUIThread guiThread = new GUIThread("client");
-		GUIThread guiThread = new GUIThread("manager");
+		new GUIThread();
 		
-		testExportComponent();
-		testExportCustomer();
+		//testExportComponent();
+		//testExportCustomer();
 	}
 	//Ces actions sont effectués par le manager (indirectement via bouton)
 	public static void testExportComponent(){ 
