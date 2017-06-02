@@ -1,5 +1,7 @@
 package visual;
 
+import visual.manager.ControllerAccueil;
+
 public class GUIThread extends Thread{
 	
 	public GUIThread(String type) {
@@ -11,7 +13,7 @@ public class GUIThread extends Thread{
 			ControllerClient.initialize();
 			break;
 		case "manager":
-			ControllerManager.initialize();
+			ControllerAccueil.initialize();
 			break;
 		default:
 			break;
