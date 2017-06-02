@@ -31,5 +31,7 @@ lib/README.txt
 
 bin/*
 bin/
+bin/visual/*
 .settings/*
 .settings
+build.fxbuild

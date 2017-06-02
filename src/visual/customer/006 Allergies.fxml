@@ -35,17 +35,17 @@
                </children>
             </Pane>
          </content></ScrollPane>
-      <Button layoutX="450.0" layoutY="570.0" mnemonicParsing="false" text="Je n'ai pas d'allergies">
+      <Button fx:id="nonAllergie" layoutX="450.0" layoutY="570.0" mnemonicParsing="false" text="Je n'ai pas d'allergies">
          <font>
             <Font size="36.0" />
          </font>
       </Button>
-      <Button layoutX="862.0" layoutY="570.0" mnemonicParsing="false" text="Valider">
+      <Button fx:id="valider" layoutX="862.0" layoutY="570.0" mnemonicParsing="false" text="Valider">
          <font>
             <Font size="36.0" />
          </font>
       </Button>
-      <Button layoutX="248.0" layoutY="570.0" mnemonicParsing="false" text="Annuler">
+      <Button fx:id="annuler" layoutX="248.0" layoutY="570.0" mnemonicParsing="false" text="Annuler">
          <font>
             <Font size="36.0" />
          </font>

@@ -19,7 +19,11 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
+<<<<<<< HEAD
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
+=======
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ControllerAccueil.java">
+>>>>>>> 9fd227ae7e637757b5af4ba2b3e5bc37d097b14b
    <children>
       <SplitPane dividerPositions="0.1991643454038997" layoutX="1.0" orientation="VERTICAL" prefHeight="720.0" prefWidth="1280.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <items>
@@ -101,7 +105,14 @@
                                        <items>
                                           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="1276.0">
                                              <children>
+<<<<<<< HEAD
                                                 <ListView prefHeight="268.0" prefWidth="1276.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+=======
+                                                <TableView prefHeight="484.0" prefWidth="1276.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                   <columns>
+                                                      <TableColumn prefWidth="1268.0" text="Nom" />
+                                                   </columns>
+>>>>>>> 9fd227ae7e637757b5af4ba2b3e5bc37d097b14b
                                                    <contextMenu>
                                                       <ContextMenu>
                                                          <items>
@@ -142,7 +153,14 @@
                                        <items>
                                           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="1276.0">
                                              <children>
+<<<<<<< HEAD
                                                 <ListView prefHeight="268.0" prefWidth="1276.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+=======
+                                                <TableView prefHeight="484.0" prefWidth="1276.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                   <columns>
+                                                      <TableColumn prefWidth="1268.0" text="Nom" />
+                                                   </columns>
+>>>>>>> 9fd227ae7e637757b5af4ba2b3e5bc37d097b14b
                                                    <contextMenu>
                                                       <ContextMenu>
                                                          <items>
@@ -183,7 +201,14 @@
                                        <items>
                                           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="1276.0">
                                              <children>
+<<<<<<< HEAD
                                                 <ListView prefHeight="268.0" prefWidth="1276.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+=======
+                                                <TableView prefHeight="484.0" prefWidth="1276.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                   <columns>
+                                                      <TableColumn prefWidth="1268.0" text="Nom" />
+                                                   </columns>
+>>>>>>> 9fd227ae7e637757b5af4ba2b3e5bc37d097b14b
                                                    <contextMenu>
                                                       <ContextMenu>
                                                          <items>
@@ -224,7 +249,14 @@
                                        <items>
                                           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="1276.0">
                                              <children>
+<<<<<<< HEAD
                                                 <ListView prefHeight="268.0" prefWidth="1276.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+=======
+                                                <TableView prefHeight="484.0" prefWidth="1276.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                   <columns>
+                                                      <TableColumn prefWidth="1268.0" text="Nom" />
+                                                   </columns>
+>>>>>>> 9fd227ae7e637757b5af4ba2b3e5bc37d097b14b
                                                    <contextMenu>
                                                       <ContextMenu>
                                                          <items>
@@ -265,7 +297,14 @@
                                        <items>
                                           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="1276.0">
                                              <children>
+<<<<<<< HEAD
                                                 <ListView prefHeight="268.0" prefWidth="1276.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+=======
+                                                <TableView prefHeight="484.0" prefWidth="1276.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                   <columns>
+                                                      <TableColumn prefWidth="1268.0" text="Nom" />
+                                                   </columns>
+>>>>>>> 9fd227ae7e637757b5af4ba2b3e5bc37d097b14b
                                                    <contextMenu>
                                                       <ContextMenu>
                                                          <items>
@@ -306,11 +345,29 @@
                                        <items>
                                           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="1276.0">
                                              <children>
+<<<<<<< HEAD
                                                 <TableView layoutX="211.0" layoutY="76.0" prefHeight="484.0" prefWidth="1276.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                                   <columns>
                                                     <TableColumn prefWidth="160.0" text="Date de fin" />
                                                     <TableColumn prefWidth="1101.0" text="Nom" />
                                                   </columns>
+=======
+                                                <TableView prefHeight="484.0" prefWidth="1276.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                   <columns>
+                                                      <TableColumn prefWidth="265.0" text="Nom" />
+                                                      <TableColumn prefWidth="125.0" text="Date de fin" />
+                                                      <TableColumn prefWidth="131.0" text="Categorie" />
+                                                      <TableColumn prefWidth="161.0" text="Recette" />
+                                                   </columns>
+                                                   <contextMenu>
+                                                      <ContextMenu>
+                                                         <items>
+                                                            <MenuItem fx:id="BTN_EditPromo" mnemonicParsing="false" onAction="#editPromo" text="Modifier" />
+                                                            <MenuItem fx:id="BTN_DelPromo" mnemonicParsing="false" onAction="#delPromo" text="Supprimer" />
+                                                         </items>
+                                                      </ContextMenu>
+                                                   </contextMenu>
+>>>>>>> 9fd227ae7e637757b5af4ba2b3e5bc37d097b14b
                                                 </TableView>
                                              </children>
                                           </AnchorPane>

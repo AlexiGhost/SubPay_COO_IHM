@@ -67,12 +67,12 @@
          <font>
             <Font size="18.0" />
          </font></Text>
-      <Button layoutX="672.0" layoutY="593.0" mnemonicParsing="false" text="Valider">
+      <Button fx:id="valider" layoutX="672.0" layoutY="593.0" mnemonicParsing="false" text="Valider">
          <font>
             <Font size="48.0" />
          </font>
       </Button>
-      <Button layoutX="265.0" layoutY="593.0" mnemonicParsing="false" text="Accueil">
+      <Button fx:id="accueil" layoutX="265.0" layoutY="593.0" mnemonicParsing="false" text="Accueil">
          <font>
             <Font size="48.0" />
          </font>

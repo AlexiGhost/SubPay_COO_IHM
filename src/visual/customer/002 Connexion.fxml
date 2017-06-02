@@ -28,7 +28,16 @@
             <Font size="24.0" />
          </font>
       </TextArea>
+<<<<<<< HEAD
       <Button layoutX="496.0" layoutY="360.0" mnemonicParsing="false" text="Connexion">
+=======
+      <TextArea layoutX="282.0" layoutY="262.0" prefHeight="73.0" prefWidth="718.0" promptText="mot de passe">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </TextArea>
+      <Button fx:id="connexion" layoutX="496.0" layoutY="360.0" mnemonicParsing="false" text="Connexion">
+>>>>>>> 9fd227ae7e637757b5af4ba2b3e5bc37d097b14b
          <font>
             <Font size="48.0" />
          </font>
@@ -38,7 +47,7 @@
             <Font size="36.0" />
          </font>
       </Text>
-      <Button layoutX="498.0" layoutY="564.0" mnemonicParsing="false" text="Inscription">
+      <Button fx:id="inscription" layoutX="498.0" layoutY="564.0" mnemonicParsing="false" text="Inscription">
          <font>
             <Font size="48.0" />
          </font>

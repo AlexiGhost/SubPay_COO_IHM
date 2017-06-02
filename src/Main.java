@@ -3,7 +3,8 @@
 import java.util.ArrayList;
 import java.util.List;
 
-import model.*;
+import model.AuthentificatedCustomer;
+import model.CustomerManagement;
 import model.product.*;
 import visual.*;
 
@@ -14,8 +15,8 @@ public class Main {
 		//CustomerManagement.importCustomer("customer.xml");
 		
 		/*USE ONLY ONE OF THESE GUIThread (comment the other)*/
-		GUIThread guiThread = new GUIThread("client");
-		//GUIThread guiThread = new GUIThread("manager");
+		//GUIThread guiThread = new GUIThread("client");
+		GUIThread guiThread = new GUIThread("manager");
 		
 		testExportComponent();
 		testExportCustomer();

@@ -35,12 +35,12 @@
                </children>
             </Pane>
          </content></ScrollPane>
-      <Button layoutX="871.0" layoutY="618.0" mnemonicParsing="false" text="Suivant">
+      <Button fx:id="suivant" layoutX="871.0" layoutY="618.0" mnemonicParsing="false" text="Suivant">
          <font>
             <Font size="36.0" />
          </font>
       </Button>
-      <Button layoutX="259.0" layoutY="618.0" mnemonicParsing="false" text="Retour">
+      <Button fx:id="retour" layoutX="259.0" layoutY="618.0" mnemonicParsing="false" text="Retour">
          <font>
             <Font size="36.0" />
          </font>

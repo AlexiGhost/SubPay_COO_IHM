@@ -31,12 +31,12 @@
             <Font size="36.0" />
          </font>
       </Text>
-      <Button layoutX="381.0" layoutY="318.0" mnemonicParsing="false" text="OUI">
+      <Button fx:id="Oui" layoutX="381.0" layoutY="318.0" mnemonicParsing="false" text="OUI">
          <font>
             <Font size="48.0" />
          </font>
       </Button>
-      <Button layoutX="741.0" layoutY="318.0" mnemonicParsing="false" text="NON">
+      <Button fx:id="Non" layoutX="741.0" layoutY="327.0" mnemonicParsing="false" text="NON">
          <font>
             <Font size="48.0" />
          </font>
@@ -51,7 +51,7 @@
             <Font size="36.0" />
          </font>
       </Text>
-      <Button layoutX="423.0" layoutY="590.0" mnemonicParsing="false" text="INSCRIVEZ-VOUS">
+      <Button fx:id="inscription" layoutX="423.0" layoutY="590.0" mnemonicParsing="false" text="INSCRIVEZ-VOUS">
          <font>
             <Font size="48.0" />
          </font>
