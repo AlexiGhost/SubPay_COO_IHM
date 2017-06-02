@@ -40,3 +40,5 @@ bin/visual/*
 .settings/*
 .settings
 >>>>>>> 498def80c0d7657fa7c7cce64cb9854e22c23ec2
+src/visual/ControllerClient.java
+src/visual/ControllerManager.java

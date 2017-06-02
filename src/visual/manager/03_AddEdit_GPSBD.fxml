@@ -14,7 +14,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="visual.manager.ControllerAddEditComponent">
    <children>
       <SplitPane dividerPositions="0.2" layoutY="-1.0" orientation="VERTICAL" prefHeight="720.0" prefWidth="1280.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <items>
@@ -34,7 +34,7 @@
                               <Image url="@../images/Logo.png" />
                            </image>
                         </ImageView>
-                        <Button mnemonicParsing="false" prefHeight="70.0" prefWidth="237.0" text="Deconnexion" GridPane.columnIndex="1">
+                        <Button fx:id="BTN_Disconnect" mnemonicParsing="false" onAction="#disconnect" prefHeight="70.0" prefWidth="237.0" text="Deconnexion" GridPane.columnIndex="1">
                            <font>
                               <Font size="24.0" />
                            </font>
@@ -62,7 +62,16 @@
                                               <RowConstraints maxHeight="75.0" minHeight="10.0" percentHeight="15.0" prefHeight="75.0" valignment="CENTER" vgrow="SOMETIMES" />
                                             </rowConstraints>
                                              <children>
+<<<<<<< HEAD:src/visual/manager/03_AddEdit_GPSBD.fxml
                                                 <Button mnemonicParsing="false" prefHeight="51.0" prefWidth="149.0" text="Parcourir..." GridPane.rowIndex="1">
+=======
+                                                <ImageView fx:id="ComponentImage" fitHeight="344.0" fitWidth="418.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@../images/dessert.png" />
+                                                   </image>
+                                                </ImageView>
+                                                <Button fx:id="BTN_Parcourir" mnemonicParsing="false" onAction="#parcourir" prefHeight="51.0" prefWidth="149.0" text="Parcourir..." GridPane.rowIndex="1">
+>>>>>>> 052c28caed1a0603d767f2ad8e0a4a9f0256bcf5:src/visual/manager/AddEdit_GPSBD.fxml
                                                    <font>
                                                       <Font size="24.0" />
                                                    </font>
@@ -83,7 +92,7 @@
                                               <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
                                             </rowConstraints>
                                              <children>
-                                                <CheckBox mnemonicParsing="false" text="Nouveauté" GridPane.halignment="LEFT" GridPane.valignment="CENTER">
+                                                <CheckBox fx:id="CHK_New" mnemonicParsing="false" text="Nouveauté" GridPane.halignment="LEFT" GridPane.valignment="CENTER">
                                                    <font>
                                                       <Font size="24.0" />
                                                    </font>
@@ -108,10 +117,10 @@
                                                             <Insets left="20.0" />
                                                          </GridPane.margin>
                                                       </Text>
-                                                      <TextField GridPane.columnIndex="1" />
+                                                      <TextField fx:id="TF_Libelle" GridPane.columnIndex="1" />
                                                    </children>
                                                 </GridPane>
-                                                <CheckBox mnemonicParsing="false" text="Disponible" GridPane.rowIndex="2">
+                                                <CheckBox fx:id="CHK_Available" mnemonicParsing="false" text="Disponible" GridPane.rowIndex="2">
                                                    <font>
                                                       <Font size="24.0" />
                                                    </font>
@@ -143,7 +152,7 @@
                                           <Font size="24.0" />
                                        </font>
                                     </Button>
-                                    <Button mnemonicParsing="false" prefHeight="58.0" prefWidth="234.0" text="Retour" GridPane.columnIndex="1">
+                                    <Button fx:id="BTN_Retour" mnemonicParsing="false" onAction="#retour" prefHeight="58.0" prefWidth="234.0" text="Retour" GridPane.columnIndex="1">
                                        <font>
                                           <Font size="24.0" />
                                        </font>

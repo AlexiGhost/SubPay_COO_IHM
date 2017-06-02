@@ -24,7 +24,7 @@
         <items>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                <children>
-                  <GridPane layoutX="118.0" prefHeight="140.0" prefWidth="1278.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <GridPane layoutX="-41.0" layoutY="-14.0" prefHeight="140.0" prefWidth="1278.0" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="-41.0" AnchorPane.rightAnchor="41.0" AnchorPane.topAnchor="-14.0">
                     <columnConstraints>
                       <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="795.0" minWidth="10.0" percentWidth="60.0" prefWidth="795.0" />
                       <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="634.0" minWidth="10.0" prefWidth="400.0" />
@@ -38,7 +38,11 @@
                               <Image url="@../images/Logo.png" />
                            </image>
                         </ImageView>
+<<<<<<< HEAD:src/visual/manager/02_Accueil.fxml
                         <Button fx:id="BTN_Deconnexion" mnemonicParsing="false" onAction="#toAuthentification" prefHeight="63.0" prefWidth="230.0" text="Deconnexion" GridPane.columnIndex="1">
+=======
+                        <Button fx:id="BTN_Disconnect" mnemonicParsing="false" onAction="#disconnect" prefHeight="63.0" prefWidth="230.0" text="Deconnexion" GridPane.columnIndex="1">
+>>>>>>> 052c28caed1a0603d767f2ad8e0a4a9f0256bcf5:src/visual/manager/Accueil.fxml
                            <font>
                               <Font size="24.0" />
                            </font>
@@ -59,22 +63,20 @@
                                       <items>
                                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="1276.0">
                                              <children>
-                                                <TableView prefHeight="484.0" prefWidth="1276.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                                  <columns>
-                                                    <TableColumn prefWidth="226.0" text="Nom" />
-                                                    <TableColumn minWidth="9.0" prefWidth="122.0" text="Categorie" />
-                                                  </columns>
+                                                <TableView fx:id="T_Recipe" prefHeight="484.0" prefWidth="1276.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                   <columns>
+                                                      <TableColumn fx:id="TC_NomRecipe" prefWidth="1273.0" text="Nom" />
+                                                   </columns>
                                                    <contextMenu>
                                                       <ContextMenu>
-                                                        <items>
-                                                          <MenuItem fx:id="BTN_EditRecipe" mnemonicParsing="false" onAction="#editRecipe" text="Modifier" />
+                                                         <items>
+                                                            <MenuItem fx:id="BTN_EditRecipe" mnemonicParsing="false" onAction="#editRecipe" text="Modifier" />
                                                             <MenuItem fx:id="BTN_DelRecipe" mnemonicParsing="false" onAction="#delRecipe" text="Supprimer" />
-                                                        </items>
+                                                         </items>
                                                       </ContextMenu>
                                                    </contextMenu>
                                                 </TableView>
-                                             </children>
-                                          </AnchorPane>
+                                             </children></AnchorPane>
                                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                                              <children>
                                                 <GridPane layoutX="298.0" layoutY="-31.0" prefHeight="59.0" prefWidth="1276.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -104,15 +106,15 @@
                                        <items>
                                           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="1276.0">
                                              <children>
-                                                <TableView prefHeight="484.0" prefWidth="1276.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                <TableView fx:id="T_Garnish" prefHeight="484.0" prefWidth="1276.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                                    <columns>
-                                                      <TableColumn prefWidth="1268.0" text="Nom" />
+                                                      <TableColumn fx:id="TC_NomGarnish" prefWidth="1273.0" text="Nom" />
                                                    </columns>
                                                    <contextMenu>
                                                       <ContextMenu>
                                                          <items>
                                                             <MenuItem fx:id="BTN_EditGarnish" mnemonicParsing="false" onAction="#editGarnish" text="Modifier" />
-                                                            <MenuItem fx:id="BTN_DelGarnish" mnemonicParsing="false" onAction="#delRecipe" text="Supprimer" />
+                                                            <MenuItem fx:id="BTN_DelGarnish" mnemonicParsing="false" onAction="#delGarnish" text="Supprimer" />
                                                          </items>
                                                       </ContextMenu>
                                                    </contextMenu>
@@ -147,9 +149,9 @@
                                        <items>
                                           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="1276.0">
                                              <children>
-                                                <TableView prefHeight="484.0" prefWidth="1276.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                <TableView fx:id="T_Bread" prefHeight="484.0" prefWidth="1276.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                                    <columns>
-                                                      <TableColumn prefWidth="1268.0" text="Nom" />
+                                                      <TableColumn fx:id="TC_NomBread" prefWidth="1273.0" text="Nom" />
                                                    </columns>
                                                    <contextMenu>
                                                       <ContextMenu>
@@ -190,9 +192,9 @@
                                        <items>
                                           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="1276.0">
                                              <children>
-                                                <TableView prefHeight="484.0" prefWidth="1276.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                <TableView fx:id="T_Sauce" prefHeight="484.0" prefWidth="1276.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                                    <columns>
-                                                      <TableColumn prefWidth="1268.0" text="Nom" />
+                                                      <TableColumn fx:id="TC_NomSauce" prefWidth="1273.0" text="Nom" />
                                                    </columns>
                                                    <contextMenu>
                                                       <ContextMenu>
@@ -233,9 +235,9 @@
                                        <items>
                                           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="1276.0">
                                              <children>
-                                                <TableView prefHeight="484.0" prefWidth="1276.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                <TableView fx:id="T_Drink" prefHeight="484.0" prefWidth="1276.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                                    <columns>
-                                                      <TableColumn prefWidth="1268.0" text="Nom" />
+                                                      <TableColumn fx:id="TC_NomDrink" prefWidth="1273.0" text="Nom" />
                                                    </columns>
                                                    <contextMenu>
                                                       <ContextMenu>
@@ -269,16 +271,16 @@
                           </content>
                         </Tab>
                         <Tab text="Dessert">
-                           <content>
-                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                          <content>
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                  <children>
                                     <SplitPane dividerPositions="0.9" orientation="VERTICAL" prefHeight="543.0" prefWidth="1278.0">
                                        <items>
                                           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="1276.0">
                                              <children>
-                                                <TableView prefHeight="484.0" prefWidth="1276.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                <TableView fx:id="T_Dessert" prefHeight="484.0" prefWidth="1276.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                                    <columns>
-                                                      <TableColumn prefWidth="1268.0" text="Nom" />
+                                                      <TableColumn fx:id="TC_NomDessert" prefWidth="1273.0" text="Nom" />
                                                    </columns>
                                                    <contextMenu>
                                                       <ContextMenu>
@@ -289,8 +291,7 @@
                                                       </ContextMenu>
                                                    </contextMenu>
                                                 </TableView>
-                                             </children>
-                                          </AnchorPane>
+                                             </children></AnchorPane>
                                           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                                              <children>
                                                 <GridPane layoutX="298.0" layoutY="-31.0" prefHeight="59.0" prefWidth="1276.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -310,7 +311,7 @@
                                     </SplitPane>
                                  </children>
                               </AnchorPane>
-                           </content>
+                          </content>
                         </Tab>
                         <Tab text="Promotions">
                           <content>
@@ -320,12 +321,12 @@
                                        <items>
                                           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="1276.0">
                                              <children>
-                                                <TableView prefHeight="484.0" prefWidth="1276.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                <TableView fx:id="T_Promo" prefHeight="484.0" prefWidth="1276.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                                    <columns>
-                                                      <TableColumn prefWidth="265.0" text="Nom" />
-                                                      <TableColumn prefWidth="125.0" text="Date de fin" />
-                                                      <TableColumn prefWidth="131.0" text="Categorie" />
-                                                      <TableColumn prefWidth="161.0" text="Recette" />
+                                                      <TableColumn fx:id="TC_PromoName" prefWidth="265.0" text="Nom" />
+                                                      <TableColumn fx:id="TC_PromoDate" prefWidth="125.0" text="Date de fin" />
+                                                      <TableColumn fx:id="TC_PromoCategory" prefWidth="131.0" text="Categorie" />
+                                                      <TableColumn fx:id="TC_PromoRecipe" prefWidth="161.0" text="Recette" />
                                                    </columns>
                                                    <contextMenu>
                                                       <ContextMenu>
@@ -336,7 +337,8 @@
                                                       </ContextMenu>
                                                    </contextMenu>
                                                 </TableView>
-                                             </children></AnchorPane>
+                                             </children>
+                                          </AnchorPane>
                                           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                                              <children>
                                                 <GridPane layoutX="298.0" layoutY="-31.0" prefHeight="59.0" prefWidth="1276.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -347,7 +349,7 @@
                                                       <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
                                                    </rowConstraints>
                                                    <children>
-                                                      <Button fx:id="BTN_AddPromo" mnemonicParsing="false" onAction="#addPromotion" prefHeight="44.0" prefWidth="161.0" text="Ajouter" />
+                                                      <Button fx:id="BTN_AddPromo" mnemonicParsing="false" onAction="#addPromo" prefHeight="44.0" prefWidth="161.0" text="Ajouter" />
                                                    </children>
                                                 </GridPane>
                                              </children>
