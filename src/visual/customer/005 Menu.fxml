@@ -14,7 +14,7 @@
       <Line endX="1180.0" layoutX="250.0" layoutY="112.0" startX="-100.0" AnchorPane.leftAnchor="0.0" />
       <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="541.0" pickOnBounds="true" preserveRatio="true" AnchorPane.topAnchor="0.0">
          <image>
-            <Image url="@Logo%20(1).png" />
+            <Image url="@../images/Logo.png" />
          </image>
       </ImageView>
       <Circle fill="#0ec314" radius="150.0" stroke="BLACK" strokeType="INSIDE" AnchorPane.leftAnchor="-150.0" AnchorPane.topAnchor="-150.0" />

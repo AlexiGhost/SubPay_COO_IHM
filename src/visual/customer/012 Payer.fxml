@@ -17,7 +17,7 @@
    <children>
       <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="540.0" pickOnBounds="true" preserveRatio="true" AnchorPane.topAnchor="0.0">
          <image>
-            <Image url="@Logo%20(1).png" />
+            <Image url="@../images/Logo.png." />
          </image>
       </ImageView>
       <Line endX="1180.0" layoutX="99.0" layoutY="111.0" startX="-100.0" AnchorPane.leftAnchor="0.0" />
