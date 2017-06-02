@@ -13,7 +13,7 @@ public class ControllerClient extends Application {
 	public void start(Stage stage) throws Exception {
 		FXMLLoader loader = new FXMLLoader();
     	
-    	Parent acteur = (Parent) loader.load(getClass().getResource("customer/002 Connexion.fxml"));
+    	Parent acteur = (Parent) loader.load(getClass().getResource("manager/Accueil.fxml"));
     	
     	Scene scene = new Scene(acteur, 1280.0, 720.0);
     	
