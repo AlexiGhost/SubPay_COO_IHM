@@ -15,7 +15,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="visual.manager.ControllerAddEditPromo">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="visual.manager.ControllerAddEdit_Promo">
    <children>
       <SplitPane layoutY="-1.0" orientation="VERTICAL" prefHeight="720.0" prefWidth="1280.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
       <GridPane prefHeight="720.0" prefWidth="1280.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -43,7 +43,7 @@
                               <Image url="@../images/Logo.png" />
                            </image>
                         </ImageView>
-                        <Button mnemonicParsing="false" prefHeight="70.0" prefWidth="237.0" text="Deconnexion" GridPane.columnIndex="1">
+                        <Button fx:id="BTN_Deconnexion" mnemonicParsing="false" onAction="#goToAuthentification" prefHeight="70.0" prefWidth="237.0" text="Deconnexion" GridPane.columnIndex="1">
                            <font>
                               <Font size="24.0" />
                            </font>
@@ -177,7 +177,7 @@
                                     <Font size="24.0" />
                                  </font>
                               </Button>
-                              <Button fx:id="BTN_Retour" mnemonicParsing="false" onAction="#retour" prefHeight="58.0" prefWidth="134.0" text="Retour" GridPane.columnIndex="1">
+                              <Button fx:id="BTN_Retour" mnemonicParsing="false" onAction="#goToAccueil" prefHeight="58.0" prefWidth="134.0" text="Retour" GridPane.columnIndex="1">
                                  <font>
                                     <Font size="24.0" />
                                  </font>

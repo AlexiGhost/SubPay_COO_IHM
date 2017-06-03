@@ -14,7 +14,7 @@ import javafx.stage.Stage;
  * */
 public class Controller extends Application { //Surtout ne pas passer sous ABSTRACT, ça fait tout planter
 	private static 				Stage 			theStage;
-	private static final		String			user = "Client"; //A modifier selon l'interface qu'on souhaite visionner
+	private static final		String			user = "Manager"; //A modifier selon l'interface qu'on souhaite visionner
 	
 	public void start(Stage stage) throws IOException {
 		theStage = stage;
@@ -27,8 +27,7 @@ public class Controller extends Application { //Surtout ne pas passer sous ABSTR
     	}
     	else {
     		acteur.getChildren().add(
-	    			FXMLLoader.load(getClass().getResource("manager/01_Authentification.fxml"))
-	    			);
+	    			FXMLLoader.load(getClass().getResource("manager/01_Authentification.fxml")));
     		theStage.setTitle("SUBPAY - Authentification");
     	}
     	

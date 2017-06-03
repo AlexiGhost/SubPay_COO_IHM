@@ -11,8 +11,8 @@ import visual.*;
 public class Main {
 
 	public static void main(String[] args) {
-		//ComponentManagement.importComponent("component.xml");
-		//CustomerManagement.importCustomer("customer.xml");
+		ComponentManagement.importComponent("component.xml");
+		CustomerManagement.importCustomer("customer.xml");
 		
 		/*USE ONLY ONE OF THESE GUIThread (comment the other)*/
 		//GUIThread guiThread = new GUIThread("client");
