@@ -4,7 +4,7 @@ import javafx.fxml.FXML;
 
 public class ControllerAddEdit_GPSBD {
 	@FXML
-	public void deconnexion() {
+	public void goToAuthentification() {
 		
 	}
 	@FXML

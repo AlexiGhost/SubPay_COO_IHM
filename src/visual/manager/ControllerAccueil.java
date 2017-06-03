@@ -7,7 +7,7 @@ import javafx.scene.Group;
 
 public abstract class ControllerAccueil {
     
-	public void toAuthentification() throws IOException {
+	public void goToAuthentification() throws IOException {
 		Group acteur = new Group();
 		
     	acteur.getChildren().add(

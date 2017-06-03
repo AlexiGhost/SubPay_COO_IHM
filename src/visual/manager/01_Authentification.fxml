@@ -56,7 +56,7 @@
             </ImageView>
             <Button mnemonicParsing="false" onAction="#toAccueil" prefHeight="58.0" prefWidth="202.0" text="Connexion" GridPane.columnIndex="1" GridPane.rowIndex="3">
 			</Button>
-            <Button fx:id="BTN_Connection" mnemonicParsing="false" onAction="#connection" prefHeight="58.0" prefWidth="202.0" text="Connexion" GridPane.columnIndex="1" GridPane.rowIndex="3">
+            <Button fx:id="BTN_Connection" mnemonicParsing="false" onAction="#goToAccueil" prefHeight="58.0" prefWidth="202.0" text="Connexion" GridPane.columnIndex="1" GridPane.rowIndex="3">
                <font>
                   <Font size="24.0" />
                </font>
