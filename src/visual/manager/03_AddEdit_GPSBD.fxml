@@ -62,16 +62,14 @@
                                               <RowConstraints maxHeight="75.0" minHeight="10.0" percentHeight="15.0" prefHeight="75.0" valignment="CENTER" vgrow="SOMETIMES" />
                                             </rowConstraints>
                                              <children>
-<<<<<<< HEAD:src/visual/manager/03_AddEdit_GPSBD.fxml
                                                 <Button mnemonicParsing="false" prefHeight="51.0" prefWidth="149.0" text="Parcourir..." GridPane.rowIndex="1">
-=======
+												</Button>
                                                 <ImageView fx:id="ComponentImage" fitHeight="344.0" fitWidth="418.0" pickOnBounds="true" preserveRatio="true">
                                                    <image>
                                                       <Image url="@../images/dessert.png" />
                                                    </image>
                                                 </ImageView>
                                                 <Button fx:id="BTN_Parcourir" mnemonicParsing="false" onAction="#parcourir" prefHeight="51.0" prefWidth="149.0" text="Parcourir..." GridPane.rowIndex="1">
->>>>>>> 052c28caed1a0603d767f2ad8e0a4a9f0256bcf5:src/visual/manager/AddEdit_GPSBD.fxml
                                                    <font>
                                                       <Font size="24.0" />
                                                    </font>

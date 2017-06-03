@@ -38,11 +38,9 @@
                               <Image url="@../images/Logo.png" />
                            </image>
                         </ImageView>
-<<<<<<< HEAD:src/visual/manager/02_Accueil.fxml
                         <Button fx:id="BTN_Deconnexion" mnemonicParsing="false" onAction="#toAuthentification" prefHeight="63.0" prefWidth="230.0" text="Deconnexion" GridPane.columnIndex="1">
-=======
+						</Button>
                         <Button fx:id="BTN_Disconnect" mnemonicParsing="false" onAction="#disconnect" prefHeight="63.0" prefWidth="230.0" text="Deconnexion" GridPane.columnIndex="1">
->>>>>>> 052c28caed1a0603d767f2ad8e0a4a9f0256bcf5:src/visual/manager/Accueil.fxml
                            <font>
                               <Font size="24.0" />
                            </font>
