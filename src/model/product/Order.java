@@ -6,9 +6,23 @@ import java.util.List;
 import model.product.composants.*;
 
 public class Order {
-    private String OrderNb;
+    private int orderNb;
     private List<Product> products = new ArrayList<Product> ();
     private List<Menu> menus = new ArrayList<Menu> ();
+    private boolean authCustomer;
+    private static int oldNb;
+    
+    public Order(boolean authCustomer){
+    	this.authCustomer = authCustomer;
+    	if(oldNb != 100){
+    		orderNb = oldNb + 1;
+    		oldNb++;
+    	}
+    	else{
+    		orderNb = 0;
+    		oldNb = 0;
+    	}
+    }
     
 //ADD / REMOVE
     //product
@@ -37,12 +51,12 @@ public class Order {
 //GETTERS / SETTERS
     //orderNb
     /**Return the order number*/
-    public String getOrderNb() {
-		return OrderNb;
+    public int getOrderNb() {
+		return orderNb;
 	}
     /**Set the order number*/
-	public void setOrderNb(String orderNb) {
-		OrderNb = orderNb;
+	public void setOrderNb(int orderNb) {
+		orderNb = orderNb;
 	}
 	//menus
 	/**Return the menus list*/
@@ -62,4 +76,16 @@ public class Order {
 	public void setProducts(List<Product> products) {
 		this.products = products;
 	}
+	//authCustomer
+	/**Return if the order is for an authenticated client or not*/
+	public boolean getAuthCustomer(){
+		return authCustomer;
+		
+	}
+	/**Set if the order is for an authenticated client*/
+	public void setAuthCustomer(boolean authCustomer) {
+		this.authCustomer = authCustomer;
+	}
+	
+	
 }

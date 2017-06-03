@@ -13,11 +13,11 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1" fx:controller="visual.customer.ControllerPayer">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="visual.customer.ControllerPayer">
    <children>
       <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="540.0" pickOnBounds="true" preserveRatio="true" AnchorPane.topAnchor="0.0">
          <image>
-            <Image url="@../images/Logo.png." />
+            <Image url="@../images/Logo.png" />
          </image>
       </ImageView>
       <Line endX="1180.0" layoutX="99.0" layoutY="111.0" startX="-100.0" AnchorPane.leftAnchor="0.0" />
@@ -37,12 +37,12 @@
                   </Pane>
                </content></ScrollPane>
          </content></ScrollPane>
-      <Button layoutX="896.0" layoutY="618.0" mnemonicParsing="false" onAction="#prout" text="Payer">
+      <Button layoutX="896.0" layoutY="618.0" mnemonicParsing="false" onAction="#goToAccueil" text="Payer">
          <font>
             <Font size="36.0" />
          </font>
       </Button>
-      <Button layoutX="259.0" layoutY="618.0" mnemonicParsing="false" onAction="#goToAcceuil" text="Retour">
+      <Button layoutX="259.0" layoutY="618.0" mnemonicParsing="false" onAction="#goToAccueil" text="Retour">
          <font>
             <Font size="36.0" />
          </font>
