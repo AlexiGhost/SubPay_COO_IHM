@@ -29,7 +29,7 @@ public class ControllerAuthentification {
 					FXMLLoader.load(getClass().getResource("02_Accueil.fxml")));
 			visual.Controller.setScene(acteur, "SUBPAY - Accueil");
 		} else {
-			TEXT_ERROR.setText("ID : admin \n Pass : admin");
+			TEXT_ERROR.setText("ID : admin \n Password : admin");
 		}
 	}
 	

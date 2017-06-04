@@ -1,32 +1,37 @@
 package visual.manager;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.ResourceBundle;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Group;
 import javafx.scene.control.*;
+import javafx.util.Callback;
+import model.product.ComponentManagement;
+import model.product.composants.*;
 
-public class ControllerAccueil {
+public class ControllerAccueil implements Initializable{
     
 	//ATTRIBUTES
 	
     @FXML
     private ListView<?> L_Recipe;
-
     @FXML
     private ListView<?> L_Bread;
-
     @FXML
     private ListView<?> L_Garnish;
-
     @FXML
     private ListView<?> L_Sauce;
-
     @FXML
     private ListView<?> L_Drink;
-
     @FXML
     private ListView<?> L_Dessert;
 
@@ -40,8 +45,12 @@ public class ControllerAccueil {
     private TableColumn<?, ?> TC_PromotionCategory;
     @FXML
     private TableColumn<?, ?> TC_PromotionRecipe;
-
     //METHODS
+   
+    @Override
+    public void initialize(URL location, ResourceBundle rb){
+    	//TODO remplir les listes
+    }
     
     @FXML
     void addBread(ActionEvent event) throws IOException{
@@ -212,4 +221,5 @@ public class ControllerAccueil {
 		);
 		visual.Controller.setScene(acteur, "SUBPAY - Authentification");
 	}
+
 }
