@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Group;
 import javafx.scene.control.*;
+import javafx.scene.text.Text;
 
 public class ControllerAuthentification {
 	
@@ -15,12 +16,21 @@ public class ControllerAuthentification {
 	private Button BTN_Connection;	
 	@FXML
 	private PasswordField TF_Password;
-
+	@FXML
+	private Text TEXT_ERROR;
+	
+	String user = "admin";
+	String password = "admin";
+	
 	public void goToAccueil() throws IOException {
-		Group acteur = new Group();
-		acteur.getChildren().add(
-		FXMLLoader.load(getClass().getResource("04_AddEdit_Promo.fxml"))); //Page4 le temps de fixer les prob de la 2. Alexi
-		visual.Controller.setScene(acteur, "SUBPAY - Accueil");
+		if(TF_Password.getText().equals(user) && TF_Password.getText().equals(password)){
+			Group acteur = new Group();
+			acteur.getChildren().add(
+					FXMLLoader.load(getClass().getResource("02_Accueil.fxml")));
+			visual.Controller.setScene(acteur, "SUBPAY - Accueil");
+		} else {
+			TEXT_ERROR.setText("ID : admin \n Pass : admin");
+		}
 	}
 	
 

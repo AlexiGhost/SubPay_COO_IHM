@@ -1,94 +1,52 @@
 package visual.manager;
 
+import java.io.IOException;
+
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Group;
+import javafx.scene.control.*;
+import javafx.scene.image.ImageView;
 
 public class ControllerAddEdit_GPSBD {
-	@FXML
-	public void goToAuthentification() {
-		
-	}
-	@FXML
-	public void addRecipe() {
-		
-	}
-	@FXML
-	public void addGarnish() {
-		
-	}
-	@FXML
-	public void addBread() {
-		
-	}
-	@FXML
-	public void addSauce() {
-		
-	}
-	@FXML
-	public void addDrink() {
-		
-	}
-	@FXML
-	public void addDessert() {
-		
-	}
-	@FXML
-	public void addPromo() {
-		
-	}
-	@FXML
-	public void editRecipe() {
-		
-	}
-	@FXML
-	public void editGarnish() {
-		
-	}
-	@FXML
-	public void editBread() {
-		
-	}
-	@FXML
-	public void editSauce() {
-		
-	}
-	@FXML
-	public void editDrink() {
-		
-	}
-	@FXML
-	public void editDessert() {
-		
-	}
-	@FXML
-	public void editPromo() {
-		
-	}
-	@FXML
-	public void delRecipe() {
-		
-	}
-	@FXML
-	public void delGarnish() {
-		
-	}
-	@FXML
-	public void delBread() {
-		
-	}
-	@FXML
-	public void delSauce() {
-		
-	}
-	@FXML
-	public void delDrink() {
-		
-	}
-	@FXML
-	public void delDessert() {
-		
-	}
-	@FXML
-	public void delPromo() {
-		
-	}
+
+    @FXML
+    private ImageView ComponentImage;
+
+    @FXML
+    private CheckBox CHK_New;
+
+    @FXML
+    private TextField TF_Libelle;
+
+    @FXML
+    private CheckBox CHK_Available;
+
+    @FXML
+    void goToAccueil(ActionEvent event) throws IOException{
+    	Group acteur = new Group();
+		acteur.getChildren().add(
+		FXMLLoader.load(getClass().getResource("02_Accueil.fxml")));
+		visual.Controller.setScene(acteur, "SUBPAY - Accueil");
+    }
+    
+    @FXML
+    void goToAuthentification(ActionEvent event) throws IOException {
+    	Group acteur = new Group();
+		acteur.getChildren().add(
+		FXMLLoader.load(getClass().getResource("01_Authentification.fxml")));
+		visual.Controller.setScene(acteur, "SUBPAY - Authentification");
+    }
+
+    @FXML
+    void parcourir(ActionEvent event) {
+
+    }
+
+    @FXML
+    void save(ActionEvent event) {
+
+    }
+
 }

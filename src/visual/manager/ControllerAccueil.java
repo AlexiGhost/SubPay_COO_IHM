@@ -8,7 +8,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Group;
 import javafx.scene.control.*;
 
-public abstract class ControllerAccueil {
+public class ControllerAccueil {
     
 	//ATTRIBUTES
 	
@@ -44,38 +44,66 @@ public abstract class ControllerAccueil {
     //METHODS
     
     @FXML
-    void addBread(ActionEvent event) {
-
+    void addBread(ActionEvent event) throws IOException{
+    	Group acteur = new Group();
+		acteur.getChildren().add(
+		FXMLLoader.load(getClass().getResource("03_AddEdit_GPSBD.fxml"))
+		);
+		visual.Controller.setScene(acteur, "SUBPAY - GPSBD Editor");
     }
 
     @FXML
-    void addDessert(ActionEvent event) {
-
+    void addDessert(ActionEvent event) throws IOException{
+    	Group acteur = new Group();
+		acteur.getChildren().add(
+		FXMLLoader.load(getClass().getResource("03_AddEdit_GPSBD.fxml"))
+		);
+		visual.Controller.setScene(acteur, "SUBPAY - GPSBD Editor");
     }
 
     @FXML
-    void addDrink(ActionEvent event) {
-
+    void addDrink(ActionEvent event) throws IOException{
+    	Group acteur = new Group();
+		acteur.getChildren().add(
+		FXMLLoader.load(getClass().getResource("03_AddEdit_GPSBD.fxml"))
+		);
+		visual.Controller.setScene(acteur, "SUBPAY - GPSBD Editor");
     }
 
     @FXML
-    void addGarnish(ActionEvent event) {
-
+    void addGarnish(ActionEvent event) throws IOException{
+    	Group acteur = new Group();
+		acteur.getChildren().add(
+		FXMLLoader.load(getClass().getResource("03_AddEdit_GPSBD.fxml"))
+		);
+		visual.Controller.setScene(acteur, "SUBPAY - GPSBD Editor");
     }
 
     @FXML
-    void addPromotion(ActionEvent event) {
-
+    void addPromotion(ActionEvent event) throws IOException{
+    	Group acteur = new Group();
+		acteur.getChildren().add(
+		FXMLLoader.load(getClass().getResource("04_AddEdit_Promo.fxml"))
+		);
+		visual.Controller.setScene(acteur, "SUBPAY - GPSBD Editor");
     }
 
     @FXML
-    void addRecipe(ActionEvent event) {
-
+    void addRecipe(ActionEvent event) throws IOException{
+    	Group acteur = new Group();
+		acteur.getChildren().add(
+		FXMLLoader.load(getClass().getResource("03_AddEdit_GPSBD.fxml"))
+		);
+		visual.Controller.setScene(acteur, "SUBPAY - GPSBD Editor");
     }
 
     @FXML
-    void addSauce(ActionEvent event) {
-
+    void addSauce(ActionEvent event) throws IOException{
+    	Group acteur = new Group();
+		acteur.getChildren().add(
+		FXMLLoader.load(getClass().getResource("03_AddEdit_GPSBD.fxml"))
+		);
+		visual.Controller.setScene(acteur, "SUBPAY - GPSBD Editor");
     }
 
     @FXML
@@ -114,38 +142,66 @@ public abstract class ControllerAccueil {
     }
 
     @FXML
-    void editBread(ActionEvent event) {
-
+    void editBread(ActionEvent event) throws IOException{
+    	Group acteur = new Group();
+		acteur.getChildren().add(
+		FXMLLoader.load(getClass().getResource("03_AddEdit_GPSBD.fxml"))
+		);
+		visual.Controller.setScene(acteur, "SUBPAY - GPSBD Editor");
     }
 
     @FXML
-    void editDessert(ActionEvent event) {
-
+    void editDessert(ActionEvent event) throws IOException{
+    	Group acteur = new Group();
+		acteur.getChildren().add(
+		FXMLLoader.load(getClass().getResource("03_AddEdit_GPSBD.fxml"))
+		);
+		visual.Controller.setScene(acteur, "SUBPAY - GPSBD Editor");
     }
 
     @FXML
-    void editDrink(ActionEvent event) {
-
+    void editDrink(ActionEvent event) throws IOException{
+    	Group acteur = new Group();
+		acteur.getChildren().add(
+		FXMLLoader.load(getClass().getResource("03_AddEdit_GPSBD.fxml"))
+		);
+		visual.Controller.setScene(acteur, "SUBPAY - GPSBD Editor");
     }
 
     @FXML
-    void editGarnish(ActionEvent event) {
-
+    void editGarnish(ActionEvent event) throws IOException{
+    	Group acteur = new Group();
+		acteur.getChildren().add(
+		FXMLLoader.load(getClass().getResource("03_AddEdit_GPSBD.fxml"))
+		);
+		visual.Controller.setScene(acteur, "SUBPAY - GPSBD Editor");
+    }
+    
+    @FXML
+    void editPromotion(ActionEvent event) throws IOException{
+    	Group acteur = new Group();
+		acteur.getChildren().add(
+		FXMLLoader.load(getClass().getResource("04_AddEdit_Promo.fxml"))
+		);
+		visual.Controller.setScene(acteur, "SUBPAY - GPSBD Editor");
     }
 
     @FXML
-    void editPromotion(ActionEvent event) {
-
+    void editRecipe(ActionEvent event) throws IOException{
+    	Group acteur = new Group();
+		acteur.getChildren().add(
+		FXMLLoader.load(getClass().getResource("03_AddEdit_GPSBD.fxml"))
+		);
+		visual.Controller.setScene(acteur, "SUBPAY - GPSBD Editor");
     }
 
     @FXML
-    void editRecipe(ActionEvent event) {
-
-    }
-
-    @FXML
-    void editSauce(ActionEvent event) {
-
+    void editSauce(ActionEvent event) throws IOException{
+    	Group acteur = new Group();
+		acteur.getChildren().add(
+		FXMLLoader.load(getClass().getResource("03_AddEdit_GPSBD.fxml"))
+		);
+		visual.Controller.setScene(acteur, "SUBPAY - GPSBD Editor");
     }
 
     @FXML

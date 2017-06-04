@@ -26,6 +26,7 @@
           <RowConstraints minHeight="10.0" prefHeight="100.0" vgrow="SOMETIMES" />
           <RowConstraints minHeight="5.0" prefHeight="5.0" valignment="CENTER" vgrow="SOMETIMES" />
           <RowConstraints minHeight="5.0" prefHeight="5.0" valignment="TOP" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="5.0" prefHeight="5.0" valignment="TOP" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" prefHeight="100.0" valignment="TOP" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
@@ -64,6 +65,11 @@
                   <Font size="18.0" />
                </font>
             </PasswordField>
+            <Text fx:id="TEXT_ERROR" fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="475.13671875" GridPane.columnIndex="1" GridPane.rowIndex="4">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
          </children>
       </GridPane>
       <Arc fill="#64c832" length="90.0" radiusX="250.0" radiusY="250.0" stroke="BLACK" strokeType="INSIDE" type="ROUND" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" />
