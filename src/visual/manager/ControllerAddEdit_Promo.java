@@ -38,15 +38,12 @@ public class ControllerAddEdit_Promo {
     private Button BTN_Retour;
     
     @FXML
-    void goToAccueil(ActionEvent event) {
+    void goToAccueil(ActionEvent event) throws IOException {
     	Group acteur = new Group();
-		try {
-			acteur.getChildren().add(
-			FXMLLoader.load(getClass().getResource("02_Accueil.fxml")));
-			visual.Controller.setScene(acteur, "SUBPAY - Accueil");
-		} catch (IOException e) {
-			System.err.println("Le fichier FXML est introuvable");
-		}
+		acteur.getChildren().add(
+		FXMLLoader.load(getClass().getResource("02_Accueil.fxml"))
+		);
+		visual.Controller.setScene(acteur, "SUBPAY - Accueil");
     }
 
     @FXML
@@ -55,14 +52,10 @@ public class ControllerAddEdit_Promo {
     }
     
     @FXML
-    void goToAuthentification(ActionEvent event) {
+    void goToAuthentification(ActionEvent event) throws IOException {
     	Group acteur = new Group();
-		try {
-			acteur.getChildren().add(
-			FXMLLoader.load(getClass().getResource("01_Authentification.fxml")));
-			visual.Controller.setScene(acteur, "SUBPAY - Authentification");
-		} catch (IOException e) {
-			System.err.println("Le fichier FXML est introuvable");
-		}
+		acteur.getChildren().add(
+		FXMLLoader.load(getClass().getResource("01_Authentification.fxml")));
+		visual.Controller.setScene(acteur, "SUBPAY - Authentification");
     }
 }

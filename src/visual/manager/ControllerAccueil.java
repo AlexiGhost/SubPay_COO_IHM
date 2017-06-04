@@ -10,85 +10,39 @@ import javafx.scene.control.*;
 
 public abstract class ControllerAccueil {
     
+	//ATTRIBUTES
+	
     @FXML
-    private Button BTN_Disconnect;
-    @FXML
-    private TableView<?> T_Recipe;
-    @FXML
-    private TableColumn<?, ?> TC_NomRecipe;
-    @FXML
-    private MenuItem BTN_EditRecipe;
-    @FXML
-    private MenuItem BTN_DelRecipe;
-    @FXML
-    private Button BTN_AddRecipe;
-    @FXML
-    private TableView<?> T_Garnish;
-    @FXML
-    private TableColumn<?, ?> TC_NomGarnish;
-    @FXML
-    private MenuItem BTN_EditGarnish;
-    @FXML
-    private MenuItem BTN_DelGarnish;
-    @FXML
-    private Button BTN_AddGarnish;
-    @FXML
-    private TableView<?> T_Bread;
-    @FXML
-    private TableColumn<?, ?> TC_NomBread;
-    @FXML
-    private MenuItem BTN_EditBread;
-    @FXML
-    private MenuItem BTN_DelBread;
-    @FXML
-    private Button BTN_AddBread;
-    @FXML
-    private TableView<?> T_Sauce;
-    @FXML
-    private TableColumn<?, ?> TC_NomSauce;
-    @FXML
-    private MenuItem BTN_EditSauce;
-    @FXML
-    private MenuItem BTN_DelSauce;
-    @FXML
-    private Button BTN_AddSauce;
-    @FXML
-    private TableView<?> T_Drink;
-    @FXML
-    private TableColumn<?, ?> TC_NomDrink;
-    @FXML
-    private MenuItem BTN_EditDrink;
-    @FXML
-    private MenuItem BTN_DelDrink;
-    @FXML
-    private Button BTN_AddDrink;
-    @FXML
-    private TableView<?> T_Dessert;
-    @FXML
-    private TableColumn<?, ?> TC_NomDessert;
-    @FXML
-    private MenuItem BTN_EditDessert;
-    @FXML
-    private MenuItem BTN_DelDessert;
-    @FXML
-    private Button BTN_AddDessert;
-    @FXML
-    private TableView<?> T_Promo;
-    @FXML
-    private TableColumn<?, ?> TC_PromoName;
-    @FXML
-    private TableColumn<?, ?> TC_PromoDate;
-    @FXML
-    private TableColumn<?, ?> TC_PromoCategory;
-    @FXML
-    private TableColumn<?, ?> TC_PromoRecipe;
-    @FXML
-    private MenuItem BTN_EditPromo;
-    @FXML
-    private MenuItem BTN_DelPromo;
-    @FXML
-    private Button BTN_AddPromo;
+    private ListView<?> L_Recipe;
 
+    @FXML
+    private ListView<?> L_Bread;
+
+    @FXML
+    private ListView<?> L_Garnish;
+
+    @FXML
+    private ListView<?> L_Sauce;
+
+    @FXML
+    private ListView<?> L_Drink;
+
+    @FXML
+    private ListView<?> L_Dessert;
+
+    @FXML
+    private TableView<?> T_Promotion;
+    @FXML
+    private TableColumn<?, ?> TC_PromotionName;
+    @FXML
+    private TableColumn<?, ?> TC_PromotionDate;
+    @FXML
+    private TableColumn<?, ?> TC_PromotionCategory;
+    @FXML
+    private TableColumn<?, ?> TC_PromotionRecipe;
+
+    //METHODS
+    
     @FXML
     void addBread(ActionEvent event) {
 
@@ -110,7 +64,7 @@ public abstract class ControllerAccueil {
     }
 
     @FXML
-    void addPromo(ActionEvent event) {
+    void addPromotion(ActionEvent event) {
 
     }
 
@@ -145,7 +99,7 @@ public abstract class ControllerAccueil {
     }
 
     @FXML
-    void delPromo(ActionEvent event) {
+    void delPromotion(ActionEvent event) {
 
     }
 
@@ -158,7 +112,7 @@ public abstract class ControllerAccueil {
     void delSauce(ActionEvent event) {
 
     }
-    
+
     @FXML
     void editBread(ActionEvent event) {
 
@@ -180,7 +134,7 @@ public abstract class ControllerAccueil {
     }
 
     @FXML
-    void editPromo(ActionEvent event) {
+    void editPromotion(ActionEvent event) {
 
     }
 
@@ -194,12 +148,12 @@ public abstract class ControllerAccueil {
 
     }
 
-	public void goToAuthentification() throws IOException {
-		Group acteur = new Group();
-		
-    	acteur.getChildren().add(
-    			FXMLLoader.load(getClass().getResource("01_Authentification.fxml"))
-    			);
+    @FXML
+    void goToAuthentification(ActionEvent event) throws IOException{
+    	Group acteur = new Group();
+		acteur.getChildren().add(
+		FXMLLoader.load(getClass().getResource("01_Authentification.fxml"))
+		);
 		visual.Controller.setScene(acteur, "SUBPAY - Authentification");
 	}
 }
