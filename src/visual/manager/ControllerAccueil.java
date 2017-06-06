@@ -2,8 +2,6 @@ package visual.manager;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.ResourceBundle;
 
 import javafx.collections.FXCollections;
@@ -14,8 +12,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Group;
 import javafx.scene.control.*;
-import javafx.util.Callback;
-import model.product.ComponentManagement;
+
+import model.product.*;
 import model.product.composants.*;
 
 public class ControllerAccueil implements Initializable{
@@ -23,20 +21,20 @@ public class ControllerAccueil implements Initializable{
 	//ATTRIBUTES
 	
     @FXML
-    private ListView<?> L_Recipe;
+    private ListView<String> L_Recipe;
     @FXML
-    private ListView<?> L_Bread;
+    private ListView<String> L_Bread;
     @FXML
-    private ListView<?> L_Garnish;
+    private ListView<String> L_Garnish;
     @FXML
-    private ListView<?> L_Sauce;
+    private ListView<String> L_Sauce;
     @FXML
-    private ListView<?> L_Drink;
+    private ListView<String> L_Drink;
     @FXML
-    private ListView<?> L_Dessert;
+    private ListView<String> L_Dessert;
 
     @FXML
-    private TableView<?> T_Promotion;
+    private TableView<Promotion> T_Promotion;
     @FXML
     private TableColumn<?, ?> TC_PromotionName;
     @FXML
@@ -45,11 +43,49 @@ public class ControllerAccueil implements Initializable{
     private TableColumn<?, ?> TC_PromotionCategory;
     @FXML
     private TableColumn<?, ?> TC_PromotionRecipe;
+    
+    private ObservableList<String> recipeData = FXCollections.observableArrayList();
+    private ObservableList<String> breadData = FXCollections.observableArrayList();
+    private ObservableList<String> garnishData = FXCollections.observableArrayList();
+    private ObservableList<String> sauceData = FXCollections.observableArrayList();
+    private ObservableList<String> drinkData = FXCollections.observableArrayList();
+    private ObservableList<String> dessertData = FXCollections.observableArrayList();
+    private ObservableList<Promotion> promoData = FXCollections.observableArrayList();
     //METHODS
    
     @Override
     public void initialize(URL location, ResourceBundle rb){
-    	//TODO remplir les listes
+    	for (Recipe recipe : ComponentManagement.getRecipes()) {
+			recipeData.add(recipe.getName());
+		}
+    	L_Recipe.setItems(recipeData);
+    	
+    	for (Bread bread : ComponentManagement.getBreads()) {
+			breadData.add(bread.getName());
+		}
+    	L_Bread.setItems(breadData);
+    	
+    	for (Garnish garnish : ComponentManagement.getGarnishs()) {
+			garnishData.add(garnish.getName());
+		}
+    	L_Garnish.setItems(garnishData);
+    	
+    	for (Sauce sauce : ComponentManagement.getSauces()) {
+			sauceData.add(sauce.getName());
+		}
+    	L_Sauce.setItems(sauceData);
+    	
+    	for (Drink Drink : ComponentManagement.getDrinks()) {
+			drinkData.add(Drink.getName());
+		}
+    	L_Drink.setItems(drinkData);
+    	
+    	for (Dessert dessert : ComponentManagement.getDesserts()) {
+			dessertData.add(dessert.getName());
+		}
+    	L_Dessert.setItems(dessertData);
+    	
+    	//TODO Table promotion
     }
     
     @FXML
