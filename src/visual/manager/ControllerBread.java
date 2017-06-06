@@ -9,7 +9,7 @@ import javafx.scene.Group;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 
-public class ControllerAddEdit_GPSBD {
+public class ControllerBread {
 
     @FXML
     private ImageView ComponentImage;
@@ -45,8 +45,9 @@ public class ControllerAddEdit_GPSBD {
     }
 
     @FXML
-    void save(ActionEvent event) {
-
+    void save(ActionEvent event) throws IOException {
+    	
+    	goToAccueil(new ActionEvent());
     }
 
 }

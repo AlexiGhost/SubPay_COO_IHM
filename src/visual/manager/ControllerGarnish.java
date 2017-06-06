@@ -7,48 +7,28 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Group;
 import javafx.scene.control.*;
+import javafx.scene.image.ImageView;
 
-public class ControllerAddEdit_Promo {
-
-    @FXML
-    private TextField TF_Libelle;
+public class ControllerGarnish {
 
     @FXML
-    private ComboBox<?> CB_Categorie;
-
-    @FXML
-    private ComboBox<?> CB_Recipe;
-
-    @FXML
-    private TextField TF_Reduction;
-
-    @FXML
-    private DatePicker DF_EndDate;
+    private ImageView ComponentImage;
 
     @FXML
     private CheckBox CHK_New;
 
     @FXML
-    private CheckBox CHK_Auth;
+    private TextField TF_Libelle;
 
     @FXML
-    private Button BTN_Save;
+    private CheckBox CHK_Available;
 
     @FXML
-    private Button BTN_Retour;
-    
-    @FXML
-    void goToAccueil(ActionEvent event) throws IOException {
+    void goToAccueil(ActionEvent event) throws IOException{
     	Group acteur = new Group();
 		acteur.getChildren().add(
-		FXMLLoader.load(getClass().getResource("02_Accueil.fxml"))
-		);
+		FXMLLoader.load(getClass().getResource("02_Accueil.fxml")));
 		visual.Controller.setScene(acteur, "SUBPAY - Accueil");
-    }
-
-    @FXML
-    void save(ActionEvent event) {
-
     }
     
     @FXML
@@ -58,4 +38,16 @@ public class ControllerAddEdit_Promo {
 		FXMLLoader.load(getClass().getResource("01_Authentification.fxml")));
 		visual.Controller.setScene(acteur, "SUBPAY - Authentification");
     }
+
+    @FXML
+    void parcourir(ActionEvent event) {
+
+    }
+
+    @FXML
+    void save(ActionEvent event) throws IOException {
+    	
+    	goToAccueil(new ActionEvent());
+    }
+
 }
