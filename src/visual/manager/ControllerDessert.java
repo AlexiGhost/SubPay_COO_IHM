@@ -8,9 +8,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Group;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
-import model.product.composants.Bread;
+import model.product.Dessert;
 
-public class ControllerBread {
+public class ControllerDessert {
 
     @FXML
     private ImageView ComponentImage;
@@ -45,8 +45,8 @@ public class ControllerBread {
 
     @FXML
     void save(ActionEvent event) throws IOException {
-    	Bread bread = new Bread(TF_Libelle.getText(), TF_PhotoPath.getText());
-    	bread.setAvailability(CHK_Available.selectedProperty().get());
+    	Dessert dessert = new Dessert(TF_Libelle.getText(), TF_PhotoPath.getText());
+    	dessert.setAvailability(CHK_Available.selectedProperty().get());
     	//TODO set NEW
     	goToAccueil(new ActionEvent());
     }

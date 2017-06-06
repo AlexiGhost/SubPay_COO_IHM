@@ -7,48 +7,32 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Group;
 import javafx.scene.control.*;
+import javafx.scene.image.ImageView;
+import model.product.composants.Sauce;
 
 public class ControllerPromotion {
 
     @FXML
-    private TextField TF_Libelle;
-
-    @FXML
-    private ComboBox<?> CB_Categorie;
-
-    @FXML
-    private ComboBox<?> CB_Recipe;
-
-    @FXML
-    private TextField TF_Reduction;
-
-    @FXML
-    private DatePicker DF_EndDate;
+    private ImageView ComponentImage;
 
     @FXML
     private CheckBox CHK_New;
 
     @FXML
-    private CheckBox CHK_Auth;
+    private TextField TF_Libelle;
 
     @FXML
-    private Button BTN_Save;
-
-    @FXML
-    private Button BTN_Retour;
+    private TextField TF_PhotoPath;
     
     @FXML
-    void goToAccueil(ActionEvent event) throws IOException {
-    	Group acteur = new Group();
-		acteur.getChildren().add(
-		FXMLLoader.load(getClass().getResource("02_Accueil.fxml"))
-		);
-		visual.Controller.setScene(acteur, "SUBPAY - Accueil");
-    }
+    private CheckBox CHK_Available;
 
     @FXML
-    void save(ActionEvent event) {
-
+    void goToAccueil(ActionEvent event) throws IOException{
+    	Group acteur = new Group();
+		acteur.getChildren().add(
+		FXMLLoader.load(getClass().getResource("02_Accueil.fxml")));
+		visual.Controller.setScene(acteur, "SUBPAY - Accueil");
     }
     
     @FXML
@@ -58,4 +42,13 @@ public class ControllerPromotion {
 		FXMLLoader.load(getClass().getResource("01_Authentification.fxml")));
 		visual.Controller.setScene(acteur, "SUBPAY - Authentification");
     }
+
+    @FXML
+    void save(ActionEvent event) throws IOException {
+    	Sauce sauce = new Sauce(TF_Libelle.getText(), TF_PhotoPath.getText());
+    	sauce.setAvailability(CHK_Available.selectedProperty().get());
+    	//TODO set NEW
+    	goToAccueil(new ActionEvent());
+    }
+
 }

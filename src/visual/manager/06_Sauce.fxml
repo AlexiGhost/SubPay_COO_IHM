@@ -62,18 +62,12 @@
                                               <RowConstraints maxHeight="75.0" minHeight="10.0" percentHeight="15.0" prefHeight="75.0" valignment="CENTER" vgrow="SOMETIMES" />
                                             </rowConstraints>
                                              <children>
-                                                <Button mnemonicParsing="false" prefHeight="51.0" prefWidth="149.0" text="Parcourir..." GridPane.rowIndex="1">
-												</Button>
                                                 <ImageView fx:id="ComponentImage" fitHeight="344.0" fitWidth="418.0" pickOnBounds="true" preserveRatio="true">
                                                    <image>
                                                       <Image url="@../images/dessert.png" />
                                                    </image>
                                                 </ImageView>
-                                                <Button mnemonicParsing="false" onAction="#parcourir" prefHeight="51.0" prefWidth="149.0" text="Parcourir..." GridPane.rowIndex="1">
-                                                   <font>
-                                                      <Font size="24.0" />
-                                                   </font>
-                                                </Button>
+                                                <TextField fx:id="TF_PhotoPath" GridPane.rowIndex="1" />
                                              </children>
                                           </GridPane>
                                        </children>

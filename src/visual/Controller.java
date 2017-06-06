@@ -14,7 +14,7 @@ import javafx.stage.Stage;
  * */
 public class Controller extends Application { //Surtout ne pas passer sous ABSTRACT, ça fait tout planter
 	private static 				Stage 			theStage;
-	private static final		String			user = "Manager"; //A modifier selon l'interface qu'on souhaite visionner
+	private static final		String			user = "."; //A modifier selon l'interface qu'on souhaite visionner
 	
 	public void start(Stage stage) throws IOException {
 		theStage = stage;

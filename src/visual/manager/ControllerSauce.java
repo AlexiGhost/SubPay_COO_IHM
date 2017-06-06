@@ -8,6 +8,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Group;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
+import model.product.composants.Sauce;
 
 public class ControllerSauce {
 
@@ -20,6 +21,9 @@ public class ControllerSauce {
     @FXML
     private TextField TF_Libelle;
 
+    @FXML
+    private TextField TF_PhotoPath;
+    
     @FXML
     private CheckBox CHK_Available;
 
@@ -40,13 +44,10 @@ public class ControllerSauce {
     }
 
     @FXML
-    void parcourir(ActionEvent event) {
-
-    }
-
-    @FXML
     void save(ActionEvent event) throws IOException {
-    	
+    	Sauce sauce = new Sauce(TF_Libelle.getText(), TF_PhotoPath.getText());
+    	sauce.setAvailability(CHK_Available.selectedProperty().get());
+    	//TODO set NEW
     	goToAccueil(new ActionEvent());
     }
 

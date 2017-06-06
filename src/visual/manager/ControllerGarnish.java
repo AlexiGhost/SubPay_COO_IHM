@@ -8,6 +8,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Group;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
+import model.product.composants.Garnish;
 
 public class ControllerGarnish {
 
@@ -20,6 +21,9 @@ public class ControllerGarnish {
     @FXML
     private TextField TF_Libelle;
 
+    @FXML
+    private TextField TF_PhotoPath;
+    
     @FXML
     private CheckBox CHK_Available;
 
@@ -40,13 +44,10 @@ public class ControllerGarnish {
     }
 
     @FXML
-    void parcourir(ActionEvent event) {
-
-    }
-
-    @FXML
     void save(ActionEvent event) throws IOException {
-    	
+    	Garnish garnish = new Garnish(TF_Libelle.getText(), TF_PhotoPath.getText());
+    	garnish.setAvailability(CHK_Available.selectedProperty().get());
+    	//TODO set NEW
     	goToAccueil(new ActionEvent());
     }
 

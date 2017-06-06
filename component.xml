@@ -27,12 +27,6 @@
     <available>true</available>
   </garnish>
   <garnish classe="Garnish">
-    <name>basilic</name>
-    <photo>titi</photo>
-    <allergens />
-    <available>true</available>
-  </garnish>
-  <garnish classe="Garnish">
     <name>cheddar</name>
     <photo>titi</photo>
     <allergens />
@@ -45,11 +39,19 @@
     <available>true</available>
   </sauce>
   <recipe classe="Recipe">
-    <name>poulet</name>
-    <photo>C:\...</photo>
+    <name>Thon</name>
+    <photo>..\images\thon.png</photo>
     <allergens />
-    <price>214.0</price>
-    <category>mouais</category>
+    <price>7.0</price>
+    <category />
+    <available>true</available>
+  </recipe>
+  <recipe classe="Recipe">
+    <name>Jambon de dinde</name>
+    <photo>..\image\jambon.png</photo>
+    <allergens />
+    <price>5.5</price>
+    <category />
     <available>true</available>
   </recipe>
   <drink classe="Drink">
