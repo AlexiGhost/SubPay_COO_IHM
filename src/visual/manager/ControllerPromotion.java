@@ -32,7 +32,7 @@ public class ControllerPromotion {
     	Group acteur = new Group();
 		acteur.getChildren().add(
 		FXMLLoader.load(getClass().getResource("02_Accueil.fxml")));
-		visual.Controller.setScene(acteur, "SUBPAY - Accueil");
+		visual.ControllerManager.setScene(acteur, "SUBPAY - Accueil");
     }
     
     @FXML
@@ -40,7 +40,7 @@ public class ControllerPromotion {
     	Group acteur = new Group();
 		acteur.getChildren().add(
 		FXMLLoader.load(getClass().getResource("01_Authentification.fxml")));
-		visual.Controller.setScene(acteur, "SUBPAY - Authentification");
+		visual.ControllerManager.setScene(acteur, "SUBPAY - Authentification");
     }
 
     @FXML

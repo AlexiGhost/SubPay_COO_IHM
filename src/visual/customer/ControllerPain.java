@@ -12,7 +12,7 @@ public class ControllerPain {
 		acteur.getChildren().add( //Pas touche
 		FXMLLoader.load(getClass().getResource("008 Recettes.fxml")) //Ici, il faut changer le fichier fxml (la string en fait)
 		); //Pas touche
-		visual.Controller.setScene(acteur, "SUBPAY - Recettes"); //Ici, il faut laisser "SUBPAY" et changer "Accueil" selon l'interface où
+		visual.ControllerClient.setScene(acteur, "SUBPAY - Recettes"); //Ici, il faut laisser "SUBPAY" et changer "Accueil" selon l'interface où
 																//tu vas. Ca permet de changer le titre de la fenêtre (et ça marche B)  )
 	}
 	
@@ -21,7 +21,7 @@ public class ControllerPain {
 		acteur.getChildren().add( //Pas touche
 		FXMLLoader.load(getClass().getResource("005 Menu.fxml")) //Ici, il faut changer le fichier fxml (la string en fait)
 		); //Pas touche
-		visual.Controller.setScene(acteur, "SUBPAY - Menu"); //Ici, il faut laisser "SUBPAY" et changer "Accueil" selon l'interface où
+		visual.ControllerClient.setScene(acteur, "SUBPAY - Menu"); //Ici, il faut laisser "SUBPAY" et changer "Accueil" selon l'interface où
 																//tu vas. Ca permet de changer le titre de la fenêtre (et ça marche B)  )
 	}
 }

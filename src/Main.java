@@ -6,18 +6,11 @@ import java.util.List;
 import model.AuthentificatedCustomer;
 import model.CustomerManagement;
 import model.product.*;
-import visual.*;
 
+/**Cette classe reste juste pour faire des tests avec le modele*/
 public class Main {
 
-	public static void main(String[] args) {
-		ComponentManagement.importComponent("component.xml");
-		CustomerManagement.importCustomer("customer.xml");
-		new GUIThread();
-		
-		//testExportComponent();
-		//testExportCustomer();
-	}
+	
 	//Ces actions sont effectués par le manager (indirectement via bouton)
 	public static void testExportComponent(){ 
 		ComponentManagement.addBread("avoine", "C:\\...");

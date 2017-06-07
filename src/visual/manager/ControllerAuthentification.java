@@ -28,7 +28,7 @@ public class ControllerAuthentification {
 			Group acteur = new Group();
 			acteur.getChildren().add(
 					FXMLLoader.load(getClass().getResource("02_Accueil.fxml")));
-			visual.Controller.setScene(acteur, "SUBPAY - Accueil");
+			visual.ControllerManager.setScene(acteur, "SUBPAY - Accueil");
 		} else {
 			TEXT_ERROR.setText("ID : admin \n Password : admin");
 		}

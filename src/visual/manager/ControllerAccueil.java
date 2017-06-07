@@ -96,7 +96,7 @@ public class ControllerAccueil implements Initializable{
 		acteur.getChildren().add(
 		FXMLLoader.load(getClass().getResource("04_Bread.fxml"))
 		);
-		visual.Controller.setScene(acteur, "SUBPAY - Bread Editor");
+		visual.ControllerManager.setScene(acteur, "SUBPAY - Bread Editor");
     }
 
     @FXML
@@ -105,7 +105,7 @@ public class ControllerAccueil implements Initializable{
 		acteur.getChildren().add(
 		FXMLLoader.load(getClass().getResource("08_Dessert.fxml"))
 		);
-		visual.Controller.setScene(acteur, "SUBPAY - Dessert Editor");
+		visual.ControllerManager.setScene(acteur, "SUBPAY - Dessert Editor");
     }
 
     @FXML
@@ -114,7 +114,7 @@ public class ControllerAccueil implements Initializable{
 		acteur.getChildren().add(
 		FXMLLoader.load(getClass().getResource("07_Drink.fxml"))
 		);
-		visual.Controller.setScene(acteur, "SUBPAY - Drink Editor");
+		visual.ControllerManager.setScene(acteur, "SUBPAY - Drink Editor");
     }
 
     @FXML
@@ -123,7 +123,7 @@ public class ControllerAccueil implements Initializable{
 		acteur.getChildren().add(
 		FXMLLoader.load(getClass().getResource("05_Garnish.fxml"))
 		);
-		visual.Controller.setScene(acteur, "SUBPAY - Garnish Editor");
+		visual.ControllerManager.setScene(acteur, "SUBPAY - Garnish Editor");
     }
 
     @FXML
@@ -132,7 +132,7 @@ public class ControllerAccueil implements Initializable{
 		acteur.getChildren().add(
 		FXMLLoader.load(getClass().getResource("09_Promotion.fxml"))
 		);
-		visual.Controller.setScene(acteur, "SUBPAY - Promotion Editor");
+		visual.ControllerManager.setScene(acteur, "SUBPAY - Promotion Editor");
     }
 
     @FXML
@@ -141,7 +141,7 @@ public class ControllerAccueil implements Initializable{
 		acteur.getChildren().add(
 		FXMLLoader.load(getClass().getResource("03_Recipe.fxml"))
 		);
-		visual.Controller.setScene(acteur, "SUBPAY - Recipe Editor");
+		visual.ControllerManager.setScene(acteur, "SUBPAY - Recipe Editor");
     }
 
     @FXML
@@ -150,7 +150,7 @@ public class ControllerAccueil implements Initializable{
 		acteur.getChildren().add(
 		FXMLLoader.load(getClass().getResource("06_Sauce.fxml"))
 		);
-		visual.Controller.setScene(acteur, "SUBPAY - Sauce Editor");
+		visual.ControllerManager.setScene(acteur, "SUBPAY - Sauce Editor");
     }
 
     @FXML
@@ -237,7 +237,7 @@ public class ControllerAccueil implements Initializable{
 		acteur.getChildren().add(
 		FXMLLoader.load(getClass().getResource("04_Bread.fxml"))
 		);
-		visual.Controller.setScene(acteur, "SUBPAY - Bread Editor");
+		visual.ControllerManager.setScene(acteur, "SUBPAY - Bread Editor");
     }
 
     @FXML
@@ -246,7 +246,7 @@ public class ControllerAccueil implements Initializable{
 		acteur.getChildren().add(
 		FXMLLoader.load(getClass().getResource("08_Dessert.fxml"))
 		);
-		visual.Controller.setScene(acteur, "SUBPAY - Dessert Editor");
+		visual.ControllerManager.setScene(acteur, "SUBPAY - Dessert Editor");
     }
 
     @FXML
@@ -255,7 +255,7 @@ public class ControllerAccueil implements Initializable{
 		acteur.getChildren().add(
 		FXMLLoader.load(getClass().getResource("07_Drink.fxml"))
 		);
-		visual.Controller.setScene(acteur, "SUBPAY - Drink Editor");
+		visual.ControllerManager.setScene(acteur, "SUBPAY - Drink Editor");
     }
 
     @FXML
@@ -264,7 +264,7 @@ public class ControllerAccueil implements Initializable{
 		acteur.getChildren().add(
 		FXMLLoader.load(getClass().getResource("05_Garnish.fxml"))
 		);
-		visual.Controller.setScene(acteur, "SUBPAY - Garnish Editor");
+		visual.ControllerManager.setScene(acteur, "SUBPAY - Garnish Editor");
     }
     
     @FXML
@@ -273,7 +273,7 @@ public class ControllerAccueil implements Initializable{
 		acteur.getChildren().add(
 		FXMLLoader.load(getClass().getResource("09_Promotion.fxml"))
 		);
-		visual.Controller.setScene(acteur, "SUBPAY - Promotion Editor");
+		visual.ControllerManager.setScene(acteur, "SUBPAY - Promotion Editor");
     }
 
     @FXML
@@ -282,7 +282,7 @@ public class ControllerAccueil implements Initializable{
 		acteur.getChildren().add(
 		FXMLLoader.load(getClass().getResource("03_Recipe.fxml"))
 		);
-		visual.Controller.setScene(acteur, "SUBPAY - Recipe Editor");
+		visual.ControllerManager.setScene(acteur, "SUBPAY - Recipe Editor");
     }
 
     @FXML
@@ -291,7 +291,7 @@ public class ControllerAccueil implements Initializable{
 		acteur.getChildren().add(
 		FXMLLoader.load(getClass().getResource("06_Sauce.fxml"))
 		);
-		visual.Controller.setScene(acteur, "SUBPAY - Sauce Editor");
+		visual.ControllerManager.setScene(acteur, "SUBPAY - Sauce Editor");
     }
 
     @FXML
@@ -300,7 +300,7 @@ public class ControllerAccueil implements Initializable{
 		acteur.getChildren().add(
 		FXMLLoader.load(getClass().getResource("01_Authentification.fxml"))
 		);
-		visual.Controller.setScene(acteur, "SUBPAY - Authentification");
+		visual.ControllerManager.setScene(acteur, "SUBPAY - Authentification");
 	}
 
 }

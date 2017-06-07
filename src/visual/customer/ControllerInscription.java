@@ -14,7 +14,7 @@ public class ControllerInscription {
 		acteur.getChildren().add( //Pas touche
 		FXMLLoader.load(getClass().getResource("004.1 Accueil (authentifier).fxml")) //Ici, il faut changer le fichier fxml (la string en fait)
 		); //Pas touche
-		visual.Controller.setScene(acteur, "SUBPAY - Accueil Auth"); //Ici, il faut laisser "SUBPAY" et changer "Accueil" selon l'interface où
+		visual.ControllerClient.setScene(acteur, "SUBPAY - Accueil Auth"); //Ici, il faut laisser "SUBPAY" et changer "Accueil" selon l'interface où
 																//tu vas. Ca permet de changer le titre de la fenêtre (et ça marche B)  )
 	}
 	
@@ -24,7 +24,7 @@ public class ControllerInscription {
 		acteur.getChildren().add( //Pas touche
 		FXMLLoader.load(getClass().getResource("004 Accueil.fxml")) //Ici, il faut changer le fichier fxml (la string en fait)
 		); //Pas touche
-		visual.Controller.setScene(acteur, "SUBPAY - Accueil"); //Ici, il faut laisser "SUBPAY" et changer "Accueil" selon l'interface où
+		visual.ControllerClient.setScene(acteur, "SUBPAY - Accueil"); //Ici, il faut laisser "SUBPAY" et changer "Accueil" selon l'interface où
 																//tu vas. Ca permet de changer le titre de la fenêtre (et ça marche B)  )
 	}
 }
