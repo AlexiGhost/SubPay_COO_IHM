@@ -8,7 +8,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Group;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
+import model.product.ComponentManagement;
 import model.product.composants.Bread;
+import model.product.composants.Sauce;
 
 public class ControllerBread {
 
@@ -47,7 +49,8 @@ public class ControllerBread {
     void save(ActionEvent event) throws IOException {
     	Bread bread = new Bread(TF_Libelle.getText(), TF_PhotoPath.getText());
     	bread.setAvailability(CHK_Available.selectedProperty().get());
-    	//TODO set NEW
+    	ComponentManagement.getBreads().add(bread);
+    	ComponentManagement.exportComponent("component.xml");
     	goToAccueil(new ActionEvent());
     }
 

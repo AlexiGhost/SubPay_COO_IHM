@@ -8,6 +8,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Group;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
+import model.product.ComponentManagement;
 import model.product.composants.Sauce;
 
 public class ControllerSauce {
@@ -47,7 +48,8 @@ public class ControllerSauce {
     void save(ActionEvent event) throws IOException {
     	Sauce sauce = new Sauce(TF_Libelle.getText(), TF_PhotoPath.getText());
     	sauce.setAvailability(CHK_Available.selectedProperty().get());
-    	//TODO set NEW
+    	ComponentManagement.getSauces().add(sauce);
+    	ComponentManagement.exportComponent("component.xml");
     	goToAccueil(new ActionEvent());
     }
 

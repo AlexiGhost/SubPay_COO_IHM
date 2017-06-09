@@ -10,7 +10,7 @@ import javafx.stage.Stage;
 import model.CustomerManagement;
 import model.product.ComponentManagement;
 
-public class ControllerClient extends Application { //Surtout ne pas passer sous ABSTRACT, ça fait tout planter
+public class ControllerClient extends Application {
 	private static 				Stage 			theStage;
 	
 	public static void main(String[] args) {

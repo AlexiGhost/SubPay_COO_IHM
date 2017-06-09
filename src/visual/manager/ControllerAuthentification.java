@@ -20,8 +20,8 @@ public class ControllerAuthentification {
 	
 	private Text TEXT_ERROR;
 	
-	String user = "admin";
-	String password = "admin";
+	String user = "";
+	String password = "";
 	
 	public void goToAccueil() throws IOException {
 		if(TF_Password.getText().equals(user) && TF_Password.getText().equals(password)){
@@ -30,7 +30,7 @@ public class ControllerAuthentification {
 					FXMLLoader.load(getClass().getResource("02_Accueil.fxml")));
 			visual.ControllerManager.setScene(acteur, "SUBPAY - Accueil");
 		} else {
-			TEXT_ERROR.setText("ID : admin \n Password : admin");
+			TEXT_ERROR.setText("ID : "+user+"\n Password : "+password);
 		}
 	}
 	

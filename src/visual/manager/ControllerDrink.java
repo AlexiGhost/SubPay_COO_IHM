@@ -8,6 +8,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Group;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
+import model.product.ComponentManagement;
 import model.product.Drink;
 
 public class ControllerDrink {
@@ -47,7 +48,8 @@ public class ControllerDrink {
     void save(ActionEvent event) throws IOException {
     	Drink drink = new Drink(TF_Libelle.getText(), TF_PhotoPath.getText());
     	drink.setAvailability(CHK_Available.selectedProperty().get());
-    	//TODO set NEW
+    	ComponentManagement.getDrinks().add(drink);
+    	ComponentManagement.exportComponent("component.xml");
     	goToAccueil(new ActionEvent());
     }
 

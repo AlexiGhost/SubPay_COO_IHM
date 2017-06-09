@@ -54,6 +54,14 @@
     <category />
     <available>true</available>
   </recipe>
+  <recipe classe="Recipe">
+    <name>Roti</name>
+    <photo />
+    <allergens />
+    <price>7.0</price>
+    <category />
+    <available>true</available>
+  </recipe>
   <drink classe="Drink">
     <name>cola cola</name>
     <photo>toto</photo>
@@ -67,18 +75,27 @@
     <available>true</available>
   </dessert>
   <promo classe="Promotion">
-    <name>mercredi</name>
+    <name>Les pieds dans l'eau</name>
     <recipes>
-      <recipe>poulet</recipe>
-      <recipe>kebab</recipe>
+      <recipe>Thon</recipe>
+      <recipe>Jambon de dinde</recipe>
+      <recipe>Roti</recipe>
     </recipes>
-    <authCustomerOnly>false</authCustomerOnly>
-    <percentage>5.5</percentage>
+    <category />
+    <authCustomerOnly>true</authCustomerOnly>
+    <percentage>20.0</percentage>
+    <date>30062017</date>
   </promo>
   <promo classe="Promotion">
-    <name>auth</name>
-    <recipes />
-    <authCustomerOnly>true</authCustomerOnly>
-    <percentage>1.0</percentage>
+    <name>gb</name>
+    <recipes>
+      <recipe>Thon</recipe>
+      <recipe>Jambon de dinde</recipe>
+      <recipe>Roti</recipe>
+    </recipes>
+    <category />
+    <authCustomerOnly>false</authCustomerOnly>
+    <percentage>100.0</percentage>
+    <date>29052017</date>
   </promo>
 </Composants>

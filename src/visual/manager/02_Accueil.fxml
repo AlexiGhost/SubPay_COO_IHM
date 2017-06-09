@@ -274,10 +274,12 @@
                                     </Button>
                                     <TableView fx:id="T_Promotion" prefHeight="200.0" prefWidth="200.0">
                                       <columns>
-                                        <TableColumn fx:id="TC_PromotionName" prefWidth="414.0" text="Nom" />
-                                        <TableColumn fx:id="TC_PromotionDate" minWidth="1.0" prefWidth="295.0" text="Date de fin" />
-                                          <TableColumn fx:id="TC_PromotionCategory" prefWidth="278.0" text="Categorie" />
-                                          <TableColumn fx:id="TC_PromotionRecipe" prefWidth="278.0" text="Recette" />
+                                        <TableColumn fx:id="TC_PromotionName" prefWidth="263.0" text="Nom" />
+                                          <TableColumn fx:id="TC_PromotionReduction" prefWidth="139.0" text="Reduction (%)" />
+                                        <TableColumn fx:id="TC_PromotionDate" minWidth="1.0" prefWidth="124.0" text="Date de fin" />
+                                          <TableColumn fx:id="TC_PromotionCategory" prefWidth="273.0" text="Categorie" />
+                                          <TableColumn fx:id="TC_PromotionRecipe" prefWidth="248.0" text="Recette" />
+                                          <TableColumn fx:id="TC_PromotionAuth" prefWidth="232.0" text="Authentification requise" />
                                       </columns>
                                        <contextMenu>
                                           <ContextMenu>

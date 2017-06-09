@@ -8,6 +8,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Group;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
+import model.product.ComponentManagement;
 import model.product.Dessert;
 
 public class ControllerDessert {
@@ -47,7 +48,8 @@ public class ControllerDessert {
     void save(ActionEvent event) throws IOException {
     	Dessert dessert = new Dessert(TF_Libelle.getText(), TF_PhotoPath.getText());
     	dessert.setAvailability(CHK_Available.selectedProperty().get());
-    	//TODO set NEW
+    	ComponentManagement.getDesserts().add(dessert);
+    	ComponentManagement.exportComponent("component.xml");
     	goToAccueil(new ActionEvent());
     }
 

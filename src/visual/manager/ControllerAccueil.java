@@ -2,6 +2,8 @@ package visual.manager;
 
 import java.io.IOException;
 import java.net.URL;
+import java.time.Year;
+import java.util.Calendar;
 import java.util.ResourceBundle;
 
 import javax.swing.JOptionPane;
@@ -14,7 +16,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Group;
 import javafx.scene.control.*;
-
+import javafx.scene.control.cell.PropertyValueFactory;
 import model.product.*;
 import model.product.composants.*;
 
@@ -22,29 +24,20 @@ public class ControllerAccueil implements Initializable{
     
 	//ATTRIBUTES
 	
-    @FXML
-    private ListView<String> L_Recipe;
-    @FXML
-    private ListView<String> L_Bread;
-    @FXML
-    private ListView<String> L_Garnish;
-    @FXML
-    private ListView<String> L_Sauce;
-    @FXML
-    private ListView<String> L_Drink;
-    @FXML
-    private ListView<String> L_Dessert;
+    @FXML private ListView<String> L_Recipe;
+    @FXML private ListView<String> L_Bread;
+    @FXML private ListView<String> L_Garnish;
+    @FXML private ListView<String> L_Sauce;
+    @FXML private ListView<String> L_Drink;
+    @FXML private ListView<String> L_Dessert;
 
-    @FXML
-    private TableView<Promotion> T_Promotion;
-    @FXML
-    private TableColumn<?, ?> TC_PromotionName;
-    @FXML
-    private TableColumn<?, ?> TC_PromotionDate;
-    @FXML
-    private TableColumn<?, ?> TC_PromotionCategory;
-    @FXML
-    private TableColumn<?, ?> TC_PromotionRecipe;
+    @FXML private TableView<Promotion> T_Promotion;
+    @FXML private TableColumn<Promotion, String> TC_PromotionName;
+    @FXML private TableColumn<Promotion, Integer> TC_PromotionReduction;
+    @FXML private TableColumn<Promotion, Integer> TC_PromotionDate;
+    @FXML private TableColumn<Promotion, String> TC_PromotionCategory;
+    @FXML private TableColumn<Promotion, String> TC_PromotionRecipe;
+    @FXML private TableColumn<Promotion, Boolean> TC_PromotionAuth;
     
     private ObservableList<String> recipeData = FXCollections.observableArrayList();
     private ObservableList<String> breadData = FXCollections.observableArrayList();
@@ -87,7 +80,33 @@ public class ControllerAccueil implements Initializable{
 		}
     	L_Dessert.setItems(dessertData);
     	
-    	//TODO Table promotion
+    	for (Promotion promotion : ComponentManagement.getPromotions()) {
+			String date = Integer.toString(promotion.getDate());
+			int annee = Integer.valueOf(date.substring(4));
+			System.out.println(annee+" "+Calendar.getInstance().get(Calendar.YEAR));
+			//TODO TODO !
+			if(annee > Calendar.getInstance().get(Calendar.YEAR)) promoData.add(promotion);
+			else if(annee == Calendar.getInstance().get(Calendar.YEAR)){
+				int mois = Integer.valueOf(date.substring(2,4));
+				System.out.println(mois+" "+Calendar.getInstance().get(Calendar.MONTH));
+				if(mois >= Calendar.getInstance().get(Calendar.MONTH)){
+					int jour = Integer.valueOf(date.substring(0, 2));
+					System.out.println(jour+" "+Calendar.getInstance().get(Calendar.DAY_OF_MONTH));
+					if(jour >= Calendar.getInstance().get(Calendar.DAY_OF_MONTH)){
+						promoData.add(promotion);						
+					} else ComponentManagement.delPromotion(promotion.getName());
+				} else ComponentManagement.delPromotion(promotion.getName());
+			} else ComponentManagement.delPromotion(promotion.getName());
+    		
+    	}
+    	TC_PromotionName.setCellValueFactory(new PropertyValueFactory<Promotion, String>("name"));
+    	TC_PromotionReduction.setCellValueFactory(new PropertyValueFactory<Promotion, Integer>("percentage"));
+    	TC_PromotionDate.setCellValueFactory(new PropertyValueFactory<Promotion, Integer>("date"));
+    	TC_PromotionCategory.setCellValueFactory(new PropertyValueFactory<Promotion, String>("category"));
+    	TC_PromotionRecipe.setCellValueFactory(new PropertyValueFactory<Promotion, String>("recipe"));
+    	TC_PromotionAuth.setCellValueFactory(new PropertyValueFactory<Promotion, Boolean>("authCustomer"));
+    	T_Promotion.setItems(promoData);
+    	
     }
     
     @FXML
@@ -203,8 +222,18 @@ public class ControllerAccueil implements Initializable{
 
     @FXML
     void delPromotion(ActionEvent event) {
-    	//TODO del promo
-    	ComponentManagement.exportComponent("component.xml");
+    	String name = T_Promotion.getSelectionModel().getSelectedItem().getName();
+    	int dialogResult = JOptionPane.showConfirmDialog (null, "Vous êtes sur le point de supprimer '"+name+"'","Warning", JOptionPane.YES_NO_OPTION);
+    	if(dialogResult == JOptionPane.YES_OPTION){
+    		promoData.remove(name);
+    		ComponentManagement.delPromotion(name);
+    	}
+    	ObservableList<Promotion> tmp = FXCollections.observableArrayList();
+    	tmp = promoData;
+    	promoData.removeAll(promoData);
+    	promoData = tmp;
+    	T_Promotion.setItems(promoData);
+		ComponentManagement.exportComponent("component.xml");
     }
 
     @FXML

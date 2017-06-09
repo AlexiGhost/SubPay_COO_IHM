@@ -276,13 +276,14 @@ public class ComponentManagement {
 	public static void exportComponent(String xmlFile) {
 		Element racine = new Element("Composants");
 		Document composants = new Document(racine);
-		String name;
-		String photo;
-		Boolean available;
-		Double price;
-		String category;
-		Double percentage;
-		Boolean authCustomer;
+		String name = null;
+		String photo = null;
+		Boolean available = null;
+		Double price = null;
+		String category = null;
+		Double percentage = null;
+		Boolean authCustomer = null;
+		Integer date = null;
 		List<String> list = null;
 		try {
 			//BREAD
@@ -506,6 +507,8 @@ public class ComponentManagement {
 				authCustomer = promo.getAuthCustomer();
 				percentage = promo.getPercentage();
 				list = promo.getRecipes();
+				category = promo.getCategory();
+				date = promo.getDate();
 				//creation d'une branche
 				Element Epromo = new Element("promo");
 				racine.addContent(Epromo);
@@ -523,6 +526,10 @@ public class ComponentManagement {
 					Erecipes.addContent(Erecipe);
 				}
 				Epromo.addContent(Erecipes);
+				//ajout categorie
+				Element Ecategory = new Element("category");
+				Ecategory.setText(category);
+				Epromo.addContent(Ecategory);
 				//ajout authOnly
 				Element EauthCustumer = new Element("authCustomerOnly");
 				EauthCustumer.setText(authCustomer.toString());
@@ -531,6 +538,10 @@ public class ComponentManagement {
 				Element Epercentage = new Element("percentage");
 				Epercentage.setText(percentage.toString());
 				Epromo.addContent(Epercentage);
+				//ajout date
+				Element Edate = new Element("date");
+				Edate.setText(date.toString());
+				Epromo.addContent(Edate);
 			}
 			XMLOutputter sortie = new XMLOutputter(Format.getPrettyFormat());
 			sortie.output(composants, new FileOutputStream(xmlFile));
@@ -555,13 +566,14 @@ public class ComponentManagement {
 			document = sxb.build(new File(xmlFile));
 			racine = document.getRootElement();
 		} catch (JDOMException | IOException e) {}
-		String name;
-		String photo;
-		Boolean available;
-		Double price;
-		String category;
-		Double percentage;
-		Boolean authCustomer;
+		String name = null;
+		String photo = null;
+		Boolean available = null;
+		Double price = null;
+		String category = null;
+		Double percentage = null;
+		Boolean authCustomer = null;
+		Integer date = null;
 		//BREAD
 		List<Element> listImport = racine.getChildren("bread");
 		for (Element component : listImport) {
@@ -683,6 +695,9 @@ public class ComponentManagement {
 			photo = component.getChildText("photo");
 			percentage = Double.valueOf(component.getChildText("percentage"));
 			authCustomer = Boolean.valueOf(component.getChildText("authCustomerOnly"));
+			date = Integer.valueOf(component.getChildText("date"));
+			category = component.getChildText("category");
+			
 			//creation promotion
 			promotions.add(new Promotion(name, percentage, authCustomer));
 			int index = promotions.size()-1;
@@ -694,8 +709,12 @@ public class ComponentManagement {
 			for (Element recipe : listRecipe) {
 				promotions.get(index).addRecipe(recipe.getText()); 					
 			}
+			//ajout categorie
+			promotions.get(index).setCategory(category);
 			//ajout %age
 			promotions.get(index).setPercentage(percentage);
+			//ajout date
+			promotions.get(index).setDate(date);
 		}
 	}
 }
