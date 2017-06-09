@@ -20,6 +20,7 @@ public class ComponentManagement {
 	private static List<Promotion> promotions = new ArrayList<Promotion>();
 	private static List<Drink> drinks = new ArrayList<Drink>();
 	private static List<Dessert> desserts = new ArrayList<Dessert>();
+	private static String componentPath = "component.xml";
 
 // ---------- Lists Management (ADD/DEL/EDIT) ----------
 	//BreadList management
@@ -268,6 +269,12 @@ public class ComponentManagement {
 			}
 		}
 		return null;
+	}
+	
+	//path
+	
+	public static String getComponentPath() {
+		return componentPath;
 	}
 
 // ---------- IMPORT / EXPORT ----------

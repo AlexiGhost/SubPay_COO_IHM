@@ -10,15 +10,10 @@ import javafx.scene.text.Text;
 
 public class ControllerAuthentification {
 	
-	@FXML
-	private TextField TF_Login;
-	@FXML
-	private PasswordField TF_Password;
-	@FXML
-	private Button BTN_Connection;	
-	@FXML
-	
-	private Text TEXT_ERROR;
+	@FXML private TextField TF_Login;
+	@FXML private PasswordField TF_Password;
+	@FXML private Button BTN_Connection;	
+	@FXML private Text TEXT_ERROR;
 	
 	String user = "";
 	String password = "";

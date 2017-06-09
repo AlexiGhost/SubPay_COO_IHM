@@ -1,12 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Composants>
   <bread classe="Bread">
-    <name>avoine</name>
-    <photo>C:\...</photo>
-    <allergens />
-    <available>true</available>
-  </bread>
-  <bread classe="Bread">
     <name>mie</name>
     <photo>C:\...</photo>
     <allergens>
@@ -15,8 +9,14 @@
     <available>true</available>
   </bread>
   <bread classe="Bread">
+    <name>avoine</name>
+    <photo>..\images\bread\avoine.png</photo>
+    <allergens />
+    <available>true</available>
+  </bread>
+  <bread classe="Bread">
     <name>olive</name>
-    <photo>C:\...</photo>
+    <photo>..\images\bread\olive.png</photo>
     <allergens />
     <available>true</available>
   </bread>

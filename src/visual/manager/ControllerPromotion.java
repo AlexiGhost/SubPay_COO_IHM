@@ -12,22 +12,17 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Group;
 import javafx.scene.control.*;
-import javafx.scene.image.ImageView;
 import model.product.ComponentManagement;
 import model.product.composants.Promotion;
 import model.product.composants.Recipe;
 
 public class ControllerPromotion implements Initializable{
 
-    @FXML private ImageView ComponentImage;
-
     @FXML private CheckBox CHK_Auth;
 
     @FXML private TextField TF_Libelle;
     @FXML private TextField TF_PhotoPath;
     @FXML private TextField TF_Reduction;
-    
-    @FXML private CheckBox CHK_Available;
     
     @FXML private DatePicker DF_EndDate;
 
@@ -40,6 +35,8 @@ public class ControllerPromotion implements Initializable{
     @FXML private ListView<String> L_Recipe;
     private ObservableList<String> recipeData = FXCollections.observableArrayList();
     
+    private String promoName = ControllerAccueil.getSelectedItem();
+    
     @Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		for (Recipe recipe : ComponentManagement.getRecipes()) {
@@ -47,6 +44,16 @@ public class ControllerPromotion implements Initializable{
 		}
     	CB_Recipe.setItems(recipeList);
     	CB_Categorie.setItems(categoryList);
+    	if(promoName != ""){
+    		Promotion promo = ComponentManagement.getPromotion(promoName);
+			TF_Libelle.setText(promoName);
+			CB_Categorie.setValue(promo.getCategory());
+			recipeData.addAll(promo.getRecipes());
+			L_Recipe.setItems(recipeData);
+			recipeData.clear();
+			//TODO "importer" date
+			CHK_Auth.selectedProperty().set(promo.getAuthCustomer());
+    	}
 	}
     
     @FXML void addRecipe(ActionEvent event) {
@@ -90,8 +97,14 @@ public class ControllerPromotion implements Initializable{
 
     @FXML
     void save(ActionEvent event) throws IOException {
+    //recuperation des données
+    	//nom
     	String name = TF_Libelle.getText();
+    	if(name == "") {TF_Libelle.setPromptText("Libelle necessaire"); return;}
+    	//%age
     	double percentage = Double.valueOf(TF_Reduction.getText());
+    	if(percentage > 100 || percentage <= 0) {TF_Reduction.setStyle("-fx-text-inner-color: red;"); return;}
+    	//date
     	String date = "";
     	Integer jour = DF_EndDate.getValue().getDayOfMonth();
     	if (jour < 10) date += "0"+jour.toString();
@@ -104,14 +117,18 @@ public class ControllerPromotion implements Initializable{
     	
     	boolean auth = CHK_Auth.selectedProperty().get();
     	String category = CB_Categorie.selectionModelProperty().getValue().getSelectedItem();
+    	if(category == "" && recipeList.isEmpty()) return;
     	Promotion promo = new Promotion(name, percentage, auth);
     	promo.setRecipes(recipeList);
     	promo.setCategory(category);
     	promo.setDate(date);
+    //ajout dans le système
+    	if(promo.getName() == ""){TF_Libelle.setPromptText("Veuillez donner un nom"); return;}
+    	if(promoName != ""){
+    		Promotion oldPromotions = ComponentManagement.getPromotion(promoName);
+    		ComponentManagement.getPromotions().remove(oldPromotions);
+    	}
     	ComponentManagement.getPromotions().add(promo);
-    	for (Promotion p : ComponentManagement.getPromotions()) {
-			System.out.println(p.getName());
-		}
     	ComponentManagement.exportComponent("component.xml");
     	goToAccueil(new ActionEvent());
     }

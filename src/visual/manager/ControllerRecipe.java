@@ -15,29 +15,20 @@ import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import model.product.ComponentManagement;
 import model.product.composants.Recipe;
+import model.product.composants.Recipe;
 
 public class ControllerRecipe implements Initializable{
 
-    @FXML
-    private ImageView ComponentImage;
-
-    @FXML
-    private CheckBox CHK_New;
-
-    @FXML
-    private TextField TF_Libelle;
-
-    @FXML
-    private TextField TF_PhotoPath;
-    
-    @FXML
-    private CheckBox CHK_Available;
-
-    
-    @FXML
-    private ComboBox<String> CMB_Categorie;
+    @FXML private ImageView ComponentImage;
+    @FXML private CheckBox CHK_New;
+    @FXML private TextField TF_Libelle;
+    @FXML private TextField TF_PhotoPath;
+    @FXML private CheckBox CHK_Available;
+    @FXML private ComboBox<String> CMB_Categorie;
     
     private ObservableList<String> categoryData = FXCollections.observableArrayList("Mouais", "Bof", "Ca passe");
+    
+    private String recipeName = ControllerAccueil.getSelectedItem();
     
     @Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -46,6 +37,13 @@ public class ControllerRecipe implements Initializable{
 		}
     	CMB_Categorie.setItems(categoryData);
     	CMB_Categorie.setValue("Mouais");
+    	
+    	if(recipeName != ""){
+    		Recipe recipe = ComponentManagement.getRecipe(recipeName);
+			TF_Libelle.setText(recipeName);
+			TF_PhotoPath.setText(recipe.getPhoto());
+			CHK_Available.selectedProperty().set(recipe.getAvailability());
+    	}
     }
     
     @FXML
@@ -82,7 +80,12 @@ public class ControllerRecipe implements Initializable{
     	}
     	if(!TF_Libelle.getText().isEmpty()){
     		Recipe recipe = new Recipe(TF_Libelle.getText(), TF_PhotoPath.getText(), price, CMB_Categorie.getSelectionModel().getSelectedItem().toString());
-            ComponentManagement.addRecipe(recipe.getName(), recipe.getCategory(), recipe.getPrice(), recipe.getPhoto());
+    		if(recipe.getName() == ""){TF_Libelle.setPromptText("Veuillez donner un nom"); return;}
+        	if(recipeName != ""){
+        		Recipe oldRecipe = ComponentManagement.getRecipe(recipeName);
+        		ComponentManagement.getRecipes().remove(oldRecipe);
+        	}
+    		ComponentManagement.addRecipe(recipe.getName(), recipe.getCategory(), recipe.getPrice(), recipe.getPhoto());
             ComponentManagement.exportComponent("component.xml");
             goToAccueil(new ActionEvent());
     	} else TF_Libelle.setPromptText("Vous n'avez pas donnée de libellé");	

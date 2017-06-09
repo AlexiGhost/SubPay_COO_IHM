@@ -49,10 +49,16 @@ public class ControllerAccueil implements Initializable{
     private ObservableList<String> drinkData = FXCollections.observableArrayList();
     private ObservableList<String> dessertData = FXCollections.observableArrayList();
     private ObservableList<Promotion> promoData = FXCollections.observableArrayList();
+    
+    //Attributs temporaires (pour autres controller)
+    
+    private static String selectedItem = "";
+    
     //METHODS
    
     @Override
     public void initialize(URL location, ResourceBundle rb){
+    	//initialisation des listes (pains, sauces, ...)
     	for (Recipe recipe : ComponentManagement.getRecipes()) {
 			recipeData.add(recipe.getName());
 		}
@@ -95,10 +101,7 @@ public class ControllerAccueil implements Initializable{
 				int month = Calendar.getInstance().get(Calendar.MONTH)+1;
 				int day = Calendar.getInstance().get(Calendar.DAY_OF_MONTH);
 				boolean deletePromotion = false;
-				
-				System.out.println("actuel : \n"+day+"-"+month+"-"+year);
-				System.out.println(promotion.getName()+" :  \n"+jour+"-"+mois+"-"+annee);
-				
+				//verification date
 				if(annee > year) {
 					promoData.add(promotion);					
 				} else if(annee == year){
@@ -110,7 +113,6 @@ public class ControllerAccueil implements Initializable{
 						} else deletePromotion = true;
 					} else deletePromotion = true;
 				} else deletePromotion = true;
-				
 	    		if(deletePromotion){
 	    			deletePromotionList.add(promotion);
 	    			javax.swing.JOptionPane.showMessageDialog(null,"La promotion '"+promotion.getName()+"'\na expirée\n("+jour+"/"+mois+"/"+annee+")"); 
@@ -120,6 +122,7 @@ public class ControllerAccueil implements Initializable{
     			ComponentManagement.getPromotions().removeAll(deletePromotionList);
     			ComponentManagement.exportComponent(componentPath);
     		}
+    		//initialisation Table promotion
 	    	TC_PromotionName.setCellValueFactory(new PropertyValueFactory<Promotion, String>("name"));
 	    	TC_PromotionReduction.setCellValueFactory(new PropertyValueFactory<Promotion, Integer>("percentage"));
 	    	TC_PromotionDate.setCellValueFactory(new PropertyValueFactory<Promotion, Integer>("date"));
@@ -283,6 +286,7 @@ public class ControllerAccueil implements Initializable{
 
     @FXML
     void editBread(ActionEvent event) throws IOException{
+    	selectedItem = L_Bread.getSelectionModel().getSelectedItem();
     	Group acteur = new Group();
 		acteur.getChildren().add(
 		FXMLLoader.load(getClass().getResource("04_Bread.fxml"))
@@ -292,6 +296,7 @@ public class ControllerAccueil implements Initializable{
 
     @FXML
     void editDessert(ActionEvent event) throws IOException{
+    	selectedItem = L_Dessert.getSelectionModel().getSelectedItem();
     	Group acteur = new Group();
 		acteur.getChildren().add(
 		FXMLLoader.load(getClass().getResource("08_Dessert.fxml"))
@@ -301,6 +306,7 @@ public class ControllerAccueil implements Initializable{
 
     @FXML
     void editDrink(ActionEvent event) throws IOException{
+    	selectedItem = L_Drink.getSelectionModel().getSelectedItem();
     	Group acteur = new Group();
 		acteur.getChildren().add(
 		FXMLLoader.load(getClass().getResource("07_Drink.fxml"))
@@ -310,6 +316,7 @@ public class ControllerAccueil implements Initializable{
 
     @FXML
     void editGarnish(ActionEvent event) throws IOException{
+    	selectedItem = L_Garnish.getSelectionModel().getSelectedItem();
     	Group acteur = new Group();
 		acteur.getChildren().add(
 		FXMLLoader.load(getClass().getResource("05_Garnish.fxml"))
@@ -319,6 +326,7 @@ public class ControllerAccueil implements Initializable{
     
     @FXML
     void editPromotion(ActionEvent event) throws IOException{
+    	selectedItem = T_Promotion.getSelectionModel().getSelectedItem().getName();
     	Group acteur = new Group();
 		acteur.getChildren().add(
 		FXMLLoader.load(getClass().getResource("09_Promotion.fxml"))
@@ -328,6 +336,7 @@ public class ControllerAccueil implements Initializable{
 
     @FXML
     void editRecipe(ActionEvent event) throws IOException{
+    	selectedItem = L_Recipe.getSelectionModel().getSelectedItem();
     	Group acteur = new Group();
 		acteur.getChildren().add(
 		FXMLLoader.load(getClass().getResource("03_Recipe.fxml"))
@@ -337,6 +346,7 @@ public class ControllerAccueil implements Initializable{
 
     @FXML
     void editSauce(ActionEvent event) throws IOException{
+    	selectedItem = L_Sauce.getSelectionModel().getSelectedItem();
     	Group acteur = new Group();
 		acteur.getChildren().add(
 		FXMLLoader.load(getClass().getResource("06_Sauce.fxml"))
@@ -351,6 +361,11 @@ public class ControllerAccueil implements Initializable{
 		FXMLLoader.load(getClass().getResource("01_Authentification.fxml"))
 		);
 		visual.ControllerManager.setScene(acteur, "SUBPAY - Authentification");
+	}
+    
+    /**Return the selected item in the list*/
+    public static String getSelectedItem() {
+		return selectedItem;
 	}
 
 }
