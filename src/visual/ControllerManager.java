@@ -30,9 +30,6 @@ public class ControllerManager extends Application {
     }
 	
     public static void initialize() {
-    	ComponentManagement.getPromotion("mercedi").setDate(30062017);
-    	ComponentManagement.getPromotion("auth").setDate(02122017);
-    	ComponentManagement.getPromotion("auth").setCategory("Mouais");
     	launch();
     }
     

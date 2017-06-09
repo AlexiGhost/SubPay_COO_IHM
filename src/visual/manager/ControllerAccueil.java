@@ -2,8 +2,9 @@ package visual.manager;
 
 import java.io.IOException;
 import java.net.URL;
-import java.time.Year;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 import java.util.ResourceBundle;
 
 import javax.swing.JOptionPane;
@@ -23,6 +24,8 @@ import model.product.composants.*;
 public class ControllerAccueil implements Initializable{
     
 	//ATTRIBUTES
+	
+	private String componentPath = "component.xml";	
 	
     @FXML private ListView<String> L_Recipe;
     @FXML private ListView<String> L_Bread;
@@ -80,33 +83,51 @@ public class ControllerAccueil implements Initializable{
 		}
     	L_Dessert.setItems(dessertData);
     	
-    	for (Promotion promotion : ComponentManagement.getPromotions()) {
-			String date = Integer.toString(promotion.getDate());
-			int annee = Integer.valueOf(date.substring(4));
-			System.out.println(annee+" "+Calendar.getInstance().get(Calendar.YEAR));
-			//TODO TODO !
-			if(annee > Calendar.getInstance().get(Calendar.YEAR)) promoData.add(promotion);
-			else if(annee == Calendar.getInstance().get(Calendar.YEAR)){
+    	if(!ComponentManagement.getPromotions().isEmpty()){
+    		//Ajout de la promotion (sauf si expirée)
+	    	List<Promotion> deletePromotionList = new ArrayList<>();
+    		for (Promotion promotion : ComponentManagement.getPromotions()) {				
+	    		String date = promotion.getDate();
+				int annee = Integer.valueOf(date.substring(4));
 				int mois = Integer.valueOf(date.substring(2,4));
-				System.out.println(mois+" "+Calendar.getInstance().get(Calendar.MONTH));
-				if(mois >= Calendar.getInstance().get(Calendar.MONTH)){
-					int jour = Integer.valueOf(date.substring(0, 2));
-					System.out.println(jour+" "+Calendar.getInstance().get(Calendar.DAY_OF_MONTH));
-					if(jour >= Calendar.getInstance().get(Calendar.DAY_OF_MONTH)){
-						promoData.add(promotion);						
-					} else ComponentManagement.delPromotion(promotion.getName());
-				} else ComponentManagement.delPromotion(promotion.getName());
-			} else ComponentManagement.delPromotion(promotion.getName());
-    		
+				int jour = Integer.valueOf(date.substring(0, 2));
+				int year = Calendar.getInstance().get(Calendar.YEAR);
+				int month = Calendar.getInstance().get(Calendar.MONTH)+1;
+				int day = Calendar.getInstance().get(Calendar.DAY_OF_MONTH);
+				boolean deletePromotion = false;
+				
+				System.out.println("actuel : \n"+day+"-"+month+"-"+year);
+				System.out.println(promotion.getName()+" :  \n"+jour+"-"+mois+"-"+annee);
+				
+				if(annee > year) {
+					promoData.add(promotion);					
+				} else if(annee == year){
+					if(mois > month) {
+						promoData.add(promotion);					
+					} else if(mois == month){
+						if(jour >= day){
+							promoData.add(promotion);
+						} else deletePromotion = true;
+					} else deletePromotion = true;
+				} else deletePromotion = true;
+				
+	    		if(deletePromotion){
+	    			deletePromotionList.add(promotion);
+	    			javax.swing.JOptionPane.showMessageDialog(null,"La promotion '"+promotion.getName()+"'\na expirée\n("+jour+"/"+mois+"/"+annee+")"); 
+	    		}
+	    	}
+    		if(!deletePromotionList.isEmpty()){
+    			ComponentManagement.getPromotions().removeAll(deletePromotionList);
+    			ComponentManagement.exportComponent(componentPath);
+    		}
+	    	TC_PromotionName.setCellValueFactory(new PropertyValueFactory<Promotion, String>("name"));
+	    	TC_PromotionReduction.setCellValueFactory(new PropertyValueFactory<Promotion, Integer>("percentage"));
+	    	TC_PromotionDate.setCellValueFactory(new PropertyValueFactory<Promotion, Integer>("date"));
+	    	TC_PromotionCategory.setCellValueFactory(new PropertyValueFactory<Promotion, String>("category"));
+	    	TC_PromotionRecipe.setCellValueFactory(new PropertyValueFactory<Promotion, String>("recipe"));
+	    	TC_PromotionAuth.setCellValueFactory(new PropertyValueFactory<Promotion, Boolean>("authCustomer"));
+	    	T_Promotion.setItems(promoData);
     	}
-    	TC_PromotionName.setCellValueFactory(new PropertyValueFactory<Promotion, String>("name"));
-    	TC_PromotionReduction.setCellValueFactory(new PropertyValueFactory<Promotion, Integer>("percentage"));
-    	TC_PromotionDate.setCellValueFactory(new PropertyValueFactory<Promotion, Integer>("date"));
-    	TC_PromotionCategory.setCellValueFactory(new PropertyValueFactory<Promotion, String>("category"));
-    	TC_PromotionRecipe.setCellValueFactory(new PropertyValueFactory<Promotion, String>("recipe"));
-    	TC_PromotionAuth.setCellValueFactory(new PropertyValueFactory<Promotion, Boolean>("authCustomer"));
-    	T_Promotion.setItems(promoData);
-    	
     }
     
     @FXML

@@ -283,7 +283,7 @@ public class ComponentManagement {
 		String category = null;
 		Double percentage = null;
 		Boolean authCustomer = null;
-		Integer date = null;
+		String date = null;
 		List<String> list = null;
 		try {
 			//BREAD
@@ -573,7 +573,7 @@ public class ComponentManagement {
 		String category = null;
 		Double percentage = null;
 		Boolean authCustomer = null;
-		Integer date = null;
+		String date = null;
 		//BREAD
 		List<Element> listImport = racine.getChildren("bread");
 		for (Element component : listImport) {
@@ -695,7 +695,7 @@ public class ComponentManagement {
 			photo = component.getChildText("photo");
 			percentage = Double.valueOf(component.getChildText("percentage"));
 			authCustomer = Boolean.valueOf(component.getChildText("authCustomerOnly"));
-			date = Integer.valueOf(component.getChildText("date"));
+			date = component.getChildText("date");
 			category = component.getChildText("category");
 			
 			//creation promotion

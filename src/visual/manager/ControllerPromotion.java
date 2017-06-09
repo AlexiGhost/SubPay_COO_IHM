@@ -92,10 +92,9 @@ public class ControllerPromotion implements Initializable{
     void save(ActionEvent event) throws IOException {
     	String name = TF_Libelle.getText();
     	double percentage = Double.valueOf(TF_Reduction.getText());
-    	System.out.println(DF_EndDate.getValue().toString());
-    	String date;
+    	String date = "";
     	Integer jour = DF_EndDate.getValue().getDayOfMonth();
-    	if (jour < 10) date = "0"+jour.toString();
+    	if (jour < 10) date += "0"+jour.toString();
     	else date = jour.toString();
     	Integer mois = DF_EndDate.getValue().getMonth().getValue();
     	if (mois < 10) date += "0"+mois.toString();
@@ -108,7 +107,7 @@ public class ControllerPromotion implements Initializable{
     	Promotion promo = new Promotion(name, percentage, auth);
     	promo.setRecipes(recipeList);
     	promo.setCategory(category);
-    	promo.setDate(Integer.valueOf(date));
+    	promo.setDate(date);
     	ComponentManagement.getPromotions().add(promo);
     	for (Promotion p : ComponentManagement.getPromotions()) {
 			System.out.println(p.getName());

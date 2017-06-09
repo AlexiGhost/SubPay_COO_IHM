@@ -8,14 +8,14 @@ public class Promotion {
     private String category;
     private double percentage;
     private boolean authCustomer;
-    private int date;
+    private String date;
     /**Create a promotion*/
     public Promotion(String name, double percentage, boolean auth) {
     	this.name = name;
     	this.percentage = percentage;
     	authCustomer = auth;
 	}
-    public Promotion(String name, double percentage, boolean auth, List<String> recipeList, String cat, int endDate) {
+    public Promotion(String name, double percentage, boolean auth, List<String> recipeList, String cat, String endDate) {
     	this(name, percentage, auth);
     	setRecipes(recipeList);
     	setCategory(cat);
@@ -91,11 +91,11 @@ public class Promotion {
     }
     //date
     /**Set the end date of the promotion*/
-    public void setDate(int date){
+    public void setDate(String date){
     	this.date = date;
     }
     /**Return the end date of the promotion*/
-    public int getDate(){
+    public String getDate(){
     	return date;
     }
 }

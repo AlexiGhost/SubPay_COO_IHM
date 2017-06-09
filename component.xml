@@ -38,6 +38,12 @@
     <allergens />
     <available>true</available>
   </sauce>
+  <sauce classe="Sauce">
+    <name>samuraï</name>
+    <photo />
+    <allergens />
+    <available>true</available>
+  </sauce>
   <recipe classe="Recipe">
     <name>Thon</name>
     <photo>..\images\thon.png</photo>
@@ -84,18 +90,6 @@
     <category />
     <authCustomerOnly>true</authCustomerOnly>
     <percentage>20.0</percentage>
-    <date>30062017</date>
-  </promo>
-  <promo classe="Promotion">
-    <name>gb</name>
-    <recipes>
-      <recipe>Thon</recipe>
-      <recipe>Jambon de dinde</recipe>
-      <recipe>Roti</recipe>
-    </recipes>
-    <category />
-    <authCustomerOnly>false</authCustomerOnly>
-    <percentage>100.0</percentage>
-    <date>29052017</date>
+    <date>31082017</date>
   </promo>
 </Composants>
