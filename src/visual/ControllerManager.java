@@ -10,9 +10,8 @@ import javafx.stage.Stage;
 import model.CustomerManagement;
 import model.product.ComponentManagement;
 
-public class ControllerClient extends Application {
-	private static 				Stage 			theStage;
-	
+public class ControllerManager extends Application {
+	private static 				Stage 			theStage;	
 	public static void main(String[] args) {
 		ComponentManagement.importComponent("component.xml");
 		CustomerManagement.importCustomer("customer.xml");
@@ -22,15 +21,18 @@ public class ControllerClient extends Application {
 	public void start(Stage stage) throws IOException {
 		theStage = stage;
     	Group acteur = new Group();
-	    acteur.getChildren().add(
-	    FXMLLoader.load(getClass().getResource("customer/001 Bonjour.fxml"))
-	    );
+    	acteur.getChildren().add(
+	    FXMLLoader.load(getClass().getResource("manager/01_Authentification.fxml")));
+    	theStage.setTitle("SUBPAY - Authentification");    	
     	Scene scene = new Scene(acteur, 1280.0, 720.0);
         theStage.setScene(scene);
         theStage.show();
     }
 	
     public static void initialize() {
+    	ComponentManagement.getPromotion("mercedi").setDate(30062017);
+    	ComponentManagement.getPromotion("auth").setDate(02122017);
+    	ComponentManagement.getPromotion("auth").setCategory("Mouais");
     	launch();
     }
     
@@ -42,5 +44,3 @@ public class ControllerClient extends Application {
         theStage.show();
 	}
 }
-
-//comm de debug, a supprimer
