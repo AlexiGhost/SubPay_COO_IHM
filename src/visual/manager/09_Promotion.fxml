@@ -3,7 +3,10 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.ContextMenu?>
 <?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
@@ -15,7 +18,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="visual.manager.ControllerAddEditPromo">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="visual.manager.ControllerPromotion">
    <children>
       <SplitPane layoutY="-1.0" orientation="VERTICAL" prefHeight="720.0" prefWidth="1280.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
       <GridPane prefHeight="720.0" prefWidth="1280.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -43,7 +46,7 @@
                               <Image url="@../images/Logo.png" />
                            </image>
                         </ImageView>
-                        <Button mnemonicParsing="false" prefHeight="70.0" prefWidth="237.0" text="Deconnexion" GridPane.columnIndex="1">
+                        <Button mnemonicParsing="false" onAction="#goToAuthentification" prefHeight="70.0" prefWidth="237.0" text="Deconnexion" GridPane.columnIndex="1">
                            <font>
                               <Font size="24.0" />
                            </font>
@@ -61,13 +64,13 @@
                     <rowConstraints>
                         <RowConstraints minHeight="10.0" percentHeight="14.0" prefHeight="30.0" vgrow="SOMETIMES" />
                         <RowConstraints minHeight="10.0" percentHeight="14.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" percentHeight="14.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" percentHeight="50.0" prefHeight="30.0" vgrow="SOMETIMES" />
                         <RowConstraints minHeight="10.0" percentHeight="14.0" prefHeight="30.0" vgrow="SOMETIMES" />
                       <RowConstraints minHeight="10.0" percentHeight="14.0" prefHeight="30.0" vgrow="SOMETIMES" />
                       <RowConstraints minHeight="10.0" percentHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <GridPane GridPane.rowIndex="1">
+                        <GridPane>
                           <columnConstraints>
                             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="20.0" prefWidth="100.0" />
                             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="50.0" prefWidth="100.0" />
@@ -90,8 +93,9 @@
                             <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                           </columnConstraints>
                           <rowConstraints>
+                              <RowConstraints minHeight="10.0" percentHeight="15.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" percentHeight="20.0" prefHeight="30.0" vgrow="SOMETIMES" />
                               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                           </rowConstraints>
                            <children>
                               <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Recette" GridPane.columnIndex="1">
@@ -105,7 +109,30 @@
                                  </font>
                               </Text>
                               <ComboBox fx:id="CB_Categorie" prefWidth="150.0" GridPane.rowIndex="1" />
-                              <ComboBox fx:id="CB_Recipe" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                              <ListView fx:id="L_Recipe" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                 <contextMenu>
+                                    <ContextMenu>
+                                      <items>
+                                        <MenuItem mnemonicParsing="false" onAction="#deleteRecipe" text="Supprimer" />
+                                      </items>
+                                    </ContextMenu>
+                                 </contextMenu>
+                              </ListView>
+                              <GridPane GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                <columnConstraints>
+                                  <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                  <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" minWidth="10.0" percentWidth="10.0" prefWidth="100.0" />
+                                    <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                </columnConstraints>
+                                <rowConstraints>
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                </rowConstraints>
+                                 <children>
+                                    <ComboBox fx:id="CB_Recipe" prefWidth="150.0" />
+                                    <Button mnemonicParsing="false" onAction="#addRecipe" text="Ajouter" GridPane.columnIndex="1" />
+                                    <Button mnemonicParsing="false" onAction="#clearRecipe" text="Vider" GridPane.columnIndex="2" />
+                                 </children>
+                              </GridPane>
                            </children>
                         </GridPane>
                         <GridPane GridPane.rowIndex="3">
@@ -128,7 +155,7 @@
                         <GridPane GridPane.rowIndex="4">
                           <columnConstraints>
                             <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" percentWidth="20.0" prefWidth="100.0" />
-                            <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" minWidth="10.0" percentWidth="50.0" prefWidth="100.0" />
+                            <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" minWidth="10.0" percentWidth="20.0" prefWidth="20.0" />
                           </columnConstraints>
                           <rowConstraints>
                             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -140,27 +167,6 @@
                                  </font>
                               </Text>
                               <DatePicker fx:id="DF_EndDate" GridPane.columnIndex="1" />
-                           </children>
-                        </GridPane>
-                        <GridPane>
-                          <columnConstraints>
-                            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                          </columnConstraints>
-                          <rowConstraints>
-                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                          </rowConstraints>
-                           <children>
-                              <CheckBox fx:id="CHK_New" mnemonicParsing="false" text="Nouveauté">
-                                 <font>
-                                    <Font size="24.0" />
-                                 </font>
-                              </CheckBox>
-                              <CheckBox fx:id="CHK_Auth" mnemonicParsing="false" text="Réservé client authentifié" GridPane.columnIndex="1">
-                                 <font>
-                                    <Font size="24.0" />
-                                 </font>
-                              </CheckBox>
                            </children>
                         </GridPane>
                         <GridPane GridPane.rowIndex="5">
@@ -177,11 +183,26 @@
                                     <Font size="24.0" />
                                  </font>
                               </Button>
-                              <Button fx:id="BTN_Retour" mnemonicParsing="false" onAction="#retour" prefHeight="58.0" prefWidth="134.0" text="Retour" GridPane.columnIndex="1">
+                              <Button fx:id="BTN_Retour" mnemonicParsing="false" onAction="#goToAccueil" prefHeight="58.0" prefWidth="134.0" text="Retour" GridPane.columnIndex="1">
                                  <font>
                                     <Font size="24.0" />
                                  </font>
                               </Button>
+                           </children>
+                        </GridPane>
+                        <GridPane GridPane.rowIndex="1">
+                          <columnConstraints>
+                            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                          </columnConstraints>
+                          <rowConstraints>
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                           <children>
+                              <CheckBox fx:id="CHK_Auth" mnemonicParsing="false" text="Réservé client authentifié">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </CheckBox>
                            </children>
                         </GridPane>
                      </children>

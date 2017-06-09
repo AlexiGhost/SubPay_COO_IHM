@@ -30,12 +30,18 @@ public class ComponentManagement {
 	}
 	/**Delete a specific bread from the component list*/
 	public static void delBread(String name){
-		for (Bread bread : breads) {
-			if(bread.getName() == name){
-				int index = breads.indexOf(bread);
-				breads.remove(index);
+		if(breads.size() == 1 && breads.get(0).getName() == name){
+			breads.clear();
+		} else { 
+			for (Bread bread : breads) {
+				if(bread.getName() == name){
+					int index = breads.indexOf(bread);
+					breads.remove(index);
+					break;
+				}
 			}
 		}
+		ComponentManagement.exportComponent("component.xml");
 	}
 	//GarnishList management
 	/**Add a garnish to the component list*/
@@ -45,12 +51,18 @@ public class ComponentManagement {
 	}
 	/**Delete a specific garnish from the component list*/
 	public static void delGarnish(String name){
-		for (Garnish garnish : garnishs) {
-			if(garnish.getName() == name){
-				int index = garnishs.indexOf(garnish);
-				garnishs.remove(index);
+		if(garnishs.size() == 1 && garnishs.get(0).getName() == name){
+			garnishs.clear();
+		} else { 
+			for (Garnish garnish : garnishs) {
+				if(garnish.getName() == name){
+					int index = garnishs.indexOf(garnish);
+					garnishs.remove(index);
+					break;
+				}
 			}
 		}
+		ComponentManagement.exportComponent("component.xml");
 	}
 	//SauceList management
 	/**Add a sauce to the component list*/
@@ -60,12 +72,18 @@ public class ComponentManagement {
 	}
 	/**Delete a specific sauce from the component list*/
 	public static void delSauce(String name){
-		for (Sauce sauce : sauces) {
-			if(sauce.getName() == name){
-				int index = sauces.indexOf(sauce);
-				sauces.remove(index);
+		if(sauces.size() == 1 && sauces.get(0).getName() == name){
+			sauces.clear();
+		} else { 
+			for (Sauce sauce : sauces) {
+				if(sauce.getName() == name){
+					int index = sauces.indexOf(sauce);
+					sauces.remove(index);
+					break;
+				}
 			}
 		}
+		ComponentManagement.exportComponent("component.xml");
 	}
 	//RecipeList management
 	/**Add a recipe to the component list*/
@@ -75,12 +93,18 @@ public class ComponentManagement {
 	}
 	/**Delete a specific recipe from the component list*/
 	public static void delRecipe(String name){
-		for (Recipe recipe : recipes) {
-			if(recipe.getName() == name){
-				int index = recipes.indexOf(recipe);
-				recipes.remove(index);
+		if(recipes.size() == 1 && recipes.get(0).getName() == name){
+			recipes.clear();
+		} else {
+			for (Recipe recipe : recipes) {
+				if(recipe.getName() == name){
+					int index = recipes.indexOf(recipe);
+					recipes.remove(index);
+					break;
+				}
 			}
 		}
+		ComponentManagement.exportComponent("component.xml");
 	}
 	//PromotionList management
 	/**Add a promotion to the component list*/
@@ -90,12 +114,18 @@ public class ComponentManagement {
 	}
 	/**Delete a specific promotion from the component list*/
 	public static void delPromotion(String name){
-		for (Promotion promo : promotions) {
-			if(promo.getName() == name){
-				int index = promotions.indexOf(promo);
-				promotions.remove(index);
-			}
+		if(promotions.size() == 1 && promotions.get(0).getName() == name){
+			promotions.clear();
+		} else {
+			for (Promotion promo : promotions) {
+				if(promo.getName() == name){
+					int index = promotions.indexOf(promo);
+					promotions.remove(index);
+					break;
+				}
+			}	
 		}
+		ComponentManagement.exportComponent("component.xml");
 	}
 	//DrinkList management
 	/**Add a drink to the component list*/
@@ -105,12 +135,18 @@ public class ComponentManagement {
 	}
 	/**Delete a specific drink from the component list*/
 	public static void delDrink(String name){
-		for (Drink drink : drinks) {
-			if(drink.getName() == name){
-				int index = drinks.indexOf(drink);
-				drinks.remove(index);
-			}
+		if(drinks.size() == 1 && drinks.get(0).getName() == name){
+			drinks.clear();
+		} else {
+			for (Drink drink : drinks) {
+				if(drink.getName() == name){
+					int index = drinks.indexOf(drink);
+					drinks.remove(index);
+					break;
+				}
+			}	
 		}
+		ComponentManagement.exportComponent("component.xml");
 	}
 	//DessertList management
 	/**Add a dessert to the component list*/
@@ -120,12 +156,18 @@ public class ComponentManagement {
 	}
 	/**Delete a specific dessert from the component list*/
 	public static void delDessert(String name){
-		for (Dessert dessert : desserts) {
-			if(dessert.getName() == name){
-				int index = desserts.indexOf(dessert);
-				desserts.remove(index);
+		if(desserts.size() == 1 && desserts.get(0).getName() == name){
+			desserts.clear();
+		} else {
+			for (Dessert dessert : desserts) {
+				if(dessert.getName() == name){
+					int index = desserts.indexOf(dessert);
+					desserts.remove(index);
+					break;
+				}
 			}
 		}
+		ComponentManagement.exportComponent("component.xml");
 	}
 	
 // ---------- GETTERS / SETTERS ----------
@@ -234,13 +276,14 @@ public class ComponentManagement {
 	public static void exportComponent(String xmlFile) {
 		Element racine = new Element("Composants");
 		Document composants = new Document(racine);
-		String name;
-		String photo;
-		Boolean available;
-		Double price;
-		String category;
-		Double percentage;
-		Boolean authCustomer;
+		String name = null;
+		String photo = null;
+		Boolean available = null;
+		Double price = null;
+		String category = null;
+		Double percentage = null;
+		Boolean authCustomer = null;
+		Integer date = null;
 		List<String> list = null;
 		try {
 			//BREAD
@@ -464,6 +507,8 @@ public class ComponentManagement {
 				authCustomer = promo.getAuthCustomer();
 				percentage = promo.getPercentage();
 				list = promo.getRecipes();
+				category = promo.getCategory();
+				date = promo.getDate();
 				//creation d'une branche
 				Element Epromo = new Element("promo");
 				racine.addContent(Epromo);
@@ -481,6 +526,10 @@ public class ComponentManagement {
 					Erecipes.addContent(Erecipe);
 				}
 				Epromo.addContent(Erecipes);
+				//ajout categorie
+				Element Ecategory = new Element("category");
+				Ecategory.setText(category);
+				Epromo.addContent(Ecategory);
 				//ajout authOnly
 				Element EauthCustumer = new Element("authCustomerOnly");
 				EauthCustumer.setText(authCustomer.toString());
@@ -489,6 +538,10 @@ public class ComponentManagement {
 				Element Epercentage = new Element("percentage");
 				Epercentage.setText(percentage.toString());
 				Epromo.addContent(Epercentage);
+				//ajout date
+				Element Edate = new Element("date");
+				Edate.setText(date.toString());
+				Epromo.addContent(Edate);
 			}
 			XMLOutputter sortie = new XMLOutputter(Format.getPrettyFormat());
 			sortie.output(composants, new FileOutputStream(xmlFile));
@@ -513,13 +566,14 @@ public class ComponentManagement {
 			document = sxb.build(new File(xmlFile));
 			racine = document.getRootElement();
 		} catch (JDOMException | IOException e) {}
-		String name;
-		String photo;
-		Boolean available;
-		Double price;
-		String category;
-		Double percentage;
-		Boolean authCustomer;
+		String name = null;
+		String photo = null;
+		Boolean available = null;
+		Double price = null;
+		String category = null;
+		Double percentage = null;
+		Boolean authCustomer = null;
+		Integer date = null;
 		//BREAD
 		List<Element> listImport = racine.getChildren("bread");
 		for (Element component : listImport) {
@@ -641,6 +695,9 @@ public class ComponentManagement {
 			photo = component.getChildText("photo");
 			percentage = Double.valueOf(component.getChildText("percentage"));
 			authCustomer = Boolean.valueOf(component.getChildText("authCustomerOnly"));
+			date = Integer.valueOf(component.getChildText("date"));
+			category = component.getChildText("category");
+			
 			//creation promotion
 			promotions.add(new Promotion(name, percentage, authCustomer));
 			int index = promotions.size()-1;
@@ -652,8 +709,12 @@ public class ComponentManagement {
 			for (Element recipe : listRecipe) {
 				promotions.get(index).addRecipe(recipe.getText()); 					
 			}
+			//ajout categorie
+			promotions.get(index).setCategory(category);
 			//ajout %age
 			promotions.get(index).setPercentage(percentage);
+			//ajout date
+			promotions.get(index).setDate(date);
 		}
 	}
 }

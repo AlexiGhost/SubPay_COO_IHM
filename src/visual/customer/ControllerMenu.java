@@ -1,8 +1,6 @@
 package visual.customer;
 
 import java.io.IOException;
-import model.*;
-
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Group;
 
@@ -15,7 +13,7 @@ public class ControllerMenu {
 		acteur.getChildren().add( //Pas touche
 		FXMLLoader.load(getClass().getResource("007 Pain.fxml")) //Ici, il faut changer le fichier fxml (la string en fait)
 		); //Pas touche
-		visual.Controller.setScene(acteur, "SUBPAY - Pain"); //Ici, il faut laisser "SUBPAY" et changer "Accueil" selon l'interface où
+		visual.ControllerClient.setScene(acteur, "SUBPAY - Pain"); //Ici, il faut laisser "SUBPAY" et changer "Accueil" selon l'interface où
 																//tu vas. Ca permet de changer le titre de la fenêtre (et ça marche B)  )
 		
 	}
@@ -26,7 +24,7 @@ public class ControllerMenu {
 		acteur.getChildren().add( //Pas touche
 		FXMLLoader.load(getClass().getResource("007 Pain.fxml")) //Ici, il faut changer le fichier fxml (la string en fait)
 		); //Pas touche
-		visual.Controller.setScene(acteur, "SUBPAY - Pain"); //Ici, il faut laisser "SUBPAY" et changer "Accueil" selon l'interface où
+		visual.ControllerClient.setScene(acteur, "SUBPAY - Pain"); //Ici, il faut laisser "SUBPAY" et changer "Accueil" selon l'interface où
 																//tu vas. Ca permet de changer le titre de la fenêtre (et ça marche B)  )
 	}
 	public static boolean getChoice() {
