@@ -1,10 +1,8 @@
 package model.product.composants;
 
-import java.util.*;
-
 public class Promotion {
 	private String name;
-    private List<String> recipes = new ArrayList<String>();
+    private String recipe;
     private String category;
     private double percentage;
     private boolean authCustomer;
@@ -15,31 +13,12 @@ public class Promotion {
     	this.percentage = percentage;
     	authCustomer = auth;
 	}
-    public Promotion(String name, double percentage, boolean auth, List<String> recipeList, String cat, String endDate) {
+    public Promotion(String name, double percentage, boolean auth, String recipe, String cat, String endDate) {
     	this(name, percentage, auth);
-    	setRecipes(recipeList);
+    	setRecipe(recipe);
     	setCategory(cat);
     	setDate(endDate);
 	}
-//RecipesList editor    
-    /**Add a recipe of the promotion*/
-    public void addRecipe(String recipeName){
-    	recipes.add(recipeName);
-    }
-    /**Delete a recipe of the promotion*/
-    public void delRecipe(String recipeName){
-    	int index;
-    	for(String rec : recipes){
-    		if(recipeName == rec){
-    			index = recipes.indexOf(rec);
-    			recipes.remove(index);
-    		}
-    	}
-    }
-    /**Delete all recipes of the promotion*/
-    public void delRecipes(){
-    	recipes.clear();
-    }
     
 //GETTERS/SETTERS
     //name
@@ -51,15 +30,15 @@ public class Promotion {
     public String getName(){
     	return name;
     }
-    //recipes
-    /**Return the recipe list of the promotion*/
-    public List<String> getRecipes(){
-		return recipes;
-    }
-    /**Define the recipe list of the promotion*/
-    public void setRecipes(List<String> recipeList){
-		recipes = recipeList;
-    }
+    //recipe
+    /**Set the recipe of the promotion*/
+    public void setRecipe(String recipe) {
+		this.recipe = recipe;
+	}
+    /**Return the recipe of the promotion*/
+    public String getRecipe() {
+		return recipe;
+	}
     //category
     /**Set the category of the promotion*/
     public void setCategory(String category){

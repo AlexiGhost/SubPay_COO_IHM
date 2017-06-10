@@ -32,9 +32,6 @@ public class ControllerPromotion implements Initializable{
     @FXML private ComboBox<String> CB_Recipe;
     private ObservableList<String> recipeList = FXCollections.observableArrayList();
     
-    @FXML private ListView<String> L_Recipe;
-    private ObservableList<String> recipeData = FXCollections.observableArrayList();
-    
     private String promoName = ControllerAccueil.getSelectedItem();
     
     @Override
@@ -49,37 +46,11 @@ public class ControllerPromotion implements Initializable{
 			TF_Libelle.setText(promoName);
 			TF_Reduction.setText(Double.toString(promo.getPercentage()));
 			CB_Categorie.setValue(promo.getCategory());
-			//TODO corriger affichage recettes
-			recipeData.addAll(promo.getRecipes());
-			L_Recipe.setItems(recipeData);
-			recipeData.clear();
+			CB_Recipe.setValue(promo.getRecipe());
 			//TODO "importer" date
 			CHK_Auth.selectedProperty().set(promo.getAuthCustomer());
     	}
 	}
-    
-    @FXML void addRecipe(ActionEvent event) {
-    	String recipe = CB_Recipe.selectionModelProperty().getValue().getSelectedItem();
-    	boolean exist = false;
-    	for (String r : recipeData) {
-			if (r.equals(recipe)) exist = true;
-		}
-    	if(!exist || recipeData.isEmpty()) recipeData.add(recipe);
-    	if(recipeData != null) L_Recipe.setItems(recipeData);
-    }
-
-    @FXML
-    void deleteRecipe(ActionEvent event) {
-    	String recipe = CB_Recipe.selectionModelProperty().getValue().getSelectedItem();
-    	recipeData.remove(recipe);
-    	L_Recipe.setItems(recipeData);
-    }
-    
-    @FXML
-    void clearRecipe(ActionEvent event){
-    	recipeData.clear();
-    	L_Recipe.setItems(recipeData);
-    }
     
     @FXML
     void goToAccueil(ActionEvent event) throws IOException{
@@ -119,9 +90,10 @@ public class ControllerPromotion implements Initializable{
     	
     	boolean auth = CHK_Auth.selectedProperty().get();
     	String category = CB_Categorie.selectionModelProperty().getValue().getSelectedItem();
+    	String recipe = CB_Recipe.selectionModelProperty().getValue().getSelectedItem();
     	if(category == "" && recipeList.isEmpty()) return;
     	Promotion promo = new Promotion(name, percentage, auth);
-    	promo.setRecipes(recipeList);
+    	promo.setRecipe(recipe);
     	promo.setCategory(category);
     	promo.setDate(date);
     //ajout dans le système

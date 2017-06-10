@@ -15,7 +15,6 @@ import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import model.product.ComponentManagement;
 import model.product.composants.Recipe;
-import model.product.composants.Recipe;
 
 public class ControllerRecipe implements Initializable{
 

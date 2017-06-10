@@ -81,12 +81,16 @@
     <available>true</available>
   </dessert>
   <promo classe="Promotion">
+    <name>Bof ? A la trappe</name>
+    <recipe />
+    <category>Bof</category>
+    <authCustomerOnly>false</authCustomerOnly>
+    <percentage>10.0</percentage>
+    <date>01012018</date>
+  </promo>
+  <promo classe="Promotion">
     <name>Les pieds dans l'eau</name>
-    <recipes>
-      <recipe>Thon</recipe>
-      <recipe>Jambon de dinde</recipe>
-      <recipe>Roti</recipe>
-    </recipes>
+    <recipe>Thon</recipe>
     <category />
     <authCustomerOnly>true</authCustomerOnly>
     <percentage>20.0</percentage>

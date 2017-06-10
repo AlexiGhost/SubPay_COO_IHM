@@ -513,7 +513,7 @@ public class ComponentManagement {
 				name = promo.getName();
 				authCustomer = promo.getAuthCustomer();
 				percentage = promo.getPercentage();
-				list = promo.getRecipes();
+				String recipe = promo.getRecipe();
 				category = promo.getCategory();
 				date = promo.getDate();
 				//creation d'une branche
@@ -525,14 +525,10 @@ public class ComponentManagement {
 				Element Ename = new Element("name");
 				Ename.setText(name);
 				Epromo.addContent(Ename);
-				//ajout recipes
-				Element Erecipes = new Element("recipes");
-				for (String recipe : list) {
-					Element Erecipe = new Element("recipe");
-					Erecipe.setText(recipe);
-					Erecipes.addContent(Erecipe);
-				}
-				Epromo.addContent(Erecipes);
+				//ajout recipe
+				Element Erecipe = new Element("recipe");
+				Erecipe.setText(recipe);
+				Epromo.addContent(Erecipe);					
 				//ajout categorie
 				Element Ecategory = new Element("category");
 				Ecategory.setText(category);
@@ -711,11 +707,8 @@ public class ComponentManagement {
 			//ajout authCustomer
 			promotions.get(index).setAuthCustomer(authCustomer);
 			//ajout listRecipes
-			Element recipes = component.getChild("recipes");
-			List<Element> listRecipe = recipes.getChildren();
-			for (Element recipe : listRecipe) {
-				promotions.get(index).addRecipe(recipe.getText()); 					
-			}
+			String recipe = component.getChildText("recipe");
+			promotions.get(index).setRecipe(recipe);
 			//ajout categorie
 			promotions.get(index).setCategory(category);
 			//ajout %age

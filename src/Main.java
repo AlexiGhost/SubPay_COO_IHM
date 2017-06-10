@@ -27,8 +27,6 @@ public class Main {
 		ComponentManagement.addPromotion("mercredi", 5.5, false);
 		ComponentManagement.addPromotion("auth", 1, true);
 		ComponentManagement.addRecipe("poulet", "mouais", 214, "C:\\...");
-		ComponentManagement.getPromotion("mercredi").addRecipe("poulet");
-		ComponentManagement.getPromotion("mercredi").addRecipe("kebab");
 		ComponentManagement.addGarnish("tomate", "titi");
 		ComponentManagement.addGarnish("basilic", "titi");
 		ComponentManagement.addGarnish("cheddar", "titi");
