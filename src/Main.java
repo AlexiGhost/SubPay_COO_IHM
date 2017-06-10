@@ -6,7 +6,7 @@ import java.util.List;
 import model.AuthentificatedCustomer;
 import model.CustomerManagement;
 import model.product.*;
-
+//TODO supprimer cette classe a la fin du projet
 /**Cette classe reste juste pour faire des tests avec le modele*/
 public class Main {
 	public static void main(String[] args) {

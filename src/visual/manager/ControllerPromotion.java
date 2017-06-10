@@ -2,6 +2,8 @@ package visual.manager;
 
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 
 import javafx.collections.FXCollections;
@@ -48,6 +50,10 @@ public class ControllerPromotion implements Initializable{
 			CB_Categorie.setValue(promo.getCategory());
 			CB_Recipe.setValue(promo.getRecipe());
 			//TODO "importer" date
+			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+		    String date = promo.getDate().substring(0, 2)+"-"+promo.getDate().substring(2, 4)+"-"+promo.getDate().substring(4);
+			LocalDate localDate = LocalDate.parse(date, formatter);
+			DF_EndDate.setValue(localDate);
 			CHK_Auth.selectedProperty().set(promo.getAuthCustomer());
     	}
 	}
