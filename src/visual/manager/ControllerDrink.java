@@ -29,8 +29,9 @@ public class ControllerDrink implements Initializable{
     	if(drinkName != ""){
     		Drink drink = ComponentManagement.getDrink(drinkName);
 			TF_Libelle.setText(drinkName);
-			TF_PhotoPath.setText(drink.getPhoto());
+			if(drink != null) TF_PhotoPath.setText(drink.getPhoto());
 			CHK_Available.selectedProperty().set(drink.getAvailability());
+			CHK_New.selectedProperty().set(drink.getNew());
     	}
     }
     
@@ -54,6 +55,7 @@ public class ControllerDrink implements Initializable{
     void save(ActionEvent event) throws IOException {
     	Drink drink = new Drink(TF_Libelle.getText(), TF_PhotoPath.getText());
     	drink.setAvailability(CHK_Available.selectedProperty().get());
+    	drink.setNew(CHK_New.selectedProperty().get());
     	if(drink.getName() == ""){TF_Libelle.setPromptText("Veuillez donner un nom"); return;}
     	if(drinkName != ""){
     		Drink oldDrink = ComponentManagement.getDrink(drinkName);

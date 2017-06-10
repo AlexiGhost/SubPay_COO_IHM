@@ -31,6 +31,7 @@ public class ControllerSauce implements Initializable{
 			TF_Libelle.setText(sauceName);
 			TF_PhotoPath.setText(sauce.getPhoto());
 			CHK_Available.selectedProperty().set(sauce.getAvailability());
+			CHK_New.selectedProperty().set(sauce.getNew());
     	}
     }
     
@@ -54,6 +55,7 @@ public class ControllerSauce implements Initializable{
     void save(ActionEvent event) throws IOException {
     	Sauce sauce = new Sauce(TF_Libelle.getText(), TF_PhotoPath.getText());
     	sauce.setAvailability(CHK_Available.selectedProperty().get());
+    	sauce.setNew(CHK_New.selectedProperty().get());
     	if(sauce.getName() == ""){TF_Libelle.setPromptText("Veuillez donner un nom"); return;}
     	if(sauceName != ""){
     		Sauce oldSauce = ComponentManagement.getSauce(sauceName);

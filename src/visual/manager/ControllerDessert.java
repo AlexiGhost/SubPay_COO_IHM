@@ -13,7 +13,6 @@ import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import model.product.ComponentManagement;
 import model.product.Dessert;
-import model.product.composants.Bread;
 
 public class ControllerDessert implements Initializable{
 
@@ -24,6 +23,7 @@ public class ControllerDessert implements Initializable{
     @FXML private CheckBox CHK_Available;
 
     String dessertName = ControllerAccueil.getSelectedItem();
+    String componentPath = "component.xml";
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -32,6 +32,7 @@ public class ControllerDessert implements Initializable{
 			TF_Libelle.setText(dessertName);
 			TF_PhotoPath.setText(dessert.getPhoto());
 			CHK_Available.selectedProperty().set(dessert.getAvailability());
+			CHK_New.selectedProperty().set(dessert.getNew());
     	}
     }
     
@@ -55,13 +56,14 @@ public class ControllerDessert implements Initializable{
     void save(ActionEvent event) throws IOException {
     	Dessert dessert = new Dessert(TF_Libelle.getText(), TF_PhotoPath.getText());
     	dessert.setAvailability(CHK_Available.selectedProperty().get());
+    	dessert.setNew(CHK_New.selectedProperty().get());
     	if(dessert.getName() == ""){TF_Libelle.setPromptText("Veuillez donner un nom"); return;}
     	if(dessertName != ""){
     		Dessert oldDessert = ComponentManagement.getDessert(dessertName);
     		ComponentManagement.getDesserts().remove(oldDessert);
     	}
     	ComponentManagement.getDesserts().add(dessert);
-    	ComponentManagement.exportComponent("component.xml");
+    	ComponentManagement.exportComponent(componentPath);
     	goToAccueil(new ActionEvent());
     }
 

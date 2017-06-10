@@ -7,6 +7,7 @@ public class Composant {
 	
     protected String name;
     protected boolean available;
+    protected boolean news;
     protected List<String> allergens  = new ArrayList<String> ();
     protected String photo;
     
@@ -57,6 +58,15 @@ public class Composant {
 	/**Set the availability of the component*/
 	public void setAvailability(boolean available){
 		this.available = available;
+	}
+	//new
+	/**Return the "new" of the component*/
+	public boolean getNew(){
+		return news;
+	}
+	/**Set the "new" of the component*/
+	public void setNew(boolean news){
+		this.news = news;
 	}
 	//allergen
 	/**Return a list wich contains the allergens of the component*/

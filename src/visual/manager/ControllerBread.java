@@ -31,6 +31,7 @@ public class ControllerBread implements Initializable{
 			TF_Libelle.setText(breadName);
 			TF_PhotoPath.setText(bread.getPhoto());
 			CHK_Available.selectedProperty().set(bread.getAvailability());
+			CHK_New.selectedProperty().set(bread.getNew());
     	}
     }
     
@@ -54,6 +55,7 @@ public class ControllerBread implements Initializable{
     void save(ActionEvent event) throws IOException {
     	Bread bread = new Bread(TF_Libelle.getText(), TF_PhotoPath.getText());
     	bread.setAvailability(CHK_Available.selectedProperty().get());
+    	bread.setNew(CHK_New.selectedProperty().get());
     	if(bread.getName() == ""){TF_Libelle.setPromptText("Veuillez donner un nom"); return;}
     	if(breadName != ""){
     		Bread oldBread = ComponentManagement.getBread(breadName);

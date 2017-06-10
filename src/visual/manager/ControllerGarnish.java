@@ -31,6 +31,7 @@ public class ControllerGarnish implements Initializable{
 			TF_Libelle.setText(garnishName);
 			TF_PhotoPath.setText(garnish.getPhoto());
 			CHK_Available.selectedProperty().set(garnish.getAvailability());
+			CHK_New.selectedProperty().set(garnish.getNew());
     	}
     }
     
@@ -54,6 +55,7 @@ public class ControllerGarnish implements Initializable{
     void save(ActionEvent event) throws IOException {
     	Garnish garnish = new Garnish(TF_Libelle.getText(), TF_PhotoPath.getText());
     	garnish.setAvailability(CHK_Available.selectedProperty().get());
+    	garnish.setNew(CHK_New.selectedProperty().get());
     	if(garnish.getName() == ""){TF_Libelle.setPromptText("Veuillez donner un nom"); return;}
     	if(garnishName != ""){
     		Garnish oldGarnish = ComponentManagement.getGarnish(garnishName);

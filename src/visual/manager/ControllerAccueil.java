@@ -58,6 +58,7 @@ public class ControllerAccueil implements Initializable{
    
     @Override
     public void initialize(URL location, ResourceBundle rb){
+    	selectedItem = "";
     	//initialisation des listes (pains, sauces, ...)
     	for (Recipe recipe : ComponentManagement.getRecipes()) {
 			recipeData.add(recipe.getName());
