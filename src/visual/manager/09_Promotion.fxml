@@ -104,8 +104,8 @@
                                     <Font size="18.0" />
                                  </font>
                               </Text>
-                              <ComboBox fx:id="CB_Categorie" prefWidth="150.0" GridPane.rowIndex="1" />
-                              <ComboBox fx:id="CB_Recipe" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                              <ComboBox fx:id="CB_Categorie" onAction="#clearRecipeCombo" prefWidth="150.0" GridPane.rowIndex="1" />
+                              <ComboBox fx:id="CB_Recipe" onAction="#clearCategorieCombo" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                            </children>
                         </GridPane>
                         <GridPane GridPane.rowIndex="3">

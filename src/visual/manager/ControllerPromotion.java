@@ -49,7 +49,6 @@ public class ControllerPromotion implements Initializable{
 			TF_Reduction.setText(Double.toString(promo.getPercentage()));
 			CB_Categorie.setValue(promo.getCategory());
 			CB_Recipe.setValue(promo.getRecipe());
-			//TODO "importer" date
 			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
 		    String date = promo.getDate().substring(0, 2)+"-"+promo.getDate().substring(2, 4)+"-"+promo.getDate().substring(4);
 			LocalDate localDate = LocalDate.parse(date, formatter);
@@ -57,6 +56,16 @@ public class ControllerPromotion implements Initializable{
 			CHK_Auth.selectedProperty().set(promo.getAuthCustomer());
     	}
 	}
+    
+    @FXML void clearRecipeCombo(){ //executé lors de la selection d'une categorie
+    	//TODO trouver la source de l'erreur (1er essai uniquement)
+    	if(CB_Recipe.selectionModelProperty().getValue() != null) CB_Recipe.setValue("");
+    }
+    
+    @FXML
+    void clearCategorieCombo(){ //executé lors de la selection d'une recette
+    	if(CB_Categorie.selectionModelProperty().getValue() != null) CB_Categorie.setValue("");
+    }
     
     @FXML
     void goToAccueil(ActionEvent event) throws IOException{

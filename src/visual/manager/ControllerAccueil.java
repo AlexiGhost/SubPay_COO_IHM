@@ -124,7 +124,6 @@ public class ControllerAccueil implements Initializable{
     			ComponentManagement.exportComponent(componentPath);
     		}
     		//initialisation Table promotion
-    		//TODO Corriger affichage category & recipe
 	    	TC_PromotionName.setCellValueFactory(new PropertyValueFactory<Promotion, String>("name"));
 	    	TC_PromotionReduction.setCellValueFactory(new PropertyValueFactory<Promotion, Integer>("percentage"));
 	    	TC_PromotionDate.setCellValueFactory(new PropertyValueFactory<Promotion, Integer>("date"));
