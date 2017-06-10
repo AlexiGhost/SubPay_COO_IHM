@@ -39,8 +39,7 @@ public class AuthentificatedCustomer {
 	public void setLogin(String login) {
 		this.login = login;
 	}
-	/**Return the password of the customer
-	 * <br/><b>TODO upgrade security</b>*/
+	/**Return the password of the customer*/
 	public String getPassword() {
 		return password;
 	}

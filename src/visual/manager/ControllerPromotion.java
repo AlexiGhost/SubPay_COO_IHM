@@ -47,7 +47,9 @@ public class ControllerPromotion implements Initializable{
     	if(promoName != ""){
     		Promotion promo = ComponentManagement.getPromotion(promoName);
 			TF_Libelle.setText(promoName);
+			TF_Reduction.setText(Double.toString(promo.getPercentage()));
 			CB_Categorie.setValue(promo.getCategory());
+			//TODO corriger affichage recettes
 			recipeData.addAll(promo.getRecipes());
 			L_Recipe.setItems(recipeData);
 			recipeData.clear();

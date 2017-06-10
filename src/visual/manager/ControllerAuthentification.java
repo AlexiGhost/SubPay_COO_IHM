@@ -26,6 +26,7 @@ public class ControllerAuthentification {
 			visual.ControllerManager.setScene(acteur, "SUBPAY - Accueil");
 		} else {
 			TEXT_ERROR.setText("ID : "+user+"\n Password : "+password);
+			//TODO modifier en "nom d'utilisateur ou mot de passe erronné" a la fin
 		}
 	}
 	
