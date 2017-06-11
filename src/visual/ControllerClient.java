@@ -9,6 +9,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import model.CustomerManagement;
 import model.product.ComponentManagement;
+import model.product.Order;
 
 public class ControllerClient extends Application {
 	private static 				Stage 			theStage;
@@ -16,6 +17,7 @@ public class ControllerClient extends Application {
 	public static void main(String[] args) {
 		ComponentManagement.importComponent("component.xml");
 		CustomerManagement.importCustomer("customer.xml");
+		Order.setOldNb(0);
 		launch();
 	}
 	

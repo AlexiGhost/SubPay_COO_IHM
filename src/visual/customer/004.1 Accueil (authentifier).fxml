@@ -34,7 +34,7 @@
          <content>
             <ImageView fitHeight="148.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" />
          </content></ScrollPane>
-      <Button fx:id="composer" layoutX="349.0" layoutY="604.0" mnemonicParsing="false" onAction="#goToMenu" text="Commencer à composer">
+      <Button fx:id="composer" layoutX="371.0" layoutY="604.0" mnemonicParsing="false" onAction="#goToMenu" text="Composer son produit">
          <font>
             <Font size="48.0" />
          </font>

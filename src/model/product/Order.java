@@ -9,9 +9,19 @@ public class Order {
     private int orderNb;
     private List<Product> products = new ArrayList<Product> ();
     private List<Menu> menus = new ArrayList<Menu> ();
-    private boolean authCustomer;
+    private boolean authCustomer; //Pour pouvoir retourner au bon accueil (auth ou pas)
     private static int oldNb;
     
+    public Order(){
+    	if(oldNb != 100){
+    		orderNb = oldNb + 1;
+    		oldNb++;
+    	}
+    	else{
+    		orderNb = 0;
+    		oldNb = 0;
+    	}
+    }
     public Order(boolean authCustomer){
     	this.authCustomer = authCustomer;
     	if(oldNb != 100){
@@ -56,7 +66,7 @@ public class Order {
 	}
     /**Set the order number*/
 	public void setOrderNb(int orderNb) {
-		orderNb = orderNb;
+		this.orderNb = orderNb;
 	}
 	//menus
 	/**Return the menus list*/
@@ -86,6 +96,12 @@ public class Order {
 	public void setAuthCustomer(boolean authCustomer) {
 		this.authCustomer = authCustomer;
 	}
-	
+	//oldNb
+	public static int getOldNb() {
+		return oldNb;
+	}
+	public static void setOldNb(int oldNb) {
+		Order.oldNb = oldNb;
+	}
 	
 }
