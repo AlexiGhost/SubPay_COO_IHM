@@ -27,7 +27,7 @@ public class ControllerAuthentification {
 					FXMLLoader.load(getClass().getResource("02_Accueil.fxml")));
 			visual.ControllerManager.setScene(acteur, "SUBPAY - Accueil");
 		} else {
-			TEXT_ERROR.setText("Nom d'utilisateur ou mot de passe erronné");
+			TEXT_ERROR.setText("Nom d'utilisateur ou mot de passe erronnés");
 		}
 	}
 	

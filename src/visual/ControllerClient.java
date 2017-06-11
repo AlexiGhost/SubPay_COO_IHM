@@ -14,7 +14,7 @@ import model.product.Order;
 public class ControllerClient extends Application {
 	private static 				Stage 			theStage;
 	
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception {
 		ComponentManagement.importComponent("component.xml");
 		CustomerManagement.importCustomer("customer.xml");
 		Order.setOldNb(0);

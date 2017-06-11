@@ -3,9 +3,12 @@ package model.product;
 public class Menu {
     private Product product;
     private Drink drink;
+    private int iceCubeNb;
     private Dessert dessert;
 
     /**Create a menu*/
+    public Menu(){
+    }
     public Menu(Product product, Drink drink, Dessert dessert) {
     	this.dessert = dessert;
     	this.drink = drink;
@@ -38,5 +41,12 @@ public class Menu {
     /**Set the dessert of the menu*/
 	public void setDessert(Dessert dessert) {
 		this.dessert = dessert;
+	}
+	//iceCubeNb
+	public int getIceCubeNb() {
+		return iceCubeNb;
+	}
+	public void setIceCubeNb(int iceCubeNb) {
+		this.iceCubeNb = iceCubeNb;
 	}
 }

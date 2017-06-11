@@ -20,6 +20,7 @@ public class ComponentManagement {
 	private static List<Promotion> promotions = new ArrayList<Promotion>();
 	private static List<Drink> drinks = new ArrayList<Drink>();
 	private static List<Dessert> desserts = new ArrayList<Dessert>();
+	private static List<String> allergens = new ArrayList<String>();
 	private static String componentPath = "component.xml";
 
 // ---------- Lists Management (ADD/DEL/EDIT) ----------
@@ -31,11 +32,11 @@ public class ComponentManagement {
 	}
 	/**Delete a specific bread from the component list*/
 	public static void delBread(String name){
-		if(breads.size() == 1 && breads.get(0).getName() == name){
+		if(breads.size() == 1 && breads.get(0).getName().equals(name)){
 			breads.clear();
 		} else { 
 			for (Bread bread : breads) {
-				if(bread.getName() == name){
+				if(bread.getName().equals(name)){
 					int index = breads.indexOf(bread);
 					breads.remove(index);
 					break;
@@ -52,11 +53,11 @@ public class ComponentManagement {
 	}
 	/**Delete a specific garnish from the component list*/
 	public static void delGarnish(String name){
-		if(garnishs.size() == 1 && garnishs.get(0).getName() == name){
+		if(garnishs.size() == 1 && garnishs.get(0).getName().equals(name)){
 			garnishs.clear();
 		} else { 
 			for (Garnish garnish : garnishs) {
-				if(garnish.getName() == name){
+				if(garnish.getName().equals(name)){
 					int index = garnishs.indexOf(garnish);
 					garnishs.remove(index);
 					break;
@@ -73,11 +74,11 @@ public class ComponentManagement {
 	}
 	/**Delete a specific sauce from the component list*/
 	public static void delSauce(String name){
-		if(sauces.size() == 1 && sauces.get(0).getName() == name){
+		if(sauces.size() == 1 && sauces.get(0).getName().equals(name)){
 			sauces.clear();
 		} else { 
 			for (Sauce sauce : sauces) {
-				if(sauce.getName() == name){
+				if(sauce.getName().equals(name)){
 					int index = sauces.indexOf(sauce);
 					sauces.remove(index);
 					break;
@@ -98,11 +99,11 @@ public class ComponentManagement {
 	}
 	/**Delete a specific recipe from the component list*/
 	public static void delRecipe(String name){
-		if(recipes.size() == 1 && recipes.get(0).getName() == name){
+		if(recipes.size() == 1 && recipes.get(0).getName().equals(name)){
 			recipes.clear();
 		} else {
 			for (Recipe recipe : recipes) {
-				if(recipe.getName() == name){
+				if(recipe.getName().equals(name)){
 					int index = recipes.indexOf(recipe);
 					recipes.remove(index);
 					break;
@@ -119,11 +120,11 @@ public class ComponentManagement {
 	}
 	/**Delete a specific promotion from the component list*/
 	public static void delPromotion(String name){
-		if(promotions.size() == 1 && promotions.get(0).getName() == name){
+		if(promotions.size() == 1 && promotions.get(0).getName().equals(name)){
 			promotions.clear();
 		} else {
 			for (Promotion promo : promotions) {
-				if(promo.getName() == name){
+				if(promo.getName().equals(name)){
 					int index = promotions.indexOf(promo);
 					promotions.remove(index);
 					break;
@@ -140,11 +141,11 @@ public class ComponentManagement {
 	}
 	/**Delete a specific drink from the component list*/
 	public static void delDrink(String name){
-		if(drinks.size() == 1 && drinks.get(0).getName() == name){
+		if(drinks.size() == 1 && drinks.get(0).getName().equals(name)){
 			drinks.clear();
 		} else {
 			for (Drink drink : drinks) {
-				if(drink.getName() == name){
+				if(drink.getName().equals(name)){
 					int index = drinks.indexOf(drink);
 					drinks.remove(index);
 					break;
@@ -161,11 +162,11 @@ public class ComponentManagement {
 	}
 	/**Delete a specific dessert from the component list*/
 	public static void delDessert(String name){
-		if(desserts.size() == 1 && desserts.get(0).getName() == name){
+		if(desserts.size() == 1 && desserts.get(0).getName().equals(name)){
 			desserts.clear();
 		} else {
 			for (Dessert dessert : desserts) {
-				if(dessert.getName() == name){
+				if(dessert.getName().equals(name)){
 					int index = desserts.indexOf(dessert);
 					desserts.remove(index);
 					break;
@@ -184,7 +185,7 @@ public class ComponentManagement {
 	/**Return a bread from the list*/
 	public static Bread getBread(String name){
 		for(Bread bread : breads){
-			if(bread.getName() == name){
+			if(bread.getName().equals(name)){
 				return bread;
 			}
 		}
@@ -198,7 +199,7 @@ public class ComponentManagement {
 	/**Return a sauce from the list*/
 	public static Sauce getSauce(String name){
 		for(Sauce sauce : sauces){
-			if(sauce.getName() == name){
+			if(sauce.getName().equals(name)){
 				return sauce;
 			}
 		}
@@ -212,7 +213,7 @@ public class ComponentManagement {
 	/**Return a garnish from the list*/
 	public static Garnish getGarnish(String name){
 		for(Garnish garnish : garnishs){
-			if(garnish.getName() == name){
+			if(garnish.getName().equals(name)){
 				return garnish;
 			}
 		}
@@ -226,7 +227,7 @@ public class ComponentManagement {
 	/**Return a recipe from the list*/
 	public static Recipe getRecipe(String name){
 		for(Recipe recipe : recipes){
-			if(recipe.getName() == name){
+			if(recipe.getName().equals(name)){
 				return recipe;
 			}
 		}
@@ -240,7 +241,7 @@ public class ComponentManagement {
 	/**Return a promotion from the list*/
 	public static Promotion getPromotion(String name){
 		for(Promotion promotion : promotions){
-			if(promotion.getName() == name){
+			if(promotion.getName().equals(name)){
 				return promotion;
 			}
 		}
@@ -254,7 +255,7 @@ public class ComponentManagement {
 	/**Return a drink from the list*/
 	public static Drink getDrink(String name){
 		for(Drink drink : drinks){
-			if(drink.getName() == name){
+			if(drink.getName().equals(name)){
 				return drink;
 			}
 		}
@@ -268,7 +269,7 @@ public class ComponentManagement {
 	/**Return a dessert from the list*/
 	public static Dessert getDessert(String name){
 		for(Dessert dessert : desserts){
-			if(dessert.getName() == name){
+			if(dessert.getName().equals(name)){
 				return dessert;
 			}
 		}
@@ -279,6 +280,16 @@ public class ComponentManagement {
 	
 	public static String getComponentPath() {
 		return componentPath;
+	}
+	//allergens
+	public static List<String> getAllergens() {
+		return allergens;
+	}
+	public static void setAllergens(List<String> allergens) {
+		ComponentManagement.allergens = allergens;
+	}
+	public static void addAllergen(String allergen){
+		allergens.add(allergen);
 	}
 
 // ---------- IMPORT / EXPORT ----------

@@ -10,7 +10,10 @@ public class Recipe extends Composant {
 		this.price = price;
 		this.category = category;
 	}
-    /**Return the price of the recipe*/
+    public Recipe() {
+		super();
+	}
+	/**Return the price of the recipe*/
     public double getPrice(){
     	return price;
     }

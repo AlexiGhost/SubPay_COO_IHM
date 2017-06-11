@@ -17,7 +17,11 @@ public class Composant {
     	this.available = true;
 	}
     
-    public void addAllergen(String allergen){
+    public Composant() {
+    	name = "";
+	}
+
+	public void addAllergen(String allergen){
 		this.allergens.add(allergen);
 	}
 	public void delAllergens(){

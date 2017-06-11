@@ -22,21 +22,22 @@ public class Order {
     		oldNb = 0;
     	}
     }
-    public Order(boolean authCustomer){
-    	this.authCustomer = authCustomer;
-    	if(oldNb != 100){
-    		orderNb = oldNb + 1;
-    		oldNb++;
-    	}
-    	else{
-    		orderNb = 0;
-    		oldNb = 0;
-    	}
-    }
     
-//ADD / REMOVE
+public Order(boolean authCustomer) {
+	this.authCustomer = authCustomer;
+	if(oldNb != 100){
+		orderNb = oldNb + 1;
+		oldNb++;
+	}
+	else{
+		orderNb = 0;
+		oldNb = 0;
+	}
+	}
+
+	//ADD / REMOVE
     //product
-    /**Add a new product to the order*/
+    /**Add a new product to the order*/    
     public void addProduct(int size, Recipe recipe, Bread bread, List<Sauce> sauces, List<Garnish> garnishs){
     	products.add(new Product(size, recipe, bread, sauces, garnishs));    	
     }

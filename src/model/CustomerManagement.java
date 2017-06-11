@@ -25,9 +25,9 @@ public class CustomerManagement {
 		customers.add(aCustomer);
 	}
 	/**Delete a customer from the customerList*/
-	public static void delCustomer(String login){
+	public static void delCustomer(String login, String password){
 		for (AuthentificatedCustomer aCustomer : customers) {
-			if(aCustomer.getLogin() == login){
+			if((aCustomer.getMail().equals(login) || aCustomer.getPhoneNumber().equals(login)) && aCustomer.getPassword().equals(password)){
 				customers.remove(aCustomer);
 			}
 		}
@@ -44,37 +44,67 @@ public class CustomerManagement {
 	public static void exportCustomer(String xmlFile) {
 		Element racine = new Element("Customers");
 		Document Dcustomers = new Document(racine);
-		String login;
+		String lastName;
+		String firstName;
+		String mail;
+		String phoneNumber;
 		String password;
 		Integer iceCubeNb;
 		Bread favoriteBread;
 		Sauce favoriteSauce;
 		Recipe favoriteRecipe;
-		Garnish favoriteGarnish;
-		List<Order> orderList = null;
+		Drink favoriteDrink;
+		List<Garnish> favoriteGarnish = null;
 		List<String> allergenList = null;
+		Boolean mailChoice;
+		Boolean phoneChoice;
 		try {
 			//BREAD
 			for(AuthentificatedCustomer customer : customers){
 				//recuperation infos
-				login = customer.getLogin();
+				lastName = customer.getLastName();
+				firstName = customer.getFirstName();
+				mail = customer.getMail();
+				phoneNumber = customer.getPhoneNumber();
 				password = customer.getPassword();
 				iceCubeNb = customer.getIceCubeNb();
 				favoriteBread = customer.getFavoriteBread();
-				favoriteGarnish = customer.getFavoriteGarnish();
-				favoriteRecipe = customer.getFavoriteRecipe();
 				favoriteSauce = customer.getFavoriteSauce();
-				orderList = customer.getOrder();
+				favoriteRecipe = customer.getFavoriteRecipe();
+				favoriteDrink = customer.getFavoriteDrink();
+				favoriteGarnish = customer.getFavoriteGarnish();
 				allergenList = customer.getAllergens();
+				mailChoice = customer.getMailChoice();
+				phoneChoice = customer.getPhoneChoice();
 				//creation d'une branche
 				Element eCustomer = new Element("customer");
 				racine.addContent(eCustomer);
 				org.jdom2.Attribute classe = new org.jdom2.Attribute("classe", "AuthentificatedCustomer");
 				eCustomer.setAttribute(classe);
-				//ajout login
-				Element eLogin = new Element("login");
-				eLogin.setText(login);
-				eCustomer.addContent(eLogin);
+				//ajout lastname
+				Element eLastName = new Element("lastName");
+				eLastName.setText(lastName);
+				eCustomer.addContent(eLastName);
+				//ajout firstName
+				Element eFirstName = new Element("firstName");
+				eFirstName.setText(firstName);
+				eCustomer.addContent(eFirstName);
+				//ajout mail
+				Element eMail = new Element("mail");
+				eMail.setText(mail);
+				eCustomer.addContent(eMail);
+				if(mailChoice){
+					org.jdom2.Attribute aMailChoice = new org.jdom2.Attribute("choice", "true");
+					eMail.setAttribute(aMailChoice);
+				}
+				//ajout phoneNumber
+				Element ePhoneNumber = new Element("phoneNumber");
+				ePhoneNumber.setText(phoneNumber);
+				eCustomer.addContent(ePhoneNumber);
+				if(phoneChoice){
+					org.jdom2.Attribute aPhoneChoice = new org.jdom2.Attribute("choice", "true");
+					ePhoneNumber.setAttribute(aPhoneChoice);
+				}
 				//ajout password
 				Element ePassword = new Element("password");
 				ePassword.setText(password);
@@ -91,14 +121,22 @@ public class CustomerManagement {
 				Element eFSauce = new Element("fSauce");
 				eFSauce.setText(favoriteSauce.getName());
 				eCustomer.addContent(eFSauce);
-				//ajout fGarnish
-				Element eFGarnish = new Element("fGarnish");
-				eFGarnish.setText(favoriteGarnish.getName());
-				eCustomer.addContent(eFGarnish);
 				//ajout fRecipe
 				Element eFRecipe = new Element("fRecipe");
 				eFRecipe.setText(favoriteRecipe.getName());
 				eCustomer.addContent(eFRecipe);
+				//ajout fDrink
+				Element eFDrink = new Element("fDrink");
+				eFDrink.setText(favoriteDrink.getName());
+				eCustomer.addContent(eFDrink);
+				//ajout fGarnish
+				Element eFGarnishs = new Element("fGarnishs");
+				for (Garnish garnish : favoriteGarnish) {
+					Element eFGarnish = new Element("fGarnish");
+					eFGarnish.setText(garnish.getName());
+					eFGarnishs.addContent(eFGarnish);
+				}
+				eCustomer.addContent(eFGarnishs);
 				//ajout allergenes
 				Element eAllergens = new Element("allergens");
 				for (String allergen : allergenList) {
@@ -115,9 +153,154 @@ public class CustomerManagement {
 		}
 		catch (IOException e) {}
 	}
+	
+	//Orders
+	public static void exportCustomerOrders(String xmlFile) {
+		Element racine = new Element("CustomerOrders");
+		Document Dcustomers = new Document(racine);
+		String mail;
+		String phoneNumber;
+		Integer size;
+		Boolean plate;
+		Bread bread;
+		Recipe recipe;
+		Drink drink;
+		Integer iceCubeNb;
+		Dessert dessert;
+		List<Sauce> sauces;
+		List<Garnish> garnishs = null;
+		try {
+			//Liste des clients auth
+			for(AuthentificatedCustomer customer : customers){
+				//recuperation infos
+				mail = customer.getMail();
+				phoneNumber = customer.getPhoneNumber();
+				Element eOrders = new Element("Orders");
+				racine.addContent(eOrders);
+				org.jdom2.Attribute aMail = new org.jdom2.Attribute("mail", mail);
+				eOrders.setAttribute(aMail);
+				org.jdom2.Attribute aPhone = new org.jdom2.Attribute("phone", phoneNumber);
+				eOrders.setAttribute(aPhone);
+				//Liste des commandes du client
+				for(Order order : customer.getOrder()){
+					Element eOrder = new Element("order");
+					eOrders.addContent(eOrder);
+					Element eMenus = new Element("Menus");
+					eOrder.addContent(eMenus);
+					//Liste menu de la commande
+					for(Menu menu : order.getMenus()){
+						size = menu.getProduct().getSize();
+						plate = menu.getProduct().getPlate();
+						bread = menu.getProduct().getBread();
+						recipe = menu.getProduct().getRecipe();
+						drink = menu.getDrink();
+						iceCubeNb = menu.getIceCubeNb();
+						dessert = menu.getDessert();
+						sauces = menu.getProduct().getSauces();
+						garnishs = menu.getProduct().getGarnishs();
+						//ajout branche menu
+						Element eMenu = new Element("menu");
+						eMenus.addContent(eMenu);
+						//ajout branche produit
+						Element eProduct = new Element("product");
+						eMenu.addContent(eProduct);
+						org.jdom2.Attribute aSize = new org.jdom2.Attribute("size", size.toString());
+						eProduct.setAttribute(aSize);
+						if(plate){
+							org.jdom2.Attribute aPlate = new org.jdom2.Attribute("plate", "true");
+							eProduct.setAttribute(aPlate);
+						}
+						//ajout bread dans produit
+						Element eBread = new Element("bread");
+						eBread.setText(bread.getName());
+						eProduct.addContent(eBread);
+						//ajout recipe dans produit
+						Element eRecipe = new Element("recipe");
+						eRecipe.setText(recipe.getName());
+						eProduct.addContent(eRecipe);
+						//ajout garnish dans produit
+						Element eGarnishs = new Element("Garnishs");
+						for (Garnish garnish : garnishs) {
+							Element eGarnish = new Element("garnish");
+							eGarnish.setText(garnish.getName());
+							eGarnishs.addContent(eGarnish);
+						}
+						eProduct.addContent(eGarnishs);
+						//ajout sauce dans produit
+						Element eSauces = new Element("Sauces");
+						for (Sauce sauce : sauces) {
+							Element eSauce = new Element("sauce");
+							eSauce.setText(sauce.getName());
+							eSauces.addContent(eSauce);
+						}
+						eProduct.addContent(eSauces);
+						//ajout drink dans menu
+						Element eDrink = new Element("drink");
+						eDrink.setText(drink.getName());
+						eMenu.addContent(eDrink);
+						org.jdom2.Attribute aIceCubeNb = new org.jdom2.Attribute("iceCubeNb", iceCubeNb.toString());
+						eDrink.setAttribute(aIceCubeNb);
+						//ajout dessert dans menu
+						Element eDessert = new Element("dessert");
+						eDessert.setText(dessert.getName());
+						eMenu.addContent(eDessert);
+					}
+					//Liste produits de la commande
+					Element eProducts = new Element("ProductsOnly");
+					eOrder.addContent(eProducts);
+					for(Product product : order.getProducts()){
+						size = product.getSize();
+						plate = product.getPlate();
+						bread = product.getBread();
+						recipe = product.getRecipe();
+						sauces = product.getSauces();
+						garnishs = product.getGarnishs();
+						//ajout branche produit uniquement
+						Element eProduct = new Element("productOnly");
+						eProducts.addContent(eProduct);
+						org.jdom2.Attribute aSize = new org.jdom2.Attribute("size", size.toString());
+						eProduct.setAttribute(aSize);
+						if(plate){
+							org.jdom2.Attribute aPlate = new org.jdom2.Attribute("plate", "true");
+							eProduct.setAttribute(aPlate);
+						}
+						//ajout bread dans produit
+						Element eBread = new Element("bread");
+						eBread.setText(bread.getName());
+						eProduct.addContent(eBread);
+						//ajout recipe dans produit
+						Element eRecipe = new Element("recipe");
+						eRecipe.setText(recipe.getName());
+						eProduct.addContent(eRecipe);
+						//ajout garnish dans produit
+						Element eGarnishs = new Element("Garnishs");
+						for (Garnish garnish : garnishs) {
+							Element eGarnish = new Element("garnish");
+							eGarnish.setText(garnish.getName());
+							eGarnishs.addContent(eGarnish);
+						}
+						eProduct.addContent(eGarnishs);
+						//ajout sauce dans produit
+						Element eSauces = new Element("Sauces");
+						for (Sauce sauce : sauces) {
+							Element eSauce = new Element("sauce");
+							eSauce.setText(sauce.getName());
+							eSauces.addContent(eSauce);
+						}
+						eProduct.addContent(eSauces);			
+					}
+				}
+				
+			}
+			XMLOutputter sortie = new XMLOutputter(Format.getPrettyFormat());
+			sortie.output(Dcustomers, new FileOutputStream(xmlFile));
+		}
+		catch (IOException e) {}
+	}
 
-	/**Import customers from a XML file*/
-	public static void importCustomer(String xmlFile){
+	/**Import customers from a XML file
+	 * @throws Exception */
+	public static void importCustomer(String xmlFile) throws Exception{ //TODO Remettre des variables temporaires et déclarer le customer à la fin
 		customers.clear();
 		SAXBuilder sxb = new SAXBuilder();
 		Document document;
@@ -126,53 +309,62 @@ public class CustomerManagement {
 			document = sxb.build(new File(xmlFile));
 			racine = document.getRootElement();
 		} catch (JDOMException | IOException e) {}
-		String login;
-		String password;
-		Integer iceCubeNb;
-		Bread favoriteBread = null;
-		Sauce favoriteSauce = null;
-		Recipe favoriteRecipe = null;
-		Garnish favoriteGarnish = null;
-		List<String> allergenList = new ArrayList<>();
+		
+		AuthentificatedCustomer tCustomer = new AuthentificatedCustomer();
 		
 		List<Element> customers = racine.getChildren("customer");
 		for (Element customer : customers) {
-			login = customer.getChildText("login");
-			password = customer.getChildText("password");
-			iceCubeNb = Integer.valueOf(customer.getChildText("iceCubeNb"));
+			tCustomer.setLastName(customer.getChildText("lastName"));
+			tCustomer.setFirstName(customer.getChildText("firstName"));
+			if(!(customer.getChildText("mail").equals("")))
+				tCustomer.setMail(customer.getChildText("mail"));
+			tCustomer.setMailChoice(Boolean.valueOf(customer.getChild("mail").getAttributeValue("choice")));
+			if(!(customer.getChildText("phoneNumber").equals("")))
+				tCustomer.setPhoneNumber(customer.getChildText("phoneNumber"));
+			tCustomer.setPhoneChoice(Boolean.valueOf(customer.getChild("phoneNumber").getAttributeValue("choice")));
+			if(!(customer.getChildText("password").equals("")))
+				tCustomer.setPassword(customer.getChildText("password"));
+			tCustomer.setIceCubeNb(Integer.valueOf(customer.getChildText("iceCubeNb")));
 			//creation pain
 			for (Bread bread : ComponentManagement.getBreads()) {
 				if(bread.getName().equals(customer.getChildText("fBread"))){
-					favoriteBread = bread;
+					tCustomer.setFavoriteBread(bread);
 				}
 			}
 			//creation sauce
 			for (Sauce sauce : ComponentManagement.getSauces()) {
 				if(sauce.getName().equals(customer.getChildText("fSauce"))){
-					favoriteSauce = sauce;
-				}
-			}
-			//creation garniture
-			for (Garnish garnish : ComponentManagement.getGarnishs()) {
-				if(garnish.getName().equals(customer.getChildText("fGarnish"))){
-					favoriteGarnish = garnish;
+					tCustomer.setFavoriteSauce(sauce);
 				}
 			}
 			//creation recette
 			for (Recipe recipe : ComponentManagement.getRecipes()) {
 				if(recipe.getName().equals(customer.getChildText("fRecipe"))){
-					favoriteRecipe = recipe;
+					tCustomer.setFavoriteRecipe(recipe);
 				}
 			}
+			//creation garniture
+			for(Element garnish : customer.getChild("fGarnishs").getChildren()){
+				for (Garnish garnishMana : ComponentManagement.getGarnishs()) {
+					if(garnishMana.getName().equals(garnish.getText())){
+						tCustomer.addGarnish(garnishMana);
+					}
+				}
+			}
+			
 			//ajout allergenes
-			Element allergens = customer.getChild("allergens");
-			List<Element> listAllergenes = allergens.getChildren();
-			for (Element allergen : listAllergenes) {
-				allergenList.add(allergen.getText());
+			for(Element allergen : customer.getChild("allergens").getChildren()){
+				for (String allergenMana : ComponentManagement.getAllergens()) {
+					if(allergenMana.equals(allergen.getText())){
+						tCustomer.addAllergen(allergenMana);
+					}
+				}
 			}
 			//creation customer
-			AuthentificatedCustomer tCustomer = new AuthentificatedCustomer(login, password, iceCubeNb, favoriteBread, favoriteSauce, favoriteGarnish, favoriteRecipe, allergenList);
 			addCustomer(tCustomer);
 		}
+	}
+	public static void importCustomerOrders(String xmlFile){
+		//TODO Faire l'import des commandes enregistrées du client
 	}
 }

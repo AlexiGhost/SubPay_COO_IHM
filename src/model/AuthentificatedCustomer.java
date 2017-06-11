@@ -8,101 +8,209 @@ import model.product.composants.*;
 
 public class AuthentificatedCustomer {
 
-	private String login;
+	//TODO pas de login, ajouter attribut adresse mail et telephone
+	private String lastName;
+	private String firstName;
+	private String mail;
+	private String phoneNumber;
     private String password;
     private int iceCubeNb;
     private Bread favoriteBread;
     private Sauce favoriteSauce;
     private Recipe favoriteRecipe;
-    private Garnish favoriteGarnish;
+    private Drink favoriteDrink;
+    private List <Garnish> favoriteGarnish = new ArrayList<Garnish>();
     private List<Order> order = new ArrayList<Order> ();
     private List<String> allergens = new ArrayList<String> ();
+    private boolean mailChoice;
+    private boolean phoneChoice;
 
-    public AuthentificatedCustomer(String login, String password, int iceCubNb, Bread fBread, Sauce fSauce, Garnish fGarnish, Recipe fRecipe, List<String> allergens) {
-    	this.login = login;
-    	this.password = password;
-    	this.iceCubeNb = iceCubNb;
-    	this.favoriteBread = fBread;
-    	this.favoriteSauce = fSauce;
-    	this.favoriteGarnish = fGarnish;
-    	this.favoriteRecipe = fRecipe;
-    	this.order = order;
-    	this.allergens = allergens;
-	}
+    public AuthentificatedCustomer(){
+    	lastName = "";
+    	firstName = "";
+    	mail = "";
+    	phoneNumber = "";
+    	password = "";
+    	iceCubeNb = -1;
+    	favoriteBread = new Bread();
+    	favoriteSauce = new Sauce();
+    	favoriteRecipe = new Recipe();
+    	favoriteDrink = new Drink();
+    	mailChoice = false;
+    	phoneChoice = false;
+    }
     
-   //GETTERS/SETTERS
-    /**Return the login of the customer*/
-    public String getLogin() {
-		return login;
+   /**Methods**/
+    
+    //Verify number in String
+    private boolean numberInStringControl(String s){
+    	char[] c = s.toCharArray();
+    	for ( int i = 0; i < c.length; i++){
+    	   if ( Character.isDigit(c[i]))
+    		   return true;
+    	}
+    	return false;
+    }
+    //Verify all characters in string are numbers
+    private boolean onlyNumberInStringControl(String s){
+    	char[] c = s.toCharArray();
+    	for ( int i = 0; i < c.length; i++){
+    	   if ( ! Character.isDigit(c[i]))
+    		   return false;
+    	}
+    	return true;
+    }
+    //LastName
+    public String getLastName() {
+		return lastName;
 	}
-    /**Set the login of the customer*/
-	public void setLogin(String login) {
-		this.login = login;
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
 	}
-	/**Return the password of the customer*/
+	//FirstName
+	public String getFirstName() {
+		return firstName;
+	}
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+	//Mail
+	public String getMail() {
+		return mail;
+	}
+	public void setMail(String mail) throws Exception{
+		if (mail.contains("@")) // Verify @ in mail
+			this.mail = mail;
+		else
+			throw new Exception();
+	}
+	//PhoneNumber
+	public String getPhoneNumber() {
+		return phoneNumber;
+	}
+	public void setPhoneNumber (String phoneNumber) throws Exception{
+		if(phoneNumber.length() == 10 && onlyNumberInStringControl(phoneNumber)) //Verify 10 numbers in string
+			this.phoneNumber = phoneNumber;
+		else
+			throw new Exception();
+	}
+	//Password
 	public String getPassword() {
 		return password;
 	}
-	/**Set the password of the customer*/
-	public void setPassword(String password) {
-		this.password = password;
+	public void setPassword(String password) throws Exception {
+		if(password.length() >=8 && password.matches(".*[a-zA-Z].*") && numberInStringControl(password))
+			this.password = password;
+		else
+			throw new Exception();
 	}
-	/**Return the ice cube number of the customer*/
+	//IceCubeNb
 	public int getIceCubeNb() {
 		return iceCubeNb;
 	}
-	/**Set the ice cube number of the customer*/
 	public void setIceCubeNb(int iceCubeNb) {
 		this.iceCubeNb = iceCubeNb;
 	}
-	/**Return the favorite bread of the customer*/
+	//FavoriteBread
 	public Bread getFavoriteBread() {
 		return favoriteBread;
 	}
-	/**Set the favorite bread of the customer*/
 	public void setFavoriteBread(Bread favoriteBread) {
 		this.favoriteBread = favoriteBread;
 	}
-	/**Return the favorite sauce of the customer*/
+	//FavoriteSauce
 	public Sauce getFavoriteSauce() {
 		return favoriteSauce;
 	}
-	/**Set the favorite sauce of the customer*/
 	public void setFavoriteSauce(Sauce favoriteSauce) {
 		this.favoriteSauce = favoriteSauce;
 	}
-	/**Return the favorite recipe of the customer*/
+	//FavoriteRecipe
 	public Recipe getFavoriteRecipe() {
 		return favoriteRecipe;
 	}
-	/**Set the favorite recipe of the customer*/
 	public void setFavoriteRecipe(Recipe favoriteRecipe) {
 		this.favoriteRecipe = favoriteRecipe;
 	}
-	/**Return the favorite garnish of the customer*/
-	public Garnish getFavoriteGarnish() {
+	//FavoriteDrink
+	public Drink getFavoriteDrink() {
+		return favoriteDrink;
+	}
+	public void setFavoriteDrink(Drink favoriteDrink) {
+		this.favoriteDrink = favoriteDrink;
+	}
+	//FavoriteGarnish
+	public List<Garnish> getFavoriteGarnish() {
 		return favoriteGarnish;
 	}
-	/**Set the favorite garnish of the customer*/
-	public void setFavoriteGarnish(Garnish favoriteGarnish) {
+	public void setFavoriteGarnish(List<Garnish> favoriteGarnish) {
 		this.favoriteGarnish = favoriteGarnish;
 	}
-	/**Return the order list of the customer*/
+    public void addGarnish(Garnish garnish){
+    	this.favoriteGarnish.add(garnish);
+    }
+    public void delGarnishs(){
+    	favoriteGarnish.clear();
+    }
+    public void delGarnish(String garnishName){
+    	for(Garnish garnish : favoriteGarnish){
+    		if(garnish.getName() == garnishName){
+    			favoriteGarnish.remove(garnish);
+    		}
+    	}
+    }
+	//Order
 	public List<Order> getOrder() {
 		return order;
 	}
-	/**Set the order list of the customer*/
 	public void setOrder(List<Order> order) {
 		this.order = order;
 	}
-	/**Return the allergens list of the customer*/
+	public void addOrder(Order order){
+    	this.order.add(order);
+    }
+    public void delOrders(){
+    	order.clear();
+    }
+    public void delGarnish(Order order){
+    	for(Order existingOrder : this.order){
+    		if(existingOrder.equals(order)){
+    			this.order.remove(order);
+    		}
+    	}
+    }
+	//Allergens
 	public List<String> getAllergens() {
 		return allergens;
 	}
-	/**Set the allergens list of the customer*/
 	public void setAllergens(List<String> allergens) {
 		this.allergens = allergens;
 	}
-    
-    
+	public void addAllergen(String allergen){
+    	this.allergens.add(allergen);
+    }
+    public void delAllergens(){
+    	allergens.clear();
+    }
+    public void delAllergen(String allergen){
+    	for(String existingAllergen : this.allergens){
+    		if(existingAllergen.equals(allergen)){
+    			this.allergens.remove(allergen);
+    		}
+    	}
+    }
+    //MailChoice
+    public boolean getMailChoice(){
+    	return mailChoice;
+    }
+    public void setMailChoice(boolean mailChoice) {
+		this.mailChoice = mailChoice;
+	}
+    //PhoneChoice
+    public boolean getPhoneChoice(){
+    	return phoneChoice;
+    }
+    public void setPhoneChoice(boolean phoneChoice) {
+		this.phoneChoice = phoneChoice;
+	}
 }

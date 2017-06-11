@@ -1,16 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Customers>
   <customer classe="AuthentificatedCustomer">
-    <login>0619355180</login>
-    <password>lol</password>
-    <iceCubeNb>1</iceCubeNb>
+    <lastName />
+    <firstName />
+    <mail />
+    <phoneNumber>0619355180</phoneNumber>
+    <password>test1995</password>
+    <iceCubeNb>-1</iceCubeNb>
     <fBread>mie</fBread>
-    <fSauce>andalouse</fSauce>
-    <fGarnish>tomate</fGarnish>
-    <fRecipe>poulet</fRecipe>
+    <fSauce>Mayonnaise</fSauce>
+    <fRecipe />
+    <fDrink />
+    <fGarnishs>
+      <fGarnish>Tomate</fGarnish>
+      <fGarnish>Concombre</fGarnish>
+    </fGarnishs>
     <allergens>
-      <allergen>aaa</allergen>
       <allergen>WTF</allergen>
+      <allergen>gluten</allergen>
     </allergens>
   </customer>
 </Customers>

@@ -5,21 +5,32 @@ import java.io.IOException;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Group;
+import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.text.Text;
 import model.AuthentificatedCustomer;
 import model.CustomerManagement;
 
 public class ControllerConnexion {
     @FXML
+    private Button connexion;
+
+    @FXML
+    private Button inscription;
+
+    @FXML
     private TextField TF_Username;
 
     @FXML
-    private TextField TF_Password;
+    private TextField PF_Password;
+
+    @FXML
+    private Text TEXT_ERROR;
 	
     //Bouton "Connexion" pour aller à l'accueil authentifié
 	public void goToAcceuilAuth() throws IOException {
 		for (AuthentificatedCustomer customer : CustomerManagement.getCustomers()) {
-            if(customer.getLogin().equals(TF_Username.getText()) && customer.getPassword().equals(TF_Password.getText())){
+            if((customer.getMail().equals(TF_Username.getText()) || customer.getPhoneNumber().equals(TF_Username.getText())) && customer.getPassword().equals(PF_Password.getText())){
             	ControllerBonjour.getOrder().setAuthCustomer(true); //On enregistre l'authentification du client
         		Group acteur = new Group(); //Pas touche
         		acteur.getChildren().add( //Pas touche
@@ -27,7 +38,8 @@ public class ControllerConnexion {
         		); //Pas touche
         		visual.ControllerClient.setScene(acteur, "SUBPAY - Accueil Auth");
             } else {
-                //TODO afficher une erreur (je m'en occuperais)
+            	TEXT_ERROR.setText("Identifiant ou mot de passe erronnés");
+            	System.out.println("nop");
             }
         }
 	}

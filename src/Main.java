@@ -6,15 +6,16 @@ import java.util.List;
 import model.AuthentificatedCustomer;
 import model.CustomerManagement;
 import model.product.*;
+import model.product.composants.Bread;
 //TODO supprimer cette classe a la fin du projet
 /**Cette classe reste juste pour faire des tests avec le modele*/
 public class Main {
-	public static void main(String[] args) {
-		ComponentManagement.importComponent("component.xml");
-		CustomerManagement.importCustomer("customer.xml");
-		
+	public static void main(String[] args) throws Exception {
 		//testExportComponent();
-		//testExportCustomer();
+		ComponentManagement.importComponent("component.xml");
+		testExportCustomer();
+		
+		CustomerManagement.importCustomer("customer.xml");	
 	}
 	
 	//Ces actions sont effectués par le manager (indirectement via bouton)
@@ -34,11 +35,19 @@ public class Main {
 		ComponentManagement.addDessert("brownie", "truc marron");
 		ComponentManagement.exportComponent("component.xml");
 	}
-	public static void testExportCustomer(){
-		List<String> aList = new ArrayList<>();
-		aList.add("aaa");
-		aList.add("WTF");
-		AuthentificatedCustomer customer1 = new AuthentificatedCustomer("0619355180", "lol", 1, ComponentManagement.getBread("mie"), ComponentManagement.getSauce("andalouse"), ComponentManagement.getGarnish("tomate"), ComponentManagement.getRecipe("poulet"), aList);
+	public static void testExportCustomer() throws Exception{
+		AuthentificatedCustomer customer1 = new AuthentificatedCustomer();
+		
+		customer1.setPhoneNumber("0619355180");
+		customer1.setPassword("test1995");
+		Bread bread = new Bread();
+		bread.setName("mie");
+		customer1.setFavoriteBread(bread);
+		customer1.setFavoriteSauce(ComponentManagement.getSauce("Mayonnaise"));
+		customer1.addGarnish(ComponentManagement.getGarnish("Tomate"));
+		customer1.addGarnish(ComponentManagement.getGarnish("Concombre"));
+		customer1.addAllergen("WTF");
+		customer1.addAllergen("gluten");
 		CustomerManagement.addCustomer(customer1);
 		CustomerManagement.exportCustomer("customer.xml");
 		

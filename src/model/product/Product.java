@@ -65,20 +65,42 @@ public class Product {
     public int getSize() {
 		return size;
 	}
+    public void setSize(int size) {
+		this.size = size;
+	}
+    //plate
+    public boolean getPlate(){
+    	return plate;
+    }
+    public void setPlate(boolean plate) {
+		this.plate = plate;
+	}
     //recipe
     public Recipe getRecipe() {
 		return recipe;
+	}
+    public void setRecipe(Recipe recipe) {
+		this.recipe = recipe;
 	}
     //bread
     public Bread getBread() {
 		return bread;
 	}
+    public void setBread(Bread bread) {
+		this.bread = bread;
+	}
     //sauce
     public List<Sauce> getSauces() {
 		return sauces;
 	}
+    public void setSauces(List<Sauce> sauces) {
+		this.sauces = sauces;
+	}
     //garnish
     public List<Garnish> getGarnishs() {
 		return garnishs;
+	}
+    public void setGarnishs(List<Garnish> garnishs) {
+		this.garnishs = garnishs;
 	}
 }
