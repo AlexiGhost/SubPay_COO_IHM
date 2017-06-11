@@ -155,7 +155,7 @@
     <price>7.0</price>
     <category>Mouais</category>
     <available>true</available>
-    <new>false</new>
+    <new>true</new>
   </recipe>
   <drink classe="Drink">
     <name>Cola cola</name>
@@ -180,6 +180,13 @@
   </drink>
   <drink classe="Drink">
     <name>Evina</name>
+    <photo />
+    <allergens />
+    <available>true</available>
+    <new>false</new>
+  </drink>
+  <drink classe="Drink">
+    <name>Hein Klein</name>
     <photo />
     <allergens />
     <available>true</available>
