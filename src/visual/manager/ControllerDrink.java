@@ -17,7 +17,6 @@ import model.product.ComponentManagement;
 import model.product.Drink;
 
 public class ControllerDrink implements Initializable{
-	//TODO gerer allergenes
 
     @FXML private ImageView ComponentImage;
     @FXML private CheckBox CHK_New;
@@ -34,8 +33,7 @@ public class ControllerDrink implements Initializable{
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-    	//TODO ajouter la liste d'allergenes dans ComponentManagment
-    	//allergenList.setAll(ComponentManagement.getAllergens());
+    	allergenList.setAll(ComponentManagement.getAllergens());
     	CB_Allergenes.setItems(allergenList);
     	if(drinkName != ""){
     		Drink drink = ComponentManagement.getDrink(drinkName);

@@ -17,7 +17,6 @@ import model.product.ComponentManagement;
 import model.product.composants.Recipe;
 
 public class ControllerRecipe implements Initializable{
-	//TODO gerer allergenes
 
     @FXML private ImageView ComponentImage;
     @FXML private CheckBox CHK_New;
@@ -39,9 +38,7 @@ public class ControllerRecipe implements Initializable{
 	public void initialize(URL location, ResourceBundle resources) {
     	CMB_Categorie.setItems(categoryData);
     	CMB_Categorie.setValue("Mouais");
-    	
-    	//TODO ajouter la liste d'allergenes dans ComponentManagment
-    	//allergenList.setAll(ComponentManagement.getAllergens());
+    	allergenList.setAll(ComponentManagement.getAllergens());
     	CB_Allergenes.setItems(allergenList);
     	if(recipeName != ""){
     		Recipe recipe = ComponentManagement.getRecipe(recipeName);

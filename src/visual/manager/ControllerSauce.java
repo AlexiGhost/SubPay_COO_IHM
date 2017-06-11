@@ -33,8 +33,7 @@ public class ControllerSauce implements Initializable{
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-    	//TODO ajouter la liste d'allergenes dans ComponentManagment
-    	//allergenList.setAll(ComponentManagement.getAllergens());
+    	allergenList.setAll(ComponentManagement.getAllergens());
     	CB_Allergenes.setItems(allergenList);
     	if(sauceName != ""){
     		Sauce sauce = ComponentManagement.getSauce(sauceName);

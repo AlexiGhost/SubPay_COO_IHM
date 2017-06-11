@@ -17,7 +17,6 @@ import model.product.ComponentManagement;
 import model.product.composants.Bread;
 
 public class ControllerBread implements Initializable{
-	//TODO gerer allergenes
 
     @FXML private ImageView ComponentImage;
     @FXML private CheckBox CHK_New;
@@ -37,8 +36,7 @@ public class ControllerBread implements Initializable{
     	if(breadName != ""){
     		Bread bread = ComponentManagement.getBread(breadName);
 			TF_Libelle.setText(breadName);
-			//TODO ajouter la liste d'allergenes dans ComponentManagment
-			//allergenList.setAll(ComponentManagement.getAllergens());
+			allergenList.setAll(ComponentManagement.getAllergens());
 			CB_Allergenes.setItems(allergenList);
 			if(bread != null){
 				if(bread.getPhoto() != null) TF_PhotoPath.setText(bread.getPhoto());
