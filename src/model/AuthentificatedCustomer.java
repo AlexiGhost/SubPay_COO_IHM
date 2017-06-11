@@ -79,8 +79,9 @@ public class AuthentificatedCustomer {
 		return mail;
 	}
 	public void setMail(String mail) throws Exception{
-		if (mail.contains("@")) // Verify @ in mail
+		if (mail.contains("@")){ // Verify @ in mail
 			this.mail = mail;
+		}
 		else
 			throw new Exception();
 	}
