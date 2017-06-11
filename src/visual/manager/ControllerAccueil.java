@@ -2,8 +2,9 @@ package visual.manager;
 
 import java.io.IOException;
 import java.net.URL;
-import java.time.Year;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 import java.util.ResourceBundle;
 
 import javax.swing.JOptionPane;
@@ -23,6 +24,8 @@ import model.product.composants.*;
 public class ControllerAccueil implements Initializable{
     
 	//ATTRIBUTES
+	
+	private String componentPath = "component.xml";	
 	
     @FXML private ListView<String> L_Recipe;
     @FXML private ListView<String> L_Bread;
@@ -46,10 +49,17 @@ public class ControllerAccueil implements Initializable{
     private ObservableList<String> drinkData = FXCollections.observableArrayList();
     private ObservableList<String> dessertData = FXCollections.observableArrayList();
     private ObservableList<Promotion> promoData = FXCollections.observableArrayList();
+    
+    //Attributs temporaires (pour autres controller)
+    
+    private static String selectedItem = "";
+    
     //METHODS
    
     @Override
     public void initialize(URL location, ResourceBundle rb){
+    	selectedItem = "";
+    	//initialisation des listes (pains, sauces, ...)
     	for (Recipe recipe : ComponentManagement.getRecipes()) {
 			recipeData.add(recipe.getName());
 		}
@@ -80,33 +90,48 @@ public class ControllerAccueil implements Initializable{
 		}
     	L_Dessert.setItems(dessertData);
     	
-    	for (Promotion promotion : ComponentManagement.getPromotions()) {
-			String date = Integer.toString(promotion.getDate());
-			int annee = Integer.valueOf(date.substring(4));
-			System.out.println(annee+" "+Calendar.getInstance().get(Calendar.YEAR));
-			//TODO TODO !
-			if(annee > Calendar.getInstance().get(Calendar.YEAR)) promoData.add(promotion);
-			else if(annee == Calendar.getInstance().get(Calendar.YEAR)){
+    	if(!ComponentManagement.getPromotions().isEmpty()){
+    		//Ajout de la promotion (sauf si expirée)
+	    	List<Promotion> deletePromotionList = new ArrayList<>();
+    		for (Promotion promotion : ComponentManagement.getPromotions()) {				
+	    		String date = promotion.getDate();
+				int annee = Integer.valueOf(date.substring(4));
 				int mois = Integer.valueOf(date.substring(2,4));
-				System.out.println(mois+" "+Calendar.getInstance().get(Calendar.MONTH));
-				if(mois >= Calendar.getInstance().get(Calendar.MONTH)){
-					int jour = Integer.valueOf(date.substring(0, 2));
-					System.out.println(jour+" "+Calendar.getInstance().get(Calendar.DAY_OF_MONTH));
-					if(jour >= Calendar.getInstance().get(Calendar.DAY_OF_MONTH)){
-						promoData.add(promotion);						
-					} else ComponentManagement.delPromotion(promotion.getName());
-				} else ComponentManagement.delPromotion(promotion.getName());
-			} else ComponentManagement.delPromotion(promotion.getName());
-    		
+				int jour = Integer.valueOf(date.substring(0, 2));
+				int year = Calendar.getInstance().get(Calendar.YEAR);
+				int month = Calendar.getInstance().get(Calendar.MONTH)+1;
+				int day = Calendar.getInstance().get(Calendar.DAY_OF_MONTH);
+				boolean deletePromotion = false;
+				//verification date
+				if(annee > year) {
+					promoData.add(promotion);					
+				} else if(annee == year){
+					if(mois > month) {
+						promoData.add(promotion);					
+					} else if(mois == month){
+						if(jour >= day){
+							promoData.add(promotion);
+						} else deletePromotion = true;
+					} else deletePromotion = true;
+				} else deletePromotion = true;
+	    		if(deletePromotion){
+	    			deletePromotionList.add(promotion);
+	    			javax.swing.JOptionPane.showMessageDialog(null,"La promotion '"+promotion.getName()+"'\na expirée\n("+jour+"/"+mois+"/"+annee+")"); 
+	    		}
+	    	}
+    		if(!deletePromotionList.isEmpty()){
+    			ComponentManagement.getPromotions().removeAll(deletePromotionList);
+    			ComponentManagement.exportComponent(componentPath);
+    		}
+    		//initialisation Table promotion
+	    	TC_PromotionName.setCellValueFactory(new PropertyValueFactory<Promotion, String>("name"));
+	    	TC_PromotionReduction.setCellValueFactory(new PropertyValueFactory<Promotion, Integer>("percentage"));
+	    	TC_PromotionDate.setCellValueFactory(new PropertyValueFactory<Promotion, Integer>("date"));
+	    	TC_PromotionCategory.setCellValueFactory(new PropertyValueFactory<Promotion, String>("category"));
+	    	TC_PromotionRecipe.setCellValueFactory(new PropertyValueFactory<Promotion, String>("recipe"));
+	    	TC_PromotionAuth.setCellValueFactory(new PropertyValueFactory<Promotion, Boolean>("authCustomer"));
+	    	T_Promotion.setItems(promoData);
     	}
-    	TC_PromotionName.setCellValueFactory(new PropertyValueFactory<Promotion, String>("name"));
-    	TC_PromotionReduction.setCellValueFactory(new PropertyValueFactory<Promotion, Integer>("percentage"));
-    	TC_PromotionDate.setCellValueFactory(new PropertyValueFactory<Promotion, Integer>("date"));
-    	TC_PromotionCategory.setCellValueFactory(new PropertyValueFactory<Promotion, String>("category"));
-    	TC_PromotionRecipe.setCellValueFactory(new PropertyValueFactory<Promotion, String>("recipe"));
-    	TC_PromotionAuth.setCellValueFactory(new PropertyValueFactory<Promotion, Boolean>("authCustomer"));
-    	T_Promotion.setItems(promoData);
-    	
     }
     
     @FXML
@@ -262,6 +287,7 @@ public class ControllerAccueil implements Initializable{
 
     @FXML
     void editBread(ActionEvent event) throws IOException{
+    	selectedItem = L_Bread.getSelectionModel().getSelectedItem();
     	Group acteur = new Group();
 		acteur.getChildren().add(
 		FXMLLoader.load(getClass().getResource("04_Bread.fxml"))
@@ -271,6 +297,7 @@ public class ControllerAccueil implements Initializable{
 
     @FXML
     void editDessert(ActionEvent event) throws IOException{
+    	selectedItem = L_Dessert.getSelectionModel().getSelectedItem();
     	Group acteur = new Group();
 		acteur.getChildren().add(
 		FXMLLoader.load(getClass().getResource("08_Dessert.fxml"))
@@ -280,6 +307,7 @@ public class ControllerAccueil implements Initializable{
 
     @FXML
     void editDrink(ActionEvent event) throws IOException{
+    	selectedItem = L_Drink.getSelectionModel().getSelectedItem();
     	Group acteur = new Group();
 		acteur.getChildren().add(
 		FXMLLoader.load(getClass().getResource("07_Drink.fxml"))
@@ -289,6 +317,7 @@ public class ControllerAccueil implements Initializable{
 
     @FXML
     void editGarnish(ActionEvent event) throws IOException{
+    	selectedItem = L_Garnish.getSelectionModel().getSelectedItem();
     	Group acteur = new Group();
 		acteur.getChildren().add(
 		FXMLLoader.load(getClass().getResource("05_Garnish.fxml"))
@@ -298,6 +327,7 @@ public class ControllerAccueil implements Initializable{
     
     @FXML
     void editPromotion(ActionEvent event) throws IOException{
+    	selectedItem = T_Promotion.getSelectionModel().getSelectedItem().getName();
     	Group acteur = new Group();
 		acteur.getChildren().add(
 		FXMLLoader.load(getClass().getResource("09_Promotion.fxml"))
@@ -307,6 +337,7 @@ public class ControllerAccueil implements Initializable{
 
     @FXML
     void editRecipe(ActionEvent event) throws IOException{
+    	selectedItem = L_Recipe.getSelectionModel().getSelectedItem();
     	Group acteur = new Group();
 		acteur.getChildren().add(
 		FXMLLoader.load(getClass().getResource("03_Recipe.fxml"))
@@ -316,6 +347,7 @@ public class ControllerAccueil implements Initializable{
 
     @FXML
     void editSauce(ActionEvent event) throws IOException{
+    	selectedItem = L_Sauce.getSelectionModel().getSelectedItem();
     	Group acteur = new Group();
 		acteur.getChildren().add(
 		FXMLLoader.load(getClass().getResource("06_Sauce.fxml"))
@@ -330,6 +362,11 @@ public class ControllerAccueil implements Initializable{
 		FXMLLoader.load(getClass().getResource("01_Authentification.fxml"))
 		);
 		visual.ControllerManager.setScene(acteur, "SUBPAY - Authentification");
+	}
+    
+    /**Return the selected item in the list*/
+    public static String getSelectedItem() {
+		return selectedItem;
 	}
 
 }

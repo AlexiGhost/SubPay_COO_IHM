@@ -20,6 +20,7 @@ public class ComponentManagement {
 	private static List<Promotion> promotions = new ArrayList<Promotion>();
 	private static List<Drink> drinks = new ArrayList<Drink>();
 	private static List<Dessert> desserts = new ArrayList<Dessert>();
+	private static String componentPath = "component.xml";
 
 // ---------- Lists Management (ADD/DEL/EDIT) ----------
 	//BreadList management
@@ -86,6 +87,10 @@ public class ComponentManagement {
 		ComponentManagement.exportComponent("component.xml");
 	}
 	//RecipeList management
+	/**Add a recipe to the component list*/
+	public static void addRecipe(Recipe recipe){
+		recipes.add(recipe);
+	}
 	/**Add a recipe to the component list*/
 	public static void addRecipe(String name, String category, double price, String photo){
 		Recipe recipe = new Recipe(name, photo, price, category);
@@ -269,6 +274,12 @@ public class ComponentManagement {
 		}
 		return null;
 	}
+	
+	//path
+	
+	public static String getComponentPath() {
+		return componentPath;
+	}
 
 // ---------- IMPORT / EXPORT ----------
 	
@@ -279,11 +290,12 @@ public class ComponentManagement {
 		String name = null;
 		String photo = null;
 		Boolean available = null;
+		Boolean news = null;
 		Double price = null;
 		String category = null;
 		Double percentage = null;
 		Boolean authCustomer = null;
-		Integer date = null;
+		String date = null;
 		List<String> list = null;
 		try {
 			//BREAD
@@ -293,6 +305,7 @@ public class ComponentManagement {
 				photo = bread.getPhoto();
 				list = bread.getAllergens();
 				available = bread.getAvailability();
+				news = bread.getNew();
 				//creation d'une branche
 				Element Ebread = new Element("bread");
 				racine.addContent(Ebread);
@@ -319,6 +332,10 @@ public class ComponentManagement {
 				Element Eavailable = new Element("available");
 				Eavailable.setText(available.toString());
 				Ebread.addContent(Eavailable);
+				//ajout new
+				Element Enew = new Element("new");
+				Enew.setText(news.toString());
+				Ebread.addContent(Enew);
 			}
 			//GARNISH
 			for(Garnish garnish : garnishs){
@@ -327,6 +344,7 @@ public class ComponentManagement {
 				photo = garnish.getPhoto();
 				list = garnish.getAllergens();
 				available = garnish.getAvailability();
+				news = garnish.getNew();
 				//creation d'une branche
 				Element Egarnish = new Element("garnish");
 				racine.addContent(Egarnish);
@@ -353,6 +371,10 @@ public class ComponentManagement {
 				Element Eavailable = new Element("available");
 				Eavailable.setText(available.toString());
 				Egarnish.addContent(Eavailable);
+				//ajout new
+				Element Enew = new Element("new");
+				Enew.setText(news.toString());
+				Egarnish.addContent(Enew);
 			}
 			//SAUCE
 			for(Sauce sauce : sauces){
@@ -361,6 +383,7 @@ public class ComponentManagement {
 				photo = sauce.getPhoto();
 				list = sauce.getAllergens();
 				available = sauce.getAvailability();
+				news = sauce.getNew();
 				//creation d'une branche
 				Element Esauce = new Element("sauce");
 				racine.addContent(Esauce);
@@ -387,6 +410,10 @@ public class ComponentManagement {
 				Element Eavailable = new Element("available");
 				Eavailable.setText(available.toString());
 				Esauce.addContent(Eavailable);
+				//ajout new
+				Element Enew = new Element("new");
+				Enew.setText(news.toString());
+				Esauce.addContent(Enew);
 			}
 			//RECIPE
 			for(Recipe recipe : recipes){
@@ -395,6 +422,7 @@ public class ComponentManagement {
 				photo = recipe.getPhoto();
 				list = recipe.getAllergens();
 				available = recipe.getAvailability();
+				news = recipe.getNew();
 				price = recipe.getPrice();
 				category = recipe.getCategory();
 				//creation d'une branche
@@ -431,6 +459,10 @@ public class ComponentManagement {
 				Element Eavailable = new Element("available");
 				Eavailable.setText(available.toString());
 				Erecipe.addContent(Eavailable);
+				//ajout new
+				Element Enew = new Element("new");
+				Enew.setText(news.toString());
+				Erecipe.addContent(Enew);
 			}
 			//DRINK
 			for(Drink drink : drinks){
@@ -439,6 +471,7 @@ public class ComponentManagement {
 				photo = drink.getPhoto();
 				list = drink.getAllergens();
 				available = drink.getAvailability();
+				news = drink.getNew();
 				//creation d'une branche
 				Element Edrink = new Element("drink");
 				racine.addContent(Edrink);
@@ -465,6 +498,10 @@ public class ComponentManagement {
 				Element Eavailable = new Element("available");
 				Eavailable.setText(available.toString());
 				Edrink.addContent(Eavailable);
+				//ajout new
+				Element Enew = new Element("new");
+				Enew.setText(news.toString());
+				Edrink.addContent(Enew);
 			}
 			//DESSERT
 			for(Dessert dessert : desserts){
@@ -473,6 +510,7 @@ public class ComponentManagement {
 				photo = dessert.getPhoto();
 				list = dessert.getAllergens();
 				available = dessert.getAvailability();
+				news = dessert.getNew();
 				//creation d'une branche
 				Element Edessert = new Element("dessert");
 				racine.addContent(Edessert);
@@ -499,6 +537,10 @@ public class ComponentManagement {
 				Element Eavailable = new Element("available");
 				Eavailable.setText(available.toString());
 				Edessert.addContent(Eavailable);
+				//ajout new
+				Element Enew = new Element("new");
+				Enew.setText(news.toString());
+				Edessert.addContent(Enew);
 			}
 			//PROMOTION
 			for(Promotion promo : promotions){
@@ -506,7 +548,7 @@ public class ComponentManagement {
 				name = promo.getName();
 				authCustomer = promo.getAuthCustomer();
 				percentage = promo.getPercentage();
-				list = promo.getRecipes();
+				String recipe = promo.getRecipe();
 				category = promo.getCategory();
 				date = promo.getDate();
 				//creation d'une branche
@@ -518,14 +560,10 @@ public class ComponentManagement {
 				Element Ename = new Element("name");
 				Ename.setText(name);
 				Epromo.addContent(Ename);
-				//ajout recipes
-				Element Erecipes = new Element("recipes");
-				for (String recipe : list) {
-					Element Erecipe = new Element("recipe");
-					Erecipe.setText(recipe);
-					Erecipes.addContent(Erecipe);
-				}
-				Epromo.addContent(Erecipes);
+				//ajout recipe
+				Element Erecipe = new Element("recipe");
+				Erecipe.setText(recipe);
+				Epromo.addContent(Erecipe);					
 				//ajout categorie
 				Element Ecategory = new Element("category");
 				Ecategory.setText(category);
@@ -569,22 +607,26 @@ public class ComponentManagement {
 		String name = null;
 		String photo = null;
 		Boolean available = null;
+		Boolean news = null;
 		Double price = null;
 		String category = null;
 		Double percentage = null;
 		Boolean authCustomer = null;
-		Integer date = null;
+		String date = null;
 		//BREAD
 		List<Element> listImport = racine.getChildren("bread");
 		for (Element component : listImport) {
 			name = component.getChildText("name");
 			photo = component.getChildText("photo");
 			available = Boolean.valueOf(component.getChildText("available"));
+			news = Boolean.valueOf(component.getChildText("new"));
 			//creation pain
 			breads.add(new Bread(name, photo));
 			int index = breads.size()-1;
 			//ajout disponibilité
 			breads.get(index).setAvailability(available);
+			//ajout nouveauté
+			breads.get(index).setNew(news);
 			//ajout allergenes
 			Element allergens = component.getChild("allergens");
 			List<Element> listAllergenes = allergens.getChildren();
@@ -598,11 +640,14 @@ public class ComponentManagement {
 			name = component.getChildText("name");
 			photo = component.getChildText("photo");
 			available = Boolean.valueOf(component.getChildText("available"));
+			news = Boolean.valueOf(component.getChildText("new"));
 			//creation garniture
 			garnishs.add(new Garnish(name, photo));
 			int index = garnishs.size()-1;
 			//ajout disponibilité
 			garnishs.get(index).setAvailability(available);
+			//ajout nouveauté
+			garnishs.get(index).setNew(news);
 			//ajout allergenes
 			Element allergens = component.getChild("allergens");
 			List<Element> listAllergenes = allergens.getChildren();
@@ -616,11 +661,14 @@ public class ComponentManagement {
 			name = component.getChildText("name");
 			photo = component.getChildText("photo");
 			available = Boolean.valueOf(component.getChildText("available"));
+			news = Boolean.valueOf(component.getChildText("new"));
 			//creation sauce
 			sauces.add(new Sauce(name, photo));
 			int index = sauces.size()-1;
 			//ajout disponibilité
 			sauces.get(index).setAvailability(available);
+			//ajout nouveauté
+			sauces.get(index).setNew(news);
 			//ajout allergenes
 			Element allergens = component.getChild("allergens");
 			List<Element> listAllergenes = allergens.getChildren();
@@ -636,11 +684,14 @@ public class ComponentManagement {
 			price = Double.valueOf(component.getChildText("price"));
 			category = component.getChildText("category");
 			available = Boolean.valueOf(component.getChildText("available"));
+			news = Boolean.valueOf(component.getChildText("new"));
 			//creation recette
 			recipes.add(new Recipe(name, photo, price, category));
 			int index = recipes.size()-1;
 			//ajout disponibilité
 			recipes.get(index).setAvailability(available);
+			//ajout nouveauté
+			recipes.get(index).setNew(news);
 			//ajout allergenes
 			Element allergens = component.getChild("allergens");
 			List<Element> listAllergenes = allergens.getChildren();
@@ -663,6 +714,8 @@ public class ComponentManagement {
 			int index = drinks.size()-1;
 			//ajout disponibilité
 			drinks.get(index).setAvailability(available);
+			//ajout nouveauté
+			drinks.get(index).setNew(news);
 			//ajout allergenes
 			Element allergens = component.getChild("allergens");
 			List<Element> listAllergenes = allergens.getChildren();
@@ -676,11 +729,14 @@ public class ComponentManagement {
 			name = component.getChildText("name");
 			photo = component.getChildText("photo");
 			available = Boolean.valueOf(component.getChildText("available"));
+			news = Boolean.valueOf(component.getChildText("new"));
 			//creation dessert
 			desserts.add(new Dessert(name, photo));
 			int index = desserts.size()-1;
 			//ajout disponibilité
 			desserts.get(index).setAvailability(available);
+			//ajout nouveauté
+			desserts.get(index).setNew(news);
 			//ajout allergenes
 			Element allergens = component.getChild("allergens");
 			List<Element> listAllergenes = allergens.getChildren();
@@ -695,7 +751,7 @@ public class ComponentManagement {
 			photo = component.getChildText("photo");
 			percentage = Double.valueOf(component.getChildText("percentage"));
 			authCustomer = Boolean.valueOf(component.getChildText("authCustomerOnly"));
-			date = Integer.valueOf(component.getChildText("date"));
+			date = component.getChildText("date");
 			category = component.getChildText("category");
 			
 			//creation promotion
@@ -704,11 +760,8 @@ public class ComponentManagement {
 			//ajout authCustomer
 			promotions.get(index).setAuthCustomer(authCustomer);
 			//ajout listRecipes
-			Element recipes = component.getChild("recipes");
-			List<Element> listRecipe = recipes.getChildren();
-			for (Element recipe : listRecipe) {
-				promotions.get(index).addRecipe(recipe.getText()); 					
-			}
+			String recipe = component.getChildText("recipe");
+			promotions.get(index).setRecipe(recipe);
 			//ajout categorie
 			promotions.get(index).setCategory(category);
 			//ajout %age
