@@ -17,6 +17,7 @@ import model.product.ComponentManagement;
 import model.product.composants.Recipe;
 
 public class ControllerRecipe implements Initializable{
+	//TODO gerer allergenes
 
     @FXML private ImageView ComponentImage;
     @FXML private CheckBox CHK_New;
@@ -24,8 +25,13 @@ public class ControllerRecipe implements Initializable{
     @FXML private TextField TF_PhotoPath;
     @FXML private CheckBox CHK_Available;
     @FXML private ComboBox<String> CMB_Categorie;
+    @FXML private ListView<String> L_Allergenes;    
+    @FXML private ComboBox<String> CB_Allergenes;
     
     private ObservableList<String> categoryData = FXCollections.observableArrayList("Mouais", "Bof", "Ca passe");
+    private ObservableList<String> allergenData = FXCollections.observableArrayList();
+    private ObservableList<String> allergenList = FXCollections.observableArrayList();
+    
     
     private String recipeName = ControllerAccueil.getSelectedItem();
     
@@ -34,6 +40,9 @@ public class ControllerRecipe implements Initializable{
     	CMB_Categorie.setItems(categoryData);
     	CMB_Categorie.setValue("Mouais");
     	
+    	//TODO ajouter la liste d'allergenes dans ComponentManagment
+    	//allergenList.setAll(ComponentManagement.getAllergens());
+    	CB_Allergenes.setItems(allergenList);
     	if(recipeName != ""){
     		Recipe recipe = ComponentManagement.getRecipe(recipeName);
 			TF_Libelle.setText(recipeName);
@@ -42,9 +51,31 @@ public class ControllerRecipe implements Initializable{
 				CHK_Available.selectedProperty().set(recipe.getAvailability());
 				CHK_New.selectedProperty().set(recipe.getNew());
 				CMB_Categorie.setValue(recipe.getCategory());
+				allergenData.setAll(recipe.getAllergens());
+				L_Allergenes.setItems(allergenData);
 			}
     	}
     }
+    
+
+    @FXML
+    void ClearAllergenes(ActionEvent event) {
+    	allergenData.clear();
+    	L_Allergenes.setItems(allergenData);
+    }
+
+    @FXML
+    void addAllergene(ActionEvent event) {
+    	allergenData.add(CB_Allergenes.selectionModelProperty().getValue().getSelectedItem());
+    	L_Allergenes.setItems(allergenData);
+    }
+
+    @FXML
+    void delAllergene(ActionEvent event) {
+    	allergenData.remove(L_Allergenes.selectionModelProperty().getValue().getSelectedItem());
+    	L_Allergenes.setItems(allergenData);
+    }
+
     
     @FXML
     void goToAccueil(ActionEvent event) throws IOException{
@@ -84,6 +115,7 @@ public class ControllerRecipe implements Initializable{
         	recipe.setNew(CHK_New.selectedProperty().get());
         	recipe.setAvailability(CHK_Available.selectedProperty().get());
         	recipe.setCategory(CMB_Categorie.getSelectionModel().getSelectedItem());
+        	recipe.getAllergens().addAll(allergenData);
     		if(recipeName != ""){
         		Recipe oldRecipe = ComponentManagement.getRecipe(recipeName);
         		ComponentManagement.getRecipes().remove(oldRecipe);

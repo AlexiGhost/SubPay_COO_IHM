@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -15,25 +17,54 @@ import model.product.ComponentManagement;
 import model.product.Dessert;
 
 public class ControllerDessert implements Initializable{
+	//TODO gerer allergenes
 
     @FXML private ImageView ComponentImage;
     @FXML private CheckBox CHK_New;
     @FXML private TextField TF_Libelle;
     @FXML private TextField TF_PhotoPath;
     @FXML private CheckBox CHK_Available;
+    @FXML private ListView<String> L_Allergenes;    
+    @FXML private ComboBox<String> CB_Allergenes;
+    
+    private ObservableList<String> allergenData = FXCollections.observableArrayList();
+    private ObservableList<String> allergenList = FXCollections.observableArrayList();
 
     String dessertName = ControllerAccueil.getSelectedItem();
     String componentPath = "component.xml";
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+    	//TODO ajouter la liste d'allergenes dans ComponentManagment
+    	//allergenList.setAll(ComponentManagement.getAllergens());
+    	CB_Allergenes.setItems(allergenList);
     	if(dessertName != ""){
     		Dessert dessert = ComponentManagement.getDessert(dessertName);
 			TF_Libelle.setText(dessertName);
-			TF_PhotoPath.setText(dessert.getPhoto());
+			if(dessert.getPhoto() != null) TF_PhotoPath.setText(dessert.getPhoto());
 			CHK_Available.selectedProperty().set(dessert.getAvailability());
 			CHK_New.selectedProperty().set(dessert.getNew());
+			allergenData.setAll(dessert.getAllergens());
+			L_Allergenes.setItems(allergenData);
     	}
+    }
+    
+    @FXML
+    void ClearAllergenes(ActionEvent event) {
+    	allergenData.clear();
+    	L_Allergenes.setItems(allergenData);
+    }
+
+    @FXML
+    void addAllergene(ActionEvent event) {
+    	allergenData.add(CB_Allergenes.selectionModelProperty().getValue().getSelectedItem());
+    	L_Allergenes.setItems(allergenData);
+    }
+
+    @FXML
+    void delAllergene(ActionEvent event) {
+    	allergenData.remove(L_Allergenes.selectionModelProperty().getValue().getSelectedItem());
+    	L_Allergenes.setItems(allergenData);
     }
     
     @FXML
@@ -58,6 +89,7 @@ public class ControllerDessert implements Initializable{
     	dessert.setAvailability(CHK_Available.selectedProperty().get());
     	dessert.setNew(CHK_New.selectedProperty().get());
     	if(dessert.getName() == ""){TF_Libelle.setPromptText("Veuillez donner un nom"); return;}
+    	dessert.getAllergens().addAll(allergenData);
     	if(dessertName != ""){
     		Dessert oldDessert = ComponentManagement.getDessert(dessertName);
     		ComponentManagement.getDesserts().remove(oldDessert);
