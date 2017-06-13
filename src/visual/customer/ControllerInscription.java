@@ -53,14 +53,14 @@ public class ControllerInscription {
     @FXML
     private Text T_MailPhoneMissing;
     
-    private AuthentificatedCustomer authCusto = new AuthentificatedCustomer();
+    private static AuthentificatedCustomer authCusto = new AuthentificatedCustomer();
 	
     //authCusto
-    public AuthentificatedCustomer getAuthCusto() {
+    public static AuthentificatedCustomer getAuthCusto() {
 		return authCusto;
 	}
     public void setAuthCusto(AuthentificatedCustomer authCusto) {
-		this.authCusto = authCusto;
+		authCusto = authCusto;
 	}
     //Vérifier mot de passe
     public boolean checkPassword(){
@@ -132,8 +132,24 @@ public class ControllerInscription {
     	}
     	return true;
     }
+    /**Efface les affichages d'erreurs*/
+    public void clearError(){
+    	BackgroundFill bfTrans = new BackgroundFill(null,null,null);
+    	Background bTrans = new Background(bfTrans);
+    	//Effacer les affichages d'erreurs
+		T_PasswordCondition.setFill(javafx.scene.paint.Paint.valueOf("black"));
+		PF_password.setBackground(bTrans);
+		PF_PasswordConfirmation.setBackground(bTrans);
+		TF_Mail.setBackground(bTrans);
+		TF_Phone.setBackground(bTrans);
+		CB_MailChoice.setBackground(bTrans);
+		CB_PhoneChoice.setBackground(bTrans);
+		T_MailPhoneMissing.setText("");
+    }
     //Bouton "Inscription"
 	public void goToAcceuilAuth() throws Exception {
+		BackgroundFill bfRed = new BackgroundFill(Paint.valueOf("red"),null,null);
+		Background bRed = new Background(bfRed);
 		if(checkPassword() && checkPasswordConfirmation() && checkMail() && checkPhone() && mailPhoneChoiceMade() && mailChoiceCorrect() && phoneChoiceCorrect()){
 			//Enregistrer les informations sur le client
 			authCusto.setLastName(TF_LastName.getText());
@@ -151,8 +167,6 @@ public class ControllerInscription {
 			CustomerManagement.addCustomer(authCusto);
 			CustomerManagement.exportCustomer("customer.xml");
 			ControllerBonjour.getOrder().setAuthCustomer(true); 
-			T_PasswordCondition.setFill(javafx.scene.paint.Paint.valueOf("black"));
-			System.out.println("Enregistré !");
 			//Changement d'interface 
 			Group acteur = new Group();
 			acteur.getChildren().add(
@@ -161,65 +175,36 @@ public class ControllerInscription {
 			visual.ControllerClient.setScene(acteur, "SUBPAY - Accueil Auth");
 		}
 		else{
-			BackgroundFill bfRed = new BackgroundFill(Paint.valueOf("red"),null,null);
-			Background bRed = new Background(bfRed);
-			BackgroundFill bfTrans = new BackgroundFill(null,null,null);
-			Background bTrans = new Background(bfTrans);
-			//TODO Enlever le rouge des erreurs suivantes
 			if(!checkPassword()){
+				clearError();
 				T_PasswordCondition.setFill(javafx.scene.paint.Paint.valueOf("RED"));
 				PF_password.setBackground(bRed);
 			}
 			else if(!checkPasswordConfirmation()){
-				T_PasswordCondition.setFill(javafx.scene.paint.Paint.valueOf("black"));
-				PF_password.setBackground(bTrans);
-				//Erreurs
+				clearError();
 				PF_PasswordConfirmation.setBackground(bRed);
 			}
 			else if(!checkMail()){
-				T_PasswordCondition.setFill(javafx.scene.paint.Paint.valueOf("black"));
-				PF_password.setBackground(bTrans);
-				PF_PasswordConfirmation.setBackground(bTrans);
-				//Erreurs
+				clearError();
 				TF_Mail.setBackground(bRed);
 				T_MailPhoneMissing.setText("Votre adresse mail n'est pas conforme");
 			}
 			else if(!checkPhone()){
-				T_PasswordCondition.setFill(javafx.scene.paint.Paint.valueOf("black"));
-				PF_password.setBackground(bTrans);
-				PF_PasswordConfirmation.setBackground(bTrans);
-				TF_Mail.setBackground(bTrans);
-				//Erreurs
+				clearError();
 				TF_Phone.setBackground(bRed);
 				T_MailPhoneMissing.setText("Votre numéro de téléphone portable n'est pas conforme");
 			}
 			else if(!mailPhoneChoiceMade()){
-				T_PasswordCondition.setFill(javafx.scene.paint.Paint.valueOf("black"));
-				PF_password.setBackground(bTrans);
-				PF_PasswordConfirmation.setBackground(bTrans);
-				TF_Mail.setBackground(bTrans);
-				TF_Phone.setBackground(bTrans);
-				//Erreurs
+				clearError();
 				T_MailPhoneMissing.setText("Vous devez cocher au moins une des cases ci-dessus");
 			}
 			else if(!mailChoiceCorrect()){
-				T_PasswordCondition.setFill(javafx.scene.paint.Paint.valueOf("black"));
-				PF_password.setBackground(bTrans);
-				PF_PasswordConfirmation.setBackground(bTrans);
-				TF_Mail.setBackground(bTrans);
-				TF_Phone.setBackground(bTrans);
-				//Erreurs
+				clearError();
 				CB_MailChoice.setBackground(bRed);
 				T_MailPhoneMissing.setText("Vous devez renseigner votre adresse mail");
 			}
 			else if(!phoneChoiceCorrect()){
-				T_PasswordCondition.setFill(javafx.scene.paint.Paint.valueOf("black"));
-				PF_password.setBackground(bTrans);
-				PF_PasswordConfirmation.setBackground(bTrans);
-				TF_Mail.setBackground(bTrans);
-				TF_Phone.setBackground(bTrans);
-				CB_MailChoice.setBackground(bTrans);
-				//Erreurs
+				clearError();
 				CB_PhoneChoice.setBackground(bRed);
 				T_MailPhoneMissing.setText("Vous devez renseigner votre numéro de téléphone");
 			}

@@ -310,10 +310,10 @@ public class CustomerManagement {
 			racine = document.getRootElement();
 		} catch (JDOMException | IOException e) {}
 		
-		AuthentificatedCustomer tCustomer = new AuthentificatedCustomer();
 		
-		List<Element> customers = racine.getChildren("customer");
-		for (Element customer : customers) {
+		List<Element> Ecustomers = racine.getChildren("customer");
+		for (Element customer : Ecustomers) {
+			AuthentificatedCustomer tCustomer = new AuthentificatedCustomer();
 			tCustomer.setLastName(customer.getChildText("lastName"));
 			tCustomer.setFirstName(customer.getChildText("firstName"));
 			if(!(customer.getChildText("mail").equals("")))
@@ -363,6 +363,8 @@ public class CustomerManagement {
 			//creation customer
 			addCustomer(tCustomer);
 		}
+
+
 	}
 	public static void importCustomerOrders(String xmlFile){
 		//TODO Faire l'import des commandes enregistrées du client

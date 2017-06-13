@@ -60,6 +60,13 @@ public class ControllerSauces {
 			visual.ControllerClient.setScene(acteur, "SUBPAY - Boissons"); //Ici, il faut laisser "SUBPAY" et changer "Accueil" selon l'interface où
 																//tu vas. Ca permet de changer le titre de la fenêtre (et ça marche B)  )
 		}
+		else if(ControllerBonjour.getOrder().getAuthCustomer()){
+			Group acteur = new Group();
+			acteur.getChildren().add( 
+			FXMLLoader.load(getClass().getResource("004.1 Accueil (authentifier).fxml"))
+			);
+			visual.ControllerClient.setScene(acteur, "SUBPAY - Accueil Auth");
+		}
 		else{
 			Group acteur = new Group(); //Pas touche
 			acteur.getChildren().add( //Pas touche
