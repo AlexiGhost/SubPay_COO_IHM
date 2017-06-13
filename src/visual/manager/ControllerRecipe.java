@@ -1,6 +1,7 @@
 package visual.manager;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -11,7 +12,11 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Group;
-import javafx.scene.control.*;
+import javafx.scene.control.CheckBox;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.ListView;
+import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import model.product.ComponentManagement;
 import model.product.composants.Recipe;
@@ -54,6 +59,15 @@ public class ControllerRecipe implements Initializable{
     	}
     }
     
+    @FXML
+    void changeImage(ActionEvent event){
+    	//Image image = new Image(TF_PhotoPath.getText());
+    	String path = "..\\images\\";
+    	String fileName = TF_PhotoPath.getText();
+    	Image image = new Image("file:"+path+fileName);
+    	System.out.println(path+fileName);
+    	ComponentImage.setImage(image);
+    }
 
     @FXML
     void ClearAllergenes(ActionEvent event) {

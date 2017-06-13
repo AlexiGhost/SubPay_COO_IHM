@@ -21,6 +21,7 @@ public class ComponentManagement {
 	private static List<Drink> drinks = new ArrayList<Drink>();
 	private static List<Dessert> desserts = new ArrayList<Dessert>();
 	private static List<String> allergens = new ArrayList<String>();
+	private static List<Composant> nouveautes = new ArrayList<Composant>();
 	private static String componentPath = "component.xml";
 
 // ---------- Lists Management (ADD/DEL/EDIT) ----------
@@ -174,6 +175,28 @@ public class ComponentManagement {
 			}
 		}
 		ComponentManagement.exportComponent("component.xml");
+	}
+	
+	//Nouveautés management
+	public static void setNouveautes(){
+		for(Bread bread : breads){
+			if(bread.getNew()) nouveautes.add(bread);
+		}
+		for(Recipe recipe : recipes){
+			if(recipe.getNew()) nouveautes.add(recipe);
+		}
+		for(Garnish garnish : garnishs){
+			if(garnish.getNew()) nouveautes.add(garnish);
+		}
+		for(Sauce sauce : sauces){
+			if(sauce.getNew()) nouveautes.add(sauce);
+		}
+		for(Drink drink : drinks){
+			if(drink.getNew()) nouveautes.add(drink);
+		}
+		for(Dessert dessert : desserts){
+			if(dessert.getNew()) nouveautes.add(dessert);
+		}
 	}
 	
 // ---------- GETTERS / SETTERS ----------
@@ -780,5 +803,6 @@ public class ComponentManagement {
 			//ajout date
 			promotions.get(index).setDate(date);
 		}
+		setNouveautes();
 	}
 }
