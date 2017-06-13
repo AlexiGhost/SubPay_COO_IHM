@@ -60,7 +60,7 @@
             <Font size="18.0" />
          </font>
       </TextField>
-      <PasswordField fx:id="PF_password" layoutX="440.0" layoutY="315.0" onAction="#checkPassword" prefHeight="59.0" prefWidth="401.0" promptText="Mot de passe">
+      <PasswordField fx:id="PF_password" layoutX="440.0" layoutY="315.0" prefHeight="59.0" prefWidth="401.0" promptText="Mot de passe">
          <font>
             <Font size="18.0" />
          </font>
@@ -81,7 +81,7 @@
          </font>
       </TextField>
       <CheckBox fx:id="CB_PhoneChoice" layoutX="637.0" layoutY="508.0" mnemonicParsing="false" />
-      <CheckBox fx:id="CB_MailChoice" layoutX="163.0" layoutY="508.0" mnemonicParsing="false" />
+      <CheckBox fx:id="CB_MailChoice" layoutX="163.0" layoutY="508.0" mnemonicParsing="false" selected="true" />
       <Text layoutX="404.0" layoutY="475.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Par quel moyen souhaitez vous recevoir votre bon d'achat ?">
          <font>
             <Font size="18.0" />
