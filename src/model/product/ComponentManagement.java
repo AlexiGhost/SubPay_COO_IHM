@@ -314,6 +314,10 @@ public class ComponentManagement {
 	public static void addAllergen(String allergen){
 		allergens.add(allergen);
 	}
+	//nouveautés
+	public static List<Composant> getNews() {
+		return nouveautes;
+	}
 
 // ---------- IMPORT / EXPORT ----------
 	

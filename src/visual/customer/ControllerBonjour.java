@@ -10,6 +10,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
+import model.CustomerManagement;
 import model.product.Order;
 
 public class ControllerBonjour {
@@ -22,7 +23,7 @@ public class ControllerBonjour {
 		return order;
 	}
 	// Bouton "oui" pour connexion
-	public void goToConnexion() throws IOException { //Au lieu de "toAccueil", tu dois mettre to + [InterfaceDeDestination]
+	public void goToConnexion() throws IOException {
 		Group acteur = new Group(); //Pas touche
 		acteur.getChildren().add( //Pas touche
 		FXMLLoader.load(getClass().getResource("002 Connexion.fxml")) //Ici, il faut changer le fichier fxml (la string en fait)
