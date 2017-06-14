@@ -26,14 +26,14 @@ public class ControllerConnexion {
     @FXML
     private Text TEXT_ERROR;
 	
-    //Bouton "Connexion" pour aller à l'accueil authentifié
+    /**
+     * Permet d'accéder à la page d'accueil en cliquant sur le bouton "Connexion"
+     */
 	public void goToAcceuilAuth() {
-		System.out.println("hello");
-		System.out.println(PF_password.getText());
 		try{
 		for (AuthentificatedCustomer customer : CustomerManagement.getCustomers()) {
             if((customer.getMail().equals(TF_Username.getText()) || customer.getPhoneNumber().equals(TF_Username.getText())) && customer.getPassword().equals(PF_password.getText())){
-            	System.out.println("bon");
+            	ControllerInscription.setAuthCusto(customer);
             	ControllerBonjour.getOrder().setAuthCustomer(true); //On enregistre l'authentification du client
         		Group acteur = new Group();
         		acteur.getChildren().add(
@@ -42,19 +42,17 @@ public class ControllerConnexion {
         		visual.ControllerClient.setScene(acteur, "SUBPAY - Accueil Auth");
             } else {
             	TEXT_ERROR.setText("Identifiant ou mot de passe erronnés");
-            	System.out.println(TF_Username.getText());
             }
         }
 		}catch(IOException e){}
 	}
 	
-	public void goToInscription() throws IOException { //Au lieu de "toAccueil", tu dois mettre to + [InterfaceDeDestination]
-		Group acteur = new Group(); //Pas touche
-		acteur.getChildren().add( //Pas touche
-		FXMLLoader.load(getClass().getResource("003 Inscription.fxml")) //Ici, il faut changer le fichier fxml (la string en fait)
-		); //Pas touche
-		visual.ControllerClient.setScene(acteur, "SUBPAY - Inscription"); //Ici, il faut laisser "SUBPAY" et changer "Accueil" selon l'interface où
-																//tu vas. Ca permet de changer le titre de la fenêtre (et ça marche B)  )
+	public void goToInscription() throws IOException {
+		Group acteur = new Group();
+		acteur.getChildren().add(
+		FXMLLoader.load(getClass().getResource("003 Inscription.fxml"))
+		);
+		visual.ControllerClient.setScene(acteur, "SUBPAY - Inscription");
 	}
 	
 }
