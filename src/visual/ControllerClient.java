@@ -10,6 +10,7 @@ import javafx.stage.Stage;
 import model.CustomerManagement;
 import model.product.ComponentManagement;
 import model.product.Order;
+import visual.customer.ControllerAccueil;
 
 public class ControllerClient extends Application {
 	private static 				Stage 			theStage;
@@ -17,6 +18,8 @@ public class ControllerClient extends Application {
 	public static void main(String[] args) throws Exception {
 		ComponentManagement.importComponent("component.xml");
 		CustomerManagement.importCustomer("customer.xml");
+		ControllerAccueil.getListPromo().addAll(ComponentManagement.getPromotions());
+		ControllerAccueil.getListNew().addAll(ComponentManagement.getNews());
 		Order.setOldNb(0);
 		launch();
 	}

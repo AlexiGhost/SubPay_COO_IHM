@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 
 import javafx.fxml.FXML;
@@ -24,8 +25,8 @@ import model.product.composants.Promotion;
 
 public class ControllerAccueil implements Initializable {
 
-	private static 	ArrayList<Promotion>	ListPromo = new ArrayList<Promotion>();
-	private static 	ArrayList<Composant>	ListNew = new ArrayList<Composant>();
+	private static 	List<Promotion>	ListPromo = new ArrayList<Promotion>();
+	private static 	List<Composant>	ListNew = new ArrayList<Composant>();
     @FXML
     private 		TilePane 				promoTiled;
     @FXML
@@ -33,9 +34,14 @@ public class ControllerAccueil implements Initializable {
     
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		ListPromo.addAll(ComponentManagement.getPromotions());
-		ListNew.addAll(ComponentManagement.getNews());
 		affichePromo();
+	}
+	
+	public static List<Composant> getListNew() {
+		return ListNew;
+	}
+	public static List<Promotion> getListPromo() {
+		return ListPromo;
 	}
 	
 	public void affichePromo() {
