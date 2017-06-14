@@ -141,4 +141,13 @@ public class ControllerAccueil implements Initializable {
 		);
 		visual.ControllerClient.setScene(acteur, "SUBPAY - Paiement");
 	}
+	public void goToAllergen() throws IOException {
+		ControllerAllergen.setPreviousUI("004 Accueil.fxml");
+		ControllerAllergen.setPreviousTitle("SUBPAY - Accueil");
+		Group acteur = new Group();
+		acteur.getChildren().add(
+		FXMLLoader.load(getClass().getResource("006 Allergies.fxml"))
+		);
+		visual.ControllerClient.setScene(acteur, "SUBPAY - Allergènes");
+	}
 }
