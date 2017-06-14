@@ -12,6 +12,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Group;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import model.product.ComponentManagement;
 import model.product.composants.Bread;
@@ -49,6 +50,13 @@ public class ControllerBread implements Initializable{
     }
     
     @FXML
+    void changeImage(ActionEvent event){
+    	String fileName = TF_PhotoPath.getText();
+    	Image image = new Image("file:src\\visual\\images\\"+fileName);
+    	ComponentImage.setImage(image);
+    }
+    
+    @FXML
     void ClearAllergenes(ActionEvent event) {
     	allergenData.clear();
     	L_Allergenes.setItems(allergenData);
@@ -56,7 +64,15 @@ public class ControllerBread implements Initializable{
 
     @FXML
     void addAllergene(ActionEvent event) {
-    	allergenData.add(CB_Allergenes.selectionModelProperty().getValue().getSelectedItem());
+    	boolean exist = false;
+    	for(String allergen : allergenData){
+    		if(allergen == CB_Allergenes.selectionModelProperty().getValue().getSelectedItem()){
+    			exist = true;
+    		}
+    	}
+    	if(exist == false){
+    		allergenData.add(CB_Allergenes.selectionModelProperty().getValue().getSelectedItem());    		
+    	}
     	L_Allergenes.setItems(allergenData);
     }
 

@@ -8,13 +8,6 @@
     <new>false</new>
   </bread>
   <bread classe="Bread">
-    <name>Wrap</name>
-    <photo />
-    <allergens />
-    <available>false</available>
-    <new>false</new>
-  </bread>
-  <bread classe="Bread">
     <name>Miel Avoine</name>
     <photo />
     <allergens />
@@ -33,6 +26,41 @@
     <photo />
     <allergens />
     <available>true</available>
+    <new>false</new>
+  </bread>
+  <bread classe="Bread">
+    <name>Wrap</name>
+    <photo>Pain.png</photo>
+    <allergens />
+    <available>false</available>
+    <new>false</new>
+  </bread>
+  <bread classe="Bread">
+    <name>Carottes rapée</name>
+    <photo>Garniture.png</photo>
+    <allergens />
+    <available>false</available>
+    <new>false</new>
+  </bread>
+  <bread classe="Bread">
+    <name>Mayonnaise</name>
+    <photo>Sauce.png</photo>
+    <allergens />
+    <available>false</available>
+    <new>false</new>
+  </bread>
+  <bread classe="Bread">
+    <name>Hein Klein</name>
+    <photo>boisson.png</photo>
+    <allergens />
+    <available>false</available>
+    <new>false</new>
+  </bread>
+  <bread classe="Bread">
+    <name>brownie</name>
+    <photo>Dessert.png</photo>
+    <allergens />
+    <available>false</available>
     <new>false</new>
   </bread>
   <garnish classe="Garnish">
@@ -113,25 +141,7 @@
     <new>false</new>
   </sauce>
   <recipe classe="Recipe">
-    <name>Thon</name>
-    <photo>..\images\thon.png</photo>
-    <allergens />
-    <price>7.0</price>
-    <category>Mouais</category>
-    <available>true</available>
-    <new>false</new>
-  </recipe>
-  <recipe classe="Recipe">
     <name>Dinde</name>
-    <photo />
-    <allergens />
-    <price>5.5</price>
-    <category>Ca passe</category>
-    <available>true</available>
-    <new>false</new>
-  </recipe>
-  <recipe classe="Recipe">
-    <name>Jambon</name>
     <photo />
     <allergens />
     <price>5.5</price>
@@ -156,6 +166,26 @@
     <category>Mouais</category>
     <available>true</available>
     <new>true</new>
+  </recipe>
+  <recipe classe="Recipe">
+    <name>Thon</name>
+    <photo>..\images\thon.png</photo>
+    <allergens>
+      <allergen>Poissons</allergen>
+    </allergens>
+    <price>7.0</price>
+    <category>Mouais</category>
+    <available>true</available>
+    <new>false</new>
+  </recipe>
+  <recipe classe="Recipe">
+    <name>Jambon</name>
+    <photo>Recette.png</photo>
+    <allergens />
+    <price>5.5</price>
+    <category>Ca passe</category>
+    <available>true</available>
+    <new>false</new>
   </recipe>
   <drink classe="Drink">
     <name>Cola cola</name>

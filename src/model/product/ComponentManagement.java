@@ -804,5 +804,21 @@ public class ComponentManagement {
 			promotions.get(index).setDate(date);
 		}
 		setNouveautes();
+		List<String> aList = new ArrayList<>();
+		aList.add("Gluten");
+		aList.add("Crustacés");
+		aList.add("Oeufs");
+		aList.add("Poissons");
+		aList.add("Arachides");
+		aList.add("Soja");
+		aList.add("Lait");
+		aList.add("Fruit à coques");
+		aList.add("Céleri");
+		aList.add("Moutarde");
+		aList.add("Sésame");
+		aList.add("Anhydride sulfureux");
+		aList.add("Lupin");
+		aList.add("Mollusques");
+		setAllergens(aList);
 	}
 }

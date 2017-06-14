@@ -61,11 +61,8 @@ public class ControllerRecipe implements Initializable{
     
     @FXML
     void changeImage(ActionEvent event){
-    	//Image image = new Image(TF_PhotoPath.getText());
-    	String path = "..\\images\\";
     	String fileName = TF_PhotoPath.getText();
-    	Image image = new Image("file:"+path+fileName);
-    	System.out.println(path+fileName);
+    	Image image = new Image("file:src\\visual\\images\\"+fileName);
     	ComponentImage.setImage(image);
     }
 
@@ -77,7 +74,15 @@ public class ControllerRecipe implements Initializable{
 
     @FXML
     void addAllergene(ActionEvent event) {
-    	allergenData.add(CB_Allergenes.selectionModelProperty().getValue().getSelectedItem());
+    	boolean exist = false;
+    	for(String allergen : allergenData){
+    		if(allergen == CB_Allergenes.selectionModelProperty().getValue().getSelectedItem()){
+    			exist = true;
+    		}
+    	}
+    	if(exist == false){
+    		allergenData.add(CB_Allergenes.selectionModelProperty().getValue().getSelectedItem());    		
+    	}
     	L_Allergenes.setItems(allergenData);
     }
 
