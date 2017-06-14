@@ -7,6 +7,7 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.TilePane?>
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
@@ -23,15 +24,15 @@
       <Circle fill="#0ec314" layoutX="123.0" layoutY="549.0" radius="150.0" stroke="BLACK" strokeType="INSIDE" AnchorPane.bottomAnchor="-150.0" AnchorPane.leftAnchor="-150.0" />
       <Circle fill="#0ec314" layoutX="1039.0" layoutY="514.0" radius="150.0" stroke="BLACK" strokeType="INSIDE" AnchorPane.bottomAnchor="-150.0" AnchorPane.rightAnchor="-150.0" />
       <Circle fill="#0ec314" layoutX="1017.0" layoutY="100.0" radius="150.0" stroke="BLACK" strokeType="INSIDE" AnchorPane.rightAnchor="-150.0" AnchorPane.topAnchor="-150.0" />
-      <ScrollPane layoutX="340.0" layoutY="150.0" prefHeight="150.0" prefWidth="600.0">
+      <ScrollPane hbarPolicy="ALWAYS" layoutX="341.0" layoutY="150.0" prefHeight="150.0" prefWidth="600.0" vbarPolicy="NEVER">
          <content>
-            <ImageView fitHeight="148.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" />
+            <TilePane fx:id="promoTiled" alignment="CENTER_LEFT" orientation="VERTICAL" prefHeight="135.0" prefWidth="599.0" />
          </content></ScrollPane>
       <ListView layoutX="984.0" layoutY="150.0" prefHeight="363.0" prefWidth="282.0" />
       <Button fx:id="commander" layoutX="984.0" layoutY="512.0" mnemonicParsing="false" onAction="#goToPayer" prefHeight="58.0" prefWidth="282.0" text="Passer la commande" />
-      <ScrollPane layoutX="341.0" layoutY="332.0" prefHeight="150.0" prefWidth="600.0">
+      <ScrollPane hbarPolicy="ALWAYS" layoutX="341.0" layoutY="332.0" prefHeight="150.0" prefWidth="600.0" vbarPolicy="NEVER">
          <content>
-            <ImageView fitHeight="148.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" />
+            <TilePane fx:id="newTiled" alignment="CENTER_LEFT" orientation="VERTICAL" prefHeight="135.0" prefWidth="599.0" />
          </content></ScrollPane>
       <Button fx:id="composer" layoutX="350.0" layoutY="541.0" mnemonicParsing="false" onAction="#goToMenu" text="Commencer à composer">
          <font>
