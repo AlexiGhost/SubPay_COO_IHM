@@ -1,45 +1,144 @@
 package visual.customer;
 
+import java.io.File;
 import java.io.IOException;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.ResourceBundle;
 
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Group;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.TilePane;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
+import javafx.scene.text.Text;
+import model.product.ComponentManagement;
+import model.product.composants.Composant;
+import model.product.composants.Promotion;
 
-public class ControllerAccueil {
+public class ControllerAccueil implements Initializable {
 
-	public void goToConnexion() throws IOException { //Au lieu de "toAccueil", tu dois mettre to + [InterfaceDeDestination]
-		Group acteur = new Group(); //Pas touche
-		acteur.getChildren().add( //Pas touche
-		FXMLLoader.load(getClass().getResource("002 Connexion.fxml")) //Ici, il faut changer le fichier fxml (la string en fait)
-		); //Pas touche
-		visual.ControllerClient.setScene(acteur, "SUBPAY - Connexion"); //Ici, il faut laisser "SUBPAY" et changer "Accueil" selon l'interface où
-																//tu vas. Ca permet de changer le titre de la fenêtre (et ça marche B)  )
+	private static 	ArrayList<Promotion>	ListPromo = new ArrayList<Promotion>();
+	private static 	ArrayList<Composant>	ListNew = new ArrayList<Composant>();
+    @FXML
+    private 		TilePane 				promoTiled;
+    @FXML
+    private 		TilePane 				newTiled;
+    
+	@Override
+	public void initialize(URL arg0, ResourceBundle arg1) {
+		ListPromo.addAll(ComponentManagement.getPromotions());
+		ListNew.addAll(ComponentManagement.getNews());
+		affichePromo();
 	}
 	
-	public void goToInscription() throws IOException { //Au lieu de "toAccueil", tu dois mettre to + [InterfaceDeDestination]
-		Group acteur = new Group(); //Pas touche
-		acteur.getChildren().add( //Pas touche
-		FXMLLoader.load(getClass().getResource("003 Inscription.fxml")) //Ici, il faut changer le fichier fxml (la string en fait)
-		); //Pas touche
-		visual.ControllerClient.setScene(acteur, "SUBPAY - Inscription"); //Ici, il faut laisser "SUBPAY" et changer "Accueil" selon l'interface où
-																//tu vas. Ca permet de changer le titre de la fenêtre (et ça marche B)  )
+	public void affichePromo() {
+		for (Promotion promotion : ListPromo) {
+			//Group
+			Group promo = new Group();
+			
+			//Bordures
+			Rectangle bordure = new Rectangle(0, -15, 150, 120);
+			bordure.setFill(Color.TRANSPARENT);
+			bordure.setStroke(Color.LIGHTGREEN);
+			bordure.setStrokeWidth(4.0);
+			
+			//Titre promotion
+			Text title = new Text(promotion.getName());
+			title.setFont(new Font("Arial Black", 13));
+			title.setLayoutX(3);
+			
+			//Pourcentage
+			Text percent = new Text("-" + String.valueOf(promotion.getPercentage()) + " % \n");
+			percent.setFont(new Font("Arial Black", 30));
+			percent.setFill(Color.FORESTGREEN);
+			percent.setLayoutY(30);
+			percent.setLayoutX(20);
+			
+			//Descriptif
+			Text comment = new Text("sur " + promotion.getCategory() + promotion.getRecipe() + " !");
+			comment.setLayoutX(8);
+			comment.setLayoutY(50);
+			
+			//Exclu Client Authentifié
+			if(promotion.getAuthCustomer()) {
+				Text client = new Text("Connectez-vous \npour en profiter !");
+				client.setFill(Color.SANDYBROWN);
+				client.setLayoutX(30);
+				client.setLayoutY(70);
+				client.setFont(Font.font("Arial", FontWeight.BOLD, 12));
+				promo.getChildren().add(client);
+			}
+			
+			//MAJ promoTiled
+			promo.getChildren().add(comment);
+			promo.getChildren().add(percent);
+			promo.getChildren().add(title);
+			promo.getChildren().add(bordure);
+			promoTiled.getChildren().add(promo);
+		}
+		
+		for (Composant nouveaute : ListNew) {
+			//Group
+			Group nouveau = new Group();
+			
+			//Bordures
+			Rectangle bordure = new Rectangle(0, -15, 150, 120);
+			bordure.setFill(Color.TRANSPARENT);
+			bordure.setStroke(Color.LIGHTGREEN);
+			bordure.setStrokeWidth(4.0);
+			
+			//Titre nouveauté
+			Text title = new Text(nouveaute.getName());
+			title.setFont(new Font("Arial Black", 13));
+			title.setLayoutX(3);
+			
+			//Image nouveauté
+			ImageView img = new ImageView(new Image(new File(nouveaute.getPhoto()).toURI().toString()));
+			nouveau.getChildren().add(img);
+			
+			//MAJ promoTiled
+			nouveau.getChildren().add(title);
+			nouveau.getChildren().add(bordure);
+			newTiled.getChildren().add(nouveau);
+		}
 	}
 	
-	public void goToMenu() throws IOException { //Au lieu de "toAccueil", tu dois mettre to + [InterfaceDeDestination]
-		Group acteur = new Group(); //Pas touche
-		acteur.getChildren().add( //Pas touche
-		FXMLLoader.load(getClass().getResource("005 Menu.fxml")) //Ici, il faut changer le fichier fxml (la string en fait)
-		); //Pas touche
-		visual.ControllerClient.setScene(acteur, "SUBPAY - Menu"); //Ici, il faut laisser "SUBPAY" et changer "Accueil" selon l'interface où
-																//tu vas. Ca permet de changer le titre de la fenêtre (et ça marche B)  )
+	public void goToConnexion() throws IOException {
+		Group acteur = new Group();
+		acteur.getChildren().add(
+		FXMLLoader.load(getClass().getResource("002 Connexion.fxml"))
+		);
+		visual.ControllerClient.setScene(acteur, "SUBPAY - Connexion"); 
+	}
+	
+	public void goToInscription() throws IOException {
+		Group acteur = new Group();
+		acteur.getChildren().add(
+		FXMLLoader.load(getClass().getResource("003 Inscription.fxml"))
+		);
+		visual.ControllerClient.setScene(acteur, "SUBPAY - Inscription");
+	}
+	
+	public void goToMenu() throws IOException { 
+		Group acteur = new Group();
+		acteur.getChildren().add(
+		FXMLLoader.load(getClass().getResource("005 Menu.fxml"))
+		);
+		visual.ControllerClient.setScene(acteur, "SUBPAY - Menu");
 	}
 		
-	public void goToPayer() throws IOException { //Au lieu de "toAccueil", tu dois mettre to + [InterfaceDeDestination]
-		Group acteur = new Group(); //Pas touche
-		acteur.getChildren().add( //Pas touche
-		FXMLLoader.load(getClass().getResource("012 Payer.fxml")) //Ici, il faut changer le fichier fxml (la string en fait)
-		); //Pas touche
-		visual.ControllerClient.setScene(acteur, "SUBPAY - Paiement"); //Ici, il faut laisser "SUBPAY" et changer "Accueil" selon l'interface où
-																//tu vas. Ca permet de changer le titre de la fenêtre (et ça marche B)  )
+	public void goToPayer() throws IOException {
+		Group acteur = new Group();
+		acteur.getChildren().add(
+		FXMLLoader.load(getClass().getResource("012 Payer.fxml"))
+		);
+		visual.ControllerClient.setScene(acteur, "SUBPAY - Paiement");
 	}
 }
