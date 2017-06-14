@@ -71,7 +71,7 @@
                                                       <Image url="@../images/dessert.png" />
                                                    </image>
                                                 </ImageView>
-                                                <TextField fx:id="TF_PhotoPath" promptText="Chemin relatif de la photo" GridPane.rowIndex="1" />
+                                                <TextField fx:id="TF_PhotoPath" onAction="#changeImage" promptText="Chemin relatif de la photo" GridPane.rowIndex="1" />
                                              </children>
                                           </GridPane>
                                        </children>

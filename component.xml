@@ -8,13 +8,6 @@
     <new>false</new>
   </bread>
   <bread classe="Bread">
-    <name>Wrap</name>
-    <photo />
-    <allergens />
-    <available>false</available>
-    <new>false</new>
-  </bread>
-  <bread classe="Bread">
     <name>Miel Avoine</name>
     <photo />
     <allergens />
@@ -33,6 +26,41 @@
     <photo />
     <allergens />
     <available>true</available>
+    <new>false</new>
+  </bread>
+  <bread classe="Bread">
+    <name>Wrap</name>
+    <photo>Pain.png</photo>
+    <allergens />
+    <available>false</available>
+    <new>false</new>
+  </bread>
+  <bread classe="Bread">
+    <name>Carottes rapée</name>
+    <photo>Garniture.png</photo>
+    <allergens />
+    <available>false</available>
+    <new>false</new>
+  </bread>
+  <bread classe="Bread">
+    <name>Mayonnaise</name>
+    <photo>Sauce.png</photo>
+    <allergens />
+    <available>false</available>
+    <new>false</new>
+  </bread>
+  <bread classe="Bread">
+    <name>Hein Klein</name>
+    <photo>boisson.png</photo>
+    <allergens />
+    <available>false</available>
+    <new>false</new>
+  </bread>
+  <bread classe="Bread">
+    <name>brownie</name>
+    <photo>Dessert.png</photo>
+    <allergens />
+    <available>false</available>
     <new>false</new>
   </bread>
   <garnish classe="Garnish">
@@ -122,15 +150,6 @@
     <new>false</new>
   </recipe>
   <recipe classe="Recipe">
-    <name>Jambon</name>
-    <photo />
-    <allergens />
-    <price>5.5</price>
-    <category>Ca passe</category>
-    <available>true</available>
-    <new>false</new>
-  </recipe>
-  <recipe classe="Recipe">
     <name>Poulet</name>
     <photo />
     <allergens />
@@ -149,48 +168,59 @@
     <new>true</new>
   </recipe>
   <recipe classe="Recipe">
-    <name>Nouveau Thon</name>
+    <name>Thon</name>
     <photo>..\images\thon.png</photo>
-    <allergens />
+    <allergens>
+      <allergen>Poissons</allergen>
+    </allergens>
     <price>7.0</price>
     <category>Mouais</category>
     <available>true</available>
-    <new>true</new>
+    <new>false</new>
+  </recipe>
+  <recipe classe="Recipe">
+    <name>Jambon</name>
+    <photo>Recette.png</photo>
+    <allergens />
+    <price>5.5</price>
+    <category>Ca passe</category>
+    <available>true</available>
+    <new>false</new>
   </recipe>
   <drink classe="Drink">
     <name>Cola cola</name>
     <photo>toto</photo>
     <allergens />
     <available>true</available>
-    <new>true</new>
+    <new>false</new>
   </drink>
   <drink classe="Drink">
     <name>Spiter</name>
     <photo />
     <allergens />
     <available>true</available>
-    <new>true</new>
+    <new>false</new>
   </drink>
   <drink classe="Drink">
     <name>Iced Tea</name>
     <photo />
     <allergens />
     <available>true</available>
-    <new>true</new>
+    <new>false</new>
   </drink>
   <drink classe="Drink">
     <name>Evina</name>
     <photo />
     <allergens />
     <available>true</available>
-    <new>true</new>
+    <new>false</new>
   </drink>
   <drink classe="Drink">
     <name>Hein Klein</name>
     <photo />
     <allergens />
     <available>true</available>
-    <new>true</new>
+    <new>false</new>
   </drink>
   <dessert classe="Dessert">
     <name>brownie</name>
@@ -214,21 +244,5 @@
     <authCustomerOnly>false</authCustomerOnly>
     <percentage>10.0</percentage>
     <date>01012018</date>
-  </promo>
-  <promo classe="Promotion">
-    <name>Plutôt Bof</name>
-    <recipe />
-    <category>Bof</category>
-    <authCustomerOnly>false</authCustomerOnly>
-    <percentage>5.0</percentage>
-    <date>30062017</date>
-  </promo>
-  <promo classe="Promotion">
-    <name>Pluie de Myriam</name>
-    <recipe>MeetBall</recipe>
-    <category />
-    <authCustomerOnly>true</authCustomerOnly>
-    <percentage>50.0</percentage>
-    <date>22062017</date>
   </promo>
 </Composants>
