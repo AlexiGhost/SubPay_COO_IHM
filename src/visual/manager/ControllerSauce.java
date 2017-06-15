@@ -39,7 +39,12 @@ public class ControllerSauce implements Initializable{
     	if(sauceName != ""){
     		Sauce sauce = ComponentManagement.getSauce(sauceName);
 			TF_Libelle.setText(sauceName);
-			if(sauce.getPhoto() != null) TF_PhotoPath.setText(sauce.getPhoto());
+			if(sauce.getPhoto() != null) {
+				TF_PhotoPath.setText(sauce.getPhoto());
+				String fileName = TF_PhotoPath.getText();
+				Image image = new Image("file:src\\visual\\images\\"+fileName);
+				ComponentImage.setImage(image);
+			}
 			CHK_Available.selectedProperty().set(sauce.getAvailability());
 			CHK_New.selectedProperty().set(sauce.getNew());
 			allergenData.setAll(sauce.getAllergens());

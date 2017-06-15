@@ -49,7 +49,12 @@ public class ControllerRecipe implements Initializable{
     		Recipe recipe = ComponentManagement.getRecipe(recipeName);
 			TF_Libelle.setText(recipeName);
 			if(recipe != null) {
-				if(recipe.getPhoto() != null) TF_PhotoPath.setText(recipe.getPhoto());
+				if(recipe.getPhoto() != null) {
+					TF_PhotoPath.setText(recipe.getPhoto());
+					String fileName = TF_PhotoPath.getText();
+					Image image = new Image("file:src\\visual\\images\\"+fileName);
+					ComponentImage.setImage(image);
+				}
 				CHK_Available.selectedProperty().set(recipe.getAvailability());
 				CHK_New.selectedProperty().set(recipe.getNew());
 				CMB_Categorie.setValue(recipe.getCategory());

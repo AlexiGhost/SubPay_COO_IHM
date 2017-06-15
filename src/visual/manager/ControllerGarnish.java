@@ -39,11 +39,17 @@ public class ControllerGarnish implements Initializable{
     	if(garnishName != ""){
     		Garnish garnish = ComponentManagement.getGarnish(garnishName);
 			TF_Libelle.setText(garnishName);
-			if(garnish.getPhoto() != null) TF_PhotoPath.setText(garnish.getPhoto());
+			if(garnish.getPhoto() != null) {
+				TF_PhotoPath.setText(garnish.getPhoto());
+				String fileName = TF_PhotoPath.getText();
+				Image image = new Image("file:src\\visual\\images\\"+fileName);
+				ComponentImage.setImage(image);
+			}
 			CHK_Available.selectedProperty().set(garnish.getAvailability());
 			CHK_New.selectedProperty().set(garnish.getNew());
 			allergenData.setAll(garnish.getAllergens());
 			L_Allergenes.setItems(allergenData);
+
     	}
     }
     

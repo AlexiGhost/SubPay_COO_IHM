@@ -41,9 +41,15 @@ public class ControllerDrink implements Initializable{
 			TF_Libelle.setText(drinkName);
 			allergenData.setAll(drink.getAllergens());
 			L_Allergenes.setItems(allergenData);
-			if(drink.getPhoto() != null) TF_PhotoPath.setText(drink.getPhoto());
+			if(drink.getPhoto() != null) {
+				TF_PhotoPath.setText(drink.getPhoto());
+				String fileName = TF_PhotoPath.getText();
+				Image image = new Image("file:src\\visual\\images\\"+fileName);
+				ComponentImage.setImage(image);
+			}
 			CHK_Available.selectedProperty().set(drink.getAvailability());
 			CHK_New.selectedProperty().set(drink.getNew());
+
     	}
     }
     
@@ -108,6 +114,9 @@ public class ControllerDrink implements Initializable{
     		ComponentManagement.getDrinks().remove(oldDrink);
     	}
     	ComponentManagement.getDrinks().add(drink);
+    	for (Drink d : ComponentManagement.getDrinks()) {
+			System.out.println(d.getName());
+		}
     	ComponentManagement.exportComponent("component.xml");
     	goToAccueil(new ActionEvent());
     }
