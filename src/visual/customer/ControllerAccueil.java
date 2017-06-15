@@ -31,6 +31,7 @@ public class ControllerAccueil implements Initializable {
     private 		TilePane 				promoTiled;
     @FXML
     private 		TilePane 				newTiled;
+ 
     
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
@@ -42,6 +43,10 @@ public class ControllerAccueil implements Initializable {
 	}
 	public static List<Promotion> getListPromo() {
 		return ListPromo;
+	}
+	
+	public static boolean getNewPromo(){
+		return newPromo;
 	}
 	
 	public void affichePromo() {
