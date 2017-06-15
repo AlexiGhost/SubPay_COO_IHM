@@ -40,12 +40,8 @@ public class Product {
     public void delSauces(){
     	sauces.clear();
     }
-    public void delSauce(String sauceName){
-    	for(Sauce sauce : sauces){
-    		if(sauce.getName() == sauceName){
-    			sauces.remove(sauce);
-    		}
-    	}
+    public void delSauce(Sauce sauceName){
+    	this.sauces.remove(sauceName);
     }
     //garnish
     public void addGarnish(Garnish garnish){
@@ -54,12 +50,8 @@ public class Product {
     public void delGarnishs(){
     	garnishs.clear();
     }
-    public void delGarnish(String garnishName){
-    	for(Garnish garnish : garnishs){
-    		if(garnish.getName() == garnishName){
-    			garnishs.remove(garnish);
-    		}
-    	}
+    public void delGarnish(Garnish garnishName){
+    	this.garnishs.remove(garnishName);
     }
     
 //GETTERS / SETTERS

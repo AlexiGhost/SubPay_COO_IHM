@@ -27,7 +27,6 @@ public class ControllerGarnitures implements Initializable {
     private TilePane garnishTile;
 	
 	
-	
 	public static List<Garnish> getGarnishList() {
 		return garnishList;
 	}
@@ -39,16 +38,19 @@ public class ControllerGarnitures implements Initializable {
 	
 	public void displayGarnish() {
 		for (Garnish garnish : garnishList) {
-			//Group
-			Group gar = new Group();
-			gar.setTranslateX(20 * X);
-			gar.setTranslateY(10 + Y);
 			
 			//Bordures
 			Rectangle bordure = new Rectangle(0, -15, 150, 120);
 			bordure.setFill(Color.TRANSPARENT);
 			bordure.setStroke(Color.LIGHTGREEN);
 			bordure.setStrokeWidth(4.0);
+			
+			//Group
+			Group gar = new Group();
+			gar.setTranslateX(20 * X);
+			gar.setTranslateY(10 + Y);
+			gar.setFocusTraversable(true);
+			gar.setOnMouseClicked(MouseEvent -> myGarnishes(bordure, garnish));
 			
 			//Titre garniture
 			Text title = new Text(garnish.getName());
@@ -74,6 +76,23 @@ public class ControllerGarnitures implements Initializable {
 				X++;
 		}
 	}
+	
+	public static void myGarnishes(Rectangle rec, Garnish G) {
+		if(rec.getStroke().equals(Color.LIGHTGREEN)) {
+			rec.setStroke(Color.RED);
+			if(ControllerMenu.getChoice())
+				ControllerMenu.getMenu().getProduct().addGarnish(G);
+			else
+				ControllerMenu.getProduct().addGarnish(G);
+		}
+		else {
+			rec.setStroke(Color.LIGHTGREEN);
+			if(ControllerMenu.getChoice())
+				ControllerMenu.getMenu().getProduct().delGarnish(G);
+			else
+				ControllerMenu.getProduct().delGarnish(G);
+		}
+	}	
 	
 	public void goToSauces() throws IOException {
 		X = 1;
