@@ -160,7 +160,7 @@
   </recipe>
   <recipe classe="Recipe">
     <name>MeetBall</name>
-    <photo />
+    <photo >boisson.png</photo>
     <allergens />
     <price>7.0</price>
     <category>Mouais</category>
@@ -185,7 +185,7 @@
     <price>5.5</price>
     <category>Ca passe</category>
     <available>true</available>
-    <new>false</new>
+    <new>true</new>
   </recipe>
   <drink classe="Drink">
     <name>Cola cola</name>

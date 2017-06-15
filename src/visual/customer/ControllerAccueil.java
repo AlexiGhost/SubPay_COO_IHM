@@ -106,7 +106,9 @@ public class ControllerAccueil implements Initializable {
 			title.setLayoutX(3);
 			
 			//Image nouveauté
-			ImageView img = new ImageView(new Image(new File(nouveaute.getPhoto()).toURI().toString()));
+			ImageView img = new ImageView(new Image("file:src\\visual\\images\\"+nouveaute.getPhoto()));
+			img.setFitHeight(107);
+			img.setFitWidth(150);
 			nouveau.getChildren().add(img);
 			
 			//MAJ promoTiled
