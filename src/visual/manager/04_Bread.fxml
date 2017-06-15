@@ -68,7 +68,7 @@
                                              <children>
                                                 <ImageView fx:id="ComponentImage" fitHeight="344.0" fitWidth="418.0" pickOnBounds="true" preserveRatio="true">
                                                    <image>
-                                                      <Image url="@../images/dessert.png" />
+                                                      <Image url="@../images/INF.jpg" />
                                                    </image>
                                                 </ImageView>
                                                 <TextField fx:id="TF_PhotoPath" onAction="#changeImage" promptText="Chemin relatif de la photo" GridPane.rowIndex="1" />

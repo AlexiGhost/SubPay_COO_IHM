@@ -36,9 +36,9 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="166.0" fitWidth="478.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../images/Logo.png" />
+                        <Image url="@../images/Logo2alpha.png" />
                      </image>
                   </ImageView>
                   <Button mnemonicParsing="false" onAction="#goToAuthentification" prefHeight="68.0" prefWidth="291.0" text="Deconnexion" GridPane.columnIndex="1">

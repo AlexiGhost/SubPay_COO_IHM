@@ -42,6 +42,11 @@
                   <Insets right="20.0" />
                </GridPane.margin>
             </Text>
+            <PasswordField fx:id="TF_Password" GridPane.columnIndex="1" GridPane.rowIndex="2">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </PasswordField>
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Mot de passe" GridPane.rowIndex="2">
                <font>
                   <Font size="24.0" />
@@ -52,7 +57,7 @@
             </Text>
             <ImageView fitHeight="216.0" fitWidth="588.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1">
                <image>
-                  <Image url="@../images/Logo.png" />
+                  <Image url="@../images/Logo2alpha.png" />
                </image>
             </ImageView>
             <Button fx:id="BTN_Connection" mnemonicParsing="false" onAction="#goToAccueil" prefHeight="58.0" prefWidth="202.0" text="Connexion" GridPane.columnIndex="1" GridPane.rowIndex="3">
@@ -60,11 +65,6 @@
                   <Font size="24.0" />
                </font>
             </Button>
-            <PasswordField fx:id="TF_Password" GridPane.columnIndex="1" GridPane.rowIndex="2">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </PasswordField>
             <Text fx:id="TEXT_ERROR" fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="475.13671875" GridPane.columnIndex="1" GridPane.rowIndex="4">
                <font>
                   <Font size="18.0" />

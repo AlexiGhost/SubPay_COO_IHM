@@ -40,11 +40,17 @@ public class ControllerDessert implements Initializable{
     	if(dessertName != ""){
     		Dessert dessert = ComponentManagement.getDessert(dessertName);
 			TF_Libelle.setText(dessertName);
-			if(dessert.getPhoto() != null) TF_PhotoPath.setText(dessert.getPhoto());
+			if(dessert.getPhoto() != null) {
+				TF_PhotoPath.setText(dessert.getPhoto());
+				String fileName = TF_PhotoPath.getText();
+				Image image = new Image("file:src\\visual\\images\\"+fileName);
+				ComponentImage.setImage(image);
+			}
 			CHK_Available.selectedProperty().set(dessert.getAvailability());
 			CHK_New.selectedProperty().set(dessert.getNew());
 			allergenData.setAll(dessert.getAllergens());
 			L_Allergenes.setItems(allergenData);
+
     	}
     }
     
