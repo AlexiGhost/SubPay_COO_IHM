@@ -12,6 +12,7 @@ import model.product.ComponentManagement;
 import model.product.Order;
 import model.product.composants.Recipe;
 import visual.customer.ControllerAccueil;
+import visual.customer.ControllerGarnitures;
 import visual.customer.ControllerRecettes;
 
 public class ControllerClient extends Application {
@@ -62,6 +63,9 @@ public class ControllerClient extends Application {
 				ControllerRecettes.getCaPasseList().add(recipe);
 			}
 		}
+		
+		//Page Garniture
+		ControllerGarnitures.getGarnishList().addAll(ComponentManagement.getGarnishs());
 	}
 }
 

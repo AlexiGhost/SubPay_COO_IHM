@@ -1,6 +1,5 @@
 package visual.customer;
 
-import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -19,7 +18,6 @@ import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
-import model.product.ComponentManagement;
 import model.product.composants.Composant;
 import model.product.composants.Promotion;
 

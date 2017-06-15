@@ -25,7 +25,7 @@
       <Circle fill="#0ec314" layoutX="1017.0" layoutY="100.0" radius="150.0" stroke="BLACK" strokeType="INSIDE" AnchorPane.rightAnchor="-150.0" AnchorPane.topAnchor="-150.0" />
       <ScrollPane hbarPolicy="NEVER" layoutX="191.0" layoutY="124.0" prefHeight="481.0" prefWidth="900.0" vbarPolicy="ALWAYS">
          <content>
-            <TilePane prefHeight="479.0" prefWidth="885.0" />
+            <TilePane fx:id="garnishTile" prefHeight="479.0" prefWidth="885.0" />
          </content></ScrollPane>
       <Button fx:id="suivant" layoutX="871.0" layoutY="618.0" mnemonicParsing="false" onAction="#goToSauces" text="Suivant">
          <font>
