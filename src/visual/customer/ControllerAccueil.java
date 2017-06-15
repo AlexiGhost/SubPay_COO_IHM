@@ -1,6 +1,5 @@
 package visual.customer;
 
-import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -19,7 +18,6 @@ import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
-import model.product.ComponentManagement;
 import model.product.composants.Composant;
 import model.product.composants.Promotion;
 
@@ -27,6 +25,8 @@ public class ControllerAccueil implements Initializable {
 
 	private static 	List<Promotion>	ListPromo = new ArrayList<Promotion>();
 	private static 	List<Composant>	ListNew = new ArrayList<Composant>();
+	private static 	boolean 		newPromo = false;
+	
     @FXML
     private 		TilePane 				promoTiled;
     @FXML
@@ -48,6 +48,15 @@ public class ControllerAccueil implements Initializable {
 		for (Promotion promotion : ListPromo) {
 			//Group
 			Group promo = new Group();
+			promo.setFocusTraversable(true);
+			promo.setOnMouseClicked(MouseEvent -> {
+				try {
+					newPromoChosen();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			});
 			
 			//Bordures
 			Rectangle bordure = new Rectangle(0, -15, 150, 120);
@@ -93,9 +102,18 @@ public class ControllerAccueil implements Initializable {
 		for (Composant nouveaute : ListNew) {
 			//Group
 			Group nouveau = new Group();
+			nouveau.setFocusTraversable(true);
+			nouveau.setOnMouseClicked(MouseEvent -> {
+				try {
+					newPromoChosen();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			});
 			
 			//Bordures
-			Rectangle bordure = new Rectangle(0, -15, 150, 120);
+			Rectangle bordure = new Rectangle(0, -15, 150, 150);
 			bordure.setFill(Color.TRANSPARENT);
 			bordure.setStroke(Color.LIGHTGREEN);
 			bordure.setStrokeWidth(4.0);
@@ -107,7 +125,7 @@ public class ControllerAccueil implements Initializable {
 			
 			//Image nouveauté
 			ImageView img = new ImageView(new Image("file:src\\visual\\images\\"+nouveaute.getPhoto()));
-			img.setFitHeight(107);
+			img.setFitHeight(150);
 			img.setFitWidth(150);
 			nouveau.getChildren().add(img);
 			
@@ -116,6 +134,11 @@ public class ControllerAccueil implements Initializable {
 			nouveau.getChildren().add(bordure);
 			newTiled.getChildren().add(nouveau);
 		}
+	}
+	
+	public void newPromoChosen() throws IOException{
+		newPromo = true;
+		goToMenu();
 	}
 	
 	public void goToConnexion() throws IOException {

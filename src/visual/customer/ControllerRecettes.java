@@ -17,7 +17,6 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
-import model.product.composants.Composant;
 import model.product.composants.Recipe;
 
 public class ControllerRecettes  implements Initializable{
@@ -34,6 +33,7 @@ public class ControllerRecettes  implements Initializable{
 	private static List<Recipe> bofList = new ArrayList<Recipe>();
 	private static List<Recipe> mouaisList = new ArrayList<Recipe>();
 	private static List<Recipe> caPasseList = new ArrayList<Recipe>();
+	private static Rectangle	redOne = new Rectangle();
 	
 	public static List<Recipe> getBofList() {
 		return bofList;
@@ -62,6 +62,8 @@ public class ControllerRecettes  implements Initializable{
 			
 			//Group
 			Group r = new Group();
+			r.setFocusTraversable(true);
+			r.setOnMouseClicked(MouseEvent -> redRectangle(bordure));
 			
 			//Titre nouveauté
 			Text title = new Text(recipe.getName());
@@ -81,8 +83,13 @@ public class ControllerRecettes  implements Initializable{
 		}
 		
 	}
-
 	
+	public static void redRectangle(Rectangle redStroke) {
+		redStroke.setStroke(Color.RED);
+		if(redOne != null)
+			redOne.setStroke(Color.LIGHTGREEN);
+		redOne = redStroke;
+	}	
 
 	public void goToPain() throws IOException { //Au lieu de "toAccueil", tu dois mettre to + [InterfaceDeDestination]
 		Group acteur = new Group(); //Pas touche
