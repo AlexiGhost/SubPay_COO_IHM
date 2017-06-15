@@ -10,7 +10,9 @@ import javafx.stage.Stage;
 import model.CustomerManagement;
 import model.product.ComponentManagement;
 import model.product.Order;
+import model.product.composants.Recipe;
 import visual.customer.ControllerAccueil;
+import visual.customer.ControllerRecettes;
 
 public class ControllerClient extends Application {
 	private static 				Stage 			theStage;
@@ -18,9 +20,8 @@ public class ControllerClient extends Application {
 	public static void main(String[] args) throws Exception {
 		ComponentManagement.importComponent("component.xml");
 		CustomerManagement.importCustomer("customer.xml");
-		ControllerAccueil.getListPromo().addAll(ComponentManagement.getPromotions());
-		ControllerAccueil.getListNew().addAll(ComponentManagement.getNews());
 		Order.setOldNb(0);
+		listCompleting();
 		launch();
 	}
 	
@@ -45,6 +46,22 @@ public class ControllerClient extends Application {
     	theStage.setTitle(titre);
         theStage.setScene(scene);
         theStage.show();
+	}
+	public static void listCompleting(){
+		//Page Accueil
+		ControllerAccueil.getListPromo().addAll(ComponentManagement.getPromotions());
+		ControllerAccueil.getListNew().addAll(ComponentManagement.getNews());
+		
+		//Page Recipe
+		for (Recipe recipe : ComponentManagement.getRecipes()) {
+			if(recipe.getCategory().equals("Bof")){
+				ControllerRecettes.getBofList().add(recipe);
+			}else if (recipe.getCategory().equals("Mouais")){
+				ControllerRecettes.getMouaisList().add(recipe);
+			}else{
+				ControllerRecettes.getCaPasseList().add(recipe);
+			}
+		}
 	}
 }
 
