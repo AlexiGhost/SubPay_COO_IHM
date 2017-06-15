@@ -14,6 +14,7 @@ import model.product.composants.Recipe;
 import visual.customer.ControllerAccueil;
 import visual.customer.ControllerGarnitures;
 import visual.customer.ControllerRecettes;
+import visual.customer.ControllerSauces;
 
 public class ControllerClient extends Application {
 	private static 				Stage 			theStage;
@@ -66,6 +67,8 @@ public class ControllerClient extends Application {
 		
 		//Page Garniture
 		ControllerGarnitures.getGarnishList().addAll(ComponentManagement.getGarnishs());
+		//Page Sauce
+		ControllerSauces.getSauceList().addAll(ComponentManagement.getSauces());
 	}
 }
 
