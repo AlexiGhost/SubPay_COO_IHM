@@ -16,7 +16,7 @@
   </bread>
   <bread classe="Bread">
     <name>Blanc</name>
-    <photo />
+    <photo ></photo>
     <allergens />
     <available>true</available>
     <new>false</new>
@@ -124,13 +124,10 @@
     <new>false</new>
   </recipe>
   <recipe classe="Recipe">
-<<<<<<< HEAD
     <name>Jambon</name>
     <photo>jambon.jpg</photo>
-=======
     <name>MeetBall</name>
     <photo >boisson.png</photo>
->>>>>>> b006341a7a431b570c3a8d76818d5c651b9031e3
     <allergens />
     <price>5.5</price>
     <category>Ca passe</category>
