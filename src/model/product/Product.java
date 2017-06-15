@@ -15,6 +15,8 @@ public class Product {
     boolean plate;
     private int sizes[] = {15,30};
 //constructors
+    public Product() {
+	}
     public Product(int size, Recipe recipe, Bread bread) {
     	for(int availableSize : sizes){
     		if(size == availableSize){

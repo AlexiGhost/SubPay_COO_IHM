@@ -53,13 +53,13 @@ public class ControllerInscription {
     @FXML
     private Text T_MailPhoneMissing;
     
-    private static AuthentificatedCustomer authCusto = new AuthentificatedCustomer();
+    private static AuthentificatedCustomer authCusto;
 	
     //authCusto
     public static AuthentificatedCustomer getAuthCusto() {
 		return authCusto;
 	}
-    public void setAuthCusto(AuthentificatedCustomer authCusto) {
+    public static void setAuthCusto(AuthentificatedCustomer authCusto) {
 		authCusto = authCusto;
 	}
     //Vérifier mot de passe
@@ -150,6 +150,7 @@ public class ControllerInscription {
 	public void goToAcceuilAuth() throws Exception {
 		BackgroundFill bfRed = new BackgroundFill(Paint.valueOf("red"),null,null);
 		Background bRed = new Background(bfRed);
+		authCusto = new AuthentificatedCustomer();
 		if(checkPassword() && checkPasswordConfirmation() && checkMail() && checkPhone() && mailPhoneChoiceMade() && mailChoiceCorrect() && phoneChoiceCorrect()){
 			//Enregistrer les informations sur le client
 			authCusto.setLastName(TF_LastName.getText());

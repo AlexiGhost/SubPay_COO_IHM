@@ -1,9 +1,9 @@
 package visual.customer;
 
-import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 
 import javafx.fxml.FXML;
@@ -18,14 +18,15 @@ import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
-import model.product.ComponentManagement;
 import model.product.composants.Composant;
 import model.product.composants.Promotion;
 
 public class ControllerAccueil implements Initializable {
 
-	private static 	ArrayList<Promotion>	ListPromo = new ArrayList<Promotion>();
-	private static 	ArrayList<Composant>	ListNew = new ArrayList<Composant>();
+	private static 	List<Promotion>	ListPromo = new ArrayList<Promotion>();
+	private static 	List<Composant>	ListNew = new ArrayList<Composant>();
+	private static 	boolean 		newPromo = false;
+	
     @FXML
     private 		TilePane 				promoTiled;
     @FXML
@@ -33,15 +34,29 @@ public class ControllerAccueil implements Initializable {
     
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		ListPromo.addAll(ComponentManagement.getPromotions());
-		ListNew.addAll(ComponentManagement.getNews());
 		affichePromo();
+	}
+	
+	public static List<Composant> getListNew() {
+		return ListNew;
+	}
+	public static List<Promotion> getListPromo() {
+		return ListPromo;
 	}
 	
 	public void affichePromo() {
 		for (Promotion promotion : ListPromo) {
 			//Group
 			Group promo = new Group();
+			promo.setFocusTraversable(true);
+			promo.setOnMouseClicked(MouseEvent -> {
+				try {
+					newPromoChosen();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			});
 			
 			//Bordures
 			Rectangle bordure = new Rectangle(0, -15, 150, 120);
@@ -87,9 +102,18 @@ public class ControllerAccueil implements Initializable {
 		for (Composant nouveaute : ListNew) {
 			//Group
 			Group nouveau = new Group();
+			nouveau.setFocusTraversable(true);
+			nouveau.setOnMouseClicked(MouseEvent -> {
+				try {
+					newPromoChosen();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			});
 			
 			//Bordures
-			Rectangle bordure = new Rectangle(0, -15, 150, 120);
+			Rectangle bordure = new Rectangle(0, -15, 150, 150);
 			bordure.setFill(Color.TRANSPARENT);
 			bordure.setStroke(Color.LIGHTGREEN);
 			bordure.setStrokeWidth(4.0);
@@ -100,7 +124,9 @@ public class ControllerAccueil implements Initializable {
 			title.setLayoutX(3);
 			
 			//Image nouveauté
-			ImageView img = new ImageView(new Image(new File(nouveaute.getPhoto()).toURI().toString()));
+			ImageView img = new ImageView(new Image("file:src\\visual\\images\\"+nouveaute.getPhoto()));
+			img.setFitHeight(150);
+			img.setFitWidth(150);
 			nouveau.getChildren().add(img);
 			
 			//MAJ promoTiled
@@ -108,6 +134,11 @@ public class ControllerAccueil implements Initializable {
 			nouveau.getChildren().add(bordure);
 			newTiled.getChildren().add(nouveau);
 		}
+	}
+	
+	public void newPromoChosen() throws IOException{
+		newPromo = true;
+		goToMenu();
 	}
 	
 	public void goToConnexion() throws IOException {
@@ -140,5 +171,14 @@ public class ControllerAccueil implements Initializable {
 		FXMLLoader.load(getClass().getResource("012 Payer.fxml"))
 		);
 		visual.ControllerClient.setScene(acteur, "SUBPAY - Paiement");
+	}
+	public void goToAllergen() throws IOException {
+		ControllerAllergen.setPreviousUI("004 Accueil.fxml");
+		ControllerAllergen.setPreviousTitle("SUBPAY - Accueil");
+		Group acteur = new Group();
+		acteur.getChildren().add(
+		FXMLLoader.load(getClass().getResource("006 Allergies.fxml"))
+		);
+		visual.ControllerClient.setScene(acteur, "SUBPAY - Allergènes");
 	}
 }
