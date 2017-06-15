@@ -1,12 +1,24 @@
 package visual.customer;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Group;
 
-public class ControllerGarnitures {
+public class ControllerGarnitures implements Initializable {
 
+	@Override
+	public void initialize(URL arg0, ResourceBundle arg1) {
+		displayGarniture();
+	}
+	
+	public void displayGarniture() {
+		
+	}
+	
 	public void goToSauces() throws IOException { //Au lieu de "toAccueil", tu dois mettre to + [InterfaceDeDestination]
 		Group acteur = new Group(); //Pas touche
 		acteur.getChildren().add( //Pas touche
