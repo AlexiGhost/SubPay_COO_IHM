@@ -1,6 +1,5 @@
 package visual.customer;
 
-import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -19,7 +18,6 @@ import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
-import model.product.ComponentManagement;
 import model.product.composants.Composant;
 import model.product.composants.Promotion;
 
@@ -27,6 +25,7 @@ public class ControllerAccueil implements Initializable {
 
 	private static 	List<Promotion>	ListPromo = new ArrayList<Promotion>();
 	private static 	List<Composant>	ListNew = new ArrayList<Composant>();
+	private static	Rectangle		redOne = new Rectangle();
     @FXML
     private 		TilePane 				promoTiled;
     @FXML
@@ -49,7 +48,7 @@ public class ControllerAccueil implements Initializable {
 			//Group
 			Group promo = new Group();
 			
-			//Bordures
+			//Bordure
 			Rectangle bordure = new Rectangle(0, -15, 150, 120);
 			bordure.setFill(Color.TRANSPARENT);
 			bordure.setStroke(Color.LIGHTGREEN);
@@ -91,14 +90,16 @@ public class ControllerAccueil implements Initializable {
 		}
 		
 		for (Composant nouveaute : ListNew) {
-			//Group
-			Group nouveau = new Group();
-			
 			//Bordures
 			Rectangle bordure = new Rectangle(0, -15, 150, 120);
 			bordure.setFill(Color.TRANSPARENT);
 			bordure.setStroke(Color.LIGHTGREEN);
 			bordure.setStrokeWidth(4.0);
+			
+			//Group
+			Group nouveau = new Group();
+			nouveau.setFocusTraversable(true);
+			nouveau.setOnMouseClicked(KeyEvent -> redRectangle(bordure));
 			
 			//Titre nouveauté
 			Text title = new Text(nouveaute.getName());
@@ -106,14 +107,23 @@ public class ControllerAccueil implements Initializable {
 			title.setLayoutX(3);
 			
 			//Image nouveauté
-			ImageView img = new ImageView(new Image(new File(nouveaute.getPhoto()).toURI().toString()));
-			nouveau.getChildren().add(img);
+			ImageView img = new ImageView(new Image("file:src\\visual\\images\\" + nouveaute.getPhoto()));
+		    img.setFitHeight(107);
+		    img.setFitWidth(150);
+		    nouveau.getChildren().add(img);
 			
-			//MAJ promoTiled
+			//MAJ promoTile
 			nouveau.getChildren().add(title);
 			nouveau.getChildren().add(bordure);
 			newTiled.getChildren().add(nouveau);
 		}
+	}
+	
+	public void redRectangle(Rectangle redStroke) {
+		redStroke.setStroke(Color.RED);
+		if(redOne != null)
+			redOne.setStroke(Color.LIGHTGREEN);
+		redOne = redStroke;
 	}
 	
 	public void goToConnexion() throws IOException {
