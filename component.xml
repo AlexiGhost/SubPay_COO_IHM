@@ -1,13 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Composants>
   <bread classe="Bread">
-    <name>Italien</name>
-    <photo />
-    <allergens />
-    <available>true</available>
-    <new>false</new>
-  </bread>
-  <bread classe="Bread">
     <name>Miel Avoine</name>
     <photo />
     <allergens />
@@ -23,7 +16,7 @@
   </bread>
   <bread classe="Bread">
     <name>Blanc</name>
-    <photo />
+    <photo ></photo>
     <allergens />
     <available>true</available>
     <new>false</new>
@@ -36,75 +29,75 @@
     <new>false</new>
   </bread>
   <bread classe="Bread">
-    <name>Carottes rapée</name>
-    <photo>Garniture.png</photo>
-    <allergens />
-    <available>false</available>
-    <new>false</new>
-  </bread>
-  <bread classe="Bread">
-    <name>Mayonnaise</name>
-    <photo>Sauce.png</photo>
-    <allergens />
-    <available>false</available>
-    <new>false</new>
-  </bread>
-  <bread classe="Bread">
-    <name>Hein Klein</name>
-    <photo>boisson.png</photo>
-    <allergens />
-    <available>false</available>
-    <new>false</new>
-  </bread>
-  <bread classe="Bread">
-    <name>brownie</name>
-    <photo>Dessert.png</photo>
-    <allergens />
-    <available>false</available>
-    <new>false</new>
-  </bread>
-  <garnish classe="Garnish">
-    <name>Laitue</name>
+    <name>Italien</name>
     <photo />
     <allergens />
-    <available>false</available>
+    <available>true</available>
     <new>false</new>
-  </garnish>
+  </bread>
   <garnish classe="Garnish">
     <name>Tomate</name>
-    <photo />
+    <photo>tomate.jpg</photo>
     <allergens />
     <available>true</available>
     <new>false</new>
   </garnish>
   <garnish classe="Garnish">
     <name>Olive noire</name>
-    <photo />
+    <photo>olive noire.jpg</photo>
     <allergens />
     <available>true</available>
     <new>false</new>
   </garnish>
   <garnish classe="Garnish">
     <name>Concombre</name>
-    <photo />
+    <photo>concombre.jpg</photo>
     <allergens />
     <available>true</available>
     <new>false</new>
   </garnish>
   <garnish classe="Garnish">
     <name>Mais</name>
-    <photo />
+    <photo>mais.jpg</photo>
     <allergens />
     <available>true</available>
     <new>true</new>
   </garnish>
   <garnish classe="Garnish">
-    <name>Carottes rapée</name>
+    <name>Laitue</name>
+    <photo>laitue.png</photo>
+    <allergens />
+    <available>true</available>
+    <new>false</new>
+  </garnish>
+  <sauce classe="Sauce">
+    <name>Ketchup</name>
     <photo />
     <allergens />
-    <available>false</available>
+    <available>true</available>
+    <new>false</new>
+  </sauce>
+  <sauce classe="Sauce">
+    <name>Ranchy</name>
+    <photo />
+    <allergens />
+    <available>true</available>
     <new>true</new>
-  </garnish>
+  </sauce>
+  <sauce classe="Sauce">
+    <name>Miel Moutarde</name>
+    <photo />
+    <allergens />
+    <available>true</available>
+    <new>false</new>
+  </sauce>
+  <sauce classe="Sauce">
+    <name>Mayonnaise</name>
+    <photo />
+    <allergens />
+    <available>true</available>
+    <new>false</new>
+  </sauce>
   <sauce classe="Sauce">
     <name>Barbecue</name>
     <photo />
@@ -112,37 +105,9 @@
     <available>true</available>
     <new>false</new>
   </sauce>
-  <sauce classe="Sauce">
-    <name>Ketchup</name>
-    <photo />
-    <allergens />
-    <available>false</available>
-    <new>false</new>
-  </sauce>
-  <sauce classe="Sauce">
-    <name>Ranch</name>
-    <photo />
-    <allergens />
-    <available>false</available>
-    <new>false</new>
-  </sauce>
-  <sauce classe="Sauce">
-    <name>Miel Moutarde</name>
-    <photo />
-    <allergens />
-    <available>false</available>
-    <new>false</new>
-  </sauce>
-  <sauce classe="Sauce">
-    <name>Mayonnaise</name>
-    <photo />
-    <allergens />
-    <available>false</available>
-    <new>false</new>
-  </sauce>
   <recipe classe="Recipe">
     <name>Dinde</name>
-    <photo />
+    <photo>dinde.jpg</photo>
     <allergens />
     <price>5.5</price>
     <category>Ca passe</category>
@@ -151,7 +116,7 @@
   </recipe>
   <recipe classe="Recipe">
     <name>Poulet</name>
-    <photo />
+    <photo>poulet.jpg</photo>
     <allergens />
     <price>6.0</price>
     <category>Bof</category>
@@ -159,17 +124,19 @@
     <new>false</new>
   </recipe>
   <recipe classe="Recipe">
+    <name>Jambon</name>
+    <photo>jambon.jpg</photo>
     <name>MeetBall</name>
     <photo >boisson.png</photo>
     <allergens />
-    <price>7.0</price>
-    <category>Mouais</category>
+    <price>5.5</price>
+    <category>Ca passe</category>
     <available>true</available>
-    <new>true</new>
+    <new>false</new>
   </recipe>
   <recipe classe="Recipe">
     <name>Thon</name>
-    <photo>..\images\thon.png</photo>
+    <photo>thon.jpg</photo>
     <allergens>
       <allergen>Poissons</allergen>
     </allergens>
@@ -179,52 +146,52 @@
     <new>false</new>
   </recipe>
   <recipe classe="Recipe">
-    <name>Jambon</name>
-    <photo>Recette.png</photo>
+    <name>MeetBall</name>
+    <photo>meetball.png</photo>
     <allergens />
-    <price>5.5</price>
-    <category>Ca passe</category>
+    <price>7.0</price>
+    <category>Mouais</category>
     <available>true</available>
     <new>true</new>
   </recipe>
   <drink classe="Drink">
     <name>Cola cola</name>
-    <photo>toto</photo>
+    <photo>cola cola.jpg</photo>
     <allergens />
     <available>true</available>
     <new>false</new>
   </drink>
   <drink classe="Drink">
-    <name>Spiter</name>
-    <photo />
+    <name>Spoute</name>
+    <photo>spoute.jpg</photo>
     <allergens />
     <available>true</available>
     <new>false</new>
   </drink>
   <drink classe="Drink">
     <name>Iced Tea</name>
-    <photo />
+    <photo>iced tea.png</photo>
     <allergens />
     <available>true</available>
     <new>false</new>
   </drink>
   <drink classe="Drink">
     <name>Evina</name>
-    <photo />
+    <photo>evina.jpg</photo>
     <allergens />
     <available>true</available>
     <new>false</new>
   </drink>
   <drink classe="Drink">
     <name>Hein Klein</name>
-    <photo />
+    <photo>hein klein.png</photo>
     <allergens />
     <available>true</available>
     <new>false</new>
   </drink>
   <dessert classe="Dessert">
     <name>brownie</name>
-    <photo>truc marron</photo>
+    <photo>brownie.jpg</photo>
     <allergens />
     <available>true</available>
     <new>false</new>

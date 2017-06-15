@@ -14,12 +14,12 @@ public class ControllerMenu {
 	public void goToPainWithMenu() throws IOException { //Au lieu de "toAccueil", tu dois mettre to + [InterfaceDeDestination]
 		choice = true;
 		menu = new Menu();
+		menu.setProduct(new Product());
 		Group acteur = new Group(); //Pas touche
 		acteur.getChildren().add( //Pas touche
 		FXMLLoader.load(getClass().getResource("007 Pain.fxml")) //Ici, il faut changer le fichier fxml (la string en fait)
 		); //Pas touche
-		visual.ControllerClient.setScene(acteur, "SUBPAY - Pain"); //Ici, il faut laisser "SUBPAY" et changer "Accueil" selon l'interface où
-																//tu vas. Ca permet de changer le titre de la fenêtre (et ça marche B)  )
+		visual.ControllerClient.setScene(acteur, "SUBPAY - Pain"); //Ici, il faut laisser "SUBPAY" et changer "Accueil" selon l'interface où														//tu vas. Ca permet de changer le titre de la fenêtre (et ça marche B)  )
 		
 	}
 	
@@ -33,6 +33,15 @@ public class ControllerMenu {
 		visual.ControllerClient.setScene(acteur, "SUBPAY - Pain"); //Ici, il faut laisser "SUBPAY" et changer "Accueil" selon l'interface où
 																//tu vas. Ca permet de changer le titre de la fenêtre (et ça marche B)  )
 	}
+	
+	public static Product getProduct() {
+		return product;
+	}
+	
+	public static Menu getMenu() {
+		return menu;
+	}
+	
 	public static boolean getChoice() {
 		return choice;
 	}

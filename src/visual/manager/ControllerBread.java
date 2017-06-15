@@ -40,11 +40,17 @@ public class ControllerBread implements Initializable{
 			allergenList.setAll(ComponentManagement.getAllergens());
 			CB_Allergenes.setItems(allergenList);
 			if(bread != null){
-				if(bread.getPhoto() != null) TF_PhotoPath.setText(bread.getPhoto());
+				if(bread.getPhoto() != null) {
+					TF_PhotoPath.setText(bread.getPhoto());
+					String fileName = TF_PhotoPath.getText();
+					Image image = new Image("file:src\\visual\\images\\"+fileName);
+					ComponentImage.setImage(image);
+				}
 				CHK_Available.selectedProperty().set(bread.getAvailability());
 				CHK_New.selectedProperty().set(bread.getNew());
 				allergenData.setAll(bread.getAllergens());
 				L_Allergenes.setItems(allergenData);
+
 			}
     	}
     }

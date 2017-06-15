@@ -20,15 +20,15 @@
       </ImageView>
       <Line endX="1180.0" layoutX="99.0" layoutY="111.0" startX="-100.0" AnchorPane.leftAnchor="0.0" />
       <Circle fill="#0ec314" layoutX="305.0" layoutY="182.0" radius="150.0" stroke="BLACK" strokeType="INSIDE" AnchorPane.leftAnchor="-150.0" AnchorPane.topAnchor="-150.0" />
-      <Text layoutX="359.0" layoutY="165.0" strokeType="OUTSIDE" strokeWidth="0.0" text="NOM :">
+      <Text layoutX="357.0" layoutY="195.0" strokeType="OUTSIDE" strokeWidth="0.0" text="NOM :">
          <font>
             <Font size="18.0" />
          </font></Text>
-      <Text layoutX="324.0" layoutY="246.0" strokeType="OUTSIDE" strokeWidth="0.0" text="PRENOM  :">
+      <Text layoutX="324.0" layoutY="296.0" strokeType="OUTSIDE" strokeWidth="0.0" text="PRENOM  :">
          <font>
             <Font size="18.0" />
          </font></Text>
-      <Button fx:id="valider" layoutX="527.0" layoutY="588.0" mnemonicParsing="false" onAction="#goToAcceuilAuth" text="Valider">
+      <Button fx:id="valider" layoutX="521.0" layoutY="598.0" mnemonicParsing="false" onAction="#goToAcceuilAuth" text="Valider">
          <font>
             <Font size="48.0" />
          </font>
@@ -41,34 +41,29 @@
       <Circle fill="#0ec314" layoutX="123.0" layoutY="549.0" radius="150.0" stroke="BLACK" strokeType="INSIDE" AnchorPane.bottomAnchor="-150.0" AnchorPane.leftAnchor="-150.0" />
       <Circle fill="#0ec314" layoutX="1039.0" layoutY="514.0" radius="150.0" stroke="BLACK" strokeType="INSIDE" AnchorPane.bottomAnchor="-150.0" AnchorPane.rightAnchor="-150.0" />
       <Circle fill="#0ec314" layoutX="1017.0" layoutY="100.0" radius="150.0" stroke="BLACK" strokeType="INSIDE" AnchorPane.rightAnchor="-150.0" AnchorPane.topAnchor="-150.0" />
-      <TextField fx:id="TF_LastName" layoutX="440.0" layoutY="128.0" prefHeight="59.0" prefWidth="401.0" promptText="Nom">
+      <TextField fx:id="TF_LastName" layoutX="440.0" layoutY="159.0" prefHeight="59.0" prefWidth="401.0" promptText="Nom">
          <font>
             <Font size="18.0" />
          </font>
       </TextField>
-      <TextField fx:id="TF_FirstName" layoutX="440.0" layoutY="210.0" prefHeight="59.0" prefWidth="401.0" promptText="Prénom">
+      <TextField fx:id="TF_FirstName" layoutX="440.0" layoutY="260.0" prefHeight="59.0" prefWidth="401.0" promptText="Prénom">
          <font>
             <Font size="18.0" />
          </font>
       </TextField>
-      <TextField fx:id="TF_Phone" layoutX="663.0" layoutY="303.0" prefHeight="59.0" prefWidth="401.0" promptText="Téléphone portable">
+      <TextField fx:id="TF_Phone" layoutX="663.0" layoutY="369.0" prefHeight="59.0" prefWidth="401.0" promptText="Téléphone portable">
          <font>
             <Font size="18.0" />
          </font>
       </TextField>
-      <TextField fx:id="TF_Mail" layoutX="198.0" layoutY="303.0" prefHeight="59.0" prefWidth="401.0" promptText="Adresse mail">
+      <TextField fx:id="TF_Mail" layoutX="198.0" layoutY="369.0" prefHeight="59.0" prefWidth="401.0" promptText="Adresse mail">
          <font>
             <Font size="18.0" />
          </font>
       </TextField>
-      <CheckBox fx:id="CB_PhoneChoice" layoutX="627.0" layoutY="322.0" mnemonicParsing="false" />
-      <CheckBox fx:id="CB_MailChoice" layoutX="170.0" layoutY="322.0" mnemonicParsing="false" selected="true" />
-      <Button fx:id="valider1" layoutX="240.0" layoutY="408.0" mnemonicParsing="false" onAction="#goToAcceuilAuth" text="Préférence">
-         <font>
-            <Font size="48.0" />
-         </font>
-      </Button>
-      <Button fx:id="valider2" layoutX="593.0" layoutY="408.0" mnemonicParsing="false" onAction="#goToAcceuilAuth" text="Changer mot de passe">
+      <CheckBox fx:id="CB_PhoneChoice" layoutX="626.0" layoutY="388.0" mnemonicParsing="false" />
+      <CheckBox fx:id="CB_MailChoice" layoutX="170.0" layoutY="388.0" mnemonicParsing="false" selected="true" />
+      <Button fx:id="valider2" layoutX="357.0" layoutY="468.0" mnemonicParsing="false" onAction="#goToAcceuilAuth" text="Changer mot de passe">
          <font>
             <Font size="48.0" />
          </font>

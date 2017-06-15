@@ -19,24 +19,24 @@
       </ImageView>
       <Line endX="1180.0" layoutX="99.0" layoutY="111.0" startX="-100.0" AnchorPane.leftAnchor="0.0" />
       <Circle fill="#0ec314" layoutX="305.0" layoutY="182.0" radius="150.0" stroke="BLACK" strokeType="INSIDE" AnchorPane.leftAnchor="-150.0" AnchorPane.topAnchor="-150.0" />
-      <Text layoutX="350.0" layoutY="235.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ANCIEN MOT DE PASSE  :">
+      <Text layoutX="180.0" layoutY="235.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ANCIEN MOT DE PASSE  :">
          <font>
             <Font size="18.0" />
          </font></Text>
-      <Text layoutX="329.0" layoutY="306.0" strokeType="OUTSIDE" strokeWidth="0.0" text="NOUVEAU MOT DE PASSE  :">
+      <Text layoutX="159.0" layoutY="307.0" strokeType="OUTSIDE" strokeWidth="0.0" text="NOUVEAU MOT DE PASSE  :">
          <font>
             <Font size="18.0" />
          </font></Text>
-      <Text layoutX="189.0" layoutY="376.0" strokeType="OUTSIDE" strokeWidth="0.0" text="COMFIRMATION NOUVEAU MOT DE PASSE  :">
+      <Text layoutX="20.0" layoutY="377.0" strokeType="OUTSIDE" strokeWidth="0.0" text="COMFIRMATION NOUVEAU MOT DE PASSE  :">
          <font>
             <Font size="18.0" />
          </font></Text>
-      <Button layoutX="718.0" layoutY="593.0" mnemonicParsing="false" text="Valider">
+      <Button layoutX="696.0" layoutY="593.0" mnemonicParsing="false" text="Valider">
          <font>
             <Font size="48.0" />
          </font>
       </Button>
-      <Button layoutX="333.0" layoutY="593.0" mnemonicParsing="false" text="Annuler">
+      <Button layoutX="286.0" layoutY="593.0" mnemonicParsing="false" text="Annuler">
          <font>
             <Font size="48.0" />
          </font>
@@ -44,17 +44,17 @@
       <Circle fill="#0ec314" layoutX="123.0" layoutY="549.0" radius="150.0" stroke="BLACK" strokeType="INSIDE" AnchorPane.bottomAnchor="-150.0" AnchorPane.leftAnchor="-150.0" />
       <Circle fill="#0ec314" layoutX="1039.0" layoutY="514.0" radius="150.0" stroke="BLACK" strokeType="INSIDE" AnchorPane.bottomAnchor="-150.0" AnchorPane.rightAnchor="-150.0" />
       <Circle fill="#0ec314" layoutX="1017.0" layoutY="100.0" radius="150.0" stroke="BLACK" strokeType="INSIDE" AnchorPane.rightAnchor="-150.0" AnchorPane.topAnchor="-150.0" />
-      <PasswordField layoutX="578.0" layoutY="271.0" prefHeight="56.0" prefWidth="401.0" promptText="NOUVEAU MOT DE PASSE  :">
+      <PasswordField layoutX="401.0" layoutY="272.0" prefHeight="56.0" prefWidth="401.0" promptText="NOUVEAU MOT DE PASSE  :">
          <font>
             <Font size="18.0" />
          </font>
       </PasswordField>
-      <PasswordField layoutX="577.0" layoutY="341.0" prefHeight="56.0" prefWidth="401.0" promptText="COMFIRMATION NOUVEAU MOT DE PASSE  :">
+      <PasswordField layoutX="401.0" layoutY="342.0" prefHeight="56.0" prefWidth="401.0" promptText="COMFIRMATION NOUVEAU MOT DE PASSE  :">
          <font>
             <Font size="18.0" />
          </font>
       </PasswordField>
-      <PasswordField layoutX="577.0" layoutY="201.0" prefHeight="56.0" prefWidth="401.0" promptText="ANCIEN MOT DE PASSE  :">
+      <PasswordField layoutX="401.0" layoutY="201.0" prefHeight="56.0" prefWidth="401.0" promptText="ANCIEN MOT DE PASSE  :">
          <font>
             <Font size="18.0" />
          </font>

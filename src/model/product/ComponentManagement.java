@@ -641,7 +641,9 @@ public class ComponentManagement {
 		try {
 			document = sxb.build(new File(xmlFile));
 			racine = document.getRootElement();
-		} catch (JDOMException | IOException e) {}
+		} catch (JDOMException | IOException e) {
+			e.printStackTrace();
+		}
 		String name = null;
 		String photo = null;
 		Boolean available = null;
