@@ -63,7 +63,7 @@ public class ControllerRecettes  implements Initializable{
 			//Group
 			Group r = new Group();
 			r.setFocusTraversable(true);
-			r.setOnMouseClicked(MouseEvent -> redRectangle(bordure));
+			r.setOnMouseClicked(MouseEvent -> redRectangle(bordure,recipe));
 			
 			//Titre nouveauté
 			Text title = new Text(recipe.getName());
@@ -84,11 +84,18 @@ public class ControllerRecettes  implements Initializable{
 		
 	}
 	
-	public static void redRectangle(Rectangle redStroke) {
+	public static void redRectangle(Rectangle redStroke, Recipe recipe) {
 		redStroke.setStroke(Color.RED);
-		if(redOne != null)
+		if(redOne != null){
 			redOne.setStroke(Color.LIGHTGREEN);
+		}
 		redOne = redStroke;
+		if(ControllerMenu.getChoice()){
+			ControllerMenu.getMenu().getProduct().setRecipe(recipe);		
+		}
+		else{
+			ControllerMenu.getProduct().setRecipe(recipe);	
+		}
 	}	
 
 	public void goToPain() throws IOException { //Au lieu de "toAccueil", tu dois mettre to + [InterfaceDeDestination]
