@@ -66,6 +66,21 @@ public class ControllerGarnitures implements Initializable {
 			gar.getChildren().add(img);
 			gar.getChildren().add(title);
 			gar.getChildren().add(bordure);
+			
+			//Vérif disponibilité
+			if(!garnish.getAvailability()) {
+				bordure.setOpacity(0.3);
+				bordure.setFill(Color.YELLOWGREEN);
+				title.setOpacity(0.3);
+				img.setOpacity(0.3);
+				Text succes = new Text("Victime de\nson succès");
+				succes.setFont(new Font("Arial Black", 14));
+				succes.setFill(Color.BLACK);
+				succes.setOpacity(1);
+				succes.setLayoutX(27);
+				succes.setLayoutY(25);
+				gar.getChildren().add(succes);
+			}
 			garnishTile.getChildren().add(gar);
 			
 			if(X == 5) {
@@ -78,19 +93,21 @@ public class ControllerGarnitures implements Initializable {
 	}
 	
 	public static void myGarnishes(Rectangle rec, Garnish G) {
-		if(rec.getStroke().equals(Color.LIGHTGREEN)) {
-			rec.setStroke(Color.RED);
-			if(ControllerMenu.getChoice())
-				ControllerMenu.getMenu().getProduct().addGarnish(G);
-			else
-				ControllerMenu.getProduct().addGarnish(G);
-		}
-		else {
-			rec.setStroke(Color.LIGHTGREEN);
-			if(ControllerMenu.getChoice())
-				ControllerMenu.getMenu().getProduct().delGarnish(G);
-			else
-				ControllerMenu.getProduct().delGarnish(G);
+		if(G.getAvailability()) {
+			if(rec.getStroke().equals(Color.LIGHTGREEN)) {
+				rec.setStroke(Color.RED);
+				if(ControllerMenu.getChoice())
+					ControllerMenu.getMenu().getProduct().addGarnish(G);
+				else
+					ControllerMenu.getProduct().addGarnish(G);
+			}
+			else if(rec.getStroke().equals(Color.RED)) {
+				rec.setStroke(Color.LIGHTGREEN);
+				if(ControllerMenu.getChoice())
+					ControllerMenu.getMenu().getProduct().delGarnish(G);
+				else
+					ControllerMenu.getProduct().delGarnish(G);
+			}
 		}
 	}	
 	

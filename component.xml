@@ -60,7 +60,7 @@
     <name>Mais</name>
     <photo>mais.jpg</photo>
     <allergens />
-    <available>true</available>
+    <available>false</available>
     <new>true</new>
   </garnish>
   <garnish classe="Garnish">
