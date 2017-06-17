@@ -300,7 +300,7 @@ public class CustomerManagement {
 
 	/**Import customers from a XML file
 	 * @throws Exception */
-	public static void importCustomer(String xmlFile) throws Exception{ //TODO Remettre des variables temporaires et déclarer le customer à la fin
+	public static void importCustomer(String xmlFile) throws Exception{
 		customers.clear();
 		SAXBuilder sxb = new SAXBuilder();
 		Document document;
@@ -367,6 +367,151 @@ public class CustomerManagement {
 
 	}
 	public static void importCustomerOrders(String xmlFile){
-		//TODO Faire l'import des commandes enregistrées du client
+		SAXBuilder sxb = new SAXBuilder();
+		Document document;
+		Element racine = null;
+		try {
+			document = sxb.build(new File(xmlFile));
+			racine = document.getRootElement();
+		} catch (JDOMException | IOException e) {}
+		
+		
+		List<Element> Eorders = racine.getChildren("Orders");
+		for(Element orders : Eorders){
+			
+			AuthentificatedCustomer tCustomer = new AuthentificatedCustomer();
+			for(AuthentificatedCustomer customer : customers){
+				if(customer.getMail().equals(orders.getAttributeValue("mail").toString()) || customer.getPhoneNumber().equals(orders.getAttributeValue("phone").toString())){
+					tCustomer = customer;
+				}
+			}
+			List<Order> tOrders = new ArrayList<Order>();	
+			List<Element> Eorder = orders.getChildren("order");
+			for (Element order : Eorder) {
+				Order tOrder = new Order();
+				List<Element> Emenus = order.getChild("Menus").getChildren();
+				List<Element> Eproducts = order.getChild("ProductsOnly").getChildren();
+				
+				//Menus
+				for (Element menu : Emenus) {
+					Menu tMenu = new Menu();
+					Product productMenu = new Product();
+					productMenu.setSize(Integer.valueOf(menu.getChild("product").getAttributeValue("size").toString()));
+					productMenu.setPlate(Boolean.valueOf(menu.getChild("product").getAttributeValue("plate").toString()));
+					//Bread
+					Bread breadMenu = new Bread();
+					for (Bread bread : ComponentManagement.getBreads()) {
+						if(bread.getName().equals(menu.getChild("product").getChildText("bread"))){
+							breadMenu = bread;
+						}
+					}
+					productMenu.setBread(breadMenu);
+					//Recipe
+					Recipe recipeMenu = new Recipe();
+					for (Recipe recipe : ComponentManagement.getRecipes()) {
+						if(recipe.getName().equals(menu.getChild("product").getChildText("recipe"))){
+							recipeMenu = recipe;
+						}
+					}
+					productMenu.setRecipe(recipeMenu);
+					//Garnishs
+					List<Garnish> garnishsMenu = new ArrayList<Garnish>();
+					for (Element garnish : menu.getChild("product").getChild("Garnishs").getChildren()) {
+						Garnish garnishMenu = new Garnish();
+						for (Garnish garnishMana : ComponentManagement.getGarnishs()) {
+							if(garnishMana.getName().equals(garnish.getText())){
+								garnishMenu = garnishMana;
+							}
+						}
+						garnishsMenu.add(garnishMenu);
+					}
+					productMenu.setGarnishs(garnishsMenu);
+					//Sauces
+					List<Sauce> saucesMenu = new ArrayList<Sauce>();
+					for (Element sauce : menu.getChild("product").getChild("Sauces").getChildren()) {
+						Sauce sauceMenu = new Sauce();
+						for (Sauce sauceMana : ComponentManagement.getSauces()) {
+							if(sauceMana.getName().equals(sauce.getText())){
+								sauceMenu = sauceMana;
+							}
+						}
+						saucesMenu.add(sauceMenu);
+					}
+					productMenu.setSauces(saucesMenu);
+					//Product
+					tMenu.setProduct(productMenu);
+					//Drink
+					Drink drinkMenu = new Drink();
+					for (Drink drink : ComponentManagement.getDrinks()) {
+						if(drink.getName().equals(menu.getChildText("drink"))){
+							drinkMenu = drink;
+						}
+					}
+					tMenu.setDrink(drinkMenu);
+					//IceCubeNb
+					tMenu.setIceCubeNb(Integer.valueOf(menu.getChild("drink").getAttributeValue("iceCubeNb").toString()));
+					//Dessert
+					Dessert dessertMenu = new Dessert();
+					for (Dessert dessert : ComponentManagement.getDesserts()) {
+						if(dessert.getName().equals(menu.getChildText("dessert"))){
+							dessertMenu = dessert;
+						}
+					}
+					tMenu.setDessert(dessertMenu);
+					tOrder.addMenu(tMenu);
+				}
+				
+				//ProductsOnly
+				for (Element product : Eproducts) {
+					Product tProduct = new Product();
+					tProduct.setSize(Integer.valueOf(product.getAttributeValue("size")));
+					tProduct.setPlate(Boolean.valueOf(product.getAttributeValue("plate")));
+					//Bread
+					Bread tBread = new Bread();
+					for (Bread bread : ComponentManagement.getBreads()) {
+						if(bread.getName().equals(product.getChildText("bread"))){
+							tBread = bread;
+						}
+					}
+					tProduct.setBread(tBread);
+					//Recipe
+					Recipe tRecipe = new Recipe();
+					for (Recipe recipe : ComponentManagement.getRecipes()) {
+						if(recipe.getName().equals(product.getChildText("recipe"))){
+							tRecipe = recipe;
+						}
+					}
+					tProduct.setRecipe(tRecipe);
+					//Garnishs
+					List<Garnish> tGarnishs = new ArrayList<Garnish>();
+					for (Element garnish : product.getChild("Garnishs").getChildren()) {
+						Garnish tGarnish = new Garnish();
+						for (Garnish garnishMana : ComponentManagement.getGarnishs()) {
+							if(garnishMana.getName().equals(garnish.getText())){
+								tGarnish = garnishMana;
+							}
+						}
+						tGarnishs.add(tGarnish);
+					}
+					tProduct.setGarnishs(tGarnishs);
+					//Sauces
+					List<Sauce> tSauces = new ArrayList<Sauce>();
+					for (Element sauce : product.getChild("Sauces").getChildren()) {
+						Sauce tSauce = new Sauce();
+						for (Sauce sauceMana : ComponentManagement.getSauces()) {
+							if(sauceMana.getName().equals(sauce.getText())){
+								tSauce = sauceMana;
+							}
+						}
+						tSauces.add(tSauce);
+					}
+					tProduct.setSauces(tSauces);
+					tOrder.addProduct(tProduct);
+				}
+				tOrders.add(tOrder);
+			}
+			tCustomer.setOrder(tOrders);
+		}
+
 	}
 }

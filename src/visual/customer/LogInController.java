@@ -10,7 +10,7 @@ import javafx.scene.text.Text;
 import model.AuthentificatedCustomer;
 import model.CustomerManagement;
 
-public class ControllerConnexion {
+public class LogInController {
     @FXML
     private Button connexion;
 
@@ -33,8 +33,8 @@ public class ControllerConnexion {
 		try{
 		for (AuthentificatedCustomer customer : CustomerManagement.getCustomers()) {
             if((customer.getMail().equals(TF_Username.getText()) || customer.getPhoneNumber().equals(TF_Username.getText())) && customer.getPassword().equals(PF_password.getText())){
-            	ControllerInscription.setAuthCusto(customer);
-            	ControllerBonjour.getOrder().setAuthCustomer(true); //On enregistre l'authentification du client
+            	SignUpController.setAuthCusto(customer);
+            	HelloController.getOrder().setAuthCustomer(true); //On enregistre l'authentification du client
         		Group acteur = new Group();
         		acteur.getChildren().add(
         		FXMLLoader.load(getClass().getResource("004.1 Accueil (authentifier).fxml")) //Ici, il faut changer le fichier fxml (la string en fait)

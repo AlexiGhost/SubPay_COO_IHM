@@ -19,7 +19,7 @@ import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import model.product.composants.Recipe;
 
-public class ControllerRecettes  implements Initializable{
+public class RecipeController  implements Initializable{
 	
     @FXML
     private TilePane bofTile;
@@ -90,11 +90,11 @@ public class ControllerRecettes  implements Initializable{
 			redOne.setStroke(Color.LIGHTGREEN);
 		}
 		redOne = redStroke;
-		if(ControllerMenu.getChoice()){
-			ControllerMenu.getMenu().getProduct().setRecipe(recipe);		
+		if(MenuController.getChoice()){
+			MenuController.getMenu().getProduct().setRecipe(recipe);		
 		}
 		else{
-			ControllerMenu.getProduct().setRecipe(recipe);	
+			MenuController.getProduct().setRecipe(recipe);	
 		}
 	}	
 

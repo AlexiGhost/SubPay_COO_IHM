@@ -2,19 +2,18 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Slider?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.TilePane?>
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" scaleShape="false" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="visual.customer.ControllerBoissons">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" scaleShape="false" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="visual.customer.DrinkController">
    <children>
       <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="540.0" pickOnBounds="true" preserveRatio="true" AnchorPane.topAnchor="0.0">
          <image>
@@ -26,15 +25,9 @@
       <Circle fill="#0ec314" layoutX="123.0" layoutY="549.0" radius="150.0" stroke="BLACK" strokeType="INSIDE" AnchorPane.bottomAnchor="-150.0" AnchorPane.leftAnchor="-150.0" />
       <Circle fill="#0ec314" layoutX="1039.0" layoutY="514.0" radius="150.0" stroke="BLACK" strokeType="INSIDE" AnchorPane.bottomAnchor="-150.0" AnchorPane.rightAnchor="-150.0" />
       <Circle fill="#0ec314" layoutX="1017.0" layoutY="100.0" radius="150.0" stroke="BLACK" strokeType="INSIDE" AnchorPane.rightAnchor="-150.0" AnchorPane.topAnchor="-150.0" />
-      <ScrollPane layoutX="191.0" layoutY="124.0" prefHeight="395.0" prefWidth="900.0">
+      <ScrollPane layoutX="191.0" layoutY="124.0" prefHeight="484.0" prefWidth="900.0">
          <content>
-            <Pane fx:id="boissonsPane" prefHeight="145.0" prefWidth="200.0">
-               <children>
-                  <ImageView fx:id="imageBoissons" fitHeight="112.0" fitWidth="165.0" layoutX="35.0" layoutY="-2.0" pickOnBounds="true" preserveRatio="true" />
-                  <Text fx:id="NomBoissons" layoutX="14.0" layoutY="125.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
-                  <RadioButton fx:id="radioBoissons" layoutY="44.0" mnemonicParsing="false" />
-               </children>
-            </Pane>
+            <TilePane fx:id="drinkTile" prefHeight="482.0" prefWidth="885.0" />
          </content></ScrollPane>
       <Button fx:id="suivant" layoutX="871.0" layoutY="618.0" mnemonicParsing="false" onAction="#goToAccueil" text="Suivant">
          <font>
@@ -46,30 +39,12 @@
             <Font size="36.0" />
          </font>
       </Button>
-      <Text layoutX="598.0" layoutY="579.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Glaçcon">
+      <Text layoutX="598.0" layoutY="649.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Glaçons">
          <font>
             <Font size="24.0" />
          </font>
       </Text>
-      <VBox layoutX="590.0" layoutY="596.0" prefHeight="122.0" prefWidth="100.0">
-         <children>
-            <RadioButton fx:id="radioGlaconOui" mnemonicParsing="false" text="Oui">
-               <font>
-                  <Font size="24.0" />
-               </font>
-            </RadioButton>
-            <RadioButton fx:id="radioGlaconPeu" mnemonicParsing="false" text="Peu">
-               <font>
-                  <Font size="24.0" />
-               </font>
-            </RadioButton>
-            <RadioButton fx:id="radioGlaconNon" mnemonicParsing="false" text="Non">
-               <font>
-                  <Font size="24.0" />
-               </font>
-            </RadioButton>
-         </children>
-      </VBox>
+      <Slider blockIncrement="1.0" layoutX="570.0" layoutY="663.0" majorTickUnit="2.0" max="2.0" minorTickCount="1" snapToTicks="true" />
    </children>
    <opaqueInsets>
       <Insets />

@@ -19,7 +19,7 @@ import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import model.product.composants.Garnish;
 
-public class ControllerGarnitures implements Initializable {
+public class GarnishController implements Initializable {
 	private static List<Garnish> garnishList = new ArrayList<Garnish>();
 	private	static int			 X = 1;
 	private	static int			 Y = 0;
@@ -96,17 +96,17 @@ public class ControllerGarnitures implements Initializable {
 		if(G.getAvailability()) {
 			if(rec.getStroke().equals(Color.LIGHTGREEN)) {
 				rec.setStroke(Color.RED);
-				if(ControllerMenu.getChoice())
-					ControllerMenu.getMenu().getProduct().addGarnish(G);
+				if(MenuController.getChoice())
+					MenuController.getMenu().getProduct().addGarnish(G);
 				else
-					ControllerMenu.getProduct().addGarnish(G);
+					MenuController.getProduct().addGarnish(G);
 			}
 			else if(rec.getStroke().equals(Color.RED)) {
 				rec.setStroke(Color.LIGHTGREEN);
-				if(ControllerMenu.getChoice())
-					ControllerMenu.getMenu().getProduct().delGarnish(G);
+				if(MenuController.getChoice())
+					MenuController.getMenu().getProduct().delGarnish(G);
 				else
-					ControllerMenu.getProduct().delGarnish(G);
+					MenuController.getProduct().delGarnish(G);
 			}
 		}
 	}	

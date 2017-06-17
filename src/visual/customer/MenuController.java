@@ -6,7 +6,7 @@ import javafx.scene.Group;
 import model.product.Menu;
 import model.product.Product;
 
-public class ControllerMenu {
+public class MenuController {
 	private static boolean choice;
 	private static Product product;
 	private static Menu menu;

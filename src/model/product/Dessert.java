@@ -7,4 +7,8 @@ public class Dessert extends Composant{
 	public Dessert(String name, String photo) {
 		super(name, photo);
 	}
+
+	public Dessert() {
+		super();
+	}
 }

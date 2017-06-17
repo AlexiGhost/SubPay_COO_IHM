@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomerOrders>
+  <Orders mail="" phone="0619355180">
+    <order>
+      <Menus />
+      <ProductsOnly>
+        <productOnly size="0">
+          <bread>Miel Avoine</bread>
+          <recipe>Dinde</recipe>
+          <Garnishs />
+          <Sauces />
+        </productOnly>
+      </ProductsOnly>
+    </order>
+  </Orders>
+</CustomerOrders>

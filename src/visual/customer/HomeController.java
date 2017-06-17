@@ -21,7 +21,7 @@ import javafx.scene.text.Text;
 import model.product.composants.Composant;
 import model.product.composants.Promotion;
 
-public class ControllerAccueil implements Initializable {
+public class HomeController implements Initializable {
 
 	private static 	List<Promotion>	ListPromo = new ArrayList<Promotion>();
 	private static 	List<Composant>	ListNew = new ArrayList<Composant>();
@@ -178,8 +178,8 @@ public class ControllerAccueil implements Initializable {
 		visual.ControllerClient.setScene(acteur, "SUBPAY - Paiement");
 	}
 	public void goToAllergen() throws IOException {
-		ControllerAllergen.setPreviousUI("004 Accueil.fxml");
-		ControllerAllergen.setPreviousTitle("SUBPAY - Accueil");
+		AllergenController.setPreviousUI("004 Accueil.fxml");
+		AllergenController.setPreviousTitle("SUBPAY - Accueil");
 		Group acteur = new Group();
 		acteur.getChildren().add(
 		FXMLLoader.load(getClass().getResource("006 Allergies.fxml"))

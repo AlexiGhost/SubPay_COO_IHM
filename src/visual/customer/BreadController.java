@@ -5,7 +5,7 @@ import java.io.IOException;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Group;
 
-public class ControllerPain {
+public class BreadController {
 	
 	public void goToRecettes() throws IOException {
 			Group acteur = new Group();

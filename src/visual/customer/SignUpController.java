@@ -16,7 +16,7 @@ import javafx.scene.text.Text;
 import model.AuthentificatedCustomer;
 import model.CustomerManagement;
 
-public class ControllerInscription {
+public class SignUpController {
 	@FXML
     private Button valider;
 
@@ -167,7 +167,7 @@ public class ControllerInscription {
 			//Enregistrer le client
 			CustomerManagement.addCustomer(authCusto);
 			CustomerManagement.exportCustomer("customer.xml");
-			ControllerBonjour.getOrder().setAuthCustomer(true); 
+			HelloController.getOrder().setAuthCustomer(true); 
 			//Changement d'interface 
 			Group acteur = new Group();
 			acteur.getChildren().add(
@@ -214,7 +214,7 @@ public class ControllerInscription {
 	}
 	//Bouton "Accueil"
 	public void goToAcceuilNotAuth() throws IOException {
-		ControllerBonjour.getOrder().setAuthCustomer(false);
+		HelloController.getOrder().setAuthCustomer(false);
 		Group acteur = new Group();
 		acteur.getChildren().add(
 		FXMLLoader.load(getClass().getResource("004 Accueil.fxml"))

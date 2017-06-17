@@ -7,15 +7,20 @@ import model.AuthentificatedCustomer;
 import model.CustomerManagement;
 import model.product.*;
 import model.product.composants.Bread;
+import model.product.composants.Recipe;
 //TODO supprimer cette classe a la fin du projet
 /**Cette classe reste juste pour faire des tests avec le modele*/
 public class Main {
 	public static void main(String[] args) throws Exception {
 		//testExportComponent();
 		ComponentManagement.importComponent("component.xml");
-		testExportCustomer();
+		//testExportCustomer();
 		
-		CustomerManagement.importCustomer("customer.xml");	
+		CustomerManagement.importCustomer("customer.xml");
+		testExportOrder();
+		CustomerManagement.exportCustomerOrders("order.xml");
+		CustomerManagement.getCustomers().get(0).getOrder().clear();
+		CustomerManagement.importCustomerOrders("order.xml");
 	}
 	
 	//Ces actions sont effectués par le manager (indirectement via bouton)
@@ -51,5 +56,18 @@ public class Main {
 		CustomerManagement.addCustomer(customer1);
 		CustomerManagement.exportCustomer("customer.xml");
 		
+	}
+	public static void testExportOrder() throws Exception{
+		Order order = new Order();
+		Product product = new Product();
+		Bread bread = ComponentManagement.getBread("Miel Avoine");
+		Recipe recipe = ComponentManagement.getRecipe("Dinde");
+		
+		product.setRecipe(recipe);
+		product.setBread(bread);
+		
+		order.addProduct(product);
+		
+		CustomerManagement.getCustomers().get(0).addOrder(order);
 	}
 }

@@ -5,7 +5,7 @@ import java.io.IOException;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Group;
 
-public class ControllerPayer {
+public class PayController {
 	public void goToAccueil() throws IOException { //Au lieu de "toAccueil", tu dois mettre to + [InterfaceDeDestination]
 		Group acteur = new Group(); //Pas touche
 		acteur.getChildren().add( //Pas touche

@@ -19,9 +19,9 @@ import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import model.product.composants.Sauce;
-import visual.customer.ControllerMenu;
+import visual.customer.MenuController;
 
-public class ControllerSauces implements Initializable {
+public class SauceController implements Initializable {
 	private static List<Sauce> sauceList = new ArrayList<Sauce>();
 	private	static int			 X = 1;
 	private	static int			 Y = 0;
@@ -103,17 +103,17 @@ public class ControllerSauces implements Initializable {
 		if(S.getAvailability()) {
 			if(rec.getStroke().equals(Color.LIGHTGREEN)) {
 				rec.setStroke(Color.RED);
-				if(ControllerMenu.getChoice())
-					ControllerMenu.getMenu().getProduct().addSauce(S);
+				if(MenuController.getChoice())
+					MenuController.getMenu().getProduct().addSauce(S);
 				else
-					ControllerMenu.getProduct().addSauce(S);
+					MenuController.getProduct().addSauce(S);
 			}
 			else if(rec.getStroke().equals(Color.RED)) {
 				rec.setStroke(Color.LIGHTGREEN);
-				if(ControllerMenu.getChoice())
-					ControllerMenu.getMenu().getProduct().delSauce(S);
+				if(MenuController.getChoice())
+					MenuController.getMenu().getProduct().delSauce(S);
 				else
-					ControllerMenu.getProduct().delSauce(S);
+					MenuController.getProduct().delSauce(S);
 			}
 		}
 	}	
@@ -123,7 +123,7 @@ public class ControllerSauces implements Initializable {
 	public void goToGarnitures() throws IOException {
 		X = 1;
 		Y = 0;
-		ControllerGarnitures.getGarnishList().clear(); //Pour supprimer tout ce que le client avait choisit
+		GarnishController.getGarnishList().clear(); //Pour supprimer tout ce que le client avait choisit
 		Group acteur = new Group();
 		acteur.getChildren().add(
 		FXMLLoader.load(getClass().getResource("009 Garnitures.fxml"))
@@ -134,14 +134,14 @@ public class ControllerSauces implements Initializable {
 	public void next() throws IOException {
 		X = 1;
 		Y = 0;
-		if(ControllerMenu.getChoice()){ 
+		if(MenuController.getChoice()){ 
 			Group acteur = new Group();
 			acteur.getChildren().add( 
 			FXMLLoader.load(getClass().getResource("011 Boissons (Menu).fxml")) 
 			);
 			visual.ControllerClient.setScene(acteur, "SUBPAY - Boissons");
 		}
-		else if(ControllerBonjour.getOrder().getAuthCustomer()){
+		else if(HelloController.getOrder().getAuthCustomer()){
 			Group acteur = new Group();
 			acteur.getChildren().add( 
 			FXMLLoader.load(getClass().getResource("004.1 Accueil (authentifier).fxml"))

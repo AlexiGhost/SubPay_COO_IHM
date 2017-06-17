@@ -5,15 +5,15 @@ import java.io.IOException;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Group;
 
-public class ControllerAllergen {
+public class AllergenController {
 	private static String previousUI;
 	private static String previousTitle;
 	
 	public static void setPreviousUI(String previousUI) {
-		ControllerAllergen.previousUI = previousUI;
+		AllergenController.previousUI = previousUI;
 	}
 	public static void setPreviousTitle(String previousTitle) {
-		ControllerAllergen.previousTitle = previousTitle;
+		AllergenController.previousTitle = previousTitle;
 	}
 	
 	public void goToPreviousUI() throws IOException {

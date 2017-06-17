@@ -2,18 +2,11 @@ package visual.customer;
 
 import java.io.IOException;
 
-import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Group;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.stage.Stage;
-import model.CustomerManagement;
 import model.product.Order;
 
-public class ControllerBonjour {
+public class HelloController {
 	private static Order order = new Order();
 	
 	/***Methods***/

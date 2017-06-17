@@ -5,7 +5,7 @@ import java.io.IOException;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Group;
 
-public class ControllerAccueilAuth {
+public class AuthHomeController {
 
 	//TODO Afficher le nom et prénom du client connecté
 	// Bouton "Payer"
@@ -26,7 +26,7 @@ public class ControllerAccueilAuth {
 	}
 	//Bouton "Déconnexion"
 	public void goToAcceuilNotAuth() throws IOException {
-		ControllerBonjour.getOrder().setAuthCustomer(false);
+		HelloController.getOrder().setAuthCustomer(false);
 		Group acteur = new Group();
 		acteur.getChildren().add(
 		FXMLLoader.load(getClass().getResource("004 Accueil.fxml")) 
