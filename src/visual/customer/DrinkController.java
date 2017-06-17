@@ -24,9 +24,13 @@ public class DrinkController implements Initializable {
 	private	static int			 X = 1;
 	private	static int			 Y = 0;
 	private static Rectangle	redOne = new Rectangle();
+	private static boolean		selected = false;
 	
 	@FXML
     private TilePane drinkTile;
+	
+	@FXML
+    private Text ERROR;
 	
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		displayDrinks();
@@ -89,6 +93,7 @@ public class DrinkController implements Initializable {
 	}
 	
 	public static void myDrink(Rectangle rec, Drink drink) {
+		selected = true;
 		if(drink.getAvailability()) {
 			rec.setStroke(Color.RED);
 			if(redOne != null){
@@ -113,20 +118,24 @@ public class DrinkController implements Initializable {
 																//tu vas. Ca permet de changer le titre de la fenêtre (et ça marche B)  )
 	}
 	public void goToAccueil() throws IOException {
-		if(HelloController.getOrder().getAuthCustomer()){
-			Group acteur = new Group();
-			acteur.getChildren().add( 
-			FXMLLoader.load(getClass().getResource("004.1 Accueil (authentifier).fxml"))
-			);
-			visual.ControllerClient.setScene(acteur, "SUBPAY - Accueil Auth");
+		if(selected){
+			if(HelloController.getOrder().getAuthCustomer()){
+				Group acteur = new Group();
+				acteur.getChildren().add( 
+						FXMLLoader.load(getClass().getResource("004.1 Accueil (authentifier).fxml"))
+						);
+				visual.ControllerClient.setScene(acteur, "SUBPAY - Accueil Auth");
+			}
+			else{
+				Group acteur = new Group();
+				acteur.getChildren().add( 
+						FXMLLoader.load(getClass().getResource("004 Accueil.fxml")) 
+						);
+				visual.ControllerClient.setScene(acteur, "SUBPAY - Accueil");
+			}
 		}
-		else{
-			Group acteur = new Group();
-			acteur.getChildren().add( 
-			FXMLLoader.load(getClass().getResource("004 Accueil.fxml")) 
-			);
-			visual.ControllerClient.setScene(acteur, "SUBPAY - Accueil");
-		}
+		else
+			ERROR.setVisible(true);
 	}
 	
 

@@ -18,14 +18,18 @@ import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
+import model.product.ComponentManagement;
 import model.product.composants.Composant;
 import model.product.composants.Promotion;
+import model.product.composants.Recipe;
 
 public class HomeController implements Initializable {
 
 	private static 	List<Promotion>	ListPromo = new ArrayList<Promotion>();
 	private static 	List<Composant>	ListNew = new ArrayList<Composant>();
 	private static 	boolean 		newPromo = false;
+	private static 	Composant		selectedComposant;
+	private static  String			selectedCategorie;
 	
     @FXML
     private 		TilePane 				promoTiled;
@@ -49,6 +53,14 @@ public class HomeController implements Initializable {
 		return newPromo;
 	}
 	
+	public static String getSelectedCategorie() {
+		return selectedCategorie;
+	}
+	
+	public static Composant getSelectedComposant() {
+		return selectedComposant;
+	}
+	
 	public void affichePromo() {
 		for (Promotion promotion : ListPromo) {
 			//Group
@@ -56,9 +68,18 @@ public class HomeController implements Initializable {
 			promo.setFocusTraversable(true);
 			promo.setOnMouseClicked(MouseEvent -> {
 				try {
-					newPromoChosen();
+					if(!promotion.getRecipe().equals("")){
+						Recipe recipe = new Recipe();
+						for (Recipe recipeMana : ComponentManagement.getRecipes()) {
+							if(recipeMana.getName().equals(promotion.getRecipe()))
+								recipe = recipeMana;
+						}
+						newPromoChosen(recipe);
+					}
+					else{
+						newPromoCatChosen(promotion.getCategory());
+					}						
 				} catch (IOException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 			});
@@ -110,9 +131,8 @@ public class HomeController implements Initializable {
 			nouveau.setFocusTraversable(true);
 			nouveau.setOnMouseClicked(MouseEvent -> {
 				try {
-					newPromoChosen();
+					newPromoChosen(nouveaute);
 				} catch (IOException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 			});
@@ -141,10 +161,17 @@ public class HomeController implements Initializable {
 		}
 	}
 	
-	public void newPromoChosen() throws IOException{
+	public void newPromoChosen(Composant c) throws IOException{
 		newPromo = true;
+		selectedComposant = c;
 		goToMenu();
 	}
+	public void newPromoCatChosen(String cat) throws IOException{
+		newPromo = true;
+		selectedCategorie = cat;
+		goToMenu();
+	}
+	
 	
 	public void goToConnexion() throws IOException {
 		Group acteur = new Group();

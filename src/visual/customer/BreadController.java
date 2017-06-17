@@ -1,5 +1,6 @@
 package visual.customer;
-
+//TODO Virer le bouton suivant (passer à la page suivante dès la sélection du pain)
+//TODO Faire trois interface différente
 import java.io.IOException;
 
 import javafx.fxml.FXMLLoader;

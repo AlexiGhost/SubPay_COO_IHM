@@ -7,8 +7,6 @@ import model.product.*;
 import model.product.composants.*;
 
 public class AuthentificatedCustomer {
-
-	//TODO pas de login, ajouter attribut adresse mail et telephone
 	private String lastName;
 	private String firstName;
 	private String mail;

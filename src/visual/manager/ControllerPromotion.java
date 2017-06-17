@@ -59,12 +59,12 @@ public class ControllerPromotion implements Initializable{
     
     @FXML void clearRecipeCombo(){ //executé lors de la selection d'une categorie
     	//TODO trouver la source de l'erreur (1er essai uniquement)
-    	if(CB_Recipe.selectionModelProperty().getValue() != null) CB_Recipe.setValue("");
+    	if(!CB_Recipe.selectionModelProperty().getValue().getSelectedItem().equals("")) CB_Recipe.setValue("");
     }
     
     @FXML
     void clearCategorieCombo(){ //executé lors de la selection d'une recette
-    	if(CB_Categorie.selectionModelProperty().getValue() != null) CB_Categorie.setValue("");
+    	if(!CB_Categorie.selectionModelProperty().getValue().getSelectedItem().equals("")) CB_Categorie.setValue("");
     }
     
     @FXML
