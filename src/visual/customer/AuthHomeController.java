@@ -8,6 +8,7 @@ import javafx.scene.Group;
 public class AuthHomeController {
 
 	//TODO Afficher le nom et prénom du client connecté
+	//TODO Afficher les promos, nouveautés, commandes enregistrées, commande en cours
 	// Bouton "Payer"
 	public void goToPayer() throws IOException { 
 		Group acteur = new Group(); 

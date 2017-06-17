@@ -22,7 +22,7 @@ import model.product.ComponentManagement;
 import model.product.composants.Composant;
 import model.product.composants.Promotion;
 import model.product.composants.Recipe;
-
+//TODO Afficher la commande en cours
 public class HomeController implements Initializable {
 
 	private static 	List<Promotion>	ListPromo = new ArrayList<Promotion>();
