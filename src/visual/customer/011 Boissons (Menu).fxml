@@ -29,11 +29,6 @@
          <content>
             <TilePane fx:id="drinkTile" prefHeight="460.0" prefWidth="885.0" />
          </content></ScrollPane>
-      <Button fx:id="suivant" layoutX="871.0" layoutY="618.0" mnemonicParsing="false" onAction="#goToAccueil" text="Suivant">
-         <font>
-            <Font size="36.0" />
-         </font>
-      </Button>
       <Button fx:id="retour" layoutX="259.0" layoutY="618.0" mnemonicParsing="false" onAction="#goToSauces" text="Retour">
          <font>
             <Font size="36.0" />
@@ -44,12 +39,12 @@
             <Font size="24.0" />
          </font>
       </Text>
-      <Slider blockIncrement="1.0" layoutX="570.0" layoutY="663.0" majorTickUnit="2.0" max="2.0" minorTickCount="1" snapToTicks="true" />
-      <Text fx:id="ERROR" fill="RED" layoutX="478.0" layoutY="617.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Vous devez sélectionner une boisson" visible="false">
+      <Slider fx:id="SL_IceCube" blockIncrement="1.0" layoutX="570.0" layoutY="663.0" majorTickUnit="2.0" max="2.0" minorTickCount="1" snapToTicks="true" />
+      <Button fx:id="suivant" layoutX="184.0" layoutY="17.0" mnemonicParsing="false" onAction="#goToHome" text="Accueil">
          <font>
-            <Font size="20.0" />
+            <Font size="36.0" />
          </font>
-      </Text>
+      </Button>
    </children>
    <opaqueInsets>
       <Insets />

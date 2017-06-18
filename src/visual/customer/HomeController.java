@@ -28,8 +28,7 @@ public class HomeController implements Initializable {
 	private static 	List<Promotion>	ListPromo = new ArrayList<Promotion>();
 	private static 	List<Composant>	ListNew = new ArrayList<Composant>();
 	private static 	boolean 		newPromo = false;
-	private static 	Composant		selectedComposant;
-	private static  String			selectedCategorie;
+	private static  String			selectedCategorie = null;
 	
     @FXML
     private 		TilePane 				promoTiled;
@@ -39,6 +38,7 @@ public class HomeController implements Initializable {
     
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
+		selectedCategorie = null;
 		affichePromo();
 	}
 	
@@ -57,10 +57,6 @@ public class HomeController implements Initializable {
 		return selectedCategorie;
 	}
 	
-	public static Composant getSelectedComposant() {
-		return selectedComposant;
-	}
-	
 	public void affichePromo() {
 		for (Promotion promotion : ListPromo) {
 			//Group
@@ -69,12 +65,7 @@ public class HomeController implements Initializable {
 			promo.setOnMouseClicked(MouseEvent -> {
 				try {
 					if(!promotion.getRecipe().equals("")){
-						Recipe recipe = new Recipe();
-						for (Recipe recipeMana : ComponentManagement.getRecipes()) {
-							if(recipeMana.getName().equals(promotion.getRecipe()))
-								recipe = recipeMana;
-						}
-						newPromoChosen(recipe);
+						newPromoChosen();
 					}
 					else{
 						newPromoCatChosen(promotion.getCategory());
@@ -131,7 +122,7 @@ public class HomeController implements Initializable {
 			nouveau.setFocusTraversable(true);
 			nouveau.setOnMouseClicked(MouseEvent -> {
 				try {
-					newPromoChosen(nouveaute);
+					newPromoChosen();
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
@@ -161,9 +152,8 @@ public class HomeController implements Initializable {
 		}
 	}
 	
-	public void newPromoChosen(Composant c) throws IOException{
+	public void newPromoChosen() throws IOException{
 		newPromo = true;
-		selectedComposant = c;
 		goToMenu();
 	}
 	public void newPromoCatChosen(String cat) throws IOException{

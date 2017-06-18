@@ -6,10 +6,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
+import javax.swing.JOptionPane;
+
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Group;
+import javafx.scene.control.Slider;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.TilePane;
@@ -23,14 +26,12 @@ public class DrinkController implements Initializable {
 	private static List<Drink> drinkList = new ArrayList<Drink>();
 	private	static int			 X = 1;
 	private	static int			 Y = 0;
-	private static Rectangle	redOne = new Rectangle();
-	private static boolean		selected = false;
 	
 	@FXML
     private TilePane drinkTile;
 	
 	@FXML
-    private Text ERROR;
+    private Slider SL_IceCube;
 	
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		displayDrinks();
@@ -50,7 +51,7 @@ public class DrinkController implements Initializable {
 			d.setTranslateX(20 * X);
 			d.setTranslateY(10 + Y);
 			d.setFocusTraversable(true);
-			d.setOnMouseClicked(MouseEvent -> myDrink(bordure, drink));
+			d.setOnMouseClicked(MouseEvent -> goToHomeWithOrder(drink));
 			
 			//Titre garniture
 			Text title = new Text(drink.getName());
@@ -92,50 +93,52 @@ public class DrinkController implements Initializable {
 		}
 	}
 	
-	public static void myDrink(Rectangle rec, Drink drink) {
-		selected = true;
-		if(drink.getAvailability()) {
-			rec.setStroke(Color.RED);
-			if(redOne != null){
-				redOne.setStroke(Color.LIGHTGREEN);
-			}
-			redOne = rec;
-			MenuController.getMenu().setDrink(drink);
-		}
-	}	
-	
 	public static List<Drink> getDrinkList() {
 		return drinkList;
 	}
 	
 	
-	public void goToSauces() throws IOException { //Au lieu de "toAccueil", tu dois mettre to + [InterfaceDeDestination]
-		Group acteur = new Group(); //Pas touche
-		acteur.getChildren().add( //Pas touche
-		FXMLLoader.load(getClass().getResource("010 Sauces.fxml")) //Ici, il faut changer le fichier fxml (la string en fait)
-		); //Pas touche
-		visual.ControllerClient.setScene(acteur, "SUBPAY - Sauces"); //Ici, il faut laisser "SUBPAY" et changer "Accueil" selon l'interface où
-																//tu vas. Ca permet de changer le titre de la fenêtre (et ça marche B)  )
+	public void goToSauces() throws IOException {
+		Group acteur = new Group();
+		acteur.getChildren().add(
+		FXMLLoader.load(getClass().getResource("010 Sauces.fxml"))
+		);
+		visual.ControllerClient.setScene(acteur, "SUBPAY - Sauces"); 
 	}
-	public void goToAccueil() throws IOException {
-		if(selected){
-			if(HelloController.getOrder().getAuthCustomer()){
-				Group acteur = new Group();
-				acteur.getChildren().add( 
-						FXMLLoader.load(getClass().getResource("004.1 Accueil (authentifier).fxml"))
-						);
-				visual.ControllerClient.setScene(acteur, "SUBPAY - Accueil Auth");
-			}
-			else{
-				Group acteur = new Group();
-				acteur.getChildren().add( 
-						FXMLLoader.load(getClass().getResource("004 Accueil.fxml")) 
-						);
-				visual.ControllerClient.setScene(acteur, "SUBPAY - Accueil");
+	public void goToHome(){
+		Group acteur = new Group();
+		if(HelloController.getOrder().getAuthCustomer()){ //Si le client est authentifié
+			try {
+				acteur.getChildren().add(FXMLLoader.load(getClass().getResource("004.1 Accueil (authentifier).fxml")));
+				visual.ControllerClient.setScene(acteur, "SUBPAY - Accueil Authentifié");
+			} catch (IOException e) {
+				e.printStackTrace();
 			}
 		}
-		else
-			ERROR.setVisible(true);
+		else{ //S'il n'y a pas de client authentifié
+			try {
+				acteur.getChildren().add(FXMLLoader.load(getClass().getResource("004 Accueil.fxml")));
+				visual.ControllerClient.setScene(acteur, "SUBPAY - Accueil");
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+	
+	public void goToHomeWithOrder(Drink d){
+		if(SL_IceCube.getValue() < 1){
+			int dialogResult = JOptionPane.showConfirmDialog (null, "Etes-vous sûr de ne pas vouloir de glaçon ?","Warning", JOptionPane.YES_NO_OPTION);
+	    	if(dialogResult == JOptionPane.YES_OPTION){
+	    		MenuController.getMenu().setDrink(d);
+	    		MenuController.getMenu().setIceCubeNb(Math.toIntExact(Math.round(SL_IceCube.getValue())));
+	    		goToHome();
+	    	}
+		} else {
+			javax.swing.JOptionPane.showMessageDialog(null, "Commande Validée"); 
+			MenuController.getMenu().setDrink(d);
+    		MenuController.getMenu().setIceCubeNb(Math.toIntExact(Math.round(SL_IceCube.getValue())));
+    		goToHome();
+		}
 	}
 	
 

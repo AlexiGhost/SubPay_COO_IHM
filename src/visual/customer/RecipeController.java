@@ -1,5 +1,4 @@
 package visual.customer;
-//TODO Virer le bouton suivant (passer à la page suivante dès la sélection de la recette)
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -44,15 +43,10 @@ public class RecipeController  implements Initializable{
     
     @FXML
     private ScrollPane caPasseScroll;
-    
-    @FXML
-    private Text ERROR;
 	
-	private static List<Recipe> bofList = new ArrayList<Recipe>();
-	private static List<Recipe> mouaisList = new ArrayList<Recipe>();
-	private static List<Recipe> caPasseList = new ArrayList<Recipe>();
-	private static Rectangle	redOne = new Rectangle();
-	private static boolean		selected = false;
+	private  static List<Recipe> bofList = new ArrayList<Recipe>();
+	private  static List<Recipe> mouaisList = new ArrayList<Recipe>();
+	private  static List<Recipe> caPasseList = new ArrayList<Recipe>();
 	
 	public static List<Recipe> getBofList() {
 		return bofList;
@@ -71,33 +65,23 @@ public class RecipeController  implements Initializable{
 		displayRecipe(caPasseList, caPasseTile, caPasseScroll);
 	}
 	
-	public static void displayRecipe(List<Recipe> listRecipe, TilePane tilePane, ScrollPane scrollPane){
+	public void displayRecipe(List<Recipe> listRecipe, TilePane tilePane, ScrollPane scrollPane){
 		for (Recipe recipe : listRecipe) {
 			//Bordures
 			Rectangle bordure = new Rectangle(0, -15, 150, 120);
 			bordure.setFill(Color.TRANSPARENT);
 			bordure.setStroke(Color.LIGHTGREEN);
 			bordure.setStrokeWidth(4.0);
-			//Affiche un contour rouge pour les éléments sélectionnés  dans nouveautés ou promotions
+			//Affiche un contour rouge pour les catégories sélectionnées  dans nouveautés ou promotions
 			if(HomeController.getNewPromo()){
-				//Element
-				if(HomeController.getSelectedComposant() != null){
-					if(HomeController.getSelectedComposant().getName().equals(recipe.getName())){
-						bordure.setStroke(Color.RED);
-						redOne = bordure;
-					}
-					
-				}
-				else{
-					if(recipe.getCategory().equals(HomeController.getSelectedCategorie()))
+				if(HomeController.getSelectedCategorie() != null && recipe.getCategory().equals(HomeController.getSelectedCategorie()))
 						scrollPane.setStyle("-fx-border-color:red;");
-				}
 			}
 			
 			//Group
 			Group r = new Group();
 			r.setFocusTraversable(true);
-			r.setOnMouseClicked(MouseEvent -> redRectangle(bordure,recipe));
+			r.setOnMouseClicked(MouseEvent -> goToGarnish(recipe));
 			
 			//Titre nouveauté
 			Text title = new Text(recipe.getName());
@@ -116,39 +100,78 @@ public class RecipeController  implements Initializable{
 			tilePane.getChildren().add(r);
 		}
 		
-	}
-	
-	public static void redRectangle(Rectangle redStroke, Recipe recipe) {
-		selected = true;
-		redStroke.setStroke(Color.RED);
-		if(redOne != null){
-			redOne.setStroke(Color.LIGHTGREEN);
-		}
-		redOne = redStroke;
-		if(MenuController.getChoice()){
-			MenuController.getMenu().getProduct().setRecipe(recipe);		
-		}
-		else{
-			MenuController.getProduct().setRecipe(recipe);	
-		}
 	}	
 
-	public void goToPain() throws IOException { //Au lieu de "toAccueil", tu dois mettre to + [InterfaceDeDestination]
-		Group acteur = new Group(); //Pas touche
-		acteur.getChildren().add( //Pas touche
-		FXMLLoader.load(getClass().getResource("007 Pain.fxml")) //Ici, il faut changer le fichier fxml (la string en fait)
-		); //Pas touche
-		visual.ControllerClient.setScene(acteur, "SUBPAY - Pain"); //Ici, il faut laisser "SUBPAY" et changer "Accueil" selon l'interface où
-																//tu vas. Ca permet de changer le titre de la fenêtre (et ça marche B)  )
+	public void goToBread(){ 
+		Group acteur = new Group();
+		if(MenuController.getChoice()){
+			if(MenuController.getMenu().getProduct().getPlate()){
+				try {
+					acteur.getChildren().add(FXMLLoader.load(getClass().getResource("016 Format repas.fxml")));
+					visual.ControllerClient.setScene(acteur, "SUBPAY - Format du repas");
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}else{
+				try {
+					acteur.getChildren().add(FXMLLoader.load(getClass().getResource("007 Pain.fxml")));
+					visual.ControllerClient.setScene(acteur, "SUBPAY - Pain");
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}	
+		}else{
+			if(MenuController.getProduct().getPlate()){
+				try {
+					acteur.getChildren().add(FXMLLoader.load(getClass().getResource("016 Format repas.fxml")));
+					visual.ControllerClient.setScene(acteur, "SUBPAY - Format du repas");
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}else{
+				try {
+					acteur.getChildren().add(FXMLLoader.load(getClass().getResource("007 Pain.fxml")));
+					visual.ControllerClient.setScene(acteur, "SUBPAY - Pain");
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+		}
 	}
 	
-	public void goToGarnitures() throws IOException { 
-		if(selected){
+	public void goToGarnish(Recipe r){ 
+		if(r.getAvailability()){
+			if(MenuController.getChoice())
+				MenuController.getMenu().getProduct().setRecipe(r);
+			else
+				MenuController.getProduct().setRecipe(r);
 			Group acteur = new Group();
-			acteur.getChildren().add(FXMLLoader.load(getClass().getResource("009 Garnitures.fxml")));
-			visual.ControllerClient.setScene(acteur, "SUBPAY - Garnitures"); 
+			try {
+				acteur.getChildren().add(FXMLLoader.load(getClass().getResource("009 Garnitures.fxml")));
+				visual.ControllerClient.setScene(acteur, "SUBPAY - Garnitures"); 
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 		}
-		else
-			ERROR.setVisible(true);
+	}
+	
+	public void goToHome(){
+		Group acteur = new Group();
+		if(HelloController.getOrder().getAuthCustomer()){ //Si le client est authentifié
+			try {
+				acteur.getChildren().add(FXMLLoader.load(getClass().getResource("004.1 Accueil (authentifier).fxml")));
+				visual.ControllerClient.setScene(acteur, "SUBPAY - Accueil Authentifié");
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+		else{ //S'il n'y a pas de client authentifié
+			try {
+				acteur.getChildren().add(FXMLLoader.load(getClass().getResource("004 Accueil.fxml")));
+				visual.ControllerClient.setScene(acteur, "SUBPAY - Accueil");
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
 	}
 }

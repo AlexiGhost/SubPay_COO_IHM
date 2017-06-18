@@ -10,7 +10,6 @@
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="visual.customer.RecipeController">
    <children>
@@ -36,21 +35,16 @@
          <content>
             <TilePane fx:id="caPasseTile" prefHeight="150.0" prefWidth="900.0" />
          </content></ScrollPane>
-      <Button fx:id="suivant" layoutX="871.0" layoutY="618.0" mnemonicParsing="false" onAction="#goToGarnitures" text="Suivant">
+      <Button fx:id="suivant" layoutX="184.0" layoutY="17.0" mnemonicParsing="false" onAction="#goToHome" text="Accueil">
          <font>
             <Font size="36.0" />
          </font>
       </Button>
-      <Button fx:id="retour" layoutX="259.0" layoutY="618.0" mnemonicParsing="false" onAction="#goToPain" text="Retour">
+      <Button fx:id="retour" layoutX="259.0" layoutY="618.0" mnemonicParsing="false" onAction="#goToBread" text="Retour">
          <font>
             <Font size="36.0" />
          </font>
       </Button>
-      <Text fx:id="ERROR" fill="RED" layoutX="492.0" layoutY="663.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Vous devez sélectionner votre recette" textAlignment="CENTER" visible="false">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Text>
    </children>
    <opaqueInsets>
       <Insets />

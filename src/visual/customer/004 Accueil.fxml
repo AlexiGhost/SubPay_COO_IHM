@@ -2,7 +2,6 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -29,8 +28,7 @@
          <content>
             <TilePane fx:id="promoTiled" alignment="CENTER_LEFT" orientation="VERTICAL" prefHeight="135.0" prefWidth="599.0" />
          </content></ScrollPane>
-      <ListView layoutX="984.0" layoutY="150.0" prefHeight="363.0" prefWidth="282.0" />
-      <Button fx:id="commander" layoutX="984.0" layoutY="512.0" mnemonicParsing="false" onAction="#goToPayer" prefHeight="58.0" prefWidth="282.0" text="Passer la commande" />
+      <Button fx:id="commander" layoutX="984.0" layoutY="512.0" mnemonicParsing="false" onAction="#goToPayer" prefHeight="58.0" prefWidth="280.0" text="Passer la commande" />
       <ScrollPane hbarPolicy="ALWAYS" layoutX="341.0" layoutY="332.0" prefHeight="150.0" prefWidth="600.0" vbarPolicy="NEVER">
          <content>
             <TilePane fx:id="newTiled" alignment="CENTER_LEFT" orientation="VERTICAL" prefHeight="135.0" prefWidth="599.0" />
@@ -65,6 +63,11 @@
             <Font size="18.0" />
          </font>
       </Button>
+      <ScrollPane hbarPolicy="NEVER" layoutX="984.0" layoutY="163.0" prefHeight="350.0" prefWidth="280.0">
+         <content>
+            <TilePane prefHeight="360.0" prefWidth="280.0" />
+         </content>
+      </ScrollPane>
    </children>
    <opaqueInsets>
       <Insets />

@@ -9,7 +9,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="visual.customer.MenuController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="visual.customer.SizeController">
    <children>
       <Line endX="1180.0" layoutX="250.0" layoutY="112.0" startX="-100.0" AnchorPane.leftAnchor="0.0" />
       <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="541.0" pickOnBounds="true" preserveRatio="true" AnchorPane.topAnchor="0.0">
@@ -18,17 +18,17 @@
          </image>
       </ImageView>
       <Circle fill="#0ec314" radius="150.0" stroke="BLACK" strokeType="INSIDE" AnchorPane.leftAnchor="-150.0" AnchorPane.topAnchor="-150.0" />
-      <Text layoutX="322.0" layoutY="241.0" strokeType="OUTSIDE" strokeWidth="0.0" text="VOULEZ-VOUS UN MENU ?" textAlignment="CENTER" wrappingWidth="638.6708984375">
+      <Text layoutX="322.0" layoutY="284.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CHOISISSEZ LA TAILLE DE VOTRE REPAS" textAlignment="CENTER" wrappingWidth="638.6708984375">
          <font>
             <Font size="36.0" />
          </font>
       </Text>
-      <Button layoutX="323.0" layoutY="378.0" mnemonicParsing="false" onAction="#goToSizeWithMenu" text="OUI" textAlignment="CENTER">
+      <Button fx:id="oui" layoutX="348.0" layoutY="378.0" mnemonicParsing="false" onAction="#goToChoicePlateSandwich15" text="15 cm" textAlignment="CENTER">
          <font>
             <Font size="48.0" />
          </font>
       </Button>
-      <Button layoutX="789.0" layoutY="378.0" mnemonicParsing="false" onAction="#goToSizeWithoutMenu" text="NON">
+      <Button fx:id="non" layoutX="741.0" layoutY="378.0" mnemonicParsing="false" onAction="#goToChoicePlateSandwich30" text="30 cm">
          <font>
             <Font size="48.0" />
          </font>
@@ -36,12 +36,12 @@
       <Circle fill="#0ec314" layoutX="1075.0" layoutY="150.0" radius="150.0" stroke="BLACK" strokeType="INSIDE" AnchorPane.rightAnchor="-150.0" AnchorPane.topAnchor="-150.0" />
       <Circle fill="#0ec314" layoutX="269.0" layoutY="501.0" radius="150.0" stroke="BLACK" strokeType="INSIDE" AnchorPane.bottomAnchor="-150.0" AnchorPane.leftAnchor="-150.0" />
       <Circle fill="#0ec314" layoutX="986.0" layoutY="510.0" radius="150.0" stroke="BLACK" strokeType="INSIDE" AnchorPane.bottomAnchor="-150.0" AnchorPane.rightAnchor="-150.0" />
-      <Text layoutX="396.0" layoutY="317.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sandwich + boisson + brownie">
+      <Button layoutX="184.0" layoutY="17.0" mnemonicParsing="false" onAction="#goToHome" text="Accueil">
          <font>
             <Font size="36.0" />
          </font>
-      </Text>
-      <Button layoutX="184.0" layoutY="17.0" mnemonicParsing="false" onAction="#goToHome" text="Accueil">
+      </Button>
+      <Button layoutX="259.0" layoutY="618.0" mnemonicParsing="false" onAction="#goToMenu" text="Retour">
          <font>
             <Font size="36.0" />
          </font>
