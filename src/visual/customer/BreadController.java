@@ -76,6 +76,18 @@ public class BreadController implements Initializable {
 				succes.setLayoutY(25);
 				b.getChildren().add(succes);
 			}
+			
+			//Si c'est une nouveauté
+			if(bread.getNew()) {
+				Text nouveau = new Text("Nouveau !");
+				nouveau.setFont(new Font("Arial Black", 11));
+				nouveau.setFill(Color.DARKRED);
+				nouveau.setLayoutX(90);
+				nouveau.setLayoutY(17);
+				nouveau.setRotate(45);
+				b.getChildren().add(nouveau);
+			}
+			
 			breadTile.getChildren().add(b);
 			
 			if(X == 5) {
@@ -112,6 +124,8 @@ public class BreadController implements Initializable {
 	}
 	
 	public void goToRecipe(Bread b) {
+		X = 1;
+		Y = 0;
 		if(b.getAvailability()){
 			if(MenuController.getChoice())
 				MenuController.getMenu().getProduct().setBread(b);
@@ -138,6 +152,8 @@ public class BreadController implements Initializable {
 	}
 	
 	public void goToMenu() throws IOException {
+		X = 1;
+		Y = 0;
 		Group acteur = new Group();
 		acteur.getChildren().add(
 		FXMLLoader.load(getClass().getResource("005 Menu.fxml")) 

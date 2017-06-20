@@ -116,6 +116,17 @@ public class RecipeController  implements Initializable{
 			img.setFitWidth(150);
 			r.getChildren().add(img);
 			
+			//Si c'est une nouveauté
+			if(recipe.getNew()) {
+				Text nouveau = new Text("Nouveau !");
+				nouveau.setFont(new Font("Arial Black", 11));
+				nouveau.setFill(Color.DARKRED);
+				nouveau.setLayoutX(90);
+				nouveau.setLayoutY(17);
+				nouveau.setRotate(45);
+				r.getChildren().add(nouveau);
+			}
+			
 			//MAJ promoTiled
 			r.getChildren().add(title);
 			r.getChildren().add(bordure);

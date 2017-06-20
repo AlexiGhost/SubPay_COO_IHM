@@ -83,6 +83,17 @@ public class GarnishController implements Initializable {
 				succes.setLayoutY(25);
 				gar.getChildren().add(succes);
 			}
+			
+			//Si c'est une nouveauté
+			if(garnish.getNew()) {
+				Text nouveau = new Text("Nouveau !");
+				nouveau.setFont(new Font("Arial Black", 11));
+				nouveau.setFill(Color.DARKRED);
+				nouveau.setLayoutX(90);
+				nouveau.setLayoutY(17);
+				nouveau.setRotate(45);
+				gar.getChildren().add(nouveau);
+			}
 			garnishTile.getChildren().add(gar);
 			
 			if(X == 5) {
