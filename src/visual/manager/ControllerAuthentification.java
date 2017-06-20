@@ -21,7 +21,7 @@ public class ControllerAuthentification {
 	
 	
 	public void goToAccueil() throws IOException {
-		if(TF_Password.getText().equals(user) && TF_Password.getText().equals(password)){
+		if(TF_Login.getText().equals(user) && TF_Password.getText().equals(password)){
 			Group acteur = new Group();
 			acteur.getChildren().add(
 					FXMLLoader.load(getClass().getResource("02_Accueil.fxml")));

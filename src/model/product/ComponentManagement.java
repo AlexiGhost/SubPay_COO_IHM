@@ -491,7 +491,6 @@ public class ComponentManagement {
 					Eallergen.setText(allergen);
 					Eallergens.addContent(Eallergen);
 				}
-				//Eallergens.setText(list.toString());
 				Erecipe.addContent(Eallergens);
 				//ajout prix
 				Element Eprice = new Element("price");
@@ -629,8 +628,8 @@ public class ComponentManagement {
 			}
 			//ajout menu
 			Element Emenu = new Element("menu");
+			racine.addContent(Emenu);
 			Emenu.setText(String.valueOf(menuPrice));
-			//.addContent(Emenu);
 			
 			XMLOutputter sortie = new XMLOutputter(Format.getPrettyFormat());
 			sortie.output(composants, new FileOutputStream(xmlFile));
@@ -666,8 +665,8 @@ public class ComponentManagement {
 		Double percentage = null;
 		Boolean authCustomer = null;
 		String date = null;
+		menuPrice = Double.valueOf(racine.getChildText("menu"));
 		//BREAD
-		//menuPrice = Double.valueOf(racine.getChildText("menu"));
 		List<Element> listImport = racine.getChildren("bread");
 		for (Element component : listImport) {
 			name = component.getChildText("name");
