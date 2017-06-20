@@ -50,6 +50,11 @@ public class ControllerAccueil implements Initializable{
     private ObservableList<String> dessertData = FXCollections.observableArrayList();
     private ObservableList<Promotion> promoData = FXCollections.observableArrayList();
     
+    @FXML private TextField TXT_MouaisPrice;
+    @FXML private TextField TXT_BofPrice;
+    @FXML private TextField TXT_CapassePrice;
+    @FXML private TextField TXT_MenuPrice;
+    
     //Attributs temporaires (pour autres controller)
     
     private static String selectedItem = "";
@@ -59,10 +64,23 @@ public class ControllerAccueil implements Initializable{
     @Override
     public void initialize(URL location, ResourceBundle rb){
     	selectedItem = "";
-    	//initialisation des listes (pains, sauces, ...)
+    	//initialisation des TextField "prix"
     	for (Recipe recipe : ComponentManagement.getRecipes()) {
-			recipeData.add(recipe.getName());
-		}
+    		recipeData.add(recipe.getName());
+    		switch (recipe.getCategory()) {
+    		case "Mouais":
+    			TXT_MouaisPrice.setText(Double.toString(recipe.getPrice()));
+    			break;
+    		case "Bof":
+    			TXT_BofPrice.setText(Double.toString(recipe.getPrice()));
+    			break;
+    		case "Ca passe" :
+    			TXT_CapassePrice.setText(Double.toString(recipe.getPrice()));
+    			break;
+    		}
+    	}
+    	TXT_MenuPrice.setText(String.valueOf(ComponentManagement.getMenuPrice()));
+    	//initialisation des listes (pains, sauces, ...)
     	L_Recipe.setItems(recipeData);
     	
     	for (Bread bread : ComponentManagement.getBreads()) {
@@ -355,6 +373,42 @@ public class ControllerAccueil implements Initializable{
 		visual.ControllerManager.setScene(acteur, "SUBPAY - Sauce Editor");
     }
 
+    @FXML
+    void setMouaisPrice(ActionEvent event){
+    	for (Recipe recipe : ComponentManagement.getRecipes()) {
+    		if(recipe.getCategory().equals("Mouais")){
+    			recipe.setPrice(Double.valueOf(TXT_MouaisPrice.getText()));    			
+    		}
+		}
+    	ComponentManagement.exportComponent(componentPath);
+    }
+    
+    @FXML
+    void setBofPrice(ActionEvent event){
+    	for (Recipe recipe : ComponentManagement.getRecipes()) {
+    		if(recipe.getCategory().equals("Bof")){
+    			recipe.setPrice(Double.valueOf(TXT_BofPrice.getText()));    			
+    		}
+		}
+    	ComponentManagement.exportComponent(componentPath);
+    }
+    
+    @FXML
+    void setCapassePrice(ActionEvent event){
+    	for (Recipe recipe : ComponentManagement.getRecipes()) {
+			if(recipe.getCategory().equals("Ca passe")){
+				recipe.setPrice(Double.valueOf(TXT_CapassePrice.getText()));				
+			}
+		}
+    	ComponentManagement.exportComponent(componentPath);
+    }
+    
+    @FXML
+    void setMenuPrice(ActionEvent event){
+    	ComponentManagement.setMenuPrice(Double.valueOf(TXT_MenuPrice.getText()));
+    	ComponentManagement.exportComponent(componentPath);
+    }
+    
     @FXML
     void goToAuthentification(ActionEvent event) throws IOException{
     	Group acteur = new Group();

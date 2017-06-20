@@ -16,7 +16,7 @@
   </bread>
   <bread classe="Bread">
     <name>Blanc</name>
-    <photo ></photo>
+    <photo />
     <allergens />
     <available>true</available>
     <new>false</new>
@@ -109,7 +109,7 @@
     <name>Dinde</name>
     <photo>dinde.jpg</photo>
     <allergens />
-    <price>5.5</price>
+    <price>5.99</price>
     <category>Ca passe</category>
     <available>true</available>
     <new>false</new>
@@ -118,7 +118,7 @@
     <name>Poulet</name>
     <photo>poulet.jpg</photo>
     <allergens />
-    <price>6.0</price>
+    <price>7.49</price>
     <category>Bof</category>
     <available>true</available>
     <new>false</new>
@@ -126,10 +126,8 @@
   <recipe classe="Recipe">
     <name>Jambon</name>
     <photo>jambon.jpg</photo>
-    <name>MeetBall</name>
-    <photo >boisson.png</photo>
     <allergens />
-    <price>5.5</price>
+    <price>5.99</price>
     <category>Ca passe</category>
     <available>true</available>
     <new>false</new>
@@ -140,7 +138,7 @@
     <allergens>
       <allergen>Poissons</allergen>
     </allergens>
-    <price>7.0</price>
+    <price>9.49</price>
     <category>Mouais</category>
     <available>true</available>
     <new>false</new>
@@ -149,7 +147,7 @@
     <name>MeetBall</name>
     <photo>meetball.png</photo>
     <allergens />
-    <price>7.0</price>
+    <price>9.49</price>
     <category>Mouais</category>
     <available>true</available>
     <new>true</new>
@@ -159,35 +157,35 @@
     <photo>cola cola.jpg</photo>
     <allergens />
     <available>true</available>
-    <new>false</new>
+    <new>true</new>
   </drink>
   <drink classe="Drink">
     <name>Spoute</name>
     <photo>spoute.jpg</photo>
     <allergens />
     <available>true</available>
-    <new>false</new>
+    <new>true</new>
   </drink>
   <drink classe="Drink">
     <name>Iced Tea</name>
     <photo>iced tea.png</photo>
     <allergens />
     <available>true</available>
-    <new>false</new>
+    <new>true</new>
   </drink>
   <drink classe="Drink">
     <name>Evina</name>
     <photo>evina.jpg</photo>
     <allergens />
     <available>true</available>
-    <new>false</new>
+    <new>true</new>
   </drink>
   <drink classe="Drink">
     <name>Hein Klein</name>
     <photo>hein klein.png</photo>
     <allergens />
     <available>true</available>
-    <new>false</new>
+    <new>true</new>
   </drink>
   <dessert classe="Dessert">
     <name>brownie</name>

@@ -23,6 +23,7 @@ public class ComponentManagement {
 	private static List<String> allergens = new ArrayList<String>();
 	private static List<Composant> nouveautes = new ArrayList<Composant>();
 	private static String componentPath = "component.xml";
+	private static Double menuPrice = 0d;
 
 // ---------- Lists Management (ADD/DEL/EDIT) ----------
 	//BreadList management
@@ -317,6 +318,13 @@ public class ComponentManagement {
 	//nouveautés
 	public static List<Composant> getNews() {
 		return nouveautes;
+	}
+	//prix du menu
+	public static double getMenuPrice(){
+		return menuPrice;
+	}
+	public static void setMenuPrice(double price){
+		menuPrice = price;
 	}
 
 // ---------- IMPORT / EXPORT ----------
@@ -619,6 +627,11 @@ public class ComponentManagement {
 				Edate.setText(date.toString());
 				Epromo.addContent(Edate);
 			}
+			//ajout menu
+			Element Emenu = new Element("menu");
+			Emenu.setText(String.valueOf(menuPrice));
+			//.addContent(Emenu);
+			
 			XMLOutputter sortie = new XMLOutputter(Format.getPrettyFormat());
 			sortie.output(composants, new FileOutputStream(xmlFile));
 		}
@@ -654,6 +667,7 @@ public class ComponentManagement {
 		Boolean authCustomer = null;
 		String date = null;
 		//BREAD
+		//menuPrice = Double.valueOf(racine.getChildText("menu"));
 		List<Element> listImport = racine.getChildren("bread");
 		for (Element component : listImport) {
 			name = component.getChildText("name");
@@ -793,7 +807,6 @@ public class ComponentManagement {
 			authCustomer = Boolean.valueOf(component.getChildText("authCustomerOnly"));
 			date = component.getChildText("date");
 			category = component.getChildText("category");
-			
 			//creation promotion
 			promotions.add(new Promotion(name, percentage, authCustomer));
 			int index = promotions.size()-1;
