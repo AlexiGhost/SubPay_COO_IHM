@@ -44,6 +44,8 @@ public class GarnishController implements Initializable {
 			bordure.setFill(Color.TRANSPARENT);
 			bordure.setStroke(Color.LIGHTGREEN);
 			bordure.setStrokeWidth(4.0);
+			if(HomeController.getNewPromo() && HomeController.getSelectedComponent() != null && HomeController.getSelectedComponent().getName().equals(garnish.getName()))
+				bordure.setStroke(Color.RED);
 			
 			//Group
 			Group gar = new Group();
@@ -129,5 +131,24 @@ public class GarnishController implements Initializable {
 		FXMLLoader.load(getClass().getResource("008 Recettes.fxml"))
 		);
 		visual.ControllerClient.setScene(acteur, "SUBPAY - Recettes");
+	}
+	public void goToHome(){
+		Group acteur = new Group();
+		if(HelloController.getOrder().getAuthCustomer()){ //Si le client est authentifié
+			try {
+				acteur.getChildren().add(FXMLLoader.load(getClass().getResource("004.1 Accueil (authentifier).fxml")));
+				visual.ControllerClient.setScene(acteur, "SUBPAY - Accueil Authentifié");
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+		else{ //S'il n'y a pas de client authentifié
+			try {
+				acteur.getChildren().add(FXMLLoader.load(getClass().getResource("004 Accueil.fxml")));
+				visual.ControllerClient.setScene(acteur, "SUBPAY - Accueil");
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
 	}
 }

@@ -118,11 +118,21 @@ public class BreadController implements Initializable {
 			else
 				MenuController.getProduct().setBread(b);
 			Group acteur = new Group();
-			try {
-				acteur.getChildren().add(FXMLLoader.load(getClass().getResource("008 Recettes.fxml")));
-				visual.ControllerClient.setScene(acteur, "SUBPAY - Recettes");
-			} catch (IOException e) {
-				e.printStackTrace();
+			if(HomeController.getNewPromo() && HomeController.getSelectedComponent() != null && HomeController.getSelectedComponent().getClass().getName().equals("model.product.composants.Recipe")){
+				try {
+					acteur.getChildren().add(FXMLLoader.load(getClass().getResource("009 Garnitures.fxml")));
+					visual.ControllerClient.setScene(acteur, "SUBPAY - Garnitures");
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+			else{
+				try {
+					acteur.getChildren().add(FXMLLoader.load(getClass().getResource("008 Recettes.fxml")));
+					visual.ControllerClient.setScene(acteur, "SUBPAY - Recettes");
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
 			}
 		}
 	}
