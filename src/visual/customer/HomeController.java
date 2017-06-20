@@ -23,11 +23,14 @@ import model.product.composants.Composant;
 import model.product.composants.Promotion;
 import model.product.composants.Recipe;
 //TODO Afficher la commande en cours
+//TODO Gérer les allergènes 
+//TODO Gérer les commande enregistrées
 public class HomeController implements Initializable {
 
 	private static 	List<Promotion>	ListPromo = new ArrayList<Promotion>();
 	private static 	List<Composant>	ListNew = new ArrayList<Composant>();
 	private static 	boolean 		newPromo = false;
+	private static 	Composant		selectedComponent;
 	private static  String			selectedCategorie = null;
 	
     @FXML
@@ -57,6 +60,10 @@ public class HomeController implements Initializable {
 		return selectedCategorie;
 	}
 	
+	public static Composant getSelectedComponent() {
+		return selectedComponent;
+	}
+	
 	public void affichePromo() {
 		for (Promotion promotion : ListPromo) {
 			//Group
@@ -65,7 +72,12 @@ public class HomeController implements Initializable {
 			promo.setOnMouseClicked(MouseEvent -> {
 				try {
 					if(!promotion.getRecipe().equals("")){
-						newPromoChosen();
+						Recipe recipe = new Recipe();
+						for (Recipe recipeMana : ComponentManagement.getRecipes()) {
+							if(recipeMana.getName().equals(promotion.getRecipe()))
+								recipe = recipeMana;
+						}
+						newPromoChosen(recipe);
 					}
 					else{
 						newPromoCatChosen(promotion.getCategory());
@@ -122,7 +134,7 @@ public class HomeController implements Initializable {
 			nouveau.setFocusTraversable(true);
 			nouveau.setOnMouseClicked(MouseEvent -> {
 				try {
-					newPromoChosen();
+					newPromoChosen(nouveaute);
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
@@ -152,9 +164,12 @@ public class HomeController implements Initializable {
 		}
 	}
 	
-	public void newPromoChosen() throws IOException{
-		newPromo = true;
-		goToMenu();
+	public void newPromoChosen(Composant c) throws IOException{
+		if(c.getAvailability()){
+			selectedComponent = c;
+			newPromo = true;
+			goToMenu();
+		}
 	}
 	public void newPromoCatChosen(String cat) throws IOException{
 		newPromo = true;

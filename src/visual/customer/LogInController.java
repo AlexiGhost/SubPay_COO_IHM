@@ -47,12 +47,25 @@ public class LogInController {
 		}catch(IOException e){}
 	}
 	
-	public void goToInscription() throws IOException {
+	public void goToInscription() {
 		Group acteur = new Group();
-		acteur.getChildren().add(
-		FXMLLoader.load(getClass().getResource("003 Inscription.fxml"))
-		);
-		visual.ControllerClient.setScene(acteur, "SUBPAY - Inscription");
+		try {
+			acteur.getChildren().add(FXMLLoader.load(getClass().getResource("003 Inscription.fxml")));
+			visual.ControllerClient.setScene(acteur, "SUBPAY - Inscription");
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void goToHome() {
+		Group acteur = new Group();
+		try {
+			HelloController.getOrder().setAuthCustomer(false);
+			acteur.getChildren().add(FXMLLoader.load(getClass().getResource("004 Accueil.fxml")));
+			visual.ControllerClient.setScene(acteur, "SUBPAY - Accueil");
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 	
 }
