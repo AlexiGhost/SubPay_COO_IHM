@@ -19,9 +19,9 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import model.product.ComponentManagement;
-import model.product.composants.Composant;
-import model.product.composants.Promotion;
-import model.product.composants.Recipe;
+import model.product.Product;
+import model.product.composants.*;
+import model.product.*;
 //TODO Afficher la commande en cours
 //TODO Gérer les allergènes 
 //TODO Gérer les commande enregistrées
@@ -37,12 +37,15 @@ public class HomeController implements Initializable {
     private 		TilePane 				promoTiled;
     @FXML
     private 		TilePane 				newTiled;
+    @FXML
+    private 		TilePane 				orderTilePane;
  
     
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		selectedCategorie = null;
 		affichePromo();
+		displayOrder();
 	}
 	
 	public static List<Composant> getListNew() {
@@ -161,7 +164,85 @@ public class HomeController implements Initializable {
 			nouveau.getChildren().add(title);
 			nouveau.getChildren().add(bordure);
 			newTiled.getChildren().add(nouveau);
+			
 		}
+	}
+	
+	public void displayOrder(){
+		//Pour l'affichage des produits
+		for (Product product : HelloController.getOrder().getProducts()) {
+			//Si c'est une assiette
+			if(product.getPlate()){
+				Text textTitle = new Text("Plat "+product.getRecipe().getName()+" ("+product.getSize()+")");
+				textTitle.setFont(new Font("Arial Black",16));
+				textTitle.setWrappingWidth(280);
+				orderTilePane.getChildren().add(textTitle);
+
+			}else{
+				Text textTitle = new Text("Sandwich "+product.getRecipe().getName()+" ("+product.getSize()+")");
+				textTitle.setFont(new Font("Arial Black",16));
+				textTitle.setWrappingWidth(280);
+				orderTilePane.getChildren().add(textTitle);
+				
+				Text textBread = new Text("\t"+product.getBread().getName());
+				textBread.setWrappingWidth(280);
+				orderTilePane.getChildren().add(textBread);
+			}
+			for (Garnish garnish : product.getGarnishs()) {
+				Text textGarnish = new Text("\t"+garnish.getName());
+				textGarnish.setWrappingWidth(280);
+				orderTilePane.getChildren().add(textGarnish);
+			}
+			for (Sauce sauce : product.getSauces()) {
+				Text textSauce = new Text("\t"+sauce.getName());
+				textSauce.setWrappingWidth(280);
+				orderTilePane.getChildren().add(textSauce);
+			}
+		}
+			
+		//Pour l'affachige des menus
+		for (Menu menu : HelloController.getOrder().getMenus()) {
+			Text textMenu = new Text("Menu");
+			textMenu.setFont(new Font("Arial Black",18));
+			textMenu.setWrappingWidth(280);
+			orderTilePane.getChildren().add(textMenu);
+			
+			//Si c'est une assiette
+			if(menu.getProduct().getPlate()){
+				Text textTitle = new Text("Plat "+menu.getProduct().getRecipe().getName()+" ("+menu.getProduct().getSize()+")");
+				textTitle.setFont(new Font("Arial Black",16));
+				textTitle.setWrappingWidth(280);
+				orderTilePane.getChildren().add(textTitle);
+
+			}else{ //Si c'est un sandwich
+				Text textTitle = new Text("Sandwich "+menu.getProduct().getRecipe().getName()+" ("+menu.getProduct().getSize()+")");
+				textTitle.setFont(new Font("Arial Black",16));
+				textTitle.setWrappingWidth(280);
+				orderTilePane.getChildren().add(textTitle);
+				
+				Text textBread = new Text("\t"+menu.getProduct().getBread().getName());
+				textBread.setWrappingWidth(280);
+				orderTilePane.getChildren().add(textBread);
+			}
+			for (Garnish garnish : menu.getProduct().getGarnishs()) {
+				Text textGarnish = new Text("\t"+garnish.getName());
+				textGarnish.setWrappingWidth(280);
+				orderTilePane.getChildren().add(textGarnish);
+			}
+			for (Sauce sauce : menu.getProduct().getSauces()) {
+				Text textSauce = new Text("\t"+sauce.getName());
+				textSauce.setWrappingWidth(280);
+				orderTilePane.getChildren().add(textSauce);
+			}
+			
+			Text textDrink = new Text("\t"+menu.getDrink());
+			textDrink.setWrappingWidth(280);
+			orderTilePane.getChildren().add(textDrink);
+			Text textDessert = new Text("\t"+menu.getDessert());
+			textDessert.setWrappingWidth(280);
+			orderTilePane.getChildren().add(textDessert);
+		}
+		
 	}
 	
 	public void newPromoChosen(Composant c) throws IOException{

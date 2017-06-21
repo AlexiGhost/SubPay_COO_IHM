@@ -3,6 +3,7 @@ package visual.customer;
 import java.io.IOException;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Group;
+import model.product.ComponentManagement;
 import model.product.Menu;
 import model.product.Product;
 
@@ -15,6 +16,7 @@ public class MenuController {
 		choice = true; //On enregistre le choix du menu
 		menu = new Menu(); //On crée le menu et son produit
 		menu.setProduct(new Product());
+		menu.setDessert(ComponentManagement.getDesserts().get(0));
 		Group acteur = new Group();
 		try {
 			acteur.getChildren().add(FXMLLoader.load(getClass().getResource("015 Taille.fxml")));

@@ -65,7 +65,7 @@
       </Button>
       <ScrollPane hbarPolicy="NEVER" layoutX="984.0" layoutY="163.0" prefHeight="350.0" prefWidth="280.0">
          <content>
-            <TilePane prefHeight="360.0" prefWidth="280.0" />
+            <TilePane fx:id="orderTilePane" prefHeight="360.0" prefWidth="280.0" />
          </content>
       </ScrollPane>
    </children>

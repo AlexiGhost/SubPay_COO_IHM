@@ -18,6 +18,7 @@ import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import model.product.Drink;
 import model.product.composants.Bread;
+import model.product.composants.Recipe;
 
 public class BreadController implements Initializable {
 	private static List<Bread> breadList = new ArrayList<Bread>();
@@ -119,6 +120,10 @@ public class BreadController implements Initializable {
 				MenuController.getProduct().setBread(b);
 			Group acteur = new Group();
 			if(HomeController.getNewPromo() && HomeController.getSelectedComponent() != null && HomeController.getSelectedComponent().getClass().getName().equals("model.product.composants.Recipe")){
+				if(MenuController.getChoice())
+					MenuController.getMenu().getProduct().setRecipe((Recipe) HomeController.getSelectedComponent());
+				else
+					MenuController.getProduct().setRecipe((Recipe) HomeController.getSelectedComponent());
 				try {
 					acteur.getChildren().add(FXMLLoader.load(getClass().getResource("009 Garnitures.fxml")));
 					visual.ControllerClient.setScene(acteur, "SUBPAY - Garnitures");
@@ -137,11 +142,15 @@ public class BreadController implements Initializable {
 		}
 	}
 	
-	public void goToMenu() throws IOException {
+	public void goToSandwichPLate(){
 		Group acteur = new Group();
-		acteur.getChildren().add(
-		FXMLLoader.load(getClass().getResource("005 Menu.fxml")) 
-		);
-		visual.ControllerClient.setScene(acteur, "SUBPAY - Menu");
+		try {
+			acteur.getChildren().add(
+			FXMLLoader.load(getClass().getResource("016 Format repas.fxml")) 
+			);
+			visual.ControllerClient.setScene(acteur, "SUBPAY - Menu");
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 }
