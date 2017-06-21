@@ -28,21 +28,25 @@ public class RecipeController  implements Initializable{
 	
     @FXML
     private TilePane bofTile;
-
+    @FXML
+    private ScrollPane bofScroll;
+    @FXML
+    private TilePane categorieBof;
+    
     @FXML
     private TilePane mouaisTile;
+    @FXML
+    private ScrollPane mouaisScroll;
+    @FXML
+    private TilePane categorieMouais;
 
     @FXML
     private TilePane caPasseTile;
-    
-    @FXML
-    private ScrollPane bofScroll;
-    
-    @FXML
-    private ScrollPane mouaisScroll;
-    
     @FXML
     private ScrollPane caPasseScroll;
+    @FXML
+    private TilePane categorieCaPasse;
+    
 	
 	private  static List<Recipe> bofList = new ArrayList<Recipe>();
 	private  static List<Recipe> mouaisList = new ArrayList<Recipe>();
@@ -61,8 +65,26 @@ public class RecipeController  implements Initializable{
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		displayRecipe(bofList, bofTile, bofScroll);
+		Text bof = new Text("BOF");
+		bof.setFont(new Font("Arial Black", 100));
+		bof.setFill(Color.SEAGREEN);
+		bof.setOpacity(0.3);
+		bof.setTranslateX(340);
+		categorieBof.getChildren().add(bof);
 		displayRecipe(mouaisList, mouaisTile, mouaisScroll);
+		Text mouais = new Text("MOUAIS");
+		mouais.setFont(new Font("Arial Black", 80));
+		mouais.setFill(Color.SEAGREEN);
+		mouais.setOpacity(0.3);
+		mouais.setTranslateX(290);
+		categorieMouais.getChildren().add(mouais);
 		displayRecipe(caPasseList, caPasseTile, caPasseScroll);
+		Text capasse = new Text("CA PASSE");
+		capasse.setFont(new Font("Arial Black", 80));
+		capasse.setFill(Color.SEAGREEN);
+		capasse.setOpacity(0.3);
+		capasse.setTranslateX(250);
+		categorieCaPasse.getChildren().add(capasse);
 	}
 	
 	public void displayRecipe(List<Recipe> listRecipe, TilePane tilePane, ScrollPane scrollPane){
@@ -174,4 +196,37 @@ public class RecipeController  implements Initializable{
 			}
 		}
 	}
+	
+	public void bofToBack() {
+		categorieMouais.toFront();
+		categorieCaPasse.toFront();
+		
+		categorieBof.toBack();
+		bofTile.setOnMouseExited(Event -> {
+			categorieBof.toFront();
+		});
+	}
+	
+	public void mouaisToBack() {
+		categorieBof.toFront();
+		categorieCaPasse.toFront();
+		
+		categorieMouais.toBack();
+		mouaisTile.setOnMouseExited(Event -> {
+			categorieMouais.toFront();
+		});
+	}
+	
+	public void caPasseToBack() {
+		categorieMouais.toFront();
+		categorieBof.toFront();
+		
+		categorieCaPasse.toBack();
+		caPasseTile.setOnMouseExited(Event -> {
+			categorieCaPasse.toFront();
+		});
+	}
+	
 }
+	
+
