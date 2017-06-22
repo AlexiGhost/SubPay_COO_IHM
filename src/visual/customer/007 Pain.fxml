@@ -28,7 +28,7 @@
          <content>
             <TilePane fx:id="breadTile" prefHeight="400.0" prefWidth="900.0" />
          </content></ScrollPane>
-      <Button fx:id="retour" layoutX="259.0" layoutY="618.0" mnemonicParsing="false" onAction="#goToMenu" text="Retour">
+      <Button fx:id="retour" layoutX="259.0" layoutY="618.0" mnemonicParsing="false" onAction="#goToSandwichPLate" text="Retour">
          <font>
             <Font size="36.0" />
          </font>

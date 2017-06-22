@@ -18,6 +18,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
+import model.product.Drink;
 import model.product.composants.Sauce;
 import visual.customer.MenuController;
 
@@ -133,29 +134,38 @@ public class SauceController implements Initializable {
 		visual.ControllerClient.setScene(acteur, "SUBPAY - Garnitures"); 
 		}
 	
-	public void next() throws IOException {
+	public void next() {
 		X = 1;
 		Y = 0;
-		if(MenuController.getChoice() && !(HomeController.getNewPromo() && HomeController.getSelectedComponent() != null && HomeController.getSelectedComponent().getClass().getName().equals("model.product.Drink"))){ 
+		if(MenuController.getChoice()){ 
 			Group acteur = new Group();
-			acteur.getChildren().add( 
-			FXMLLoader.load(getClass().getResource("011 Boissons (Menu).fxml")) 
-			);
-			visual.ControllerClient.setScene(acteur, "SUBPAY - Boissons");
+			try {
+				acteur.getChildren().add(FXMLLoader.load(getClass().getResource("011 Boissons (Menu).fxml")));
+				visual.ControllerClient.setScene(acteur, "SUBPAY - Boissons");
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 		}
-		else if(HelloController.getOrder().getAuthCustomer()){
+		else if(HelloController.getOrder().getAuthCustomer()){ //S'il n'y a pas de menu mais que le client est authentifie
+			HelloController.getOrder().addProduct(MenuController.getProduct());
 			Group acteur = new Group();
-			acteur.getChildren().add( 
-			FXMLLoader.load(getClass().getResource("004.1 Accueil (authentifier).fxml"))
-			);
-			visual.ControllerClient.setScene(acteur, "SUBPAY - Accueil Auth");
+			try {
+				acteur.getChildren().add(FXMLLoader.load(getClass().getResource("004.1 Accueil (authentifier).fxml")));
+				visual.ControllerClient.setScene(acteur, "SUBPAY - Accueil Auth");
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			
 		}
-		else{
+		else{//S'il n'y a pas de menu et que le client n'est pas authentifie
+			HelloController.getOrder().addProduct(MenuController.getProduct());
 			Group acteur = new Group();
-			acteur.getChildren().add( 
-			FXMLLoader.load(getClass().getResource("004 Accueil.fxml")) 
-			);
-			visual.ControllerClient.setScene(acteur, "SUBPAY - Accueil");
+			try {
+				acteur.getChildren().add(FXMLLoader.load(getClass().getResource("004 Accueil.fxml")));
+				visual.ControllerClient.setScene(acteur, "SUBPAY - Accueil");
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 		}
 	}
 	

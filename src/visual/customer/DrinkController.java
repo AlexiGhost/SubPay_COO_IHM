@@ -45,6 +45,10 @@ public class DrinkController implements Initializable {
 			bordure.setFill(Color.TRANSPARENT);
 			bordure.setStroke(Color.LIGHTGREEN);
 			bordure.setStrokeWidth(4.0);
+			if(HomeController.getNewPromo() && HomeController.getSelectedComponent() != null && HomeController.getSelectedComponent().getClass().getName().equals("model.product.composants.Recipe")){
+				if(HomeController.getSelectedComponent().getName().equals(drink.getName()))
+					bordure.setStroke(Color.RED);
+			}
 			
 			//Group
 			Group d = new Group();
@@ -141,14 +145,22 @@ public class DrinkController implements Initializable {
 		if(SL_IceCube.getValue() < 1){
 			int dialogResult = JOptionPane.showConfirmDialog (null, "Etes-vous sûr de ne pas vouloir de glaçon ?","Warning", JOptionPane.YES_NO_OPTION);
 	    	if(dialogResult == JOptionPane.YES_OPTION){
+	    		//On ajoute la boisson au menu
 	    		MenuController.getMenu().setDrink(d);
+	    		//On ajoute le nb de glacons au menu
 	    		MenuController.getMenu().setIceCubeNb(Math.toIntExact(Math.round(SL_IceCube.getValue())));
+	    		//On ajoute le menu a la commande
+	    		HelloController.getOrder().addMenu(MenuController.getMenu());
 	    		goToHome();
 	    	}
 		} else {
 			javax.swing.JOptionPane.showMessageDialog(null, "Commande Validée"); 
+			//On ajoute la boisson au menu
 			MenuController.getMenu().setDrink(d);
+			//On ajoute le nb de glacons au menu
     		MenuController.getMenu().setIceCubeNb(Math.toIntExact(Math.round(SL_IceCube.getValue())));
+    		//On ajoute le menu a la commande
+    		HelloController.getOrder().addMenu(MenuController.getMenu());
     		goToHome();
 		}
 	}

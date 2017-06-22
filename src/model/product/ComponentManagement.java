@@ -483,7 +483,6 @@ public class ComponentManagement {
 					Eallergen.setText(allergen);
 					Eallergens.addContent(Eallergen);
 				}
-				//Eallergens.setText(list.toString());
 				Erecipe.addContent(Eallergens);
 				//ajout prix
 				Element Eprice = new Element("price");
@@ -619,6 +618,11 @@ public class ComponentManagement {
 				Edate.setText(date.toString());
 				Epromo.addContent(Edate);
 			}
+			//ajout menu
+			Element Emenu = new Element("menu");
+			racine.addContent(Emenu);
+			Emenu.setText(String.valueOf(Menu.getMenuPrice()));
+			
 			XMLOutputter sortie = new XMLOutputter(Format.getPrettyFormat());
 			sortie.output(composants, new FileOutputStream(xmlFile));
 		}
@@ -653,6 +657,7 @@ public class ComponentManagement {
 		Double percentage = null;
 		Boolean authCustomer = null;
 		String date = null;
+		Menu.setMenuPrice(Double.valueOf(racine.getChildText("menu")));
 		//BREAD
 		List<Element> listImport = racine.getChildren("bread");
 		for (Element component : listImport) {
@@ -793,7 +798,6 @@ public class ComponentManagement {
 			authCustomer = Boolean.valueOf(component.getChildText("authCustomerOnly"));
 			date = component.getChildText("date");
 			category = component.getChildText("category");
-			
 			//creation promotion
 			promotions.add(new Promotion(name, percentage, authCustomer));
 			int index = promotions.size()-1;
