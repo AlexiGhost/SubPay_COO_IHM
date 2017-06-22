@@ -38,6 +38,62 @@
     <phoneNumber choice="true">0670257224</phoneNumber>
     <password>U5Z6UYQ4</password>
     <iceCubeNb>-1</iceCubeNb>
+    <fBread>Miel Avoine</fBread>
+    <fSauce />
+    <fRecipe />
+    <fDrink />
+    <fGarnishs />
+    <allergens />
+  </customer>
+  <customer classe="AuthentificatedCustomer">
+    <lastName>Cabanes</lastName>
+    <firstName>Matthieu</firstName>
+    <mail choice="true">portgasace98@hotmail.fr</mail>
+    <phoneNumber />
+    <password>Medusa81</password>
+    <iceCubeNb>-1</iceCubeNb>
+    <fBread />
+    <fSauce />
+    <fRecipe />
+    <fDrink />
+    <fGarnishs />
+    <allergens />
+  </customer>
+  <customer classe="AuthentificatedCustomer">
+    <lastName>Cabanes</lastName>
+    <firstName>Matthieu</firstName>
+    <mail choice="true">portgasace98@hotmail.fr</mail>
+    <phoneNumber />
+    <password>Medusa81</password>
+    <iceCubeNb>-1</iceCubeNb>
+    <fBread />
+    <fSauce />
+    <fRecipe />
+    <fDrink />
+    <fGarnishs />
+    <allergens />
+  </customer>
+  <customer classe="AuthentificatedCustomer">
+    <lastName>Cabanes</lastName>
+    <firstName>Matthieu</firstName>
+    <mail choice="true">portgasace98@hotmail.fr</mail>
+    <phoneNumber />
+    <password>Medusa81</password>
+    <iceCubeNb>-1</iceCubeNb>
+    <fBread />
+    <fSauce />
+    <fRecipe />
+    <fDrink />
+    <fGarnishs />
+    <allergens />
+  </customer>
+  <customer classe="AuthentificatedCustomer">
+    <lastName>test</lastName>
+    <firstName>test</firstName>
+    <mail choice="true">test@</mail>
+    <phoneNumber />
+    <password>testtest1</password>
+    <iceCubeNb>-1</iceCubeNb>
     <fBread />
     <fSauce />
     <fRecipe />
