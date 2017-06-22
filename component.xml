@@ -190,7 +190,11 @@
   <dessert classe="Dessert">
     <name>brownie</name>
     <photo>brownie.jpg</photo>
-    <allergens />
+    <allergens>
+      <allergen>Lait</allergen>
+      <allergen>Fruit à coques</allergen>
+      <allergen>Oeufs</allergen>
+    </allergens>
     <available>true</available>
     <new>false</new>
   </dessert>
