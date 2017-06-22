@@ -21,12 +21,14 @@ import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.util.Duration;
+import model.CustomerManagement;
 import model.product.composants.Bread;
 
 public class BreadController implements Initializable {
 	private static List<Bread> breadList = new ArrayList<Bread>();
 	private	static int			X = 1;
 	private	static int			Y = 0;
+	private static ImageView	myPref = new ImageView();
 	
 	@FXML
     private TilePane breadTile;
@@ -48,8 +50,7 @@ public class BreadController implements Initializable {
 			Group b = new Group();
 			b.setTranslateX(20 * X);
 			b.setTranslateY(10 + Y);
-			if(!HelloController.getOrder().getAuthCustomer())
-				b.setOnMouseClicked(MouseEvent -> goToRecipe(bread));
+			b.setOnMouseClicked(MouseEvent -> goToRecipe(bread));
 			
 			//Titre Pain
 			Text title = new Text(bread.getName());
@@ -99,6 +100,7 @@ public class BreadController implements Initializable {
 					if(SignUpController.getAuthCusto().getFavoriteBread().equals(bread)){
 						SignUpController.getAuthCusto().setFavoriteBread(bread);
 						pref = new ImageView(new Image(new File("src/visual/images/coeurorange.png").toURI().toString()));
+						myPref = pref;
 					}
 					else
 						pref = new ImageView(new Image(new File("src/visual/images/coeurgris.png").toURI().toString()));
@@ -109,11 +111,10 @@ public class BreadController implements Initializable {
 				pref.setTranslateX(110);
 				pref.setTranslateY(70);
 				pref.setFocusTraversable(true);
-				pref.setOnMouseEntered(Event -> b.setFocusTraversable(false));
+				pref.setOnMouseEntered(Event -> b.setOnMouseClicked(null));
 				pref.setOnMouseExited(Event -> b.setOnMouseClicked(MouseEvent -> goToRecipe(bread)));
 				pref.setOnMouseClicked(Event -> {
-					if(!SignUpController.getAuthCusto().getFavoriteBread().equals(bread)) {
-						pref.setImage(new Image(new File("src/visual/images/coeurorange.png").toURI().toString()));
+					if(myPref != pref) {
 						Timeline animation = new Timeline (
 								new KeyFrame(Duration.millis(100), new KeyValue(pref.fitHeightProperty(), 20)),
 								new KeyFrame(Duration.millis(100), new KeyValue(pref.fitWidthProperty(), 20)),
@@ -125,10 +126,17 @@ public class BreadController implements Initializable {
 								new KeyFrame(Duration.millis(400), new KeyValue(pref.fitHeightProperty(), pref.getFitHeight()))
 								);
 						animation.play();
+						pref.setImage(new Image(new File("src/visual/images/coeurorange.png").toURI().toString()));
+						myPref.setImage(new Image(new File("src/visual/images/coeurgris.png").toURI().toString()));
 						SignUpController.getAuthCusto().setFavoriteBread(bread);
+						CustomerManagement.exportCustomer("customer.xml");
+						myPref = pref;
 					}
 					else {
 						pref.setImage(new Image(new File("src/visual/images/coeurgris.png").toURI().toString()));
+						SignUpController.getAuthCusto().setFavoriteBread(new Bread());
+						CustomerManagement.exportCustomer("customer.xml");
+						myPref = new ImageView();
 					}
 				});
 				b.getChildren().add(pref);
