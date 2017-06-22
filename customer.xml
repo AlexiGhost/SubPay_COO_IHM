@@ -7,7 +7,7 @@
     <phoneNumber>0619355180</phoneNumber>
     <password>test1995</password>
     <iceCubeNb>-1</iceCubeNb>
-    <fBread>mie</fBread>
+    <fBread />
     <fSauce>Mayonnaise</fSauce>
     <fRecipe />
     <fDrink />
@@ -15,9 +15,34 @@
       <fGarnish>Tomate</fGarnish>
       <fGarnish>Concombre</fGarnish>
     </fGarnishs>
-    <allergens>
-      <allergen>WTF</allergen>
-      <allergen>gluten</allergen>
-    </allergens>
+    <allergens />
+  </customer>
+  <customer classe="AuthentificatedCustomer">
+    <lastName>FOURNIER</lastName>
+    <firstName>Nathan</firstName>
+    <mail choice="true">nathan.fournier13@gmail.com</mail>
+    <phoneNumber choice="true">0670257224</phoneNumber>
+    <password>U5Z6UYE3</password>
+    <iceCubeNb>-1</iceCubeNb>
+    <fBread />
+    <fSauce />
+    <fRecipe />
+    <fDrink />
+    <fGarnishs />
+    <allergens />
+  </customer>
+  <customer classe="AuthentificatedCustomer">
+    <lastName>Nathan</lastName>
+    <firstName>Fournier</firstName>
+    <mail choice="true">nathan.fournier13@gmail.com</mail>
+    <phoneNumber choice="true">0670257224</phoneNumber>
+    <password>U5Z6UYQ4</password>
+    <iceCubeNb>-1</iceCubeNb>
+    <fBread />
+    <fSauce />
+    <fRecipe />
+    <fDrink />
+    <fGarnishs />
+    <allergens />
   </customer>
 </Customers>
