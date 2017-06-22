@@ -72,35 +72,35 @@
   </garnish>
   <sauce classe="Sauce">
     <name>Ketchup</name>
-    <photo />
+    <photo>ketchup.png</photo>
     <allergens />
     <available>true</available>
     <new>false</new>
   </sauce>
   <sauce classe="Sauce">
     <name>Ranchy</name>
-    <photo />
+    <photo>ranchy.png</photo>
     <allergens />
     <available>true</available>
     <new>true</new>
   </sauce>
   <sauce classe="Sauce">
     <name>Miel Moutarde</name>
-    <photo />
+    <photo>miel moutarde.png</photo>
     <allergens />
     <available>true</available>
     <new>false</new>
   </sauce>
   <sauce classe="Sauce">
     <name>Mayonnaise</name>
-    <photo />
+    <photo>mayonnaise.png</photo>
     <allergens />
     <available>true</available>
     <new>false</new>
   </sauce>
   <sauce classe="Sauce">
     <name>Barbecue</name>
-    <photo />
+    <photo>barbecue.png</photo>
     <allergens />
     <available>true</available>
     <new>false</new>
@@ -153,29 +153,8 @@
     <new>true</new>
   </recipe>
   <drink classe="Drink">
-    <name>Cola cola</name>
-    <photo>cola cola.jpg</photo>
-    <allergens />
-    <available>true</available>
-    <new>true</new>
-  </drink>
-  <drink classe="Drink">
     <name>Spoute</name>
     <photo>spoute.jpg</photo>
-    <allergens />
-    <available>true</available>
-    <new>true</new>
-  </drink>
-  <drink classe="Drink">
-    <name>Iced Tea</name>
-    <photo>iced tea.png</photo>
-    <allergens />
-    <available>true</available>
-    <new>true</new>
-  </drink>
-  <drink classe="Drink">
-    <name>Evina</name>
-    <photo>evina.jpg</photo>
     <allergens />
     <available>true</available>
     <new>true</new>
@@ -186,6 +165,27 @@
     <allergens />
     <available>true</available>
     <new>true</new>
+  </drink>
+  <drink classe="Drink">
+    <name>Cola cola</name>
+    <photo>cola cola.jpg</photo>
+    <allergens />
+    <available>true</available>
+    <new>false</new>
+  </drink>
+  <drink classe="Drink">
+    <name>Evina</name>
+    <photo>evina.jpg</photo>
+    <allergens />
+    <available>true</available>
+    <new>false</new>
+  </drink>
+  <drink classe="Drink">
+    <name>Iced Tea</name>
+    <photo>iced tea.png</photo>
+    <allergens />
+    <available>true</available>
+    <new>false</new>
   </drink>
   <dessert classe="Dessert">
     <name>brownie</name>
