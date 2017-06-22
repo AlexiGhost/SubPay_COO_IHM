@@ -7,7 +7,7 @@
     <phoneNumber>0619355180</phoneNumber>
     <password>test1995</password>
     <iceCubeNb>-1</iceCubeNb>
-    <fBread>mie</fBread>
+    <fBread />
     <fSauce>Mayonnaise</fSauce>
     <fRecipe />
     <fDrink />
@@ -15,9 +15,20 @@
       <fGarnish>Tomate</fGarnish>
       <fGarnish>Concombre</fGarnish>
     </fGarnishs>
-    <allergens>
-      <allergen>WTF</allergen>
-      <allergen>gluten</allergen>
-    </allergens>
+    <allergens />
+  </customer>
+  <customer classe="AuthentificatedCustomer">
+    <lastName>Cabanes</lastName>
+    <firstName>Matthieu</firstName>
+    <mail choice="true">portgasace98@hotmail.fr</mail>
+    <phoneNumber />
+    <password>Medusa81</password>
+    <iceCubeNb>-1</iceCubeNb>
+    <fBread />
+    <fSauce />
+    <fRecipe />
+    <fDrink />
+    <fGarnishs />
+    <allergens />
   </customer>
 </Customers>
