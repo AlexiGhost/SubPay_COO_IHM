@@ -18,11 +18,25 @@
     <allergens />
   </customer>
   <customer classe="AuthentificatedCustomer">
-    <lastName>Cabanes</lastName>
-    <firstName>Matthieu</firstName>
-    <mail choice="true">portgasace98@hotmail.fr</mail>
-    <phoneNumber />
-    <password>Medusa81</password>
+    <lastName>FOURNIER</lastName>
+    <firstName>Nathan</firstName>
+    <mail choice="true">nathan.fournier13@gmail.com</mail>
+    <phoneNumber choice="true">0670257224</phoneNumber>
+    <password>U5Z6UYE3</password>
+    <iceCubeNb>-1</iceCubeNb>
+    <fBread />
+    <fSauce />
+    <fRecipe />
+    <fDrink />
+    <fGarnishs />
+    <allergens />
+  </customer>
+  <customer classe="AuthentificatedCustomer">
+    <lastName>Nathan</lastName>
+    <firstName>Fournier</firstName>
+    <mail choice="true">nathan.fournier13@gmail.com</mail>
+    <phoneNumber choice="true">0670257224</phoneNumber>
+    <password>U5Z6UYQ4</password>
     <iceCubeNb>-1</iceCubeNb>
     <fBread />
     <fSauce />

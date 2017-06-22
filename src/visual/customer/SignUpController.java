@@ -59,8 +59,8 @@ public class SignUpController {
     public static AuthentificatedCustomer getAuthCusto() {
 		return authCusto;
 	}
-    public static void setAuthCusto(AuthentificatedCustomer custom) {
-		authCusto = custom;
+    public static void setAuthCusto(AuthentificatedCustomer authCusto) {
+		authCusto = authCusto;
 	}
     //Vérifier mot de passe
     public boolean checkPassword(){

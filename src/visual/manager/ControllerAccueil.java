@@ -19,7 +19,6 @@ import javafx.scene.Group;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import model.product.*;
-import model.product.Menu;
 import model.product.composants.*;
 
 public class ControllerAccueil implements Initializable{
@@ -80,7 +79,7 @@ public class ControllerAccueil implements Initializable{
     			break;
     		}
     	}
-    	TXT_MenuPrice.setText(String.valueOf(Menu.getMenuPrice()));
+    	TXT_MenuPrice.setText(String.valueOf(ComponentManagement.getMenuPrice()));
     	//initialisation des listes (pains, sauces, ...)
     	L_Recipe.setItems(recipeData);
     	
@@ -406,7 +405,7 @@ public class ControllerAccueil implements Initializable{
     
     @FXML
     void setMenuPrice(ActionEvent event){
-    	Menu.setMenuPrice(Double.valueOf(TXT_MenuPrice.getText()));
+    	ComponentManagement.setMenuPrice(Double.valueOf(TXT_MenuPrice.getText()));
     	ComponentManagement.exportComponent(componentPath);
     }
     

@@ -1,14 +1,10 @@
 package visual.customer;
-import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
-import javafx.animation.KeyFrame;
-import javafx.animation.KeyValue;
-import javafx.animation.Timeline;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -20,13 +16,14 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
-import javafx.util.Duration;
+import model.product.Drink;
 import model.product.composants.Bread;
+import model.product.composants.Recipe;
 
 public class BreadController implements Initializable {
 	private static List<Bread> breadList = new ArrayList<Bread>();
-	private	static int			X = 1;
-	private	static int			Y = 0;
+	private	static int			 X = 1;
+	private	static int			 Y = 0;
 	
 	@FXML
     private TilePane breadTile;
@@ -48,8 +45,8 @@ public class BreadController implements Initializable {
 			Group b = new Group();
 			b.setTranslateX(20 * X);
 			b.setTranslateY(10 + Y);
-			if(!HelloController.getOrder().getAuthCustomer())
-				b.setOnMouseClicked(MouseEvent -> goToRecipe(bread));
+			b.setFocusTraversable(true);
+			b.setOnMouseClicked(MouseEvent -> goToRecipe(bread));
 			
 			//Titre Pain
 			Text title = new Text(bread.getName());
@@ -80,61 +77,8 @@ public class BreadController implements Initializable {
 				succes.setLayoutY(25);
 				b.getChildren().add(succes);
 			}
-			
-			//Si c'est une nouveauté
-			if(bread.getNew()) {
-				Text nouveau = new Text("Nouveau !");
-				nouveau.setFont(new Font("Arial Black", 11));
-				nouveau.setFill(Color.DARKRED);
-				nouveau.setLayoutX(90);
-				nouveau.setLayoutY(17);
-				nouveau.setRotate(45);
-				b.getChildren().add(nouveau);
-			}
-			
-			//Si c'est un client authentifié
-			ImageView pref;
-			if(HelloController.getOrder().getAuthCustomer()) {
-				if(SignUpController.getAuthCusto().getFavoriteBread() != null) {
-					if(SignUpController.getAuthCusto().getFavoriteBread().equals(bread)){
-						SignUpController.getAuthCusto().setFavoriteBread(bread);
-						pref = new ImageView(new Image(new File("src/visual/images/coeurorange.png").toURI().toString()));
-					}
-					else
-						pref = new ImageView(new Image(new File("src/visual/images/coeurgris.png").toURI().toString()));
-				}
-				else
-					pref = new ImageView(new Image(new File("src/visual/images/coeurgris.png").toURI().toString()));
-				
-				pref.setTranslateX(110);
-				pref.setTranslateY(70);
-				pref.setFocusTraversable(true);
-				pref.setOnMouseEntered(Event -> b.setFocusTraversable(false));
-				pref.setOnMouseExited(Event -> b.setOnMouseClicked(MouseEvent -> goToRecipe(bread)));
-				pref.setOnMouseClicked(Event -> {
-					if(!SignUpController.getAuthCusto().getFavoriteBread().equals(bread)) {
-						pref.setImage(new Image(new File("src/visual/images/coeurorange.png").toURI().toString()));
-						Timeline animation = new Timeline (
-								new KeyFrame(Duration.millis(100), new KeyValue(pref.fitHeightProperty(), 20)),
-								new KeyFrame(Duration.millis(100), new KeyValue(pref.fitWidthProperty(), 20)),
-								new KeyFrame(Duration.millis(200), new KeyValue(pref.fitHeightProperty(), 40)),
-								new KeyFrame(Duration.millis(200), new KeyValue(pref.fitWidthProperty(), 40)),
-								new KeyFrame(Duration.millis(300), new KeyValue(pref.fitHeightProperty(), 20)),
-								new KeyFrame(Duration.millis(300), new KeyValue(pref.fitWidthProperty(), 20)),
-								new KeyFrame(Duration.millis(400), new KeyValue(pref.fitWidthProperty(), pref.getFitWidth())),
-								new KeyFrame(Duration.millis(400), new KeyValue(pref.fitHeightProperty(), pref.getFitHeight()))
-								);
-						animation.play();
-						SignUpController.getAuthCusto().setFavoriteBread(bread);
-					}
-					else {
-						pref.setImage(new Image(new File("src/visual/images/coeurgris.png").toURI().toString()));
-					}
-				});
-				b.getChildren().add(pref);
-			}
-			
 			breadTile.getChildren().add(b);
+			
 			if(X == 5) {
 				X = 1;
 				Y += 20;
@@ -169,8 +113,6 @@ public class BreadController implements Initializable {
 	}
 	
 	public void goToRecipe(Bread b) {
-		X = 1;
-		Y = 0;
 		if(b.getAvailability()){
 			if(MenuController.getChoice())
 				MenuController.getMenu().getProduct().setBread(b);
@@ -178,6 +120,10 @@ public class BreadController implements Initializable {
 				MenuController.getProduct().setBread(b);
 			Group acteur = new Group();
 			if(HomeController.getNewPromo() && HomeController.getSelectedComponent() != null && HomeController.getSelectedComponent().getClass().getName().equals("model.product.composants.Recipe")){
+				if(MenuController.getChoice())
+					MenuController.getMenu().getProduct().setRecipe((Recipe) HomeController.getSelectedComponent());
+				else
+					MenuController.getProduct().setRecipe((Recipe) HomeController.getSelectedComponent());
 				try {
 					acteur.getChildren().add(FXMLLoader.load(getClass().getResource("009 Garnitures.fxml")));
 					visual.ControllerClient.setScene(acteur, "SUBPAY - Garnitures");
@@ -196,13 +142,13 @@ public class BreadController implements Initializable {
 		}
 	}
 	
-	public void goToSandwichPlate() {
-		X = 1;
-		Y = 0;
+	public void goToSandwichPLate(){
 		Group acteur = new Group();
 		try {
-			acteur.getChildren().add(FXMLLoader.load(getClass().getResource("016 Format repas.fxml")));
-			visual.ControllerClient.setScene(acteur, "SUBPAY - Format du repas");
+			acteur.getChildren().add(
+			FXMLLoader.load(getClass().getResource("016 Format repas.fxml")) 
+			);
+			visual.ControllerClient.setScene(acteur, "SUBPAY - Menu");
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
