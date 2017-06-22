@@ -5,6 +5,7 @@ public class Menu {
     private Drink drink;
     private int iceCubeNb;
     private Dessert dessert;
+    private static double menuPrice;
 
     /**Create a menu*/
     public Menu(){
@@ -48,5 +49,12 @@ public class Menu {
 	}
 	public void setIceCubeNb(int iceCubeNb) {
 		this.iceCubeNb = iceCubeNb;
+	}
+	//prix du menu
+	public static void setMenuPrice(double price){
+		menuPrice = price;
+	}
+	public static double getMenuPrice(){
+		return menuPrice;
 	}
 }
