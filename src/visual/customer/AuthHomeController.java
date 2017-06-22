@@ -34,4 +34,14 @@ public class AuthHomeController {
 		);
 		visual.ControllerClient.setScene(acteur, "SUBPAY - Accueil");
 	}
+	//Bouton "Allergènes"
+	public void goToAllergen() throws IOException {
+		AllergenController.setPreviousUI("004 Accueil.fxml");
+		AllergenController.setPreviousTitle("SUBPAY - Accueil");
+		Group acteur = new Group();
+		acteur.getChildren().add(
+		FXMLLoader.load(getClass().getResource("006 Allergies.fxml"))
+		);
+		visual.ControllerClient.setScene(acteur, "SUBPAY - Allergènes");
+	}
 }

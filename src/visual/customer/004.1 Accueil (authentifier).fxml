@@ -54,6 +54,11 @@
             <Font size="26.0" />
          </font>
       </Text>
+      <Button fx:id="Allergen" layoutX="154.0" layoutY="135.0" mnemonicParsing="false" onAction="#goToAllergen" prefHeight="77.0" prefWidth="162.0" text="Allergènes">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Button>
    </children>
    <opaqueInsets>
       <Insets />

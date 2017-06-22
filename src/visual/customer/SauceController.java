@@ -123,15 +123,26 @@ public class SauceController implements Initializable {
     
     
     
-	public void goToGarnitures() throws IOException {
+	public void goToGarnitures() {
 		X = 1;
 		Y = 0;
-		GarnishController.getGarnishList().clear(); //Pour supprimer tout ce que le client avait choisit
+		if(MenuController.getChoice())
+			MenuController.getMenu().getProduct().getGarnishs().clear();
+		else
+			MenuController.getProduct().getGarnishs().clear();
+		if(MenuController.getChoice())
+			MenuController.getMenu().getProduct().getSauces().clear();
+		else
+			MenuController.getProduct().getSauces().clear();	
 		Group acteur = new Group();
-		acteur.getChildren().add(
-		FXMLLoader.load(getClass().getResource("009 Garnitures.fxml"))
-		);
-		visual.ControllerClient.setScene(acteur, "SUBPAY - Garnitures"); 
+		try {
+			acteur.getChildren().add(
+			FXMLLoader.load(getClass().getResource("009 Garnitures.fxml"))
+			);
+			visual.ControllerClient.setScene(acteur, "SUBPAY - Garnitures"); 
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 		}
 	
 	public void next() {

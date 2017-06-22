@@ -23,6 +23,7 @@ import javafx.scene.text.Text;
 import javafx.util.Duration;
 import model.CustomerManagement;
 import model.product.composants.Bread;
+import model.product.composants.Recipe;
 
 public class BreadController implements Initializable {
 	private static List<Bread> breadList = new ArrayList<Bread>();
@@ -141,8 +142,8 @@ public class BreadController implements Initializable {
 				});
 				b.getChildren().add(pref);
 			}
-			
 			breadTile.getChildren().add(b);
+			
 			if(X == 5) {
 				X = 1;
 				Y += 20;
@@ -157,6 +158,8 @@ public class BreadController implements Initializable {
 	}
 	
 	public void goToHome(){
+		X = 1;
+		Y = 0;
 		Group acteur = new Group();
 		if(HelloController.getOrder().getAuthCustomer()){ //Si le client est authentifié
 			try {
@@ -186,6 +189,10 @@ public class BreadController implements Initializable {
 				MenuController.getProduct().setBread(b);
 			Group acteur = new Group();
 			if(HomeController.getNewPromo() && HomeController.getSelectedComponent() != null && HomeController.getSelectedComponent().getClass().getName().equals("model.product.composants.Recipe")){
+				if(MenuController.getChoice())
+					MenuController.getMenu().getProduct().setRecipe((Recipe) HomeController.getSelectedComponent());
+				else
+					MenuController.getProduct().setRecipe((Recipe) HomeController.getSelectedComponent());
 				try {
 					acteur.getChildren().add(FXMLLoader.load(getClass().getResource("009 Garnitures.fxml")));
 					visual.ControllerClient.setScene(acteur, "SUBPAY - Garnitures");
@@ -204,13 +211,15 @@ public class BreadController implements Initializable {
 		}
 	}
 	
-	public void goToSandwichPlate() {
+	public void goToSandwichPLate(){
 		X = 1;
 		Y = 0;
 		Group acteur = new Group();
 		try {
-			acteur.getChildren().add(FXMLLoader.load(getClass().getResource("016 Format repas.fxml")));
-			visual.ControllerClient.setScene(acteur, "SUBPAY - Format du repas");
+			acteur.getChildren().add(
+			FXMLLoader.load(getClass().getResource("016 Format repas.fxml")) 
+			);
+			visual.ControllerClient.setScene(acteur, "SUBPAY - Menu");
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

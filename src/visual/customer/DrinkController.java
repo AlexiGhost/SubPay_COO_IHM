@@ -86,18 +86,6 @@ public class DrinkController implements Initializable {
 				succes.setLayoutY(25);
 				d.getChildren().add(succes);
 			}
-			
-			//Si c'est une nouveauté
-			if(drink.getNew()) {
-				Text nouveau = new Text("Nouveau !");
-				nouveau.setFont(new Font("Arial Black", 11));
-				nouveau.setFill(Color.DARKRED);
-				nouveau.setLayoutX(90);
-				nouveau.setLayoutY(17);
-				nouveau.setRotate(45);
-				d.getChildren().add(nouveau);
-			}
-			
 			drinkTile.getChildren().add(d);
 			
 			if(X == 5) {
@@ -114,12 +102,18 @@ public class DrinkController implements Initializable {
 	}
 	
 	
-	public void goToSauces() throws IOException {
+	public void goToSauces() {
+		if(MenuController.getChoice())
+			MenuController.getMenu().getProduct().getSauces().clear();
+		else
+			MenuController.getProduct().getSauces().clear();	
 		Group acteur = new Group();
-		acteur.getChildren().add(
-		FXMLLoader.load(getClass().getResource("010 Sauces.fxml"))
-		);
-		visual.ControllerClient.setScene(acteur, "SUBPAY - Sauces"); 
+		try {
+			acteur.getChildren().add(FXMLLoader.load(getClass().getResource("010 Sauces.fxml")));
+			visual.ControllerClient.setScene(acteur, "SUBPAY - Sauces"); 
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 	public void goToHome(){
 		Group acteur = new Group();

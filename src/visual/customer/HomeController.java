@@ -14,6 +14,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.TilePane;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.Line;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
@@ -173,13 +174,18 @@ public class HomeController implements Initializable {
 		for (Product product : HelloController.getOrder().getProducts()) {
 			//Si c'est une assiette
 			if(product.getPlate()){
-				Text textTitle = new Text("Plat "+product.getRecipe().getName()+" ("+product.getSize()+")");
+				Text textSupTitle = new Text("x");
+				textSupTitle.setFont(new Font("Arial Black",16));
+				textSupTitle.setWrappingWidth(10);
+				orderTilePane.getChildren().add(textSupTitle);
+				//textSupTitle.setStyle("-fx setTextfield");;
+				Text textTitle = new Text("Plat "+product.getRecipe().getName()+" ("+product.getSize()+")  "+product.getRecipe().getPrice()+"€");
 				textTitle.setFont(new Font("Arial Black",16));
-				textTitle.setWrappingWidth(280);
+				textTitle.setWrappingWidth(250);
 				orderTilePane.getChildren().add(textTitle);
 
 			}else{
-				Text textTitle = new Text("Sandwich "+product.getRecipe().getName()+" ("+product.getSize()+")");
+				Text textTitle = new Text("Sandwich "+product.getRecipe().getName()+" ("+product.getSize()+")  "+product.getRecipe().getPrice()+"€");
 				textTitle.setFont(new Font("Arial Black",16));
 				textTitle.setWrappingWidth(280);
 				orderTilePane.getChildren().add(textTitle);
@@ -198,11 +204,15 @@ public class HomeController implements Initializable {
 				textSauce.setWrappingWidth(280);
 				orderTilePane.getChildren().add(textSauce);
 			}
+			Line separation = new Line();
+			separation.setStrokeWidth(1);
+			separation.setEndX(280);
+			orderTilePane.getChildren().add(separation);
 		}
 			
 		//Pour l'affachige des menus
 		for (Menu menu : HelloController.getOrder().getMenus()) {
-			Text textMenu = new Text("Menu");
+			Text textMenu = new Text("Menu\t"+(menu.getProduct().getRecipe().getPrice()+Menu.getMenuPrice())+"€");
 			textMenu.setFont(new Font("Arial Black",18));
 			textMenu.setWrappingWidth(280);
 			orderTilePane.getChildren().add(textMenu);
@@ -235,12 +245,17 @@ public class HomeController implements Initializable {
 				orderTilePane.getChildren().add(textSauce);
 			}
 			
-			Text textDrink = new Text("\t"+menu.getDrink());
+			Text textDrink = new Text("\t"+menu.getDrink().getName());
 			textDrink.setWrappingWidth(280);
 			orderTilePane.getChildren().add(textDrink);
-			Text textDessert = new Text("\t"+menu.getDessert());
+			Text textDessert = new Text("\t"+menu.getDessert().getName());
 			textDessert.setWrappingWidth(280);
 			orderTilePane.getChildren().add(textDessert);
+			
+			Line separation = new Line();
+			separation.setStrokeWidth(1);
+			separation.setEndX(280);
+			orderTilePane.getChildren().add(separation);
 		}
 		
 	}
