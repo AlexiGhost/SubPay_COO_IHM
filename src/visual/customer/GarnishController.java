@@ -124,24 +124,41 @@ public class GarnishController implements Initializable {
 		}
 	}	
 	
-	public void goToSauces() throws IOException {
+	public void goToSauces(){
 		X = 1;
 		Y = 0;
 		Group acteur = new Group();
-		acteur.getChildren().add(
-		FXMLLoader.load(getClass().getResource("010 Sauces.fxml"))
-		);
-		visual.ControllerClient.setScene(acteur, "SUBPAY - Sauces");
-																
+		try {
+			acteur.getChildren().add(FXMLLoader.load(getClass().getResource("010 Sauces.fxml")));
+			visual.ControllerClient.setScene(acteur, "SUBPAY - Sauces");
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
-	public void goToRecettes() throws IOException {
+	public void goToRecettes(){
+		if(MenuController.getChoice())
+			MenuController.getMenu().getProduct().getGarnishs().clear();
+		else
+			MenuController.getProduct().getGarnishs().clear();														
+		
 		X = 1;
 		Y = 0;
 		Group acteur = new Group();
-		acteur.getChildren().add(
-		FXMLLoader.load(getClass().getResource("008 Recettes.fxml"))
-		);
-		visual.ControllerClient.setScene(acteur, "SUBPAY - Recettes");
+		if(HomeController.getNewPromo() && HomeController.getSelectedComponent() != null && HomeController.getSelectedComponent().getClass().getName().equals("model.product.composants.Recipe")){
+			try {
+				acteur.getChildren().add(FXMLLoader.load(getClass().getResource("007 Pain.fxml")));
+				visual.ControllerClient.setScene(acteur, "SUBPAY - Pain");
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}else{
+			try {
+				acteur.getChildren().add(FXMLLoader.load(getClass().getResource("008 Recettes.fxml")));
+				visual.ControllerClient.setScene(acteur, "SUBPAY - Recettes");
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
 	}
 	public void goToHome(){
 		Group acteur = new Group();

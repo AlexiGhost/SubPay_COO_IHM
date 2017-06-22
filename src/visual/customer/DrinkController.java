@@ -114,12 +114,18 @@ public class DrinkController implements Initializable {
 	}
 	
 	
-	public void goToSauces() throws IOException {
+	public void goToSauces() {
+		if(MenuController.getChoice())
+			MenuController.getMenu().getProduct().getSauces().clear();
+		else
+			MenuController.getProduct().getSauces().clear();	
 		Group acteur = new Group();
-		acteur.getChildren().add(
-		FXMLLoader.load(getClass().getResource("010 Sauces.fxml"))
-		);
-		visual.ControllerClient.setScene(acteur, "SUBPAY - Sauces"); 
+		try {
+			acteur.getChildren().add(FXMLLoader.load(getClass().getResource("010 Sauces.fxml")));
+			visual.ControllerClient.setScene(acteur, "SUBPAY - Sauces"); 
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 	public void goToHome(){
 		Group acteur = new Group();
