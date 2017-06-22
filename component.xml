@@ -2,35 +2,35 @@
 <Composants>
   <bread classe="Bread">
     <name>Miel Avoine</name>
-    <photo />
+    <photo>miel avoine.png</photo>
     <allergens />
     <available>true</available>
     <new>false</new>
   </bread>
   <bread classe="Bread">
     <name>Parmesan Origan</name>
-    <photo />
+    <photo>parmesan origan.png</photo>
     <allergens />
     <available>true</available>
     <new>false</new>
   </bread>
   <bread classe="Bread">
     <name>Blanc</name>
-    <photo />
+    <photo>blanc.png</photo>
     <allergens />
     <available>true</available>
     <new>false</new>
   </bread>
   <bread classe="Bread">
     <name>Wrap</name>
-    <photo>Pain.png</photo>
+    <photo>wrap.jpg</photo>
     <allergens />
     <available>false</available>
     <new>false</new>
   </bread>
   <bread classe="Bread">
     <name>Italien</name>
-    <photo />
+    <photo>italien.png</photo>
     <allergens />
     <available>true</available>
     <new>false</new>
@@ -171,21 +171,21 @@
     <photo>cola cola.jpg</photo>
     <allergens />
     <available>true</available>
-    <new>false</new>
+    <new>true</new>
   </drink>
   <drink classe="Drink">
     <name>Evina</name>
     <photo>evina.jpg</photo>
     <allergens />
     <available>true</available>
-    <new>false</new>
+    <new>true</new>
   </drink>
   <drink classe="Drink">
     <name>Iced Tea</name>
     <photo>iced tea.png</photo>
     <allergens />
     <available>true</available>
-    <new>false</new>
+    <new>true</new>
   </drink>
   <dessert classe="Dessert">
     <name>brownie</name>
