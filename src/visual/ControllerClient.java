@@ -12,6 +12,7 @@ import model.product.ComponentManagement;
 import model.product.Order;
 import model.product.composants.Recipe;
 import visual.customer.HomeController;
+import visual.customer.AllergenController;
 import visual.customer.BreadController;
 import visual.customer.DrinkController;
 import visual.customer.GarnishController;
@@ -75,6 +76,8 @@ public class ControllerClient extends Application {
 		DrinkController.getDrinkList().addAll(ComponentManagement.getDrinks());
 		//Page Pains
 		BreadController.getBreadList().addAll(ComponentManagement.getBreads());
+		//Page Allergenes
+		AllergenController.getAllergenList().addAll(ComponentManagement.getAllergens());
 	}
 }
 
