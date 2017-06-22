@@ -196,13 +196,15 @@ public class BreadController implements Initializable {
 		}
 	}
 	
-	public void goToMenu() throws IOException {
+	public void goToSandwichPlate() {
 		X = 1;
 		Y = 0;
 		Group acteur = new Group();
-		acteur.getChildren().add(
-		FXMLLoader.load(getClass().getResource("005 Menu.fxml")) 
-		);
-		visual.ControllerClient.setScene(acteur, "SUBPAY - Menu");
+		try {
+			acteur.getChildren().add(FXMLLoader.load(getClass().getResource("016 Format repas.fxml")));
+			visual.ControllerClient.setScene(acteur, "SUBPAY - Format du repas");
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 }
