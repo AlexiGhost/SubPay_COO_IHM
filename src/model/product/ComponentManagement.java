@@ -4,7 +4,9 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.jdom2.*;
 import org.jdom2.input.SAXBuilder;
@@ -826,7 +828,7 @@ public class ComponentManagement {
 		aList.add("Céleri");
 		aList.add("Moutarde");
 		aList.add("Sésame");
-		aList.add("Anhydride sulfureux");
+		aList.add("Sulfites");
 		aList.add("Lupin");
 		aList.add("Mollusques");
 		setAllergens(aList);
