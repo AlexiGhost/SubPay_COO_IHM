@@ -1,5 +1,6 @@
 package visual.customer;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -8,6 +9,9 @@ import java.util.ResourceBundle;
 
 import javax.swing.JOptionPane;
 
+import javafx.animation.KeyFrame;
+import javafx.animation.KeyValue;
+import javafx.animation.Timeline;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -20,12 +24,16 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
+import javafx.util.Duration;
+import model.CustomerManagement;
 import model.product.*;
+import model.product.composants.Bread;
 
 public class DrinkController implements Initializable {
 	private static List<Drink> drinkList = new ArrayList<Drink>();
 	private	static int			 X = 1;
 	private	static int			 Y = 0;
+	private static ImageView	myPref = new ImageView();
 	
 	@FXML
     private TilePane drinkTile;
@@ -85,6 +93,65 @@ public class DrinkController implements Initializable {
 				succes.setLayoutX(27);
 				succes.setLayoutY(25);
 				d.getChildren().add(succes);
+			}
+			//Si c'est une nouveauté
+			if(drink.getNew()) {
+				Text nouveau = new Text("Nouveau !");
+				nouveau.setFont(new Font("Arial Black", 11));
+				nouveau.setFill(Color.DARKRED);
+				nouveau.setLayoutX(90);
+				nouveau.setLayoutY(17);
+				nouveau.setRotate(45);
+				d.getChildren().add(nouveau);
+			}
+			
+			//Si c'est un client authentifié
+			ImageView pref;
+			if(HelloController.getOrder().getAuthCustomer()) {
+				if(SignUpController.getAuthCusto().getFavoriteDrink() != null) {
+					if(SignUpController.getAuthCusto().getFavoriteDrink().equals(drink)){
+						SignUpController.getAuthCusto().setFavoriteDrink(drink);
+						pref = new ImageView(new Image(new File("src/visual/images/coeurorange.png").toURI().toString()));
+						myPref = pref;
+					}
+					else
+						pref = new ImageView(new Image(new File("src/visual/images/coeurgris.png").toURI().toString()));
+				}
+				else
+					pref = new ImageView(new Image(new File("src/visual/images/coeurgris.png").toURI().toString()));
+				
+				pref.setTranslateX(110);
+				pref.setTranslateY(70);
+				pref.setFocusTraversable(true);
+				pref.setOnMouseEntered(Event -> d.setOnMouseClicked(null));
+				pref.setOnMouseExited(Event -> d.setOnMouseClicked(MouseEvent -> goToHomeWithOrder(drink)));
+				pref.setOnMouseClicked(Event -> {
+					if(myPref != pref) {
+						Timeline animation = new Timeline (
+								new KeyFrame(Duration.millis(100), new KeyValue(pref.fitHeightProperty(), 20)),
+								new KeyFrame(Duration.millis(100), new KeyValue(pref.fitWidthProperty(), 20)),
+								new KeyFrame(Duration.millis(200), new KeyValue(pref.fitHeightProperty(), 40)),
+								new KeyFrame(Duration.millis(200), new KeyValue(pref.fitWidthProperty(), 40)),
+								new KeyFrame(Duration.millis(300), new KeyValue(pref.fitHeightProperty(), 20)),
+								new KeyFrame(Duration.millis(300), new KeyValue(pref.fitWidthProperty(), 20)),
+								new KeyFrame(Duration.millis(400), new KeyValue(pref.fitWidthProperty(), pref.getFitWidth())),
+								new KeyFrame(Duration.millis(400), new KeyValue(pref.fitHeightProperty(), pref.getFitHeight()))
+								);
+						animation.play();
+						pref.setImage(new Image(new File("src/visual/images/coeurorange.png").toURI().toString()));
+						myPref.setImage(new Image(new File("src/visual/images/coeurgris.png").toURI().toString()));
+						SignUpController.getAuthCusto().setFavoriteDrink(drink);
+						CustomerManagement.exportCustomer("customer.xml");
+						myPref = pref;
+					}
+					else {
+						pref.setImage(new Image(new File("src/visual/images/coeurgris.png").toURI().toString()));
+						SignUpController.getAuthCusto().setFavoriteDrink(new Drink());
+						CustomerManagement.exportCustomer("customer.xml");
+						myPref = new ImageView();
+					}
+				});
+				d.getChildren().add(pref);
 			}
 			drinkTile.getChildren().add(d);
 			

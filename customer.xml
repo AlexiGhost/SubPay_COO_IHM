@@ -11,10 +11,7 @@
     <fSauce>Mayonnaise</fSauce>
     <fRecipe />
     <fDrink />
-    <fGarnishs>
-      <fGarnish>Tomate</fGarnish>
-      <fGarnish>Concombre</fGarnish>
-    </fGarnishs>
+    <fGarnishs />
     <allergens />
   </customer>
   <customer classe="AuthentificatedCustomer">
@@ -84,7 +81,10 @@
     <fSauce />
     <fRecipe />
     <fDrink />
-    <fGarnishs />
+    <fGarnishs>
+      <fGarnish>Olive noire</fGarnish>
+      <fGarnish>Laitue</fGarnish>
+    </fGarnishs>
     <allergens />
   </customer>
   <customer classe="AuthentificatedCustomer">
@@ -94,11 +94,15 @@
     <phoneNumber />
     <password>testtest1</password>
     <iceCubeNb>-1</iceCubeNb>
-    <fBread />
-    <fSauce />
-    <fRecipe />
-    <fDrink />
-    <fGarnishs />
+    <fBread>Parmesan Origan</fBread>
+    <fSauce>Miel Moutarde</fSauce>
+    <fRecipe>Poulet</fRecipe>
+    <fDrink>Hein Klein</fDrink>
+    <fGarnishs>
+      <fGarnish>Tomate</fGarnish>
+      <fGarnish>Mais</fGarnish>
+      <fGarnish>Olive noire</fGarnish>
+    </fGarnishs>
     <allergens />
   </customer>
 </Customers>

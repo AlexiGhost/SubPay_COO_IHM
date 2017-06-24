@@ -1,10 +1,14 @@
 package visual.customer;
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
+import javafx.animation.KeyFrame;
+import javafx.animation.KeyValue;
+import javafx.animation.Timeline;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -22,9 +26,14 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
+import javafx.util.Duration;
+import model.CustomerManagement;
 import model.product.composants.Recipe;
+import model.product.composants.Sauce;
 
 public class RecipeController  implements Initializable{
+	
+	private static ImageView	myPref = new ImageView();
 	
     @FXML
     private TilePane bofTile;
@@ -116,10 +125,84 @@ public class RecipeController  implements Initializable{
 			img.setFitWidth(150);
 			r.getChildren().add(img);
 			
+			//Vérif disponibilité
+			if(!recipe.getAvailability()) {
+				bordure.setOpacity(0.3);
+				bordure.setFill(Color.YELLOWGREEN);
+				title.setOpacity(0.3);
+				img.setOpacity(0.3);
+				Text succes = new Text("Victime de\nson succès");
+				succes.setFont(new Font("Arial Black", 14));
+				succes.setFill(Color.BLACK);
+				succes.setOpacity(1);
+				succes.setLayoutX(27);
+				succes.setLayoutY(25);
+				r.getChildren().add(succes);
+			}
+			
+			//Si c'est une nouveauté
+			if(recipe.getNew()) {
+				Text nouveau = new Text("Nouveau !");
+				nouveau.setFont(new Font("Arial Black", 11));
+				nouveau.setFill(Color.DARKRED);
+				nouveau.setLayoutX(90);
+				nouveau.setLayoutY(17);
+				nouveau.setRotate(45);
+				r.getChildren().add(nouveau);
+			}
 			//MAJ promoTiled
 			r.getChildren().add(title);
 			r.getChildren().add(bordure);
 			tilePane.getChildren().add(r);
+			
+			//Si c'est un client authentifié
+			ImageView pref;
+			if(HelloController.getOrder().getAuthCustomer()) {
+				if(SignUpController.getAuthCusto().getFavoriteRecipe() != null) {
+					if(SignUpController.getAuthCusto().getFavoriteRecipe().equals(recipe)){
+						SignUpController.getAuthCusto().setFavoriteRecipe(recipe);
+						pref = new ImageView(new Image(new File("src/visual/images/coeurorange.png").toURI().toString()));
+						myPref = pref;
+					}
+					else
+						pref = new ImageView(new Image(new File("src/visual/images/coeurgris.png").toURI().toString()));
+				}
+				else
+					pref = new ImageView(new Image(new File("src/visual/images/coeurgris.png").toURI().toString()));
+				
+				pref.setTranslateX(110);
+				pref.setTranslateY(70);
+				pref.setFocusTraversable(true);
+				pref.setOnMouseEntered(Event -> r.setOnMouseClicked(null));
+				pref.setOnMouseExited(Event -> r.setOnMouseClicked(MouseEvent -> goToGarnish(recipe)));
+				pref.setOnMouseClicked(Event -> {
+					if(myPref != pref) {
+						Timeline animation = new Timeline (
+								new KeyFrame(Duration.millis(100), new KeyValue(pref.fitHeightProperty(), 20)),
+								new KeyFrame(Duration.millis(100), new KeyValue(pref.fitWidthProperty(), 20)),
+								new KeyFrame(Duration.millis(200), new KeyValue(pref.fitHeightProperty(), 40)),
+								new KeyFrame(Duration.millis(200), new KeyValue(pref.fitWidthProperty(), 40)),
+								new KeyFrame(Duration.millis(300), new KeyValue(pref.fitHeightProperty(), 20)),
+								new KeyFrame(Duration.millis(300), new KeyValue(pref.fitWidthProperty(), 20)),
+								new KeyFrame(Duration.millis(400), new KeyValue(pref.fitWidthProperty(), pref.getFitWidth())),
+								new KeyFrame(Duration.millis(400), new KeyValue(pref.fitHeightProperty(), pref.getFitHeight()))
+								);
+						animation.play();
+						pref.setImage(new Image(new File("src/visual/images/coeurorange.png").toURI().toString()));
+						myPref.setImage(new Image(new File("src/visual/images/coeurgris.png").toURI().toString()));
+						SignUpController.getAuthCusto().setFavoriteRecipe(recipe);
+						CustomerManagement.exportCustomer("customer.xml");
+						myPref = pref;
+					}
+					else {
+						pref.setImage(new Image(new File("src/visual/images/coeurgris.png").toURI().toString()));
+						SignUpController.getAuthCusto().setFavoriteRecipe(new Recipe());
+						CustomerManagement.exportCustomer("customer.xml");
+						myPref = new ImageView();
+					}
+				});
+				r.getChildren().add(pref);
+			}
 		}
 		
 	}	

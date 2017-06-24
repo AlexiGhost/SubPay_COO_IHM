@@ -151,12 +151,8 @@ public class AuthentificatedCustomer {
     public void delGarnishs(){
     	favoriteGarnish.clear();
     }
-    public void delGarnish(String garnishName){
-    	for(Garnish garnish : favoriteGarnish){
-    		if(garnish.getName() == garnishName){
-    			favoriteGarnish.remove(garnish);
-    		}
-    	}
+    public void delGarnish(Garnish g){
+    	this.favoriteGarnish.remove(g);
     }
 	//Order
 	public List<Order> getOrder() {

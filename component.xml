@@ -140,7 +140,7 @@
     </allergens>
     <price>9.49</price>
     <category>Mouais</category>
-    <available>true</available>
+    <available>false</available>
     <new>false</new>
   </recipe>
   <recipe classe="Recipe">

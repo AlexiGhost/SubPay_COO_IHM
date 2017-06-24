@@ -1,11 +1,15 @@
 package visual.customer;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
+import javafx.animation.KeyFrame;
+import javafx.animation.KeyValue;
+import javafx.animation.Timeline;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -18,7 +22,10 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
+import javafx.util.Duration;
+import model.CustomerManagement;
 import model.product.Drink;
+import model.product.composants.Bread;
 import model.product.composants.Sauce;
 import visual.customer.MenuController;
 
@@ -26,6 +33,7 @@ public class SauceController implements Initializable {
 	private static List<Sauce> sauceList = new ArrayList<Sauce>();
 	private	static int			 X = 1;
 	private	static int			 Y = 0;
+	private static ImageView	myPref = new ImageView();
     @FXML
     private TilePane sauceTile;
 
@@ -90,6 +98,66 @@ public class SauceController implements Initializable {
 				succes.setLayoutX(27);
 				succes.setLayoutY(25);
 				sau.getChildren().add(succes);
+			}
+			
+			//Si c'est une nouveauté
+			if(sauce.getNew()) {
+				Text nouveau = new Text("Nouveau !");
+				nouveau.setFont(new Font("Arial Black", 11));
+				nouveau.setFill(Color.DARKRED);
+				nouveau.setLayoutX(90);
+				nouveau.setLayoutY(17);
+				nouveau.setRotate(45);
+				sau.getChildren().add(nouveau);
+			}
+			
+			//Si c'est un client authentifié
+			ImageView pref;
+			if(HelloController.getOrder().getAuthCustomer()) {
+				if(SignUpController.getAuthCusto().getFavoriteSauce() != null) {
+					if(SignUpController.getAuthCusto().getFavoriteSauce().equals(sauce)){
+						SignUpController.getAuthCusto().setFavoriteSauce(sauce);
+						pref = new ImageView(new Image(new File("src/visual/images/coeurorange.png").toURI().toString()));
+						myPref = pref;
+					}
+					else
+						pref = new ImageView(new Image(new File("src/visual/images/coeurgris.png").toURI().toString()));
+				}
+				else
+					pref = new ImageView(new Image(new File("src/visual/images/coeurgris.png").toURI().toString()));
+				
+				pref.setTranslateX(110);
+				pref.setTranslateY(70);
+				pref.setFocusTraversable(true);
+				pref.setOnMouseEntered(Event -> sau.setOnMouseClicked(null));
+				pref.setOnMouseExited(Event -> sau.setOnMouseClicked(MouseEvent -> mySauces(bordure, sauce)));
+				pref.setOnMouseClicked(Event -> {
+					if(myPref != pref) {
+						Timeline animation = new Timeline (
+								new KeyFrame(Duration.millis(100), new KeyValue(pref.fitHeightProperty(), 20)),
+								new KeyFrame(Duration.millis(100), new KeyValue(pref.fitWidthProperty(), 20)),
+								new KeyFrame(Duration.millis(200), new KeyValue(pref.fitHeightProperty(), 40)),
+								new KeyFrame(Duration.millis(200), new KeyValue(pref.fitWidthProperty(), 40)),
+								new KeyFrame(Duration.millis(300), new KeyValue(pref.fitHeightProperty(), 20)),
+								new KeyFrame(Duration.millis(300), new KeyValue(pref.fitWidthProperty(), 20)),
+								new KeyFrame(Duration.millis(400), new KeyValue(pref.fitWidthProperty(), pref.getFitWidth())),
+								new KeyFrame(Duration.millis(400), new KeyValue(pref.fitHeightProperty(), pref.getFitHeight()))
+								);
+						animation.play();
+						pref.setImage(new Image(new File("src/visual/images/coeurorange.png").toURI().toString()));
+						myPref.setImage(new Image(new File("src/visual/images/coeurgris.png").toURI().toString()));
+						SignUpController.getAuthCusto().setFavoriteSauce(sauce);
+						CustomerManagement.exportCustomer("customer.xml");
+						myPref = pref;
+					}
+					else {
+						pref.setImage(new Image(new File("src/visual/images/coeurgris.png").toURI().toString()));
+						SignUpController.getAuthCusto().setFavoriteSauce(new Sauce());
+						CustomerManagement.exportCustomer("customer.xml");
+						myPref = new ImageView();
+					}
+				});
+				sau.getChildren().add(pref);
 			}
 			sauceTile.getChildren().add(sau);
 			
