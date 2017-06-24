@@ -77,13 +77,14 @@
     <phoneNumber />
     <password>Medusa81</password>
     <iceCubeNb>-1</iceCubeNb>
-    <fBread />
-    <fSauce />
+    <fBread>Italien</fBread>
+    <fSauce>Ketchup</fSauce>
     <fRecipe />
-    <fDrink />
+    <fDrink>Hein Klein</fDrink>
     <fGarnishs>
-      <fGarnish>Olive noire</fGarnish>
       <fGarnish>Laitue</fGarnish>
+      <fGarnish>Concombre</fGarnish>
+      <fGarnish>Tomate</fGarnish>
     </fGarnishs>
     <allergens />
   </customer>
@@ -94,14 +95,15 @@
     <phoneNumber />
     <password>testtest1</password>
     <iceCubeNb>-1</iceCubeNb>
-    <fBread>Parmesan Origan</fBread>
-    <fSauce>Miel Moutarde</fSauce>
-    <fRecipe>Poulet</fRecipe>
-    <fDrink>Hein Klein</fDrink>
+    <fBread>Blanc</fBread>
+    <fSauce>Ketchup</fSauce>
+    <fRecipe>MeetBall</fRecipe>
+    <fDrink />
     <fGarnishs>
       <fGarnish>Tomate</fGarnish>
-      <fGarnish>Mais</fGarnish>
       <fGarnish>Olive noire</fGarnish>
+      <fGarnish>Concombre</fGarnish>
+      <fGarnish>Laitue</fGarnish>
     </fGarnishs>
     <allergens />
   </customer>
