@@ -58,10 +58,12 @@ public class ControllerClient extends Application {
 		//Page Accueil
 		HomeController.getListPromo().addAll(ComponentManagement.getPromotions());
 		HomeController.getListNew().addAll(ComponentManagement.getNews());
+		HomeController.getListRecipe().addAll(ComponentManagement.getRecipes());
 		
 		//Page Accueil Auth
 		AuthHomeController.getListPromo().addAll(ComponentManagement.getPromotions());
 		AuthHomeController.getListNew().addAll(ComponentManagement.getNews());
+		AuthHomeController.getListRecipe().addAll(ComponentManagement.getRecipes());
 		
 		//Page Recipe
 		for (Recipe recipe : ComponentManagement.getRecipes()) {
@@ -74,16 +76,18 @@ public class ControllerClient extends Application {
 			}
 		}
 		
-		//Home
-		HomeController.getListRecipe().addAll(ComponentManagement.getRecipes());
 		//Page Garniture
 		GarnishController.getGarnishList().addAll(ComponentManagement.getGarnishs());
+		
 		//Page Sauce
 		SauceController.getSauceList().addAll(ComponentManagement.getSauces());
+		
 		//Page Boissons
 		DrinkController.getDrinkList().addAll(ComponentManagement.getDrinks());
+		
 		//Page Pains
 		BreadController.getBreadList().addAll(ComponentManagement.getBreads());
+		
 		//Page Allergenes
 		AllergenController.getAllergenList().addAll(ComponentManagement.getAllergens());
 	}

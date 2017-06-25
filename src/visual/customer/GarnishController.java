@@ -214,8 +214,8 @@ public class GarnishController implements Initializable {
 		Group acteur = new Group();
 		if(HomeController.getNewPromo() && HomeController.getSelectedComponent() != null && HomeController.getSelectedComponent().getClass().getName().equals("model.product.composants.Recipe")){
 			try {
-				acteur.getChildren().add(FXMLLoader.load(getClass().getResource("007 Pain.fxml")));
-				visual.ControllerClient.setScene(acteur, "SUBPAY - Pain");
+				acteur.getChildren().add(FXMLLoader.load(getClass().getResource("008 Recettes.fxml")));
+				visual.ControllerClient.setScene(acteur, "SUBPAY - Recettes");
 			} catch (IOException e) {
 				e.printStackTrace();
 			}

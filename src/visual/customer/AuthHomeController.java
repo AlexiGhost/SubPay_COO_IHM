@@ -32,6 +32,7 @@ import model.product.composants.Sauce;
 
 public class AuthHomeController implements Initializable{
 	private static 	List<Promotion>	ListPromo = new ArrayList<Promotion>();
+	private static 	List<Recipe>	ListRecipe = new ArrayList<Recipe>();
 	private static 	List<Composant>	ListNew = new ArrayList<Composant>();
 	private static 	boolean 		newPromo = false;
 	private static 	Composant		selectedComponent;
@@ -52,6 +53,9 @@ public class AuthHomeController implements Initializable{
 		displayOrder();
 	}
 	
+	public static List<Recipe> getListRecipe() {
+		return ListRecipe;
+	}
 	public static List<Composant> getListNew() {
 		return ListNew;
 	}
@@ -116,6 +120,25 @@ public class AuthHomeController implements Initializable{
 			Text comment = new Text("sur " + promotion.getCategory() + promotion.getRecipe() + " !");
 			comment.setLayoutX(8);
 			comment.setLayoutY(50);
+			
+			//Vérif disponibilité
+			int i = 0;
+			while(i < ListRecipe.size() - 1 && !promotion.getRecipe().equals(ListRecipe.get(i).getName()))
+				i++;
+			if(promotion.getRecipe().equals(ListRecipe.get(i).getName())) {
+				bordure.setOpacity(0.3);
+				bordure.setFill(Color.YELLOWGREEN);
+				title.setOpacity(0.3);
+				percent.setOpacity(0.3);
+				comment.setOpacity(0.3);
+				Text succes = new Text("Victime de\nson succès");
+				succes.setFont(new Font("Arial Black", 14));
+				succes.setFill(Color.BLACK);
+				succes.setOpacity(1);
+				succes.setLayoutX(27);
+				succes.setLayoutY(25);
+				promo.getChildren().add(succes);
+			}
 			
 			//MAJ promoTiled
 			promo.getChildren().add(comment);
@@ -182,15 +205,16 @@ public class AuthHomeController implements Initializable{
 		//Pour l'affichage des produits
 		for (Product product : HelloController.getOrder().getProducts()) {
 			total += product.getRecipe().getPrice();
+			Group title = new Group();
+			Text textSupTitle = new Text("x");
+			textSupTitle.setFill(Color.RED);
+			textSupTitle.setFont(new Font("Arial Black", 20));
+			textSupTitle.setTranslateX(-30);
+			textSupTitle.setOnMouseClicked(Event -> deleteProduct(product));
+			title.getChildren().add(textSupTitle);
+			
 			//Si c'est une assiette
 			if(product.getPlate()){
-				Group title = new Group();
-				Text textSupTitle = new Text("x");
-				textSupTitle.setFill(Color.RED);
-				textSupTitle.setFont(new Font("Arial Black", 20));
-				textSupTitle.setTranslateX(-30);
-				textSupTitle.setOnMouseClicked(Event -> deleteProduct(product));
-				title.getChildren().add(textSupTitle);
 				
 				Text textTitle = new Text("Plat "+product.getRecipe().getName()+" ("+product.getSize()+")  "+product.getRecipe().getPrice()+"€");
 				textTitle.setFont(new Font("Arial Black",14));
@@ -198,21 +222,14 @@ public class AuthHomeController implements Initializable{
 				title.getChildren().add(textTitle);
 				orderTilePane.getChildren().add(title);
 
-			}else{
-				Group title = new Group();
-				Text textSupTitle = new Text("x");
-				textSupTitle.setFill(Color.RED);
-				textSupTitle.setFont(new Font("Arial Black", 20));
-				textSupTitle.setTranslateX(-30);
-				textSupTitle.setOnMouseClicked(Event -> deleteProduct(product));
-				title.getChildren().add(textSupTitle);
-				
+			}else{				
 				Text textTitle = new Text("Sandwich "+product.getRecipe().getName()+" ("+product.getSize()+")  "+product.getRecipe().getPrice()+"€");
 				textTitle.setFont(new Font("Arial Black",14));
 				textTitle.setWrappingWidth(250);
 				title.getChildren().add(textTitle);
 				orderTilePane.getChildren().add(title);
-				
+			}
+			if(product.getBread() != null){
 				Text textBread = new Text("\t"+product.getBread().getName());
 				textBread.setWrappingWidth(280);
 				orderTilePane.getChildren().add(textBread);
@@ -262,7 +279,8 @@ public class AuthHomeController implements Initializable{
 				textTitle.setFont(new Font("Arial Black",14));
 				textTitle.setWrappingWidth(280);
 				orderTilePane.getChildren().add(textTitle);
-				
+			}
+			if(menu.getProduct().getBread() != null){
 				Text textBread = new Text("\t"+menu.getProduct().getBread().getName());
 				textBread.setWrappingWidth(280);
 				orderTilePane.getChildren().add(textBread);
@@ -325,11 +343,15 @@ public class AuthHomeController implements Initializable{
 	
 	// Bouton "Payer"
 	public void goToPayer() throws IOException { 
+		javax.swing.JOptionPane.showMessageDialog(null, "Bon de commande\nn°"+Order.getOldNb()); 
+		HelloController.getOrder().getMenus().clear();
+		HelloController.getOrder().getProducts().clear();
+		Order.setOldNb(Order.getOldNb()+1);
 		Group acteur = new Group(); 
 		acteur.getChildren().add(
-		FXMLLoader.load(getClass().getResource("012 Payer.fxml"))
+		FXMLLoader.load(getClass().getResource("001 Bonjour.fxml"))
 		);
-		visual.ControllerClient.setScene(acteur, "SUBPAY - Paiement");
+		visual.ControllerClient.setScene(acteur, "SUBPAY - Bonjour");
 	}
 	//Bouton "Composer"
 	public void goToMenu() throws IOException { 

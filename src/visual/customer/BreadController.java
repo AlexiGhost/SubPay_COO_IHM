@@ -34,9 +34,9 @@ public class BreadController implements Initializable {
 	@FXML
     private TilePane breadTile;
 	@FXML
-    private Text title;
+    private static Text title;
 	
-	public Text getTitle() {
+	public static Text getTitle() {
 		return title;
 	}
 	
@@ -189,29 +189,39 @@ public class BreadController implements Initializable {
 		X = 1;
 		Y = 0;
 		if(b.getAvailability()){
-			if(MenuController.getChoice())
+			if(MenuController.getChoice()){
 				MenuController.getMenu().getProduct().setBread(b);
-			else
-				MenuController.getProduct().setBread(b);
-			Group acteur = new Group();
-			if(HomeController.getNewPromo() && HomeController.getSelectedComponent() != null && HomeController.getSelectedComponent().getClass().getName().equals("model.product.composants.Recipe")){
-				if(MenuController.getChoice())
-					MenuController.getMenu().getProduct().setRecipe((Recipe) HomeController.getSelectedComponent());
-				else
-					MenuController.getProduct().setRecipe((Recipe) HomeController.getSelectedComponent());
-				try {
-					acteur.getChildren().add(FXMLLoader.load(getClass().getResource("009 Garnitures.fxml")));
-					visual.ControllerClient.setScene(acteur, "SUBPAY - Garnitures");
-				} catch (IOException e) {
-					e.printStackTrace();
+				Group acteur = new Group();
+				if(MenuController.getMenu().getProduct().getPlate()){
+					try {
+						acteur.getChildren().add(FXMLLoader.load(getClass().getResource("011 Boissons (Menu).fxml")));
+						visual.ControllerClient.setScene(acteur, "SUBPAY - Boissons");
+					} catch (IOException e) {
+						e.printStackTrace();
+					}
+				}else{
+					try {
+						acteur.getChildren().add(FXMLLoader.load(getClass().getResource("008 Recettes.fxml")));
+						visual.ControllerClient.setScene(acteur, "SUBPAY - Recettes");
+					} catch (IOException e) {
+						e.printStackTrace();
+					}
 				}
 			}
 			else{
-				try {
-					acteur.getChildren().add(FXMLLoader.load(getClass().getResource("008 Recettes.fxml")));
-					visual.ControllerClient.setScene(acteur, "SUBPAY - Recettes");
-				} catch (IOException e) {
-					e.printStackTrace();
+				MenuController.getProduct().setBread(b);
+				Group acteur = new Group();
+				if(MenuController.getProduct().getPlate()){
+					HelloController.getOrder().addProduct(MenuController.getProduct());
+					javax.swing.JOptionPane.showMessageDialog(null, "Commande Validée"); 
+					goToHome();
+				}else{
+					try {
+						acteur.getChildren().add(FXMLLoader.load(getClass().getResource("008 Recettes.fxml")));
+						visual.ControllerClient.setScene(acteur, "SUBPAY - Recettes");
+					} catch (IOException e) {
+						e.printStackTrace();
+					}
 				}
 			}
 		}

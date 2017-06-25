@@ -43,46 +43,38 @@ public class FavoriteOrder implements Initializable {
 	public void displayOrder(){
 		//Pour l'affichage des produits
 		for(Order order : SignUpController.getAuthCusto().getOrder()){
+			double total = 0;
 			for (Product product : order.getProducts()) {
+				total += product.getRecipe().getPrice();
+				
+				Group title = new Group();
+				Text textSupTitle = new Text("x");
+				textSupTitle.setFill(Color.RED);
+				textSupTitle.setFont(new Font("Arial Black", 20));
+				textSupTitle.setTranslateX(-30);
+				textSupTitle.setOnMouseClicked(Event -> {
+					order.getProducts().remove(product);
+					orderTilePane.getChildren().clear();
+					displayOrder();
+				});
+				title.getChildren().add(textSupTitle);
+				
 				//Si c'est une assiette
 				if(product.getPlate()){
-					Group title = new Group();
-					Text textSupTitle = new Text("x");
-					textSupTitle.setFill(Color.RED);
-					textSupTitle.setFont(new Font("Arial Black", 20));
-					textSupTitle.setTranslateX(-30);
-					textSupTitle.setOnMouseClicked(Event -> {
-						order.getProducts().remove(product);
-						orderTilePane.getChildren().clear();
-						displayOrder();
-					});
-					title.getChildren().add(textSupTitle);
-					
 					Text textTitle = new Text("Plat "+product.getRecipe().getName()+" ("+product.getSize()+")  "+product.getRecipe().getPrice()+"€");
 					textTitle.setFont(new Font("Arial Black",14));
 					textTitle.setWrappingWidth(920);
 					title.getChildren().add(textTitle);
 					orderTilePane.getChildren().add(title);
 
-				}else{
-					Group title = new Group();
-					Text textSupTitle = new Text("x");
-					textSupTitle.setFill(Color.RED);
-					textSupTitle.setFont(new Font("Arial Black", 20));
-					textSupTitle.setTranslateX(-30);
-					textSupTitle.setOnMouseClicked(Event -> {
-						order.getProducts().remove(product);
-						orderTilePane.getChildren().clear();
-						displayOrder();
-					});
-					title.getChildren().add(textSupTitle);
-					
+				}else{ //Si c'est un sandwich
 					Text textTitle = new Text("Sandwich "+product.getRecipe().getName()+" ("+product.getSize()+")  "+product.getRecipe().getPrice()+"€");
 					textTitle.setFont(new Font("Arial Black",14));
 					textTitle.setWrappingWidth(920);
 					title.getChildren().add(textTitle);
 					orderTilePane.getChildren().add(title);
-					
+				}
+				if(product.getBread() != null){
 					Text textBread = new Text("\t"+product.getBread().getName());
 					textBread.setWrappingWidth(950);
 					orderTilePane.getChildren().add(textBread);
@@ -105,6 +97,7 @@ public class FavoriteOrder implements Initializable {
 				
 			//Pour l'affichage des menus
 			for (Menu menu : order.getMenus()) {
+				total += menu.getProduct().getRecipe().getPrice() + Menu.getMenuPrice();
 				Group title = new Group();
 				Text textSupTitle = new Text("x");
 				textSupTitle.setFill(Color.RED);
@@ -136,6 +129,8 @@ public class FavoriteOrder implements Initializable {
 					textTitle.setWrappingWidth(950);
 					orderTilePane.getChildren().add(textTitle);
 					
+				}
+				if(menu.getProduct().getBread() != null){
 					Text textBread = new Text("\t"+menu.getProduct().getBread().getName());
 					textBread.setWrappingWidth(950);
 					orderTilePane.getChildren().add(textBread);
@@ -165,6 +160,11 @@ public class FavoriteOrder implements Initializable {
 			}
 			
 			if(!(order.getMenus().size() == 0 && order.getProducts().size() ==0)){
+				Text textTotal = new Text("TOTAL\t"+total+"€");
+				textTotal.setFont(new Font("Arial Black",22));
+				textTotal.setWrappingWidth(950);
+				orderTilePane.getChildren().add(textTotal);
+				
 				Button b = new Button();
 				b.setText("Commander à nouveau");
 				b.setFont(new Font("Arial", 20));

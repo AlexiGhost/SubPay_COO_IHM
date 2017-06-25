@@ -218,15 +218,16 @@ public class SauceController implements Initializable {
 		Y = 0;
 		
 		if(MenuController.getChoice()){ 
-			Group acteur = new Group();
 			if(MenuController.getMenu().getProduct().getPlate()){
+				Group acteur = new Group();
 				try {
-					acteur.getChildren().add(FXMLLoader.load(getClass().getResource("011 Boissons (Menu).fxml")));
-					visual.ControllerClient.setScene(acteur, "SUBPAY - Boissons");
+					acteur.getChildren().add(FXMLLoader.load(getClass().getResource("018 Choix pain.fxml")));
+					visual.ControllerClient.setScene(acteur, "SUBPAY - Choix du pain");
 				} catch (IOException e) {
 					e.printStackTrace();
-				} 
+				}
 			}else{
+				Group acteur = new Group();
 				try {
 					acteur.getChildren().add(FXMLLoader.load(getClass().getResource("011 Boissons (Menu).fxml")));
 					visual.ControllerClient.setScene(acteur, "SUBPAY - Boissons");
@@ -235,25 +236,38 @@ public class SauceController implements Initializable {
 				}
 			}
 		}
-		else if(HelloController.getOrder().getAuthCustomer()){ //S'il n'y a pas de menu mais que le client est authentifie
-			HelloController.getOrder().addProduct(MenuController.getProduct());
-			Group acteur = new Group();
-			try {
-				acteur.getChildren().add(FXMLLoader.load(getClass().getResource("004.1 Accueil (authentifier).fxml")));
-				visual.ControllerClient.setScene(acteur, "SUBPAY - Accueil Auth");
-			} catch (IOException e) {
-				e.printStackTrace();
+		else {
+			if(MenuController.getProduct().getPlate()){
+				Group acteur = new Group();
+				try {
+					acteur.getChildren().add(FXMLLoader.load(getClass().getResource("018 Choix pain.fxml")));
+					visual.ControllerClient.setScene(acteur, "SUBPAY - Choix du pain");
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
 			}
-			
-		}
-		else{//S'il n'y a pas de menu et que le client n'est pas authentifie
-			HelloController.getOrder().addProduct(MenuController.getProduct());
-			Group acteur = new Group();
-			try {
-				acteur.getChildren().add(FXMLLoader.load(getClass().getResource("004 Accueil.fxml")));
-				visual.ControllerClient.setScene(acteur, "SUBPAY - Accueil");
-			} catch (IOException e) {
-				e.printStackTrace();
+			else if(HelloController.getOrder().getAuthCustomer()){ //S'il n'y a pas de menu mais que le client est authentifie
+				HelloController.getOrder().addProduct(MenuController.getProduct());
+				javax.swing.JOptionPane.showMessageDialog(null, "Commande Validée"); 
+				Group acteur = new Group();
+				try {
+					acteur.getChildren().add(FXMLLoader.load(getClass().getResource("004.1 Accueil (authentifier).fxml")));
+					visual.ControllerClient.setScene(acteur, "SUBPAY - Accueil Auth");
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+				
+			}
+			else{//S'il n'y a pas de menu et que le client n'est pas authentifie
+				HelloController.getOrder().addProduct(MenuController.getProduct());
+				javax.swing.JOptionPane.showMessageDialog(null, "Commande Validée"); 
+				Group acteur = new Group();
+				try {
+					acteur.getChildren().add(FXMLLoader.load(getClass().getResource("004 Accueil.fxml")));
+					visual.ControllerClient.setScene(acteur, "SUBPAY - Accueil");
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
 			}
 		}
 	}

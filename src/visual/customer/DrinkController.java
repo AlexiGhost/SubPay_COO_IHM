@@ -212,6 +212,7 @@ public class DrinkController implements Initializable {
 	    		MenuController.getMenu().setIceCubeNb(Math.toIntExact(Math.round(SL_IceCube.getValue())));
 	    		//On ajoute le menu a la commande
 	    		HelloController.getOrder().addMenu(MenuController.getMenu());
+	    		javax.swing.JOptionPane.showMessageDialog(null, "Commande Validée"); 
 	    		goToHome();
 	    	}
 		} else {

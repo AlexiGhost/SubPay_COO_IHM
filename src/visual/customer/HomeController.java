@@ -19,8 +19,6 @@ import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
-import model.product.ComponentManagement;
-import model.product.Product;
 import model.product.composants.*;
 import model.product.*;
 //TODO Afficher la commande en cours
@@ -212,37 +210,31 @@ public class HomeController implements Initializable {
 		//Pour l'affichage des produits
 		for (Product product : HelloController.getOrder().getProducts()) {
 			total += product.getRecipe().getPrice();
+			Group title = new Group();
+			Text textSupTitle = new Text("x");
+			textSupTitle.setFill(Color.RED);
+			textSupTitle.setFont(new Font("Arial Black", 20));
+			textSupTitle.setTranslateX(-30);
+			textSupTitle.setOnMouseClicked(Event -> deleteProduct(product));
+			title.getChildren().add(textSupTitle);
+			
 			//Si c'est une assiette
 			if(product.getPlate()){
-				Group title = new Group();
-				Text textSupTitle = new Text("x");
-				textSupTitle.setFill(Color.RED);
-				textSupTitle.setFont(new Font("Arial Black", 20));
-				textSupTitle.setTranslateX(-30);
-				textSupTitle.setOnMouseClicked(Event -> deleteProduct(product));
-				title.getChildren().add(textSupTitle);
-				
 				Text textTitle = new Text("Plat "+product.getRecipe().getName()+" ("+product.getSize()+")  "+product.getRecipe().getPrice()+"€");
 				textTitle.setFont(new Font("Arial Black",14));
 				textTitle.setWrappingWidth(250);
 				title.getChildren().add(textTitle);
 				orderTilePane.getChildren().add(title);
 
-			}else{
-				Group title = new Group();
-				Text textSupTitle = new Text("x");
-				textSupTitle.setFill(Color.RED);
-				textSupTitle.setFont(new Font("Arial Black", 20));
-				textSupTitle.setTranslateX(-30);
-				textSupTitle.setOnMouseClicked(Event -> deleteProduct(product));
-				title.getChildren().add(textSupTitle);
-				
+			}else{				
 				Text textTitle = new Text("Sandwich "+product.getRecipe().getName()+" ("+product.getSize()+")  "+product.getRecipe().getPrice()+"€");
 				textTitle.setFont(new Font("Arial Black",14));
 				textTitle.setWrappingWidth(250);
 				title.getChildren().add(textTitle);
 				orderTilePane.getChildren().add(title);
 				
+			}
+			if(product.getBread() != null){
 				Text textBread = new Text("\t"+product.getBread().getName());
 				textBread.setWrappingWidth(280);
 				orderTilePane.getChildren().add(textBread);
@@ -292,7 +284,8 @@ public class HomeController implements Initializable {
 				textTitle.setFont(new Font("Arial Black",14));
 				textTitle.setWrappingWidth(280);
 				orderTilePane.getChildren().add(textTitle);
-				
+			}
+			if(menu.getProduct().getBread() != null){
 				Text textBread = new Text("\t"+menu.getProduct().getBread().getName());
 				textBread.setWrappingWidth(280);
 				orderTilePane.getChildren().add(textBread);
@@ -380,11 +373,15 @@ public class HomeController implements Initializable {
 	}
 		
 	public void goToPayer() throws IOException {
+		javax.swing.JOptionPane.showMessageDialog(null, "Bon de commande\nn°"+Order.getOldNb()); 
+		HelloController.getOrder().getMenus().clear();
+		HelloController.getOrder().getProducts().clear();
+		Order.setOldNb(Order.getOldNb()+1);
 		Group acteur = new Group();
 		acteur.getChildren().add(
-		FXMLLoader.load(getClass().getResource("012 Payer.fxml"))
+		FXMLLoader.load(getClass().getResource("001 Bonjour.fxml"))
 		);
-		visual.ControllerClient.setScene(acteur, "SUBPAY - Paiement");
+		visual.ControllerClient.setScene(acteur, "SUBPAY - Bonjour");
 	}
 	public void goToAllergen() throws IOException {
 		AllergenController.setPreviousUI("004 Accueil.fxml");

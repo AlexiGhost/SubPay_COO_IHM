@@ -1,16 +1,32 @@
 package visual.customer;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
+
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Group;
+import javafx.scene.text.Font;
+import javafx.scene.text.Text;
 import model.product.ComponentManagement;
 import model.product.Menu;
 import model.product.Product;
 
-public class MenuController {
+public class MenuController implements Initializable {
 	private static boolean choice;
 	private static Product product;
 	private static Menu menu;
+	
+	@FXML
+    private Text price;
+	
+	@Override
+	public void initialize(URL arg0, ResourceBundle arg1) {
+		price.setText("+ "+Menu.getMenuPrice()+"€");
+		price.setFont(new Font("Arial Black", 28));
+	}
 	
 	public void goToSizeWithMenu(){
 		choice = true; //On enregistre le choix du menu

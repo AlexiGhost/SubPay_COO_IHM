@@ -265,7 +265,7 @@ public class CustomerManagement {
 							eProduct.setAttribute(aPlate);
 						}
 						//ajout bread dans produit
-						if(!plate){
+						if(bread != null){
 							Element eBread = new Element("bread");
 							eBread.setText(bread.getName());
 							eProduct.addContent(eBread);

@@ -23,6 +23,7 @@ import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.util.Duration;
 import model.CustomerManagement;
+import model.product.Menu;
 import model.product.composants.Promotion;
 import model.product.composants.Recipe;
 import model.product.composants.Sauce;
@@ -57,6 +58,15 @@ public class RecipeController  implements Initializable{
     private Text promoMouais;
     @FXML
     private Text promoCaPasse;
+    
+    @FXML
+    private Text priceBof;
+
+    @FXML
+    private Text priceMouais;
+
+    @FXML
+    private Text priceCaPasse;
 	
 	private  static List<Recipe> bofList = new ArrayList<Recipe>();
 	private  static List<Recipe> mouaisList = new ArrayList<Recipe>();
@@ -86,7 +96,7 @@ public class RecipeController  implements Initializable{
 			promoBof.setFont(new Font("Arial Black", 40));
 			promoBof.setFill(Color.DARKGOLDENROD);
 		}
-		displayRecipe(bofList, bofTile, bofScroll);
+		displayRecipe(bofList, bofTile, bofScroll, priceBof);
 		Text bof = new Text("BOF");
 		bof.setFont(new Font("Arial Black", 100));
 		bof.setFill(Color.SEAGREEN);
@@ -103,7 +113,7 @@ public class RecipeController  implements Initializable{
 			promoBof.setFont(new Font("Arial Black", 40));
 			promoBof.setFill(Color.DARKGOLDENROD);
 		}
-		displayRecipe(mouaisList, mouaisTile, mouaisScroll);
+		displayRecipe(mouaisList, mouaisTile, mouaisScroll, priceMouais);
 		Text mouais = new Text("MOUAIS");
 		mouais.setFont(new Font("Arial Black", 80));
 		mouais.setFill(Color.SEAGREEN);
@@ -120,7 +130,7 @@ public class RecipeController  implements Initializable{
 			promoBof.setFont(new Font("Arial Black", 40));
 			promoBof.setFill(Color.DARKGOLDENROD);
 		}
-		displayRecipe(caPasseList, caPasseTile, caPasseScroll);
+		displayRecipe(caPasseList, caPasseTile, caPasseScroll, priceCaPasse);
 		Text capasse = new Text("CA PASSE");
 		capasse.setFont(new Font("Arial Black", 80));
 		capasse.setFill(Color.SEAGREEN);
@@ -129,8 +139,9 @@ public class RecipeController  implements Initializable{
 		categorieCaPasse.getChildren().add(capasse);
 	}
 
-	public void displayRecipe(List<Recipe> listRecipe, TilePane tilePane, ScrollPane scrollPane){
+	public void displayRecipe(List<Recipe> listRecipe, TilePane tilePane, ScrollPane scrollPane, Text textPrice){
 		java.text.DecimalFormat df = new java.text.DecimalFormat("0.##");
+		Recipe exRecipe = new Recipe();
 		for (Recipe recipe : listRecipe) {
 			//Bordures
 			Rectangle bordure = new Rectangle(0, -15, 150, 120);
@@ -193,13 +204,14 @@ public class RecipeController  implements Initializable{
 			}
 			if(promotionList.get(i).getRecipe().equals(recipe.getName())) {
 				recipe.setPrice((recipe.getPrice()*(100-promotionList.get(i).getPercentage()))/100);
-				System.out.println(recipe.getPrice());
 				Text promo = new Text("-" + String.valueOf(promotionList.get(i).getPercentage() + "% ! "+df.format(recipe.getPrice()) + "€"));
 				promo.setFont(new Font("Arial Black", 16));
 				promo.setFill(Color.DARKGOLDENROD);
 				promo.setLayoutX(10);
 				promo.setLayoutY(90);
 				r.getChildren().add(promo);
+			}else{
+				exRecipe = recipe;
 			}
 			
 			//MAJ promoTiled
@@ -256,6 +268,9 @@ public class RecipeController  implements Initializable{
 				r.getChildren().add(pref);
 			}
 		}
+		
+		textPrice.setText(exRecipe.getPrice()+"€");
+		textPrice.setFont(new Font("Arial Black", 24));
 		
 	}	
 
