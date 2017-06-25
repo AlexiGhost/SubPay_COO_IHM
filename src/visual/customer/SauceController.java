@@ -216,13 +216,23 @@ public class SauceController implements Initializable {
 	public void next() {
 		X = 1;
 		Y = 0;
+		
 		if(MenuController.getChoice()){ 
 			Group acteur = new Group();
-			try {
-				acteur.getChildren().add(FXMLLoader.load(getClass().getResource("011 Boissons (Menu).fxml")));
-				visual.ControllerClient.setScene(acteur, "SUBPAY - Boissons");
-			} catch (IOException e) {
-				e.printStackTrace();
+			if(MenuController.getMenu().getProduct().getPlate()){
+				try {
+					acteur.getChildren().add(FXMLLoader.load(getClass().getResource("011 Boissons (Menu).fxml")));
+					visual.ControllerClient.setScene(acteur, "SUBPAY - Boissons");
+				} catch (IOException e) {
+					e.printStackTrace();
+				} 
+			}else{
+				try {
+					acteur.getChildren().add(FXMLLoader.load(getClass().getResource("011 Boissons (Menu).fxml")));
+					visual.ControllerClient.setScene(acteur, "SUBPAY - Boissons");
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
 			}
 		}
 		else if(HelloController.getOrder().getAuthCustomer()){ //S'il n'y a pas de menu mais que le client est authentifie

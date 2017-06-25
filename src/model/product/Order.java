@@ -104,5 +104,17 @@ public Order(boolean authCustomer) {
 	public static void setOldNb(int oldNb) {
 		Order.oldNb = oldNb;
 	}
+	public Order clone(){
+		Order o = new Order();
+		
+		for (Menu menu : menus) {
+			o.getMenus().add(menu);
+		}
+		for (Product product : products) {
+			o.getProducts().add(product);
+		}
+		
+		return o;
+	}
 	
 }

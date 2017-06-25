@@ -33,6 +33,12 @@ public class BreadController implements Initializable {
 	
 	@FXML
     private TilePane breadTile;
+	@FXML
+    private Text title;
+	
+	public Text getTitle() {
+		return title;
+	}
 	
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		displayBreads();

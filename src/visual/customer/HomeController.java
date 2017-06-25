@@ -145,7 +145,7 @@ public class HomeController implements Initializable {
 			});
 			
 			//Bordures
-			Rectangle bordure = new Rectangle(0, -15, 150, 120);
+			Rectangle bordure = new Rectangle(0, -15, 150, 130);
 			bordure.setFill(Color.TRANSPARENT);
 			bordure.setStroke(Color.LIGHTGREEN);
 			bordure.setStrokeWidth(4.0);
@@ -157,9 +157,24 @@ public class HomeController implements Initializable {
 			
 			//Image nouveauté
 			ImageView img = new ImageView(new Image("file:src\\visual\\images\\"+nouveaute.getPhoto()));
-			img.setFitHeight(100);
+			img.setFitHeight(113);
 			img.setFitWidth(150);
 			nouveau.getChildren().add(img);
+			
+			//Vérif disponibilité
+			if(!nouveaute.getAvailability()) {
+				bordure.setOpacity(0.3);
+				bordure.setFill(Color.YELLOWGREEN);
+				title.setOpacity(0.3);
+				img.setOpacity(0.3);
+				Text succes = new Text("Victime de\nson succès");
+				succes.setFont(new Font("Arial Black", 14));
+				succes.setFill(Color.BLACK);
+				succes.setOpacity(1);
+				succes.setLayoutX(27);
+				succes.setLayoutY(25);
+				nouveau.getChildren().add(succes);
+			}
 			
 			//MAJ promoTiled
 			nouveau.getChildren().add(title);
@@ -170,25 +185,40 @@ public class HomeController implements Initializable {
 	}
 	
 	public void displayOrder(){
+		double total = 0;
 		//Pour l'affichage des produits
 		for (Product product : HelloController.getOrder().getProducts()) {
+			total += product.getRecipe().getPrice();
 			//Si c'est une assiette
 			if(product.getPlate()){
+				Group title = new Group();
 				Text textSupTitle = new Text("x");
-				textSupTitle.setFont(new Font("Arial Black",16));
-				textSupTitle.setWrappingWidth(10);
-				orderTilePane.getChildren().add(textSupTitle);
-				//textSupTitle.setStyle("-fx setTextfield");;
+				textSupTitle.setFill(Color.RED);
+				textSupTitle.setFont(new Font("Arial Black", 20));
+				textSupTitle.setTranslateX(-30);
+				textSupTitle.setOnMouseClicked(Event -> deleteProduct(product));
+				title.getChildren().add(textSupTitle);
+				
 				Text textTitle = new Text("Plat "+product.getRecipe().getName()+" ("+product.getSize()+")  "+product.getRecipe().getPrice()+"€");
-				textTitle.setFont(new Font("Arial Black",16));
+				textTitle.setFont(new Font("Arial Black",14));
 				textTitle.setWrappingWidth(250);
-				orderTilePane.getChildren().add(textTitle);
+				title.getChildren().add(textTitle);
+				orderTilePane.getChildren().add(title);
 
 			}else{
+				Group title = new Group();
+				Text textSupTitle = new Text("x");
+				textSupTitle.setFill(Color.RED);
+				textSupTitle.setFont(new Font("Arial Black", 20));
+				textSupTitle.setTranslateX(-30);
+				textSupTitle.setOnMouseClicked(Event -> deleteProduct(product));
+				title.getChildren().add(textSupTitle);
+				
 				Text textTitle = new Text("Sandwich "+product.getRecipe().getName()+" ("+product.getSize()+")  "+product.getRecipe().getPrice()+"€");
-				textTitle.setFont(new Font("Arial Black",16));
-				textTitle.setWrappingWidth(280);
-				orderTilePane.getChildren().add(textTitle);
+				textTitle.setFont(new Font("Arial Black",14));
+				textTitle.setWrappingWidth(250);
+				title.getChildren().add(textTitle);
+				orderTilePane.getChildren().add(title);
 				
 				Text textBread = new Text("\t"+product.getBread().getName());
 				textBread.setWrappingWidth(280);
@@ -210,23 +240,33 @@ public class HomeController implements Initializable {
 			orderTilePane.getChildren().add(separation);
 		}
 			
-		//Pour l'affachige des menus
+		//Pour l'affichage des menus
 		for (Menu menu : HelloController.getOrder().getMenus()) {
+			total += menu.getProduct().getRecipe().getPrice()+Menu.getMenuPrice();
+			Group title = new Group();
+			Text textSupTitle = new Text("x");
+			textSupTitle.setFill(Color.RED);
+			textSupTitle.setFont(new Font("Arial Black", 20));
+			textSupTitle.setTranslateX(-30);
+			textSupTitle.setOnMouseClicked(Event -> deleteMenu(menu));
+			title.getChildren().add(textSupTitle);
+			
 			Text textMenu = new Text("Menu\t"+(menu.getProduct().getRecipe().getPrice()+Menu.getMenuPrice())+"€");
 			textMenu.setFont(new Font("Arial Black",18));
-			textMenu.setWrappingWidth(280);
-			orderTilePane.getChildren().add(textMenu);
+			textMenu.setWrappingWidth(250);
+			title.getChildren().add(textMenu);
+			orderTilePane.getChildren().add(title);
 			
 			//Si c'est une assiette
 			if(menu.getProduct().getPlate()){
 				Text textTitle = new Text("Plat "+menu.getProduct().getRecipe().getName()+" ("+menu.getProduct().getSize()+")");
-				textTitle.setFont(new Font("Arial Black",16));
+				textTitle.setFont(new Font("Arial Black",14));
 				textTitle.setWrappingWidth(280);
 				orderTilePane.getChildren().add(textTitle);
 
 			}else{ //Si c'est un sandwich
 				Text textTitle = new Text("Sandwich "+menu.getProduct().getRecipe().getName()+" ("+menu.getProduct().getSize()+")");
-				textTitle.setFont(new Font("Arial Black",16));
+				textTitle.setFont(new Font("Arial Black",14));
 				textTitle.setWrappingWidth(280);
 				orderTilePane.getChildren().add(textTitle);
 				
@@ -257,7 +297,25 @@ public class HomeController implements Initializable {
 			separation.setEndX(280);
 			orderTilePane.getChildren().add(separation);
 		}
+		if(!(HelloController.getOrder().getMenus().size()==0 && HelloController.getOrder().getProducts().size()==0)){			
+			Text textTotal = new Text("TOTAL\t"+total+"€");
+			textTotal.setFont(new Font("Arial Black",22));
+			textTotal.setWrappingWidth(280);
+			orderTilePane.getChildren().add(textTotal);
+		}
 		
+	}
+	
+	public void deleteProduct(Product p){
+		HelloController.getOrder().getProducts().remove(p);
+		orderTilePane.getChildren().clear();
+		displayOrder();
+	}
+	
+	public void deleteMenu(Menu m){
+		HelloController.getOrder().getMenus().remove(m);
+		orderTilePane.getChildren().clear();
+		displayOrder();
 	}
 	
 	public void newPromoChosen(Composant c) throws IOException{

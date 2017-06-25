@@ -3,7 +3,7 @@ package model.product.composants;
 public class Promotion {
 	private String name;
     private String recipe;
-    private String category;
+    private String category; //"Mouais", "Bof", "Ca Passe"
     private double percentage;
     private boolean authCustomer;
     private String date;

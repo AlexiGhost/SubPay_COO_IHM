@@ -18,6 +18,9 @@ public class HelloController {
 	public static Order getOrder() {
 		return order;
 	}
+	public static void setOrder(Order order) {
+		HelloController.order = order;
+	}
 	//AllergenList
 	public static List<String> getAllergenList() {
 		return allergenList;

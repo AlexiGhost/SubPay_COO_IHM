@@ -265,9 +265,11 @@ public class CustomerManagement {
 							eProduct.setAttribute(aPlate);
 						}
 						//ajout bread dans produit
-						Element eBread = new Element("bread");
-						eBread.setText(bread.getName());
-						eProduct.addContent(eBread);
+						if(!plate){
+							Element eBread = new Element("bread");
+							eBread.setText(bread.getName());
+							eProduct.addContent(eBread);
+						}
 						//ajout recipe dans produit
 						Element eRecipe = new Element("recipe");
 						eRecipe.setText(recipe.getName());
