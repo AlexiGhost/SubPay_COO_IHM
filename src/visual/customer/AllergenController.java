@@ -17,6 +17,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
+import model.CustomerManagement;
 import model.product.composants.Sauce;
 
 public class AllergenController implements Initializable {
@@ -52,11 +53,10 @@ for (String allergen : allergenList) {
 			//Afficher en rouge les allergens enregistres par le client authentifie
 			if(HelloController.getOrder().getAuthCustomer()){
 				for(String allergenAuthCusto : SignUpController.getAuthCusto().getAllergens()){
-					if(allergenAuthCusto.equals(allergen))
-						bordure.setStroke(Color.RED);
+					HelloController.getAllergenList().add(allergenAuthCusto);
 				}
 			}
-			for (String allergenSaved : allergenList) {
+			for (String allergenSaved : HelloController.getAllergenList()) {
 				if(allergenSaved.equals(allergen))
 					bordure.setStroke(Color.RED);
 			}
@@ -74,6 +74,7 @@ for (String allergen : allergenList) {
 			title.setLayoutX(3);
 			
 			//Image garniture
+			//if(allergen.equals(arg0))
 			/*ImageView img = new ImageView(new Image("file:src\\visual\\images\\"+ sauce.getPhoto()));
 			img.setFitHeight(107);
 			img.setFitWidth(150);*/
@@ -102,10 +103,18 @@ for (String allergen : allergenList) {
 		if(rec.getStroke().equals(Color.LIGHTGREEN)) {
 			rec.setStroke(Color.RED);
 			HelloController.getAllergenList().add(allergen);
+			if(HelloController.getOrder().getAuthCustomer()){
+				SignUpController.getAuthCusto().getAllergens().add(allergen);
+				CustomerManagement.exportCustomer("customer.xml");
+			}
 		}
 		else if(rec.getStroke().equals(Color.RED)) {
 			rec.setStroke(Color.LIGHTGREEN);
 			HelloController.getAllergenList().remove(allergen);
+			if(HelloController.getOrder().getAuthCustomer()){
+				SignUpController.getAuthCusto().getAllergens().remove(allergen);
+				CustomerManagement.exportCustomer("customer.xml");
+			}
 		}
 	}
 
