@@ -1,5 +1,4 @@
 package visual;
-//TODO try catch au niveau customer au lieu de main
 import java.io.IOException;
 
 import javafx.application.Application;

@@ -1,6 +1,8 @@
 package visual.customer;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Group;
@@ -8,12 +10,17 @@ import model.product.Order;
 
 public class HelloController {
 	private static Order order = new Order();
+	private static List<String> allergenList= new ArrayList<String>();
 	
 	/***Methods***/
 	
 	//Order
 	public static Order getOrder() {
 		return order;
+	}
+	//AllergenList
+	public static List<String> getAllergenList() {
+		return allergenList;
 	}
 	// Bouton "oui" pour connexion
 	public void goToConnexion() throws IOException {
