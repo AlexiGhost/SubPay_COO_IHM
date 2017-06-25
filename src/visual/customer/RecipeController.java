@@ -16,11 +16,6 @@ import javafx.scene.Group;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.Border;
-import javafx.scene.layout.BorderStroke;
-import javafx.scene.layout.BorderStrokeStyle;
-import javafx.scene.layout.BorderWidths;
-import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.TilePane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
@@ -28,6 +23,7 @@ import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.util.Duration;
 import model.CustomerManagement;
+import model.product.composants.Promotion;
 import model.product.composants.Recipe;
 import model.product.composants.Sauce;
 
@@ -55,11 +51,17 @@ public class RecipeController  implements Initializable{
     private ScrollPane caPasseScroll;
     @FXML
     private TilePane categorieCaPasse;
-    
+    @FXML
+    private Text promoBof;
+    @FXML
+    private Text promoMouais;
+    @FXML
+    private Text promoCaPasse;
 	
 	private  static List<Recipe> bofList = new ArrayList<Recipe>();
 	private  static List<Recipe> mouaisList = new ArrayList<Recipe>();
 	private  static List<Recipe> caPasseList = new ArrayList<Recipe>();
+	private  static List<Promotion> promotionList = HomeController.getListPromo();
 	
 	public static List<Recipe> getBofList() {
 		return bofList;
@@ -73,6 +75,17 @@ public class RecipeController  implements Initializable{
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
+		//Incomplet, voir avec Alexi (promotionList.get(i).getCategory() = null !!)
+		int i = 0;
+		while(i < promotionList.size() - 1 && (!promotionList.get(i).getCategory().equals("Bof"))) {
+			i++;
+		}
+		if(promotionList.get(i).getCategory().equals("Bof")) {
+			System.out.println(promotionList.get(i).getCategory());
+			promoBof = new Text("-" + String.valueOf(promotionList.get(i).getPercentage() + "% !"));
+			promoBof.setFont(new Font("Arial Black", 40));
+			promoBof.setFill(Color.DARKGOLDENROD);
+		}
 		displayRecipe(bofList, bofTile, bofScroll);
 		Text bof = new Text("BOF");
 		bof.setFont(new Font("Arial Black", 100));
@@ -80,6 +93,16 @@ public class RecipeController  implements Initializable{
 		bof.setOpacity(0.3);
 		bof.setTranslateX(340);
 		categorieBof.getChildren().add(bof);
+		i = 0;
+		while(i < promotionList.size() - 1 && (!promotionList.get(i).getCategory().equals("Mouais"))) {
+			i++;
+		}
+		if(promotionList.get(i).getCategory().equals("Mouais")) {
+			System.out.println(promotionList.get(i).getCategory());
+			promoBof = new Text("-" + String.valueOf(promotionList.get(i).getPercentage() + "% !"));
+			promoBof.setFont(new Font("Arial Black", 40));
+			promoBof.setFill(Color.DARKGOLDENROD);
+		}
 		displayRecipe(mouaisList, mouaisTile, mouaisScroll);
 		Text mouais = new Text("MOUAIS");
 		mouais.setFont(new Font("Arial Black", 80));
@@ -87,6 +110,16 @@ public class RecipeController  implements Initializable{
 		mouais.setOpacity(0.3);
 		mouais.setTranslateX(290);
 		categorieMouais.getChildren().add(mouais);
+		i = 0;
+		while(i < promotionList.size() - 1 && (!promotionList.get(i).getCategory().equals("Ca Passe"))) {
+			i++;
+		}
+		if(promotionList.get(i).getCategory().equals("Ca Passe")) {
+			System.out.println(promotionList.get(i).getCategory());
+			promoBof = new Text("-" + String.valueOf(promotionList.get(i).getPercentage() + "% !"));
+			promoBof.setFont(new Font("Arial Black", 40));
+			promoBof.setFill(Color.DARKGOLDENROD);
+		}
 		displayRecipe(caPasseList, caPasseTile, caPasseScroll);
 		Text capasse = new Text("CA PASSE");
 		capasse.setFont(new Font("Arial Black", 80));
@@ -95,14 +128,14 @@ public class RecipeController  implements Initializable{
 		capasse.setTranslateX(250);
 		categorieCaPasse.getChildren().add(capasse);
 	}
-	
+
 	public void displayRecipe(List<Recipe> listRecipe, TilePane tilePane, ScrollPane scrollPane){
 		for (Recipe recipe : listRecipe) {
 			//Bordures
 			Rectangle bordure = new Rectangle(0, -15, 150, 120);
 			bordure.setFill(Color.TRANSPARENT);
 			bordure.setStroke(Color.LIGHTGREEN);
-			bordure.setStrokeWidth(4.0);
+			bordure.setStrokeWidth(5.0);
 			//Affiche un contour rouge pour les catégories sélectionnées  dans nouveautés ou promotions
 			if(HomeController.getNewPromo()){
 				if(HomeController.getSelectedCategorie() != null && recipe.getCategory().equals(HomeController.getSelectedCategorie()))
@@ -150,6 +183,22 @@ public class RecipeController  implements Initializable{
 				nouveau.setRotate(45);
 				r.getChildren().add(nouveau);
 			}
+			
+			
+			//S'il y a une promotion
+			int i = 0;
+			while(i < promotionList.size() - 1 && (!promotionList.get(i).getRecipe().equals(recipe.getName()))) {
+				i++;
+			}
+			if(promotionList.get(i).getRecipe().equals(recipe.getName())) {
+				Text promo = new Text("-" + String.valueOf(promotionList.get(i).getPercentage() + "% !"));
+				promo.setFont(new Font("Arial Black", 20));
+				promo.setFill(Color.DARKGOLDENROD);
+				promo.setLayoutX(10);
+				promo.setLayoutY(90);
+				r.getChildren().add(promo);
+			}
+			
 			//MAJ promoTiled
 			r.getChildren().add(title);
 			r.getChildren().add(bordure);

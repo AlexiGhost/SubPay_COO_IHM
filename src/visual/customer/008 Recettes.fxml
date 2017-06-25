@@ -55,6 +55,9 @@
             <Font size="28.0" />
          </font>
       </Text>
+      <Text fx:id="promoBof" layoutX="1140.0" layoutY="240.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="90.0" />
+      <Text fx:id="promoMouais" layoutX="1130.0" layoutY="388.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="90.0" />
+      <Text fx:id="promoCaPasse" layoutX="1130.0" layoutY="538.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="90.0" />
    </children>
    <opaqueInsets>
       <Insets />

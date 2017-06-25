@@ -145,7 +145,7 @@ public class HomeController implements Initializable {
 			});
 			
 			//Bordures
-			Rectangle bordure = new Rectangle(0, -15, 150, 150);
+			Rectangle bordure = new Rectangle(0, -15, 150, 130);
 			bordure.setFill(Color.TRANSPARENT);
 			bordure.setStroke(Color.LIGHTGREEN);
 			bordure.setStrokeWidth(4.0);
@@ -157,9 +157,24 @@ public class HomeController implements Initializable {
 			
 			//Image nouveauté
 			ImageView img = new ImageView(new Image("file:src\\visual\\images\\"+nouveaute.getPhoto()));
-			img.setFitHeight(150);
+			img.setFitHeight(113);
 			img.setFitWidth(150);
 			nouveau.getChildren().add(img);
+			
+			//Vérif disponibilité
+			if(!nouveaute.getAvailability()) {
+				bordure.setOpacity(0.3);
+				bordure.setFill(Color.YELLOWGREEN);
+				title.setOpacity(0.3);
+				img.setOpacity(0.3);
+				Text succes = new Text("Victime de\nson succès");
+				succes.setFont(new Font("Arial Black", 14));
+				succes.setFill(Color.BLACK);
+				succes.setOpacity(1);
+				succes.setLayoutX(27);
+				succes.setLayoutY(25);
+				nouveau.getChildren().add(succes);
+			}
 			
 			//MAJ promoTiled
 			nouveau.getChildren().add(title);
@@ -174,21 +189,34 @@ public class HomeController implements Initializable {
 		for (Product product : HelloController.getOrder().getProducts()) {
 			//Si c'est une assiette
 			if(product.getPlate()){
+				Group title = new Group();
 				Text textSupTitle = new Text("x");
-				textSupTitle.setFont(new Font("Arial Black",16));
-				textSupTitle.setWrappingWidth(10);
-				orderTilePane.getChildren().add(textSupTitle);
-				//textSupTitle.setStyle("-fx setTextfield");;
+				textSupTitle.setFill(Color.RED);
+				textSupTitle.setFont(new Font("Arial Black", 20));
+				textSupTitle.setTranslateX(-30);
+				textSupTitle.setOnMouseClicked(Event -> System.out.println("test"));
+				title.getChildren().add(textSupTitle);
+				
 				Text textTitle = new Text("Plat "+product.getRecipe().getName()+" ("+product.getSize()+")  "+product.getRecipe().getPrice()+"€");
 				textTitle.setFont(new Font("Arial Black",16));
 				textTitle.setWrappingWidth(250);
-				orderTilePane.getChildren().add(textTitle);
+				title.getChildren().add(textTitle);
+				orderTilePane.getChildren().add(title);
 
 			}else{
+				Group title = new Group();
+				Text textSupTitle = new Text("x");
+				textSupTitle.setFill(Color.RED);
+				textSupTitle.setFont(new Font("Arial Black", 20));
+				textSupTitle.setTranslateX(-30);
+				textSupTitle.setOnMouseClicked(Event -> System.out.println("test"));
+				title.getChildren().add(textSupTitle);
+				
 				Text textTitle = new Text("Sandwich "+product.getRecipe().getName()+" ("+product.getSize()+")  "+product.getRecipe().getPrice()+"€");
 				textTitle.setFont(new Font("Arial Black",16));
-				textTitle.setWrappingWidth(280);
-				orderTilePane.getChildren().add(textTitle);
+				textTitle.setWrappingWidth(220);
+				title.getChildren().add(textTitle);
+				orderTilePane.getChildren().add(title);
 				
 				Text textBread = new Text("\t"+product.getBread().getName());
 				textBread.setWrappingWidth(280);
@@ -210,12 +238,28 @@ public class HomeController implements Initializable {
 			orderTilePane.getChildren().add(separation);
 		}
 			
-		//Pour l'affachige des menus
+		//Pour l'affichage des menus
 		for (Menu menu : HelloController.getOrder().getMenus()) {
+			Group title = new Group();
+			Text textSupTitle = new Text("x");
+			textSupTitle.setFill(Color.RED);
+			textSupTitle.setFont(new Font("Arial Black", 20));
+			textSupTitle.setTranslateX(-30);
+			/* PAR ICI MYRIAM !!
+			 * C'est la ligne du dessous que tu dois modifier
+			 * Supprime juste "System.out.println("MODIFIE-MOI !!!")" et remplace par ce que tu veux.
+			 * Garde le "Event ->" !
+			 * S'il y a plus qu'une seule instruction, soit tu appelles une méthode, soit tu utilises des {}
+			 * Bon courage ! =)
+			 */
+			textSupTitle.setOnMouseClicked(Event -> System.out.println("MODIFIE-MOI !!!"));
+			title.getChildren().add(textSupTitle);
+			
 			Text textMenu = new Text("Menu\t"+(menu.getProduct().getRecipe().getPrice()+Menu.getMenuPrice())+"€");
 			textMenu.setFont(new Font("Arial Black",18));
-			textMenu.setWrappingWidth(280);
-			orderTilePane.getChildren().add(textMenu);
+			textMenu.setWrappingWidth(250);
+			title.getChildren().add(textMenu);
+			orderTilePane.getChildren().add(title);
 			
 			//Si c'est une assiette
 			if(menu.getProduct().getPlate()){

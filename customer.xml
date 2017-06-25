@@ -77,13 +77,11 @@
     <phoneNumber />
     <password>Medusa81</password>
     <iceCubeNb>-1</iceCubeNb>
-    <fBread>Italien</fBread>
-    <fSauce>Ketchup</fSauce>
-    <fRecipe />
-    <fDrink>Hein Klein</fDrink>
+    <fBread>Wrap</fBread>
+    <fSauce>Miel Moutarde</fSauce>
+    <fRecipe>Thon</fRecipe>
+    <fDrink />
     <fGarnishs>
-      <fGarnish>Laitue</fGarnish>
-      <fGarnish>Concombre</fGarnish>
       <fGarnish>Tomate</fGarnish>
     </fGarnishs>
     <allergens />

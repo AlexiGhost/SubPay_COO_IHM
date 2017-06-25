@@ -37,6 +37,7 @@ public class ControllerClient extends Application {
 	    FXMLLoader.load(getClass().getResource("customer/001 Bonjour.fxml"))
 	    );
     	Scene scene = new Scene(acteur, 1280.0, 720.0);
+    	theStage.setTitle("Bienvenue à SubPay");
         theStage.setScene(scene);
         theStage.show();
     }
