@@ -74,6 +74,8 @@ public class ControllerClient extends Application {
 			}
 		}
 		
+		//Home
+		HomeController.getListRecipe().addAll(ComponentManagement.getRecipes());
 		//Page Garniture
 		GarnishController.getGarnishList().addAll(ComponentManagement.getGarnishs());
 		//Page Sauce
