@@ -34,10 +34,11 @@ public class LogInController {
 		for (AuthentificatedCustomer customer : CustomerManagement.getCustomers()) {
             if((customer.getMail().equals(TF_Username.getText()) || customer.getPhoneNumber().equals(TF_Username.getText())) && customer.getPassword().equals(PF_password.getText())){
             	SignUpController.setAuthCusto(customer);
+            	HelloController.getAllergenList().addAll(customer.getAllergens());
             	HelloController.getOrder().setAuthCustomer(true); //On enregistre l'authentification du client
         		Group acteur = new Group();
         		acteur.getChildren().add(
-        		FXMLLoader.load(getClass().getResource("004.1 Accueil (authentifier).fxml")) //Ici, il faut changer le fichier fxml (la string en fait)
+        		FXMLLoader.load(getClass().getResource("004.1 Accueil (authentifier).fxml")) 
         		); 
         		visual.ControllerClient.setScene(acteur, "SUBPAY - Accueil Auth");
             } else {

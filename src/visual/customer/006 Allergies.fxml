@@ -28,12 +28,7 @@
          <content>
             <TilePane fx:id="allergenTilePane" prefHeight="390.0" prefWidth="900.0" />
          </content></ScrollPane>
-      <Button fx:id="valider" layoutX="740.0" layoutY="582.0" mnemonicParsing="false" onAction="#goToPreviousUI" text="Valider">
-         <font>
-            <Font size="36.0" />
-         </font>
-      </Button>
-      <Button fx:id="annuler" layoutX="367.0" layoutY="582.0" mnemonicParsing="false" onAction="#goToPreviousUI" text="Annuler">
+      <Button fx:id="valider" layoutX="562.0" layoutY="578.0" mnemonicParsing="false" onAction="#goToPreviousUI" text="Valider">
          <font>
             <Font size="36.0" />
          </font>

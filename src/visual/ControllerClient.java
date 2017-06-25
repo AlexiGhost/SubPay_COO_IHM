@@ -12,6 +12,7 @@ import model.product.Order;
 import model.product.composants.Recipe;
 import visual.customer.HomeController;
 import visual.customer.AllergenController;
+import visual.customer.AuthHomeController;
 import visual.customer.BreadController;
 import visual.customer.DrinkController;
 import visual.customer.GarnishController;
@@ -24,6 +25,7 @@ public class ControllerClient extends Application {
 	public static void main(String[] args) throws Exception {
 		ComponentManagement.importComponent("component.xml");
 		CustomerManagement.importCustomer("customer.xml");
+		//CustomerManagement.importCustomerOrders("order.xml");
 		Order.setOldNb(0);
 		listCompleting();
 		launch();
@@ -55,6 +57,10 @@ public class ControllerClient extends Application {
 		//Page Accueil
 		HomeController.getListPromo().addAll(ComponentManagement.getPromotions());
 		HomeController.getListNew().addAll(ComponentManagement.getNews());
+		
+		//Page Accueil Auth
+		AuthHomeController.getListPromo().addAll(ComponentManagement.getPromotions());
+		AuthHomeController.getListNew().addAll(ComponentManagement.getNews());
 		
 		//Page Recipe
 		for (Recipe recipe : ComponentManagement.getRecipes()) {

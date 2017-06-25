@@ -366,6 +366,7 @@ public class CustomerManagement {
 
 
 	}
+	/**Import customer's orders from a XML file*/
 	public static void importCustomerOrders(String xmlFile){
 		SAXBuilder sxb = new SAXBuilder();
 		Document document;

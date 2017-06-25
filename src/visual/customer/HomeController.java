@@ -145,7 +145,7 @@ public class HomeController implements Initializable {
 			});
 			
 			//Bordures
-			Rectangle bordure = new Rectangle(0, -15, 150, 150);
+			Rectangle bordure = new Rectangle(0, -15, 150, 120);
 			bordure.setFill(Color.TRANSPARENT);
 			bordure.setStroke(Color.LIGHTGREEN);
 			bordure.setStrokeWidth(4.0);
@@ -157,7 +157,7 @@ public class HomeController implements Initializable {
 			
 			//Image nouveauté
 			ImageView img = new ImageView(new Image("file:src\\visual\\images\\"+nouveaute.getPhoto()));
-			img.setFitHeight(150);
+			img.setFitHeight(100);
 			img.setFitWidth(150);
 			nouveau.getChildren().add(img);
 			

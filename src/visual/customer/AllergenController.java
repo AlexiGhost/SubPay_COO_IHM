@@ -51,11 +51,6 @@ for (String allergen : allergenList) {
 			bordure.setStroke(Color.LIGHTGREEN);
 			bordure.setStrokeWidth(4.0);
 			//Afficher en rouge les allergens enregistres par le client authentifie
-			if(HelloController.getOrder().getAuthCustomer()){
-				for(String allergenAuthCusto : SignUpController.getAuthCusto().getAllergens()){
-					HelloController.getAllergenList().add(allergenAuthCusto);
-				}
-			}
 			for (String allergenSaved : HelloController.getAllergenList()) {
 				if(allergenSaved.equals(allergen))
 					bordure.setStroke(Color.RED);
@@ -74,13 +69,12 @@ for (String allergen : allergenList) {
 			title.setLayoutX(3);
 			
 			//Image garniture
-			//if(allergen.equals(arg0))
-			/*ImageView img = new ImageView(new Image("file:src\\visual\\images\\"+ sauce.getPhoto()));
+			ImageView img = new ImageView(new Image("file:src\\visual\\images\\allergenes\\"+allergen+".png"));
 			img.setFitHeight(107);
-			img.setFitWidth(150);*/
+			img.setFitWidth(150);
 			
 			//MAJ garnishTile
-			//r.getChildren().add(img);
+			r.getChildren().add(img);
 			r.getChildren().add(title);
 			r.getChildren().add(bordure);
 			
@@ -132,4 +126,5 @@ for (String allergen : allergenList) {
 			);
 			visual.ControllerClient.setScene(acteur, previousTitle);
 	}
+	
 }
