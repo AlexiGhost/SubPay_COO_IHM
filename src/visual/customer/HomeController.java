@@ -29,6 +29,7 @@ import model.product.*;
 public class HomeController implements Initializable {
 
 	private static 	List<Promotion>	ListPromo = new ArrayList<Promotion>();
+	private static 	List<Recipe>	ListRecipe = new ArrayList<Recipe>();
 	private static 	List<Composant>	ListNew = new ArrayList<Composant>();
 	private static 	boolean 		newPromo = false;
 	private static 	Composant		selectedComponent;
@@ -49,6 +50,9 @@ public class HomeController implements Initializable {
 		displayOrder();
 	}
 	
+	public static List<Recipe> getListRecipe() {
+		return ListRecipe;
+	}
 	public static List<Composant> getListNew() {
 		return ListNew;
 	}
@@ -122,6 +126,25 @@ public class HomeController implements Initializable {
 				client.setLayoutY(70);
 				client.setFont(Font.font("Arial", FontWeight.BOLD, 12));
 				promo.getChildren().add(client);
+			}
+			
+			//Vérif disponibilité
+			int i = 0;
+			while(i < ListRecipe.size() - 1 && !promotion.getRecipe().equals(ListRecipe.get(i).getName()))
+				i++;
+			if(promotion.getRecipe().equals(ListRecipe.get(i).getName())) {
+				bordure.setOpacity(0.3);
+				bordure.setFill(Color.YELLOWGREEN);
+				title.setOpacity(0.3);
+				percent.setOpacity(0.3);
+				comment.setOpacity(0.3);
+				Text succes = new Text("Victime de\nson succès");
+				succes.setFont(new Font("Arial Black", 14));
+				succes.setFill(Color.BLACK);
+				succes.setOpacity(1);
+				succes.setLayoutX(27);
+				succes.setLayoutY(25);
+				promo.getChildren().add(succes);
 			}
 			
 			//MAJ promoTiled
