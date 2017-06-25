@@ -1,11 +1,15 @@
 package visual.customer;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
+import javafx.animation.KeyFrame;
+import javafx.animation.KeyValue;
+import javafx.animation.Timeline;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -17,6 +21,9 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
+import javafx.util.Duration;
+import model.CustomerManagement;
+import model.product.composants.Bread;
 import model.product.composants.Garnish;
 
 public class GarnishController implements Initializable {
@@ -83,6 +90,79 @@ public class GarnishController implements Initializable {
 				succes.setLayoutY(25);
 				gar.getChildren().add(succes);
 			}
+			
+			//Vérif disponibilité
+			if(!garnish.getAvailability()) {
+				bordure.setOpacity(0.3);
+				bordure.setFill(Color.YELLOWGREEN);
+				title.setOpacity(0.3);
+				img.setOpacity(0.3);
+				Text succes = new Text("Victime de\nson succès");
+				succes.setFont(new Font("Arial Black", 14));
+				succes.setFill(Color.BLACK);
+				succes.setOpacity(1);
+				succes.setLayoutX(27);
+				succes.setLayoutY(25);
+				gar.getChildren().add(succes);
+			}
+			
+			//Si c'est une nouveauté
+			if(garnish.getNew()) {
+				Text nouveau = new Text("Nouveau !");
+				nouveau.setFont(new Font("Arial Black", 11));
+				nouveau.setFill(Color.DARKRED);
+				nouveau.setLayoutX(90);
+				nouveau.setLayoutY(17);
+				nouveau.setRotate(45);
+				gar.getChildren().add(nouveau);
+			}
+			
+			//Si c'est un client authentifié
+			ImageView pref;
+			if(HelloController.getOrder().getAuthCustomer()) {
+				if(SignUpController.getAuthCusto().getFavoriteGarnish().size() != 0) {
+					int i = 0;
+					while(!SignUpController.getAuthCusto().getFavoriteGarnish().get(i).getName().equals(garnish.getName()) && i < SignUpController.getAuthCusto().getFavoriteGarnish().size() - 1)
+						i++;
+					if(SignUpController.getAuthCusto().getFavoriteGarnish().get(i).getName().equals(garnish.getName()))
+						pref = new ImageView(new Image(new File("src/visual/images/coeurorange.png").toURI().toString()));
+					else
+						pref = new ImageView(new Image(new File("src/visual/images/coeurgris.png").toURI().toString()));
+				}
+				else {
+					pref = new ImageView(new Image(new File("src/visual/images/coeurgris.png").toURI().toString()));
+				}
+				
+				pref.setTranslateX(110);
+				pref.setTranslateY(70);
+				pref.setFocusTraversable(true);
+				pref.setOnMouseEntered(Event -> gar.setOnMouseClicked(null));
+				pref.setOnMouseExited(Event -> gar.setOnMouseClicked(MouseEvent -> myGarnishes(bordure, garnish)));
+				pref.setOnMouseClicked(Event -> {
+					if(SignUpController.getAuthCusto().getFavoriteGarnish().indexOf(garnish) == -1) {
+						Timeline animation = new Timeline (
+								new KeyFrame(Duration.millis(100), new KeyValue(pref.fitHeightProperty(), 20)),
+								new KeyFrame(Duration.millis(100), new KeyValue(pref.fitWidthProperty(), 20)),
+								new KeyFrame(Duration.millis(200), new KeyValue(pref.fitHeightProperty(), 40)),
+								new KeyFrame(Duration.millis(200), new KeyValue(pref.fitWidthProperty(), 40)),
+								new KeyFrame(Duration.millis(300), new KeyValue(pref.fitHeightProperty(), 20)),
+								new KeyFrame(Duration.millis(300), new KeyValue(pref.fitWidthProperty(), 20)),
+								new KeyFrame(Duration.millis(400), new KeyValue(pref.fitWidthProperty(), pref.getFitWidth())),
+								new KeyFrame(Duration.millis(400), new KeyValue(pref.fitHeightProperty(), pref.getFitHeight()))
+								);
+						animation.play();
+						pref.setImage(new Image(new File("src/visual/images/coeurorange.png").toURI().toString()));
+						SignUpController.getAuthCusto().addGarnish(garnish);
+						CustomerManagement.exportCustomer("customer.xml");
+					}
+					else {
+						pref.setImage(new Image(new File("src/visual/images/coeurgris.png").toURI().toString()));
+						SignUpController.getAuthCusto().delGarnish(garnish);
+						CustomerManagement.exportCustomer("customer.xml");
+					}
+				});
+				gar.getChildren().add(pref);
+			}
 			garnishTile.getChildren().add(gar);
 			
 			if(X == 5) {
@@ -125,13 +205,12 @@ public class GarnishController implements Initializable {
 		}
 	}
 	public void goToRecettes(){
+		X = 1;
+		Y = 0;
 		if(MenuController.getChoice())
 			MenuController.getMenu().getProduct().getGarnishs().clear();
 		else
 			MenuController.getProduct().getGarnishs().clear();														
-		
-		X = 1;
-		Y = 0;
 		Group acteur = new Group();
 		if(HomeController.getNewPromo() && HomeController.getSelectedComponent() != null && HomeController.getSelectedComponent().getClass().getName().equals("model.product.composants.Recipe")){
 			try {

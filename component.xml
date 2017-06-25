@@ -2,35 +2,35 @@
 <Composants>
   <bread classe="Bread">
     <name>Miel Avoine</name>
-    <photo />
+    <photo>miel avoine.png</photo>
     <allergens />
     <available>true</available>
     <new>false</new>
   </bread>
   <bread classe="Bread">
     <name>Parmesan Origan</name>
-    <photo />
+    <photo>parmesan origan.png</photo>
     <allergens />
     <available>true</available>
     <new>false</new>
   </bread>
   <bread classe="Bread">
     <name>Blanc</name>
-    <photo />
+    <photo>blanc.png</photo>
     <allergens />
     <available>true</available>
     <new>false</new>
   </bread>
   <bread classe="Bread">
     <name>Wrap</name>
-    <photo>Pain.png</photo>
+    <photo>wrap.jpg</photo>
     <allergens />
     <available>false</available>
     <new>false</new>
   </bread>
   <bread classe="Bread">
     <name>Italien</name>
-    <photo />
+    <photo>italien.png</photo>
     <allergens />
     <available>true</available>
     <new>false</new>
@@ -72,35 +72,35 @@
   </garnish>
   <sauce classe="Sauce">
     <name>Ketchup</name>
-    <photo />
+    <photo>ketchup.png</photo>
     <allergens />
     <available>true</available>
     <new>false</new>
   </sauce>
   <sauce classe="Sauce">
     <name>Ranchy</name>
-    <photo />
+    <photo>ranchy.png</photo>
     <allergens />
     <available>true</available>
     <new>true</new>
   </sauce>
   <sauce classe="Sauce">
     <name>Miel Moutarde</name>
-    <photo />
+    <photo>miel moutarde.png</photo>
     <allergens />
     <available>true</available>
     <new>false</new>
   </sauce>
   <sauce classe="Sauce">
     <name>Mayonnaise</name>
-    <photo />
+    <photo>mayonnaise.png</photo>
     <allergens />
     <available>true</available>
     <new>false</new>
   </sauce>
   <sauce classe="Sauce">
     <name>Barbecue</name>
-    <photo />
+    <photo>barbecue.png</photo>
     <allergens />
     <available>true</available>
     <new>false</new>
@@ -140,7 +140,7 @@
     </allergens>
     <price>9.49</price>
     <category>Mouais</category>
-    <available>true</available>
+    <available>false</available>
     <new>false</new>
   </recipe>
   <recipe classe="Recipe">
@@ -153,13 +153,6 @@
     <new>true</new>
   </recipe>
   <drink classe="Drink">
-    <name>Cola cola</name>
-    <photo>cola cola.jpg</photo>
-    <allergens />
-    <available>true</available>
-    <new>true</new>
-  </drink>
-  <drink classe="Drink">
     <name>Spoute</name>
     <photo>spoute.jpg</photo>
     <allergens />
@@ -167,8 +160,15 @@
     <new>true</new>
   </drink>
   <drink classe="Drink">
-    <name>Iced Tea</name>
-    <photo>iced tea.png</photo>
+    <name>Hein Klein</name>
+    <photo>hein klein.png</photo>
+    <allergens />
+    <available>true</available>
+    <new>true</new>
+  </drink>
+  <drink classe="Drink">
+    <name>Cola cola</name>
+    <photo>cola cola.jpg</photo>
     <allergens />
     <available>true</available>
     <new>true</new>
@@ -181,8 +181,8 @@
     <new>true</new>
   </drink>
   <drink classe="Drink">
-    <name>Hein Klein</name>
-    <photo>hein klein.png</photo>
+    <name>Iced Tea</name>
+    <photo>iced tea.png</photo>
     <allergens />
     <available>true</available>
     <new>true</new>
@@ -190,7 +190,11 @@
   <dessert classe="Dessert">
     <name>brownie</name>
     <photo>brownie.jpg</photo>
-    <allergens />
+    <allergens>
+      <allergen>Lait</allergen>
+      <allergen>Fruit à coques</allergen>
+      <allergen>Oeufs</allergen>
+    </allergens>
     <available>true</available>
     <new>false</new>
   </dessert>

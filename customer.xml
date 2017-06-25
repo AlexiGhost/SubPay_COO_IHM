@@ -11,10 +11,7 @@
     <fSauce>Mayonnaise</fSauce>
     <fRecipe />
     <fDrink />
-    <fGarnishs>
-      <fGarnish>Tomate</fGarnish>
-      <fGarnish>Concombre</fGarnish>
-    </fGarnishs>
+    <fGarnishs />
     <allergens />
   </customer>
   <customer classe="AuthentificatedCustomer">
@@ -80,11 +77,15 @@
     <phoneNumber />
     <password>Medusa81</password>
     <iceCubeNb>-1</iceCubeNb>
-    <fBread />
-    <fSauce />
+    <fBread>Italien</fBread>
+    <fSauce>Ketchup</fSauce>
     <fRecipe />
-    <fDrink />
-    <fGarnishs />
+    <fDrink>Hein Klein</fDrink>
+    <fGarnishs>
+      <fGarnish>Laitue</fGarnish>
+      <fGarnish>Concombre</fGarnish>
+      <fGarnish>Tomate</fGarnish>
+    </fGarnishs>
     <allergens />
   </customer>
   <customer classe="AuthentificatedCustomer">
@@ -94,11 +95,16 @@
     <phoneNumber />
     <password>testtest1</password>
     <iceCubeNb>-1</iceCubeNb>
-    <fBread />
-    <fSauce />
-    <fRecipe />
+    <fBread>Blanc</fBread>
+    <fSauce>Ketchup</fSauce>
+    <fRecipe>MeetBall</fRecipe>
     <fDrink />
-    <fGarnishs />
+    <fGarnishs>
+      <fGarnish>Tomate</fGarnish>
+      <fGarnish>Olive noire</fGarnish>
+      <fGarnish>Concombre</fGarnish>
+      <fGarnish>Laitue</fGarnish>
+    </fGarnishs>
     <allergens />
   </customer>
 </Customers>

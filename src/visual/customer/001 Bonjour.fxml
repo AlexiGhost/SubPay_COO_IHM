@@ -26,7 +26,7 @@
             <Font size="48.0" />
          </font>
       </Text>
-      <Text layoutX="336.0" layoutY="253.0" strokeType="OUTSIDE" strokeWidth="0.0" text="VOULEZ-VOUS VOUS AUTHENTIFIER ?">
+      <Text layoutX="392.0" layoutY="254.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Voulez-vous vous authentifier ?">
          <font>
             <Font size="36.0" />
          </font>
@@ -41,20 +41,25 @@
             <Font size="48.0" />
          </font>
       </Button>
-      <Text layoutX="182.0" layoutY="496.0" strokeType="OUTSIDE" strokeWidth="0.0" text="VOUS NE FAITES TOUJOURS PAS PARTIE DE LA FAMILLE ?">
+      <Text fill="#1eab05" layoutX="326.0" layoutY="495.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Vous ne faites toujours pas partie de la famille SubPay ?">
          <font>
-            <Font size="36.0" />
+            <Font name="System Bold" size="24.0" />
          </font>
       </Text>
-      <Text layoutX="67.0" layoutY="560.0" strokeType="OUTSIDE" strokeWidth="0.0" text="INSCRIVEZ-VOUS ET PROFITEZ DE NOMBREUSES PROMOS EXCLUSIVES.">
+      <Text fill="#1eab05" layoutX="195.0" layoutY="548.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Inscrivez-vous et profitez de nombreuses promotions exclusives !">
          <font>
-            <Font size="36.0" />
+            <Font name="System Bold" size="29.0" />
          </font>
       </Text>
-      <Button fx:id="inscription" layoutX="423.0" layoutY="590.0" mnemonicParsing="false" onAction="#goToInscription" text="INSCRIVEZ-VOUS">
+      <Button fx:id="inscription" layoutX="447.0" layoutY="591.0" mnemonicParsing="false" onAction="#goToInscription" text="Je m'inscris !">
          <font>
-            <Font size="48.0" />
+            <Font name="System Bold" size="48.0" />
          </font>
       </Button>
+      <ImageView fitHeight="206.0" fitWidth="465.0" layoutX="457.0" layoutY="112.0" opacity="0.29" pickOnBounds="true" preserveRatio="true" translateZ="-1.0">
+         <image>
+            <Image url="@../images/Logo.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>
