@@ -91,10 +91,9 @@ public class RecipeController  implements Initializable{
 			i++;
 		}
 		if(promotionList.get(i).getCategory().equals("Bof")) {
-			System.out.println(promotionList.get(i).getCategory());
-			promoBof = new Text("-" + String.valueOf(promotionList.get(i).getPercentage() + "% !"));
-			promoBof.setFont(new Font("Arial Black", 40));
-			promoBof.setFill(Color.DARKGOLDENROD);
+			promoBof.setText("-" + String.valueOf(promotionList.get(i).getPercentage()) + "% !");
+			promoBof.setFont(new Font("Arial Black", 20));
+			promoBof.setFill(Color.RED);
 		}
 		displayRecipe(bofList, bofTile, bofScroll, priceBof);
 		Text bof = new Text("BOF");
@@ -108,10 +107,9 @@ public class RecipeController  implements Initializable{
 			i++;
 		}
 		if(promotionList.get(i).getCategory().equals("Mouais")) {
-			System.out.println(promotionList.get(i).getCategory());
-			promoBof = new Text("-" + String.valueOf(promotionList.get(i).getPercentage() + "% !"));
-			promoBof.setFont(new Font("Arial Black", 40));
-			promoBof.setFill(Color.DARKGOLDENROD);
+			promoMouais.setText("-" + String.valueOf(promotionList.get(i).getPercentage()) + "% !");
+			promoMouais.setFont(new Font("Arial Black", 20));
+			promoMouais.setFill(Color.RED);
 		}
 		displayRecipe(mouaisList, mouaisTile, mouaisScroll, priceMouais);
 		Text mouais = new Text("MOUAIS");
@@ -124,11 +122,10 @@ public class RecipeController  implements Initializable{
 		while(i < promotionList.size() - 1 && (!promotionList.get(i).getCategory().equals("Ca Passe"))) {
 			i++;
 		}
-		if(promotionList.get(i).getCategory().equals("Ca Passe")) {
-			System.out.println(promotionList.get(i).getCategory());
-			promoBof = new Text("-" + String.valueOf(promotionList.get(i).getPercentage() + "% !"));
-			promoBof.setFont(new Font("Arial Black", 40));
-			promoBof.setFill(Color.DARKGOLDENROD);
+		if(promotionList.get(i).getCategory().equals("Ca passe")) {
+			promoCaPasse.setText("-" + String.valueOf(promotionList.get(i).getPercentage()) + "% !");
+			promoCaPasse.setFont(new Font("Arial Black", 20));
+			promoCaPasse.setFill(Color.RED);
 		}
 		displayRecipe(caPasseList, caPasseTile, caPasseScroll, priceCaPasse);
 		Text capasse = new Text("CA PASSE");
@@ -204,11 +201,17 @@ public class RecipeController  implements Initializable{
 			}
 			if(promotionList.get(i).getRecipe().equals(recipe.getName())) {
 				recipe.setPrice((recipe.getPrice()*(100-promotionList.get(i).getPercentage()))/100);
-				Text promo = new Text("-" + String.valueOf(promotionList.get(i).getPercentage() + "% ! "+df.format(recipe.getPrice()) + "€"));
+				Text promotion = new Text("Promotion!");
+				promotion.setFont(new Font("Arial", 11));
+				promotion.setFill(Color.DARKGOLDENROD);
+				promotion.setLayoutX(10);
+				promotion.setLayoutY(70);
+				Text promo = new Text(df.format(recipe.getPrice()) + "€");
 				promo.setFont(new Font("Arial Black", 16));
 				promo.setFill(Color.DARKGOLDENROD);
 				promo.setLayoutX(10);
 				promo.setLayoutY(90);
+				r.getChildren().add(promotion);
 				r.getChildren().add(promo);
 			}else{
 				exRecipe = recipe;

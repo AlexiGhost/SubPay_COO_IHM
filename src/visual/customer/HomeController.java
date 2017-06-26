@@ -130,7 +130,7 @@ public class HomeController implements Initializable {
 			int i = 0;
 			while(i < ListRecipe.size() - 1 && !promotion.getRecipe().equals(ListRecipe.get(i).getName()))
 				i++;
-			if(promotion.getRecipe().equals(ListRecipe.get(i).getName())) {
+			if(promotion.getRecipe().equals(ListRecipe.get(i).getName()) && !ListRecipe.get(i).getAvailability()) {
 				bordure.setOpacity(0.3);
 				bordure.setFill(Color.YELLOWGREEN);
 				title.setOpacity(0.3);
