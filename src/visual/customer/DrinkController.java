@@ -16,6 +16,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Group;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Slider;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -24,6 +26,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 import model.CustomerManagement;
 import model.product.*;
@@ -203,28 +206,51 @@ public class DrinkController implements Initializable {
 	}
 	
 	public void goToHomeWithOrder(Drink d){
-		if(SL_IceCube.getValue() < 1){
-			int dialogResult = JOptionPane.showConfirmDialog (null, "Etes-vous sûr de ne pas vouloir de glaçon ?","Warning", JOptionPane.YES_NO_OPTION);
-	    	if(dialogResult == JOptionPane.YES_OPTION){
-	    		//On ajoute la boisson au menu
-	    		MenuController.getMenu().setDrink(d);
-	    		//On ajoute le nb de glacons au menu
-	    		MenuController.getMenu().setIceCubeNb(Math.toIntExact(Math.round(SL_IceCube.getValue())));
-	    		//On ajoute le menu a la commande
-	    		HelloController.getOrder().addMenu(MenuController.getMenu());
-	    		javax.swing.JOptionPane.showMessageDialog(null, "Commande Validée"); 
-	    		goToHome();
-	    	}
-		} else {
-			javax.swing.JOptionPane.showMessageDialog(null, "Commande Validée"); 
-			//On ajoute la boisson au menu
-			MenuController.getMenu().setDrink(d);
-			//On ajoute le nb de glacons au menu
-    		MenuController.getMenu().setIceCubeNb(Math.toIntExact(Math.round(SL_IceCube.getValue())));
-    		//On ajoute le menu a la commande
-    		HelloController.getOrder().addMenu(MenuController.getMenu());
-    		goToHome();
-		}
+		Stage glaçons = new Stage();
+		glaçons.setWidth(350);
+		glaçons.setHeight(300);
+		Group affichage = new Group();
+		
+		Text question = new Text("Choisissez la quantité de glaçons");
+		question.setX(20);
+		question.setY(100);
+		question.setFont(new Font("Arial Black", 16));
+		
+		Slider jauge = new Slider();
+		jauge.setTranslateX(110);
+		jauge.setTranslateY(150);
+		jauge.setMax(2);
+		jauge.setMin(0);
+		jauge.setMajorTickUnit(2);
+		jauge.setMinorTickCount(1);
+		jauge.setBlockIncrement(1);
+		jauge.setSnapToTicks(true);
+		
+		Button bouton = new Button();
+		bouton.setText("Valider");
+		bouton.setFont(new Font("Arial Black", 16));
+		bouton.setTranslateX(120);
+		bouton.setTranslateY(200);
+		bouton.setOnMouseClicked(Event -> {glaçons.close(); finChoixBoisson(d, jauge);});
+		
+		affichage.getChildren().add(question);
+		affichage.getChildren().add(jauge);
+		affichage.getChildren().add(bouton);
+		Scene gla = new Scene(affichage);
+		glaçons.setTitle("SUBPAY - Boisson");
+		glaçons.setScene(gla);
+		glaçons.show();
+	}
+	
+	public void finChoixBoisson(Drink d, Slider s) {
+		//On ajoute la boisson au menu
+		MenuController.getMenu().setDrink(d);
+		//On ajoute le nb de glacons au menu
+		MenuController.getMenu().setIceCubeNb(Math.toIntExact(Math.round(s.getValue())));
+		//On ajoute le menu a la commande
+		HelloController.getOrder().addMenu(MenuController.getMenu());
+		javax.swing.JOptionPane.showMessageDialog(null, "Commande Validée"); 
+		goToHome();
 	}
 	
 

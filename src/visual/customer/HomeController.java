@@ -21,9 +21,7 @@ import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import model.product.composants.*;
 import model.product.*;
-//TODO Afficher la commande en cours
-//TODO Gérer les allergènes 
-//TODO Gérer les commande enregistrées
+
 public class HomeController implements Initializable {
 
 	private static 	List<Promotion>	ListPromo = new ArrayList<Promotion>();
@@ -130,7 +128,7 @@ public class HomeController implements Initializable {
 			int i = 0;
 			while(i < ListRecipe.size() - 1 && !promotion.getRecipe().equals(ListRecipe.get(i).getName()))
 				i++;
-			if(promotion.getRecipe().equals(ListRecipe.get(i).getName())) {
+			if(promotion.getRecipe().equals(ListRecipe.get(i).getName()) && !ListRecipe.get(i).getAvailability()) {
 				bordure.setOpacity(0.3);
 				bordure.setFill(Color.YELLOWGREEN);
 				title.setOpacity(0.3);
