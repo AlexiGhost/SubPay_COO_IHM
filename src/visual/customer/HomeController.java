@@ -21,9 +21,7 @@ import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import model.product.composants.*;
 import model.product.*;
-//TODO Afficher la commande en cours
-//TODO Gérer les allergènes 
-//TODO Gérer les commande enregistrées
+
 public class HomeController implements Initializable {
 
 	private static 	List<Promotion>	ListPromo = new ArrayList<Promotion>();

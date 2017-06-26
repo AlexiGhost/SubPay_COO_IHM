@@ -25,9 +25,9 @@
       <Circle fill="#0ec314" layoutX="123.0" layoutY="549.0" radius="150.0" stroke="BLACK" strokeType="INSIDE" AnchorPane.bottomAnchor="-150.0" AnchorPane.leftAnchor="-150.0" />
       <Circle fill="#0ec314" layoutX="1039.0" layoutY="514.0" radius="150.0" stroke="BLACK" strokeType="INSIDE" AnchorPane.bottomAnchor="-150.0" AnchorPane.rightAnchor="-150.0" />
       <Circle fill="#0ec314" layoutX="1017.0" layoutY="100.0" radius="150.0" stroke="BLACK" strokeType="INSIDE" AnchorPane.rightAnchor="-150.0" AnchorPane.topAnchor="-150.0" />
-      <ScrollPane layoutX="191.0" layoutY="124.0" prefHeight="460.0" prefWidth="900.0">
+      <ScrollPane layoutX="191.0" layoutY="163.0" prefHeight="444.0" prefWidth="900.0">
          <content>
-            <TilePane fx:id="drinkTile" prefHeight="460.0" prefWidth="885.0" />
+            <TilePane fx:id="drinkTile" prefHeight="444.0" prefWidth="885.0" />
          </content></ScrollPane>
       <Button fx:id="retour" layoutX="259.0" layoutY="618.0" mnemonicParsing="false" onAction="#goToSauces" text="Retour">
          <font>
@@ -45,6 +45,11 @@
             <Font size="36.0" />
          </font>
       </Button>
+      <Text layoutX="511.0" layoutY="143.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Choisissez votre boisson">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Text>
    </children>
    <opaqueInsets>
       <Insets />
