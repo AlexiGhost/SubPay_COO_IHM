@@ -79,12 +79,11 @@
     <iceCubeNb>-1</iceCubeNb>
     <fBread>Italien</fBread>
     <fSauce>Ketchup</fSauce>
-    <fRecipe />
-    <fDrink>Hein Klein</fDrink>
+    <fRecipe>Thon</fRecipe>
+    <fDrink />
     <fGarnishs>
       <fGarnish>Laitue</fGarnish>
-      <fGarnish>Concombre</fGarnish>
-      <fGarnish>Tomate</fGarnish>
+      <fGarnish>Olive noire</fGarnish>
     </fGarnishs>
     <allergens />
   </customer>

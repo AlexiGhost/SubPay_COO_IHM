@@ -75,7 +75,6 @@ public class ControllerClient extends Application {
 				RecipeController.getCaPasseList().add(recipe);
 			}
 		}
-		
 		//Page Garniture
 		GarnishController.getGarnishList().addAll(ComponentManagement.getGarnishs());
 		
