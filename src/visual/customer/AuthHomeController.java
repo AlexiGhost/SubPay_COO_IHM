@@ -384,6 +384,7 @@ public class AuthHomeController implements Initializable{
 	public void addOrder(){
 		SignUpController.getAuthCusto().getOrder().add(HelloController.getOrder().clone());
 		CustomerManagement.exportCustomerOrders("order.xml");
+		javax.swing.JOptionPane.showMessageDialog(null, "Commande enregistrée !"); 
 	}
 	//Bouton Commandes préférées
 	public void goToFavoriteOrder(){
