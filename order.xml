@@ -5,22 +5,27 @@
   <Orders mail="nathan.fournier13@gmail.com" phone="0670257224" />
   <Orders mail="portgasace98@hotmail.fr" phone="" />
   <Orders mail="portgasace98@hotmail.fr" phone="" />
-  <Orders mail="portgasace98@hotmail.fr" phone="">
+  <Orders mail="portgasace98@hotmail.fr" phone="" />
+  <Orders mail="test@" phone="" />
+  <Orders mail="" phone="0615644218">
     <order>
       <Menus>
         <menu>
-          <product size="15">
-            <bread>Italien</bread>
+          <product size="15" plate="true">
+            <bread>Parmesan Origan</bread>
             <recipe>MeetBall</recipe>
-            <Garnishs />
-            <Sauces />
+            <Garnishs>
+              <garnish>Concombre</garnish>
+            </Garnishs>
+            <Sauces>
+              <sauce>Miel Moutarde</sauce>
+            </Sauces>
           </product>
-          <drink iceCubeNb="0">Evina</drink>
+          <drink iceCubeNb="1">Evina</drink>
           <dessert>brownie</dessert>
         </menu>
       </Menus>
       <ProductsOnly />
     </order>
   </Orders>
-  <Orders mail="test@" phone="" />
 </CustomerOrders>
