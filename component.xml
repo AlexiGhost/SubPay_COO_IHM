@@ -85,13 +85,6 @@
     <new>true</new>
   </sauce>
   <sauce classe="Sauce">
-    <name>Miel Moutarde</name>
-    <photo>miel moutarde.png</photo>
-    <allergens />
-    <available>true</available>
-    <new>false</new>
-  </sauce>
-  <sauce classe="Sauce">
     <name>Mayonnaise</name>
     <photo>mayonnaise.png</photo>
     <allergens />
@@ -105,11 +98,20 @@
     <available>true</available>
     <new>false</new>
   </sauce>
+  <sauce classe="Sauce">
+    <name>Miel Moutarde</name>
+    <photo>miel moutarde.png</photo>
+    <allergens>
+      <allergen>Moutarde</allergen>
+    </allergens>
+    <available>true</available>
+    <new>false</new>
+  </sauce>
   <recipe classe="Recipe">
     <name>Dinde</name>
     <photo>dinde.jpg</photo>
     <allergens />
-    <price>5.99</price>
+    <price>6.49</price>
     <category>Ca passe</category>
     <available>true</available>
     <new>false</new>
@@ -127,7 +129,7 @@
     <name>Jambon</name>
     <photo>jambon.jpg</photo>
     <allergens />
-    <price>5.99</price>
+    <price>6.49</price>
     <category>Ca passe</category>
     <available>true</available>
     <new>false</new>
@@ -214,5 +216,5 @@
     <percentage>10.0</percentage>
     <date>01012018</date>
   </promo>
-  <menu>2.0</menu>
+  <menu>4.0</menu>
 </Composants>

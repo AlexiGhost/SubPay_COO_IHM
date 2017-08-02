@@ -50,7 +50,6 @@ public class MenuController implements Initializable {
 			acteur.getChildren().add(FXMLLoader.load(getClass().getResource("015 Taille.fxml")));
 			visual.ControllerClient.setScene(acteur, "SUBPAY - Taille");
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
