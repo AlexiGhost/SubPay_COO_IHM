@@ -85,7 +85,7 @@ public class HomeController implements Initializable {
 					}
 					else{
 						newPromoCatChosen(promotion.getCategory());
-					}						
+					}					
 				} catch (IOException e) {
 					e.printStackTrace();
 				}

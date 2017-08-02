@@ -77,13 +77,12 @@
     <phoneNumber />
     <password>Medusa81</password>
     <iceCubeNb>-1</iceCubeNb>
-    <fBread>Italien</fBread>
-    <fSauce>Ketchup</fSauce>
-    <fRecipe />
+    <fBread>Blanc</fBread>
+    <fSauce>Miel Moutarde</fSauce>
+    <fRecipe>MeetBall</fRecipe>
     <fDrink>Hein Klein</fDrink>
     <fGarnishs>
-      <fGarnish>Laitue</fGarnish>
-      <fGarnish>Concombre</fGarnish>
+      <fGarnish>Olive noire</fGarnish>
       <fGarnish>Tomate</fGarnish>
     </fGarnishs>
     <allergens />
@@ -104,6 +103,22 @@
       <fGarnish>Olive noire</fGarnish>
       <fGarnish>Concombre</fGarnish>
       <fGarnish>Laitue</fGarnish>
+    </fGarnishs>
+    <allergens />
+  </customer>
+  <customer classe="AuthentificatedCustomer">
+    <lastName>hetyei</lastName>
+    <firstName>chloe</firstName>
+    <mail />
+    <phoneNumber choice="true">0615644218</phoneNumber>
+    <password>chloe2112</password>
+    <iceCubeNb>-1</iceCubeNb>
+    <fBread />
+    <fSauce />
+    <fRecipe>MeetBall</fRecipe>
+    <fDrink />
+    <fGarnishs>
+      <fGarnish>Concombre</fGarnish>
     </fGarnishs>
     <allergens />
   </customer>

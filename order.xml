@@ -1,16 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomerOrders>
-  <Orders mail="" phone="0619355180">
+  <Orders mail="" phone="0619355180" />
+  <Orders mail="nathan.fournier13@gmail.com" phone="0670257224" />
+  <Orders mail="nathan.fournier13@gmail.com" phone="0670257224" />
+  <Orders mail="portgasace98@hotmail.fr" phone="" />
+  <Orders mail="portgasace98@hotmail.fr" phone="" />
+  <Orders mail="portgasace98@hotmail.fr" phone="" />
+  <Orders mail="test@" phone="" />
+  <Orders mail="" phone="0615644218">
     <order>
-      <Menus />
-      <ProductsOnly>
-        <productOnly size="0">
-          <bread>Miel Avoine</bread>
-          <recipe>Dinde</recipe>
-          <Garnishs />
-          <Sauces />
-        </productOnly>
-      </ProductsOnly>
+      <Menus>
+        <menu>
+          <product size="15" plate="true">
+            <bread>Parmesan Origan</bread>
+            <recipe>MeetBall</recipe>
+            <Garnishs>
+              <garnish>Concombre</garnish>
+            </Garnishs>
+            <Sauces>
+              <sauce>Miel Moutarde</sauce>
+            </Sauces>
+          </product>
+          <drink iceCubeNb="1">Evina</drink>
+          <dessert>brownie</dessert>
+        </menu>
+      </Menus>
+      <ProductsOnly />
     </order>
   </Orders>
 </CustomerOrders>
